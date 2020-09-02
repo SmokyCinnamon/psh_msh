@@ -1,0 +1,192 @@
+//---------------------------Envelopes--------------------------
+//call these with %(thing) and they'll return one of the things on the list. double envelopes or whatever they are might be useful dialogue, once you figure them out
+//sometimes they just store things and call that instead, like %(username)
+//apparently commas are not allowed
+
+OnItcheck : sequential
+{ 
+//italic check
+ "\f[italic,true]" ; "\f[italic,false]"
+}
+Onbocheck : sequential { "\f[bold,true]" ; "\f[bold,false]" } ; Onstcheck : sequential { "\f[strike,true]" ; "\f[strike,false]" } ; Onuncheck : sequential { "\f[underline,true]" ; "\f[underline,false]" }
+
+nendmenu
+{
+	"\![*]\q[Nevermind,CANCEL]"
+	//\![*]\q[Give him a gift?,ItemMenu]\n/
+	
+}
+
+nitend
+{
+	"\![*]\q[Give him something else?,ItemMenu]\n/
+	\![*]\q[Go back,BACKTOMENU]\n/
+	%(nendmenu)"
+}
+
+yendmenu
+{
+	"\![*]\q[Nevermind,keroCANCEL]\e"
+}
+
+yitend
+{
+	"\![*]\q[Give him something else?,YzItemMenu]\n/
+	\![*]\q[Go back,OpenKeroMenu]\n/
+	%(yendmenu)"
+}
+
+misha //because... i can?
+{
+	if RAND(100) < 95
+	{
+		"Misha"
+	}
+	else
+	{
+		"Mishka"
+	}
+}
+
+internalenvelope
+{
+	"Internal Envelope Dialogue 1 - %(exampleenvelope)"
+	"%(username)'s computer"
+	"Here is a blanklist object - %(blanklist)."
+}
+
+//So you see, you can even nest envelopes if you want! This is particularly handy with %(username), so your ghost can be specific if they're talking about something of the user's, like their files or folders for example. I'll leave a few lists in here you can fill out as you like. And if this doesn't give you ideas, you can ignore this file, since nothing in it will show up unless you write it into the dialogue. You can add or take away as many items as you want from each list.
+
+bandtime
+{
+	"би-2"
+	"Of Monsters And Men"
+	"Imagine Dragons"
+	"Bastille"
+	"Milky Chance"
+	"Сети"
+	"Кино"
+	"Лакмус"
+	"ДДТ"
+	"Сплин"
+}
+
+petname
+{
+	"dear"
+	"darling"
+	"kitten"
+	"precious"
+	"little paw"
+}
+
+Petname
+{
+	"Dear"
+	"Darling"
+	"Kitten"
+	"Precious"
+	"Little paw"
+}
+
+J //huh? I'm not sure what this was...
+{
+	//you need to draw.
+	"List object 1"
+	"List object 2"
+}
+
+//This envelope in particular I think is fun. You can use this in dialogue to pretend like your ghost is looking through your user's files!
+
+usersfolder
+{
+	"%(username)'s Recycle Bin"
+	"%(username)'s Document folder"
+	"%(username)'s secret folder"
+}
+
+
+//Now, this next envelope is unique. I'm just going to leave it the way that cindysuke wrote it, but look carefully. This list has TWO values, separated by a comma. You can see the first is the Korean word, and the second is the definition of the word. This is used for a bit of dialogue cindysuke wrote where their ghost would teach the user a word in Korean. 
+//You can set up double envelopes like this too by following this format! However, it does require a bit of fancier coding in aitalk to get it to work right. I'll leave an example of it in aitalk so you can study it.
+
+lessonkor
+{
+	"사과(sa-gua),apple"
+	"노동(no-dong),labor"
+	"손가락(son-ga-rak),finger"
+	"마르크스(ma-r-k-s),Marx"
+	"자본주의(ja-bon-ju-yi),capitalism"
+}
+
+//You can also format your envelopes like this as one line separated by semicolons, but personally I think the spaced lists above look nicer. It's up to you however you want to set them up.
+
+blanklistparagraph
+{
+	"List paragraph 1"; "List paragraph 2"; "List paragraph 3"; "List paragraph 4"; "List paragraph 5";
+}
+
+
+ //**** Don't touch this ***************************************************************
+ //This is code stuff and nothing for you to worry about, just save the .dic and move on! You're done!
+ 
+ On_\person
+{
+ 	person
+}
+
+
+was
+{
+	if plural = 1
+	"were"
+	else
+		"was"
+}
+
+is
+{
+	if plural = 1
+	{
+		"are"
+	}
+	else
+	{
+		"is"
+	}
+}
+
+needs
+{
+	if plural = 1
+	{
+	"need"
+	}
+	else
+	{
+		"needs"
+	}
+}
+
+doesnt
+{
+	if plural = 1
+	{
+	"don't"
+	}
+	else
+	{
+		"doesn't"
+	}
+}
+
+isnt
+{
+	if plural = 1
+	{
+	"aren't"
+	}
+	else
+	{
+		"isn't"
+	}
+}

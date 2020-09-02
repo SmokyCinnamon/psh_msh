@@ -1,0 +1,824 @@
+﻿//---------------------------AI Talk--------------------------
+//Alright, this is it! The bread and butter of your ghost. This is where all their random conversations are stored. Of all the .dic files, this is the one you will probably be adding stuff to and updating the most as new dialogue comes to your mind. It is relatively simple in that there aren't many functions or real coding involved with this file, but there are a few cool tricks you can do within randomtalk that can make dialogue with interesting effects, so I'll point them out as we go along.
+//I'm going to leave a lot of examples of different types of dialogue in here that you can study if the possibilities they present intrigue you. Study them carefully!
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+//--AiTalk
+//Leave this alone.
+//Advanced users, this is mostly setting up whether or not dialogue is in a chain before it displays. Again, you can leave it alone unless you want to screw around with chains for some strange reason.
+
+AiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+		        {
+			        if CHAIN.IDName == "" {
+ 				    lastTalk = RandomTalk
+			        }
+			        else {
+				    lastTalk = ChainTalk
+			        }
+			    lastTalk
+			    }
+		}
+ 		else
+		{ 
+		MikireTalk
+ 		}
+	}
+ }
+
+
+//--RandomTalk 
+ //Alright, here we go! This is where ALL your ghost's random dialogue will go! These are the conversations that they'll have with you or each other that pop up depending on the talk rate defined in menu.dic (or if you ignored that, set in bootend.dic in the first boot, which would be every five minutes).
+ 
+//*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//ALL your random dialogue NEEDS to be in RandomTalk. You can't link to other functions or something from within RandomTalk, or a separate pool of convos in another .dic file, as far as I can tell. So, how do you then set up certain pools of dialogue that only happen when certain settings are in place (for example, when there are three characters on the screen instead of two) and won't happen when they are false? Basically, you just need to be creative with your if statements. You can nest a ton of ifs and elses in RandomTalk, and if you keep them straight, you can make a lot of dialogue here customized to whatever situation you can come up with. BUT again, you can't call other dialogue into here! I go more into how to set up a "mode" like that in the coding page of the walkthrough site.
+//I GUESS you could set up more dialogue in an envelope perhaps (see word.dic) or another .dic file and then call it in here using envelopes, but that seems a bit redundant. Maybe someone else can think of a use for that though.
+
+//The closest you can get to linking to outside dialogue is via chains, but I'll talk more about chains when we get to them. Being creative with chains can open up a lot of opportunities for you, such as presenting the user with choices every now and then, which I'm pretty sure you can't do within RandomTalk. Maybe you can, I usually do it via chains though. I'll have to experiment with this later.
+//***********************************************************************
+
+RandomTalk : nonoverlap
+{
+	//so remember how these things work? each other is for if they're arguing. 500 is neutral, 200 is uncomfortable, 50 is realizing you're kind of mean, in-between is becoming even more reclusive and 0 is when even misha stops trying to stand up to you. this is so mean but relationship systems are fun...
+	//ah someone helped. relationship = 0,scared = 1,neutral = 2,friends = 3 they probably trust you!
+	// one last note: friendlyall is their values added together and should determine more the overall tone of things, but the only way i see out of this is many many elseifs
+	if friendlyall >= 1000 //this should eventually end up as an elseif, but for the moment...
+	{
+	//"\1\s[10]Code's broke.\w2\n\nThis is just to fix it.\e"
+	// TEXT FORMATTING -- SUPER USEFUL
+	// \f[height,(number)] default goes back to normal height. \f[strike,true/false/default] strikethrough, sub is subscript, sup is superscript, underline, bold, and italic speak for themselves, and [color,r,g,b] changes text to that color.
+	// \a_[address]actual text\_a for linking to websites and such
+	
+	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
+	// remember, call the nothing ballons with \b[11] to \b[15], for Pavel. halloween event maybe...? I don't want people getting to a certain point and then not being able to interact with Mikhail anymore, as Pavel would also be... different. I doubt he'd say anything. figure out how to set up a mode... if thing = other thing, basically. variables maybe?
+	//see below for spooks. wonder is I can add a menu toggle?
+	
+	//this stupid fucking option shows up literally nowhere else and i dont know what i DID with it.
+	//h&s should help with that i guess.
+	
+	// if spooktime == "on"
+	// {
+	// "\1\s[10]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
+	// }
+	// else
+	
+	// "\1\s[10] \w8\0\s[0] \e" for copy/pasting. Mikhail should start off a good chunk of conversations -- just try not to have too many where they're not being entirely friendly towards each other. Best friends and all. (Note: Pavel is a terrible liar. looks away, maybe with a little laugh.)
+	// ugh feelings. Cel said envelopes would help, if I had a feelings system. how so? I was just thinking of moving all dialogue over to envelopes and working with it that way, but... hmm... 
+	// anyways, better get a proper feelings variable in place. Zarla said that if gaster was saying it was eleven, then it probably got turned into a string. how do I fix that?
+	
+	//one last note to keep in mind, though i have no idea what to do with it: They're both jewish. i don't know shit about jewish people or being jewish, therefore this was a terrible idea. theyre still jewish though.
+	//(brackets... zi mentioned something about this)
+	{
+	"\1\s[10]How's your cat?\w2 Still fluffy?\w8\0\s[0]Fluffy as hell.\e"
+	
+	"\1\s[16]Well, where are you Varvara?\w8\0\s[9]...I'll let that one slide\e"
+	
+	// "\1\s[10]I am getting \f[italic,true]so\f[italic,false] many song ideas here.\w8\0\s[9]I'm glad one of us is.\e:chain=baaaaaaadliar"
+	
+	// "\1\s[18]You think we should see about contacting the others?\w8\0\s[0]Probably.\e"
+	
+	"\1\s[18]So, what's your favorite part of being here?\w8\0\s[0]I don't know. A break from being on tour, I guess. \w8\1\s[14]\n\n[half]Hm.\e"
+	
+	"\1\s[16]Everything is so\w4 c\w2o\w2l\w1d\e"
+	
+	//"\1\s[10]How've you been doing, %(username)?\w8\0\s[0]I hope you're doing good\w1, but it's alright if you're not.\e"
+	
+	"\1\s[10]Got any updates on your cat?\w8\0\s[0]As fluffy as ever. I was told he watched a video of one of our concerts and was captivated by it. \w8\1\s[10]\n\n[half]Aw, he misses you.\e"
+	
+	// "\1\s[10]Kinda wish I had my guitar...\e"
+	
+	"\1\s[10]So, Jora said the other day he was thinking about getting rid of his boots\w1.\w1.\w1.\w8\0\s[2]What\w1?\w1! No way! \w8\1\s[18]\n\n[half]I know! I told him if they'd lasted him this long, he should probably keep them until they \f[italic,true]actually\f[italic,false] started to wear out\w1.\e:chain=jorasboots"
+	
+	"\1\s[10]I wish your cat would be here. \w8\0\s[4]Yeah\w1.\w1.\w1.\w2 \f[sub,true]fluffy little bastard\w2.\w2.\w2.\f[sub,false]\e"
+	
+	"\1\s[10]What's your cat been up to?\w8\0\s[0]Being large and fluffy. \w4\n\w2He's doing good.\e"
+	
+	"\1\s[10]I wonder if %(username) has any cats?\w8\0\s[0]I hope you keep them inside!\e" 
+	
+	"\1\s[10]%(username) seems kinda nice. \w8\0\s[9]I guess.\e"
+	
+	// "\1\s[10]Worlds are spinning\w8\0\s[0].\w3.\w4.\w5are\w1.\w4 Are you trying to write a song\w1.\e" //...nah. keep it in though
+	
+	"\1\s[10]Heard of the band %(bandtime), %(username)?"
+	
+	"\1\s[10]%(bandtime)'s music is pretty nice.\w8\0\s[0]You should give them a listen sometime.\e"
+	
+	"\1\s[10]Got any pets, %(username)?\w8\0\s[8]If you have cats, it's better to keep them inside.\e"
+	
+	"\1\s[10]Vadik wanted me to say something to you...\w8\0\s[8]Well? \w8\1\s[10]\n\n[half]...But I don't remember what it was.\e"
+	
+	"\1\s[18]Maybe we \f[italic,true]should\f[italic,false] comandeer %(username)'s notepad...\w8\0\s[0]I knew you'd see reason.\e"
+	
+	// "\1\s[10]Living in a computer is kinda strange...\w8\0\s[0]Yeah, no beds, no cats...\w4 \s[4]I kinda want to go home\w1.\e"
+	
+	// "\1\s[10]Man, we should go and try to message Vadik or someone.\w8\0\s[9]...Yeah, we \f[italic,true]were\f[italic,false] kind of on tour there...\e"
+	
+	//"\1\s[18]We could do so many songs about living in a computer.\w8\0\s[0]That's far too optimistic.\w4 Maybe one or two.\e"
+	
+	// "\1\s[19]...You don't have your guitar with you.\w8\0\s[4]Aw, hell.\e"
+	
+	"\1\s[10]Hmmm...\w8\0\s[8]???\e"
+	
+	{
+	"\1\s[10]Do you think that Jora would choose to dig a hole, or just walk around until the hole made itself?\w8\0\s[9]I think he'd "
+	--
+	"walk around first."
+	"choose to dig."
+	--
+	" \w8\1\s[18]\n\n[half]Really? What about you\w2, %(username)?\e"
+	}
+	
+	"\1\s[16]Revol\w2u\w4t\w2i\w2o\w3n\w1.\w1.\w1.\w8\0\s[0]Hey, that's my song.\e"
+	
+	"\1\s[10]\f[italic,true](He starts to say something, then seems to think better of it.)\f[italic,false]\e"
+	
+	"\1\s[10]If the world was ending, what would you do?.\w8\0\s[8]I don't really know.\w8\1\n\n[half]\s[15]Thought you wouldn't\w8\0\n\n[half]\s[3]Then why'd you ask?\e"
+	
+	"\1\s[10]You're more quiet then usual. \0\s[0]So?\e"
+	
+	// "\1\s[10]Wonder how the others are doing.\w8\0\s[0]Probably okay. Jora might be wearing a path into the floor trying to think of what happened to us, though.\w8\1\s[10]\n\n[half]That's very likely. \w4\0\s[0]\n\n[half]Sure is.\e"
+	
+	// "\0\s[6]The world is amazingly beautiful.\w8\1\s[15]Pasha, you're very poetic sometimes.\w8\0\s[8]Am I?\e" ...find a place where this is more appropriate.
+	
+	// "\0\s[4]\f[italic,true](He mumbles something in another language\w1.\w1)\f[italic,false]\e"
+	
+	"\1\s[16]The road is my home\w2.\w2\nAnd it's not a place\w3 for love\w1.\e"
+	
+	// "\0\s[0]What do you think Valya would do\w1, in a situation like this\w1? \w8\1\s[10]Be extremely rude\w1.\w8\0\s[9]\n\n[half]Valya's not rude\w1, Yezhov\w1.\e" //Chain? Mikhail's making a joke... sort of.
+	
+	"\1\s[18]So\w1, about the other day\w2.\w2.\w2.\w8\0\s[9]Don't\w1.\e"
+	
+	//"\0\s[6]Do you believe in heaven above?\w8\1\s[16]Do you believe in love?\w8\0\s[8]\n\n[half]You didn't even sing that part. \w4\1\s[11]\n\n[half]Well\w1, neither did you.\e"
+	
+	"\0\s[0]Thought\w2 you'd be like this \w4\nUntil\w2 the end\w2.\w2.\w3.\w8\1\s[10]Haha\w8\0\s[1]\n\n[half]Shut up, it's stuck in my head.\w8\1\s[18]\n\n[half]I didn't say anything.\w8\0\s[0]\n\n[half]Probably thought it, though.\w8\1\s[18]\n\n[half]Thought what, exactly?\e"
+	
+	"\1\s[18]You think there's any paper here?\n\w2.\w4.\w4. Actually\w2, probably not.\e"
+	
+	"\0\s[0]%(username), what kind of music do you like?\w8\1\s[18]Maybe %(username) doesn't like music.\e"
+	
+	"\1\s[18]Jora's also told me that you had something to say.\w8\0\s[9]Yeeeeaaaaaaaaaah, uh, I'll get back to you on that later. \w8\1\s[19]\n\n[half]You sure about that?\e"
+	
+	"\1\s[10]I was looking at the sky the other night.\w8\0\s[8]...And? \w8\1\s[10]\n\n[half]There were a lot of stars, that's all. \w8\0\s[4]\n\n[half]Aw, I wish I could've seen that. It's always so cloudy...\e"
+	
+	"\1\s[10]How's the weather, %(username)? \w8\0\s[8]Is it nice out\w2?\e"
+	
+	"\1\s[16]And after all,\w3 everything's still here\w8\0\s[6]\f[italic,true](He hums along.)\f[italic,false]\e"
+	
+	//"\1\s[10]So, we got some snacks, right? \w4You know how Vanya is when he's thinking about something.\w8\0\s[0]I don't know\w2? \w6You'd have to ask Vadik\w2.\w3.\w4.\w8\n\n[half]Hm.\w4 We\w1.\w2.\w2.\w4 kind of can't\w1.\e" //chain about Vanya?
+	
+	"\1\s[18]I feel like everyone knows something but me...\w8\0\s[9]...\e"
+	
+	"\1\s[16]Mon\w3ey \w4for no\w4thing\w1.\w2.\w3.\w8\0\s[6](He hums along.)\e"
+	
+	// "\0\s[0]So when are you going to .\w8\1\s[11]...\e"
+	
+	//"\1\s[10]You okay, Pasha?\e"
+	
+	//"\1\s[10]......\w3 So, Pasha... \w6\0\s[0]Yeah? \1\s[10]\n\n[half]...Nothing, just... sorry.\w4 For pushing you around like that.\w4 \0\s[0]...\e"
+	
+	"\1\s[10]Hey, Pasha? \w4\0\s[0]What's up? \w4\1\s[10]Just... Sorry. \0\s[4]\e"
+	
+	"\1\s[10]D'you think Vanya would've\0\s[8]\1\s[14]...\w2... Nevermind.\w2 Sorry.\e"
+	
+	"\0\s[0]I think\w2.\w2.\w2.\s[9] I'm worried about Jora\w2.\w6\1\s[10]Aren't we all?\e"
+	
+	"\0\s[0]Aven's beem talking about inviting everyone over for my birthday this year\w2.\w3 I wish he wouldn't\w2.\e"
+	
+	"\0\s[0]Kinda wish Jora would talk about what's been bothering him\w2.\w6\1\s[10]A bit hypocritical, coming from you.\e" //this... i think should be a chain lmao
+	
+	//"\1\s[10]Been alright? Noticed you're touchy about your songs lately.\w6\0\s[8]Не надо говорить по-русский. А мне все хорошо, спасибо.\w5\1\s[10]\n\n[half]...Еще не верю тебе.\w6\0\s[9] Ясно. Лучше не думает об этои\w2, да?\e"
+	
+	//"\0\s[0]Respect Jewish people or die by my sword.\e"
+	
+	// "\0\s[5]In this dialogue, I will go from happy \w4\s[4]to sad.\e"
+	
+	//As you can see here, you can change your ghost's expression while they are speaking. This can make their expression vary dynamically depending on what they're talking about.
+	
+	// "\1\s[12]Wait\w1!\w1! I think I left my guitar at home\w1!\w4\0\s[0]No\w1, \w4\1\s[10]\0\s[0]Vadik would have been teasing you about it if you did\w1.\e"
+	
+	//You can also change the side character's expression while the other character is talking. Note here that after the surprising statement, Triangle's pose is changed to s[12]. Then the focus is brought back to Girl with the \0 tag and she resumes talking. You can change focus without having the character actually say anything to accomplish just this effect.
+	
+	// "\0\s[2]You don't have your guitar.\w8\1\s[12]Oh no!\e" //surprised  ...but I don't like Mikhail's pose. plus, we already have that dialogue up there for it! yay.
+	
+	// "\0\s[3]This is my awkward pose.\w8\1\s[13]Check out this anime sweatdrop.\e"
+	
+	// "\0\s[4]This is my sad pose.\w8\1\s[14]These are sad times.\e"
+	
+	// "\0\s[5]This is my happy pose.\w8\1\s[15]How wonderful!\e"
+	
+	// "\0\s[6]This is my contented pose.\w8\1\s[16]Life is good.\e"
+	
+	// "\0\s[7]This is my angry pose.\w8\1\s[17]No YOU shut up!\e"
+	
+	"\0\s[8]What did Vanya say he was gonna do?\w8\1\s[18]I don't remember.\e" //thoughtful
+	
+	//"\0\s[9]Bored.\w8\1\s[19]Yeah.\e" //...bored, as he says.
+	
+	// "\0\s[0]I am pausing for 14ms. \w8\w6The pause is over.\e"
+	
+	// "\0\s[0]I am pausing \w4for dramatic \w6emphasis. \w8P\w6 - \w6A - \w6U - \w6S - \w6E.\e"
+	
+	// "\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
+	
+	//You can use the pronouns set up during their first boot (see bootend.dic) or in the config menu (menu.dic) in sentences like this as well. You can see that the envelope %(heshe) replaces where he or she would be in the sentence, and so on for the rest of them. This makes it so they use the correct pronoun in the right place.
+	
+	// "\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
+	
+	//As you can see, you can put any envelope from word.dic in here, as long as you properly format it as an envelope by putting a percent sign in front and putting it in parentheses. %(username), %(icecream), %(bunnies), whatever, this is up to you as long as you've defined it in word.dic. You can see how the values stored in the envelope appear in the balloon when the dialogue is called.
+	//Do note that you cannot put quotation marks in your dialogue. If you're using Notepad++ which you should be doing, you'll see the line break and turn black if you do. Use apostrophes instead.
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
+	
+	//And here are more examples using the blanklists I set up in word.dic.
+	
+	// "\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
+	
+	//You can use the usersfolder envelope creatively if you like, haha.
+	
+	// "\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
+	
+	//Here's an example using the internal envelope I mentioned in word.dic.
+	
+	//--Chains
+	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
+	
+	"\0\s[8]Talked to Vanya lately\w1?\w8\1\s[18]Not recently\w1, why\w1?\e:chain=firstchain"
+	
+	//Note here that instead of ending the dialogue with the normal end tag of \e, it ends with \e:chain=firstchain. This will link down below to a chunk of code outside RandomTalk called firstchain. You can scroll down and find it now if you want. You can name your chain anything you want, it'd just follow the same format of \e:chain=yourchainsname, and you can have a long series of chains as well. Once a dialogue has entered a chain, they won't say any other random dialogue until the chain is finished.
+	
+	//"\1\s[13]Vanya isn't saying anything about Anchor 1 to me.\w8\0\s[9]Have you tried not being so intimidating? \e:chain=questionhim" //not sure if this should be shell related or not lol. probably, considering I have the anchor, but they don't have any other shells as of right now.
+	
+	//Here, this chain will link to another chain to continue the conversation. You can scroll down to the section on chains to see this in action.
+	}
+	
+	//--If statements
+	//You can put if statements in RandomTalk! They don't even need Else statements, unless you want to keep two sets of statements completely separate - for example, you have one pool of conversations for when there are two characters, and one for if there are three characters. You wouldn't want these to overlap, so you'd put one pool in the if statement and the other in the else. Most of the time though, you won't need an Else statement for these, since they'll mostly only be adding in dialogue if the if statement is true. 
+	
+	if nowshell == "default_shell" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
+	{
+	//Then these conversations are available! Note the brackets enclosing this set of dialogue.
+	//"\1\s[18]What happened to your wrist, anyways?\w8\0\s[3]...Nothing important. \w8\1\s[13]\n\n[half]Important enough for you to not tell me. \w8\0\s[4]\n\n[half]...\e"
+	
+	//"\1\s[13]...So, how's Anchor 1 healing?\w8\0\s[9]Fine.\1\s[18]\n\n[half]Well, Vanya did say you'd tell me at some point. \w4\0\s[2]\n\n[half]Quit it! %(username) is right there! \w8\1\s[17]\n\n[half]Jeez, fine.\e" //shell related?
+	
+	// "\1\s[10]ah, it's kind of cold here.\w8\0\s[7]I don't wear long sleeves all the time.\e" //shell related? note that surface7 needs changed. doesn't match up as well with Mikhail's as it should.	
+	}
+	
+	//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
+	if nowshell == "summer" //i got all the seasons but nothing in them
+	{
+	"\0\s[0]THonestly im not sure how this and season related dialogue are different.\e"
+	
+	"\0\s[0]but its useful for other shells.\e"
+	}
+	//After the if statement is done, you can continue with dialogue as normal. As you can see, you can move the ifs around in here, it doesn't really matter. You may want to stick them all in one place together if you want to keep track of them, or you can scatter them around your dialogue as you please. It's up to you.
+	/*if season == spring
+	{
+		"\1\s[10]Spring's nice because that's when all the flowers start to grow.\e"
+	}
+	if season == summer
+	{
+		"\0\s[0]Summer is a recipe for melted Pasha.\e"
+	}
+	if season == fall
+	{
+		"\1\s[10]Somebody's got a birthday coming up.\e"
+	}
+	if season == winter
+	{
+		"\0\s[0]It's always so cold...\e"
+	}*/
+	//And here we're going to go back into ifs! You see, you can space out your ifs with normal dialogue if you want, as I just mentioned. Anyway, you can set up if statements to check for a lot of different things! One of the cooler ones I think are ones set to check for time. This one for example checks if the month is December.
+	
+	if month >= 12
+	{
+		"\0\s[8]December...\w4 \n\s[5]Happy holidays\w1, %(username)!\e"
+		
+		"\0\s[0]Is it cold out?\w8\1\s[18]Snowing, maybe? \w8\0\s[6]\n\n[half]We should build a snowman!\e"
+		
+		"\0\s[0]Cold out?\e"
+		
+		"\1\s[10]Hey.\w4 Hey, Pasha.\w6 \0\s[0]I'm not listening to you\w2.\w6 \1\s[10]\n\n[half]I swear, I'm not gonna--\w1\0\s[0]I *said*\w2 I'm not listening.\e:chain=snowmaaaan"
+		
+		"\0\s[0]Well, it's cold,\w2 cold,\w2 cold\w1 outside\w1, doctor in the dead\w2,\w1 in the dead of\w1 night\w2.\w1.\w1.\e"
+		
+		"\0\s[0]Hanukkah season.\w4\1\s[10]Janice.\w6\0\s[0]\n\n[half]I suppose.\e"
+		
+		//"\0\s[0]I hope Vanya won't worry too much. We've really been here a while...\e"
+		
+		//"\1\s[10]I've tried checking %(username)'s web browser, but haven't had much luck in actually... \w3getting\w2 anywhere. \0\s[3]Oh\w2.\w2.\w2.\n\n\\w4\f[italic,true](He looks sad.)\f[italic,false]\e" //this *should* have a variable to stop the other ""contact"" dialogue from playing. or, whatever those are called. Just not sure how exactly to get it working. still, it'll lessen the pool of dialogue once the user reahces dece,ber and gets this to play, so better come up with a lot more!
+		//and also stop talking so much in comments.
+		
+	}
+	
+	//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
+	//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
+	
+	if month == 2
+	{
+		"\0\s[0]There's a song called february\w1.\w8\1\s[10]Yeah\w1.\e"
+		
+		"\1\s[10]How much do you think I would have to pay Jora to get him to not wear his boots for a day or two?\w6 \0\s[0]I don't think you could give him any amount of money and have him be willing to do that\w2.\e"
+		
+	}
+	if month == 10
+	{
+		//"\0\s[0]October! Did you know that Smoky was born in october?\w8\1\s[10]Nice fun fact, anyways.\e"
+		
+		"\0\s[0]Ghosts might be around, so you better watch out for them, %(username).\w8\1\s[10]Pasha, we *are* ghosts.\e"
+		
+		"\1\s[10]Hey, aren't you cold?\w8\0\s[0]No\w2.\w2.\w2.\w2?\w4\nAre you\w2?\e"
+		
+		"\1\s[10]...\n\n[half]\w4*(Looks like he's thinking about something\w1.)\n\w8(You wonder how important it is\w2.)*\e"
+	}
+	//These ifs check what day of the week it is.
+	if weekday == 1
+	{
+		"\0\s[0]Monday\w2, wonday\w2.\w8\1\s[10]Huh?\e"
+	}
+	if weekday == 2
+	{
+		"\0\s[0]Tuesday\w2, newsday\w2.\w8\1\s[10]???\e"
+		
+		"\0\s[0]%(username)\w2, did you know that tuesday is officially pizza day\w2?\w4\nThis is a fact\w2.\e"
+	}
+	if weekday == 3
+	{
+		"\0\s[0]Wednesday\w2, tensday\w2.\w8\1\s[10]...??????\e"
+	}
+	if weekday == 4
+	{
+		"\0\s[0]Thursday\w2, fursday\w2.\w8\1\s[10]That.\w2.\w2.\w2 doesn't make a lot of sense. \w8\0\s[0]\n\n[half]Does it have to\w2?\e"
+	}
+	if weekday == 5
+	{
+		"\0\s[0]Friday\w2, tryday\w2.\w8\1\s[10]Who taught you these?\e"
+		
+		//"\1\s[10]I guess if we're here we don't have too many responsibilities, huh?\w6\0\s[0]Interesting time to bring it up.\w6\1\s[10]\n\nWell, it just feels weird.\w3 There's nothing to really do.\w6\0\s[0]Hm. Well, as long as we're here, it couldn't hurt to be shomer shabbos again\w2.\w2.\w2.\w5\1\s[10]See? that's the spirit.\e" //hello actualy jewish people please help
+	}
+	if weekday == 6
+	{
+		"\0\s[0]Saturday\w2, caturday\w2.\w6\n.\w2.\w2.\w2 I like cats\w2.\w8\1\s[10]Where did you learn these puns\w?\e"
+	}
+	if weekday == 7
+	{
+		"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"
+		
+		//"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes
+	}
+	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
+	if timeslot == "earlymorning"
+	{
+		"\0\s[0]Feels early.\w8\1\s[10]That's cause it is.\e"
+		
+		"\0\s[0]Can you read books like that this early?\w8\1\s[10]I don't see why not.\e" //pasha means upsode down.
+	}
+	if timeslot == "evening"
+	{
+		"\0\s[0]Hey, how do you spell evening?.\w8\1\s[10]E\w4 V\w4 E\w4 N\w4 I\w4 N\w4 G\w2.\e"
+		
+		"\0\s[0]Eve\w3ni\w2ng time\w1, so this is my eve\w2ning\w2 song\w2.\w2.\w2.\e"
+	}
+	
+	
+	//--Double Envelopes
+	//If you've gone through word.dic, you may remember a list with two sets of values on each line. This is how you would call something like that! For this example, we'll use the double envelope that cindysuke made that has a Korean word and its definition. This can be a bit complicated, so pay close attention.
+	
+	{
+	_korean = lessonkor //Here, the envelope "lessonkor" is stored as a new value called _korean. You can name the new value anything you like. 
+	_korword = _korean[0] //The first part of the envelope's list is the Korean word, so it will be called _korword. The first value of the _korean list is _korean[0], so that value is then stored in _korword.
+	_kormean = _korean[1] //This is the second item on the list, in this case the meaning of the Korean word, so it's called _kormean. The second value of the _korean list is _korean[1], so that value is then stored in _kormean.
+	
+	// "\1\s[10]Here is an example of a double envelope. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
+	
+	//As you can see here, you then use the values we set above for _korword and _kormean up there in the dialogue as our new envelopes. If you're planning on using a double envelope like this, study how this works very carefully! Most of the time, you can get away with just copying this whole bit of code and changing the names of the values as you need - doubled envelope to _doubled, _korword to _doubleitem1 or _kormean to _doubleitem2, or whatever. I'm not sure if the underscores are necessary, but you might as well play it safe and keep them.
+	//You could possibly set up an envelope with three or four or any number of values in it, then just assign them increasing numbers like _doubleitem[4] or _doubleitem[5] in the dialogue set up here, but I've personally never tried it.
+	
+	//Additional Note - You can't test this kind of dialogue in Script Input. You'll have to wait until it comes up naturally in your ghost's random dialogue.
+	
+	//Those uninterested in double envelopes can delete this section.
+	}
+	
+	//--Multiple Responses
+	//If you've poked around menu.dic or string.dic or read the walkthrough, you may have seen me touch on setting multiple options for any one given bit of dialogue. This kind of dialogue follows much the same format.
+	
+	{ //Again, note the brackets around these unique bits of dialogue.
+	
+	"\0\s[0]What's on your mind\w2?\w8\1\s[10]"
+	//Notice that the last few tags set up Triangle's pose before going into his text below. You don't have to do this if you want each response to have its own pose, but if he'll have the same expression regardless of what he's saying, you might as well save yourself the work.
+	-- //You've probably seen these double dashes before in other .dic files. In this case, these dashes enclose a set of multiple responses.
+	"Thinking about words."
+	"Grapes."
+	"Music."
+	"Nothing."
+	"Stars in a clear sky are infinitely more beautiful than anything else in the entire world."
+	"A puzzle I can't seem to solve."
+	//As you can see here, there are six potential replies Triangle might have to Girl's question. Each time this dialogue is called, he will randomly select one response from these six.
+	-- //The closing set of dashes for his dialogue options.
+	"\w8\0\s[0]\n\n[half]" //Now we're going back to Girl to set up for her multiple responses in return. This line of tags mostly just sets up for what she will say. Like above, you can see her pose is set in here with \s[0], so she'll have the same pose for each response.
+	-- //opening dashes
+	"Huh."
+	"Interesting."
+	"Sounds neat."
+	"Cool."
+	//Following the same pattern as above, Girl will randomly reply with one of these bits of dialogue. Note that these responses are also randomly chosen, so it may go Triangle says response one, Girl says response three, or Triangle says response four, Girl says response two, or so on and so forth. So make sure the exchange will still make sense regardless of what either of them might say.
+	-- //closing dashes
+	"\e" //Dialogue ends
+	}
+	
+	//Here's another example of multiple responses. This one will let you randomly choose something to say in the middle of a sentence.
+	
+	// {
+	// "\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
+	// --
+	// "green"
+	// "red"
+	// "purple"
+	// "orange"
+	// "yellow"
+	// "\s[18]magenta" //Notice here I added a tag for his thoughtful pose. If he chooses magenta, he'll do this pose. You can set up individual expressions for each potential choice this way.
+	// --
+	// " instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e"
+	
+	//You can see that this follows the formula of the above, although there's only one set of multiple responses in here, then Triangle continues with his sentence. You can use this feature in many different ways if you're creative.
+	// }
+	
+	// "\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+	}
+	elseif friendlyall >= 400
+	{
+		//"\0\s[0]You should sort this into sections sometime.\e"
+		
+		/*if другдруга == 0
+		{
+			"\0\s[8]So how\w2's your day been\w3?\w6\1\s[19]Fine. Had to spend it with you, obviously.\w4\1\s[18]\nDid you know he smokes, %(username)? \w4At this rate, your computer's going to get fucked up.\w4\0\s[2]\n\n[half]I--\w4\n\nI will *not*! Just because *you*\w4 like \w3%(username) doesn't mean I do\w3!\w3\s[3]\nBesides\w2, if you didn't want to\w3 hang out with me you could've just *said* so\w2.\w2.\w2.\w5\1\s[17]\n\n[half]Oh come on! There's nowhere else on this damn computer to even go!\w6\0\s[2]\n\n[half]Mishka\w3, just\w3, just\w3-\w2- \w3\1\s[17] But *fine*\w4 then,\w3 if you want me to go, I will!\4\4\0\s[4]Mishka\1\4\0\w2-\w2-\w4\n\n[half]\1\4\4\4\4\4\4\s[-1]\w6\w6\w6\w6\w6\w6\0\s[4]Mishka\w2.\w2.\w2.\w4\n\n[half]\w2.\w4.\w4.\w3\w6\n*\n(You think he looks like he's about to cry.)*\n\w4\s[3]I\w2.\w2.\w2. I won't fuck up your computer\w2, promise\w2.\w8 I dunno how I even could\w2.\1\s[10]\4\4\4\![raise,OnArgue]\e" //the last one should just point it to a thing that sets другдруга to one.
+		}*/
+		"\0\s[9]So\w2.\w3.\w3.\w3 Um\w2, how\w2's it going\w2, %(username)\w2?\e"
+		"\0\s[9].\w2.\w2.\e"
+		"\0\s[0]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
+		"\1\s[10]Hey there, %(username).\e"
+		"\1\s[10]You have an interesting interpretation of what it means to be nice, %(username).\e"
+		"\1\s[10]What's up there, %(username)?\e"
+		if другдруга == 0
+		{
+			"\1\s[10]What do you think Valya's up to right now?\w6\0\s[0]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"
+		}
+		"\1\s[10]...\e"
+	}
+	elseif friendlyall >= 100
+	{
+		"\1\s[10]Guess the user must not like us very much.\e"
+		"\1\s[10]Do you like, have something against us?\w3 Hello? \w3%(username)?\0\s[3]...\e"
+		"\1\s[10]Really not friendly, huh?\e"
+		"\1\s[10]So how's it going in the land of assholes, %(username)? Having fun?\e"
+		"\1\s[10]And what are you up to on this fine day, %(username)? Tormenting us?\e"
+		//"\0\s[0]%(username) не\w2.\w2.\w2.\w3\nк нам не хорошо относится\w2, да\w2? \1\s[10]А ты только что узнал? Правда же, Паша, я думал, что уже сказал. Это-\w4\n\n*(He seems to have noticed your interest...)*\e"
+		"\0\s[0]You wouldn\w2't happen to have any music around here\w2, would you\w2?\e"
+		"\1\s[10]*(Sometimes you wonder about this one.)*\e"
+		"\1\s[10]*(He couldn't be more pointedly ignoring you.)*\e"
+		"\0\s[0]*(You wonder why he's become so fidgety.)*\e"
+		"\0\s[0]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
+		"\0\s[0]*(You wish he would stop fidgeting.\w4 It's distracting.)*\e"
+		"\1\s[10]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
+	}
+	elseif friendlyall <= 0
+	{
+		"\1\s[10]Wow.\e"
+		"\1\s[10]*(He keeps looking over his shoulder.\w3 Interesting.)*\e"
+		"\0\s[0]*(He doesn't fidget anymore.\w3 good.)*\e"
+		"\0\s[0]%(misha)\w2.\w3.\w3.\w6\1\s[10]?\w6\0\s[0]What do you think of %(username)\w3?\w4\1\s[10]Well... "
+		--
+		"\n*(He doesn't say anything.\w3 Disapppointing.)*"
+		"%(heshe) %(doesnt) like us very much."
+		"%(heshe) %(isnt) really... that nice."
+		"maybe it's better if I tell you when %(heshe) *%(isnt)* here."
+		"they remind me of... well, y'know."
+		"I'll tell you later."
+		--
+		" \w6\0\s[0]\n\w2.\w2.\w2.\e"
+		"\0\s[0]*(You wonder when the best time to talk to him would be.\w3 Soon, perhaps.)*\e" //menu option for... things
+		"\1\s[10]*(He's much less talkative than he used to be.\w3 That's a shame.)*\e"
+		"\1\s[10]*(Somehow, he seems completely calm and very nervous at the same time.)*\e"
+		"\1\s[10]*(The other one hardly talks to him anymore.\w3 It was probaby inevitable, really.)*\e"
+		"\0\s[0]*(This one has always been interesting.\w3 You'll get his secrets if you have to pry them out of him.)*\e"
+		"\1\s[10]*(You wonder why he seems so nervous.)*\e"
+		"\0\s[0]*(This one, if anything, is displaying a complete lack of emotion.\w3 You thought he would have been able to feel something by now, but perhaps not.)*\e"
+		"\0\s[0]*(This one doesn't seem nearly as intruiging, now.\w3 You should at least find out what he's hiding, in the meantime.)*\e"
+	}
+	else
+	{
+		//"\1\s[10]this takes care of in-between 0 and fifty counting up.\e"
+		"\1\s[10]So, how's it going? Ah, nevermind, I don't think you care anyways.\e"
+		"\1\s[10]%(username)... %(username) really isn't nice, huh?\w6\0\s[0]...\e"
+		//"\1\s[10]Паша, пожалуйста, говори со мне.\w6\0\s[0]...\e" he sounds formal. maybe he shouldn't. fuck you russian for your long words
+		"\1\s[10]So %(username)... oh, I don't think you care, nevermind.\e"
+		//"\1\s[10]%(username), why are you like this?\w8\w8\![raise,OnMishaTalk]\e"
+		"\1\s[10]How's your day been, Pasha?\w6\0\s[0]...\e"
+		"\1\s[10]You missing your cat, Pasha?\w6\0\s[0]...\e"
+		"\1\s[10]%(username), you sure you don't just want like, a hug or something?\e" //misha over here like: I *will* offer you affection because that's hte only way we possibly have to get you to stop hating us
+		"\1\s[10]Pasha, hey, how've you been?\w6\0\s[0]...\e"
+		"\1\s[10]What do you think of calling Jora or someone? \w3If we can do it, I guess.\w6\0\s[0]...\e" //someday we will have all six on the same desktop and the world will explode. phone calls might be cute though
+		"\0\s[0]Hey\w2, um\w3.\w3.\w3. you doing okay?\w6\1\s[10]Mmh, about as well as I can be.\e" //pasha: i am noncomittal | misha: two can play at that game
+		"\0\s[0]Um\w3, %(misha)\w3.\w3.\w3.\w4\nNevermind\w3.\w3.\w3.\e"
+		//"\0\s[0]H\w3-Hey\w2, %(username)\w2? Can I\w2, I\w2, I use\w2, um\w2, your internet browser\w2?\e"
+		"\0\s[0]Really wish we could call someone...\e"
+		"\1\s[10]*(Somehow, he looks less in control of things.)*\e"
+		"\1\s[10]*(You wonder about him sometimes.)*\e"
+		"\0\s[0]*(You wonder if you can tell him to stop fidgeting...)*\e"
+		"\1\s[10]*(He looks like he could say something to you any second now.)*\e"
+		"\1\s[10]*(You think he's kind of alright, when he doesn't speak.)*\e"
+		"\1\s[10]*(He doesn't seem at ease anymore.)*\e"
+		"\1\s[10]*(You wonder why he's not talking as much.\w3 It's a blessed moment of peace, but...)*\e"
+	}
+	if другдруга == 1 //maybe i could call this with \![raise,stuff]
+	{
+		//"\1\s[10]This is if we've been fighting.\e"
+		"\0\s[0]Um\w2.\w2.\w2.\w2 Hi\w2, %(username)\w2.\e"
+		"\0\s[0]%(misha)\w2, do\w2-\w4\1\s[10]Заткнись.\w6\0\s[3]\n\n\w2.\w2.\w2.\e" //there has to be a harsher way of saying shut up. i do not know it
+		"\0\s[0]Um\w2.\w2.\w2. Mishka\w2-\w3\1\s[10]\4\e"
+	}
+}
+
+
+//--Chains
+//Here is where you will put your bits of chain dialogue. They are outside of RandomTalk, which makes them a bit more flexible as I mentioned above. As you can see, this function is called "firstchain", which was the same tag we put at the end of the chain in aitalk with \e:chain=firstchain.
+
+firstchain
+{{CHAIN
+	"\1\s[10]Oh, this is about the other day\w1, isn't it\w2?\w8\0\s[0]The world may never know\w1.\e:chain=end"
+}}CHAIN
+
+//Pay careful attention to the CHAIN text and double brackets for these. Double brackets, CHAIN, dialogue, double brackets, CHAIN. If you are planning on making chains, I'd recommend just copying and pasting the chain example here and changing the dialogue and name of the function as you need. Less likely for mistakes to happen, you know?
+//Note also it ends with \e:chain=end, basically ending the chain.
+questionhim
+{{CHAIN
+    "\1\s[10]Valya said you wouldn't tell him anything\w2, either\w2?\w8\0\s[0]There's a reason for that\w2, you know\w1.\e:chain=deflectdeflect"
+}}CHAIN
+
+deflectdeflect
+{{CHAIN
+	"\0\s[9]I bet you asked everybody about it\w2.\1\w8\s[18]So what if I did\w1? You and Vanya won't say anything\w2.\e:chain=intimidationtactic"
+}}CHAIN
+
+intimidationtactic
+{{CHAIN
+	"\1\s[10]... Intimidating\w2?\0\s[9]Took you long enough to notice that\w1.\1\w8\s[13]\n\n[half]Am I really intimidating\w1? \w8\0\s[9]\n\n[half]You absolutely are\w1.\e:chain=end"
+}}CHAIN
+
+jorasboots
+{{CHAIN
+    "\0\s[0]......So\w2, did he listen to you\w1? \w8\1\s[10]He said\w1, that he would think about it.\e:chain=end"
+}}CHAIN
+
+baaaaaaadliar
+{{CHAIN
+    "\1\s[10]...So, got any you wanna share yet? \w8\0\s[0]Huh\w1? \w8\1\s[10]\n\n[half]Song ideas. You're not too great at lying, Pasha. \w8\0\s[1]\w3.\w3.\w3.\w3.\w3.\w3.\w3 Shut up\w1.\e:chain=end"
+}}CHAIN 
+
+snowmaaaan
+{{CHAIN
+    "\1\s[10]\f[italic,true](He starts singing.)\f[italic,false]\n\n Do you wanna build a snow maaaan\w1~?\w6\0\s[0]I can't hear you!\e:chain=end"
+}}CHAIN
+
+OnArgue //all this is is setting the argue dialogue either on or off.
+{
+	if другдруга == 0
+	{
+		другдруга = 1
+	}
+	else
+	{ 
+		""
+	}
+}
+
+//-OnMinuteChange
+//These are time-related bits of dialogue for your ghost to say. If you're uninterested, you can delete it all except for a line for MikireTalk. So it'd look something like
+
+//OnMinuteChange
+//{
+//timeslot = GetTimeSlot
+//if mikireflag == 1
+// 	{
+// 		MikireTalk
+//	}
+//}
+
+//But I think these are kind of neat, so I'd leave them myself.
+
+OnMinuteChange
+ {
+	timeslot = GetTimeSlot //this tells the ghost what time it is so the time related conversations above will work.
+	--
+ 	if minute == 0 //These check what time it is. uses the same as your phone, but the ghosts just say whatever. this is for if there are no current minutes, i guess?
+	{
+ 		if hour == 12 //And the hour equals 12, ie it's noon. You can change this to some other hour if you want.
+		{
+ 			"\0\s[0]It's noon.\e"
+		}
+ 		elseif hour == 0 //midnight
+		{
+ 			"\0\s[0]It's midnight\w2.\w4 \1\s[10]Kinda late\w2, wouldn't you agree %(username)\w2?\e"
+ 			"\0\s[0]Midnight.\w4\1\s[10]That it is\w1.\e"
+		}
+		elseif hour == 23 //if it's eleven
+		{
+			if minute == 55 //and the fancy: eleven fifty five.
+			{
+			"\1\s[10]5 to 12. Shouldn't you be asleep?\e"
+			}
+			else //if it isn't 11:55. These are meant to be examples of specific times you can check, you don't have to check for the same times. You can also always delete individual elseifs if you can't think of any time to check. Like, you could delete the elseif for hour == 23 and the subsequent checks below it, then move on to the elseif below for hour 7. This section is flexible.
+			{
+			"\\s[10]It's 23. Time for bed.\e"
+			}
+		}
+		elseif hour == 15 && minute == 30 //&& makes them go at the same time,basically. in theory this should be 3.30 but for reasons unknown to man, it's not. Zar's note said 7.30 on a sunday?
+		{
+			"\0\s[0]15:30, %(username).\e"
+		}
+		elseif hour == 16 && minute == 30 //note that these are for keeping you accountable, in all honesty.
+		{
+			"\0\s[0]16:30.\e"
+		}
+		elseif hour == 16 && minute == 45
+		{
+			"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"
+		}
+		elseif hour == 16 //hour checks.
+		{
+			"\1\s[10]It's 16. Don't you have something to do soon?\e"
+		}
+		elseif hour == 15
+		{
+			"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"
+		}
+		else
+		{
+			"\0\s[0]It's %(hour12)'o clock.\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+	}
+	/*-- //do i need  these...?
+	{
+		if namiable >= 500 && yamiable >= 500
+		{
+			userlevel = 3
+		}
+	}
+	*/
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 1 && reference1 == 0
+		{
+			EndMikireTalk
+ 		}
+		mikireflag = reference1
+	if reference2 == 1
+	{
+ 		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
+		
+ 		"\0\s[0]Me and Misha are overlapping.\w8\1\s[19]Seeing as your resolution is %screenwidthx%screenheight, %(username), Shouldn't we have enough space?\4\e"
+		
+		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	}
+ }
+ /*
+ OnHourChange
+ {
+	 if passmin == 59
+ 		{
+	 	passmin = 0
+ 		passhour= passhour + 1
+		}
+ 	else
+ 		{
+	 	passmin = passmin + 1
+		}
+		
+		//this isn't working and i havent a clue as to why. Tama seems to think im using invalid expressions????
+		GetSeason //I checked sam n steve, I'm not too sure hwy winter has to have the or in there? But maybe it'll work now...
+		{
+			{
+				if month >= 12 || <= 2
+				{
+					"winter"
+				}
+				elseif month >= 3 && <= 5
+				{
+					"spring"
+				}
+				elseif month >= 6 && <= 8
+				{
+					"summer"
+				}
+				else //if month >= 9 && <= 11 //WHY does it not have an else at the end???? i am going to Riot
+        
+				// 9-11, or september to november. this also means more dialogue!!! yay :D
+				{
+					"fall"
+				}
+			}
+		} 
+ }*/
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.
+ 
+MikireTalk
+ {
+	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring him back."
+	//this does in fact work. why would Misha lie to you?
+	//maybe if you're being mean. He may have an honest face but not many reservations about lying.
+ }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+ 
+EndMikireTalk
+ {
+	"\0\s[0]I'm no longer off the screen.\w8\1\s[16]Yay!\w8\0\s[9]\n\n[half]Party time.\e"
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	//"\0\s[0]\1\s[10]\e"
+	//}
+ }
+
+ 
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}

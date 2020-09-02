@@ -1,0 +1,11 @@
+﻿//This file tells SSP and possibly other ghost programs how to install your ghost when a user drags and drops the .nar file on an existing ghost.
+
+charset,UTF-8
+type,ghost
+name,Pasha and Misha
+directory,psh_msh
+
+
+//This tells the program what balloon your ghost will be using.
+
+balloon.directory,P&M 98

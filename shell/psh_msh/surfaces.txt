@@ -1,0 +1,86 @@
+//the base ones should at least mirror the original --- default - embarrassed - surprised - sad/disappointed - smiling - contented - angry - thoughtful - bored
+//...its mostly just the dressup stuff i want tbh
+//don't ask me how the extra shells are gonna work
+
+surface0
+{
+}
+surface1
+{
+}
+surface2
+{
+}
+surface3
+{
+}
+surface4
+{
+}
+surface5
+{
+}
+surface6
+{
+}
+surface7
+{
+}
+surface8
+{
+}
+surface9
+{
+}
+
+//misha
+surface10
+{
+}
+surface11
+{
+}
+surface12
+{
+}
+surface13
+{
+}
+surface14
+{
+}
+surface15
+{
+}
+surface16
+{
+}
+surface17
+{
+}
+surface18
+{
+}
+surface19
+{
+}
+
+surface.append0-9
+{
+}
+surface.append10-19
+{
+}
+
+sakura.tooltips
+{
+Head,Hair looks fluffy... 
+Face,No pets here.  
+Shoulders,Pat the shoulders?
+}
+kero.tooltips
+{
+Head,Hair looks soft...
+Face,Don't stroke!
+Shoulders,Pat the shoulders?
+}

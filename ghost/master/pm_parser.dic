@@ -1,0 +1,38 @@
+//Parser:
+// for talking to the boys. idk I just like them and want to talk to them
+OnPashaTalk
+{
+	"Hi.\n\![open,inputbox,Onpashainput,-1]"
+}
+
+OnMishaTalk
+{
+	"\1\s[10]\![open,inputbox,Onmishainput,-1]"
+}
+
+Onpashainput
+{
+	if reference0 == "happy birthday"
+	{
+		"\0\s[0]It\w2's not my birthday\w3?\e"
+	}
+	elseif reference0 == "i feel bad"
+	{
+		"\0\s[0]Maybe Mishka can give you a hug\w3, then\w3!\e"
+	}
+	elseif reference0 == "i love you"
+	{
+		namiable += 12
+		"\0\s[5]Awwwww\w3, that\w3's sweet\w3, %(petname)\w3."
+	}
+	else
+	{
+		"\0\s[0]alright.\e"
+	}
+}
+
+
+Onmishainput
+{
+	"\1\s[10]Mmh."
+}

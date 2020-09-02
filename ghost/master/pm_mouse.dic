@@ -1,0 +1,522 @@
+﻿//---------------------------Mouse Functions--------------------------
+//As you've probably guessed, this .dic file has to do with mouse functions. This includes the petting feature and what happens when you double click your ghost.
+//As a note, this .dic file isn't strictly necessary - I'm pretty sure you can just clear the file and it won't hurt your ghost any, it'll just make it so you can't pet or double click them. And if you're interested in only petting or double clicking one character, all you have to do is delete the chunks of code for the other character you want to be uninvolved. However, I'm assuming most people making ghosts want to make their ghosts pettable and clickable, so this will cover the messages for both.
+
+//Make sure to read the walkthrough page (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+
+//--OnMouseMove
+//This is a bunch of code determining who the mouse is over. Don't touch any of it.
+
+OnMouseMove
+ {
+  	if nowmode != "QUIZ"
+ 	{
+		//---- reference3 determines the character in question
+		if reference3 == 0 //if the character is 0, aka the main character
+		{
+			//---- it will run the mouse functions for that character
+			MouseMoveSakura
+		}
+		else //if the character isn't 0, then it must be the side character.
+		{
+			//---- this will run the mouse functions for the side character.
+			MouseMoveKero
+		}
+	}
+ }
+ 
+ //*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//If you want to have more than two characters at any point, like for example how I added Charger with my Hunter/Smoker ghost, and you want to be able to interact with that character like you can with the others, you will have to add in that character to OnMouseMove above. You'll need to know the p[] you've assigned your third character to, which in Charger's case was 3. You can assign your third character any p you want, just be consistent about using the same p[] everytime. I touch on \p a bit more in the walkthrough.
+//So anyway, as you can see above, OnMouseMove determines who the user is touching, so you'll just have to add in an elseif checking for reference3 == 3, or reference3 == 4, or whatever p number is you're using. More on elseif in the walkthrough and in bootend.dic. After that, you'll just need to copy and paste the other mouse functions below and change the name as you need (for example, MouseMoveCharger, MouseDoubleClickCharger). 
+
+//Note though that the extra character will not be a hard-coded character like 0 and 1! You're basically tricking the program into thinking there's another character, and some functions in things like menu.dic and aitalk.dic won't work quite right if you put in a value other than 0 or 1, and you'll need to be careful about making sure to remove the third character when you're done. But luckily for you, this won't be a problem with any of the mouse functions as far as I'm aware, and you can fill them out for the third character just like you would for the two main ones.
+//***********************************************************************
+
+
+ //--MouseMoveSakura
+ //The petting function for your main character. Remember how it was referred to as sakura in some of the descript.txt and install.txt files?
+ 
+MouseMoveSakura
+ {
+	if reference4 != "" //ignore
+ 	{
+ 		stroke++ //if you move the mouse over the right areas, the stroke count will go up.
+ 		if stroke >= 40 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want. FLELEs have it set to 50 for some reason, which makes it take longer than this.
+		{
+ 			stroke = 0 //resetting the stroke count
+			namiable -= 1
+			if reference4 == "Head" //do you remember the names of the areas you set up for your collisions in surfaces.txt? This is where they come into play! This is where you'd put in the name of your collision, such as head, face, horns, tail, ears, whatever. As mentioned in surfaces.txt, you can add as many collisions to a pose as you want, as long as you make sure to add them all in here so they can actually be used.
+ 			{
+				nkovpets += 1
+				namiable -= 2
+				"\0\s[9]\w2.\w2.\w2.\w4 o\w1o\w2o\w2o\w2o\w1kay\w2?\e"
+				"\0\s[4].\w2.\w2.\e"
+				"\0\s[0]...ok.\e"
+				"\0\s[9]\f[italic,true](He seems uncomfortable. \w4Probably because he doesn't know you that well.)\f[italic,false]\e"
+ 			}
+ 			elseif reference4 == "Face"
+ 			{
+				nkovpets += 1
+				namiable -= 2
+ 				"\0\s[3]Please don't\w2.\e"
+ 				"\0\s[0]That's my face\w1, yup\w2.\e"
+ 				"\0\s[4]Uh\w2. \w8\1\s[10]Hey\w1, don't do that\w2.\e"
+				"\0\s[0]Th\w1a\w1a\w1aaaanks\w2.\n\n[half]\w6\fitalic,true](He seems to be making an attempt at being sarcastic.)\f[italic,false]\e"
+ 			}
+			elseif reference4 == "Stomach"
+			{
+				nkovpets += 1
+				namiable -= 5
+			    "\0\s[3].\w2.\w2.\w4 could you not\w1.\w1.\w1.\w2?\e"
+				"\0\s[0]Bleh\w1.\e"
+				"\0\s[9]Fuck off. \w4\1\s[10]Language\w1, Pasha\w1. \w4\0\s[0]I said what I said\w1.\e"
+				"\0\s[9]Quit it, please and thank you\w2.\e"
+				"\0\s[0]\f[italic,true](He leans away from your hand.\w2 What? You were just trying to be friendly, dude.)\f[italic,false]\w6\1\s[19]Not cool man. That can't be constituted as friendly.\e"
+			}
+			elseif reference == "Bandadge"
+			{
+				namiable -= 5
+			    "\0\s[4]\w1.\w2.\w2. \w6\e"
+				"\0\s[0]Ow\w1.\e"
+				"\0\s[0]Hey\w1. Don't touch that\w1.\e"
+			}
+			elseif reference4 == "Shoulders"
+			{
+				nkovpets += 1
+				namiable -= 23
+				"\0\s[0]...\e"
+				"\0\s[0]hey, don't...\e"
+				"\0\s[3]\f[italic,true](He tenses up as soon as you touch him.\w4 Maybe don't do that.)\f[italic,false]\e"
+			}
+ 		}
+	}
+ 	else
+	{
+ 		// If the mouse isn't over the ghost, it'll zero out the stroke value.
+		stroke = 0
+ 	}
+}
+
+ //---- MouseMoveKero -----------------------------------------------------------------
+ 
+MouseMoveKero
+ {
+	if reference4 != ""
+ 	{
+ 		stroke++
+ 		if stroke >= 40
+		{
+			stroke = 0
+			if reference4 == "Head"
+ 			{
+				yzhovpets += 1
+				"\1\s[10]Hey, you trying to pet me\w2?\e"
+				"\1\s[10]Thanks, but I don't think my hair is that soft\w1. \0\s[0]He lies\w3, it is\w1. \1\s[11]\n\n[half]Shut up\w1.\e"
+				"\1\s[10]Yup\w2, that's definitely my head\w2.\e"
+				"\1\s[10]Uh...\e"
+				"\1\s[10]Whatever he tells you, my hair is not that soft. Quit it.\w4\n\n[half]\f[italic,true]\w4(\w1.\w2.\w3.\w4.\w5.\w6.\w7his hair is actually quite soft\w1.\w4 You almost want to pet it again\w1.\w1.\w1.)\f[italic,false]\e"
+				"\1\s[10]\f[italic,true](Soft hair.)[italic,false]\e"
+ 			}
+			elseif reference4 == "Face"
+			{
+				yzhovpets += 1
+				"\1\s[19]Tha\w1a\w2a\w2a\w1t's my face\w1. Quit it\w1.\e"
+				"\1\s[18]Buy me a drink first\w2.\e"
+				"\1\s[17]Havin fun\w1? Stroking faces\w2?\e"
+				"\1\s[17]Yeah it's fun over here, getting stroked for no damn reason.\w4 Real fun.\e"
+				"\1\s[17]Oh, am I supposed to ignore this hand suddenly stroking me out of nowhere? Yeah, good luck with that.\e"
+				"\1\s[10]\f[italic,true](He just stares at you.\w6Maybe this isn't the best course of action.)\e"
+				
+			}	
+			elseif reference4 == "Stomach"
+			{
+				yzhovpets += 1
+				"\1\s[17]Weirdo\w2.\e"
+				"\1\s[17]\f[italic,true](He takes a step back\w1.)\f[italic,false]\e"
+				"\1\s[17]Yup, pet his arms. I'm sure he'll like that."
+				"\1\s[17]Okay, I've just gotta say? We don't really know each other that well?\e"
+				"\1\s[17]...\e"
+				"\1\s[10]Hey.\w4 Stop\w2.\e"
+			}
+			elseif reference4 == "Shoulders"
+			{
+				yzhovpets += 1
+				"\1\s[14]... \n\n[half]\f[italic,true](He edges away from your hand.)\f[italic,false]\e"
+				"\1\s[14]Kindly fuck off and do not pet me.\e"
+				"\1\s[14]Yup, loving getting petted for no reason.\nJust having the best time in the world over here.\e"
+				"\1\s[14]Don't do that.\e"
+				"\1\s[17]Fuck off, %(username). \w4\0\s[0]Hehehe.\e"
+				"\1\s[13]\f[italic,true](Wherever he is, it's not here.\w4 Not such a good idea, then.)\f[italic,false]\e"
+			}
+ 		}
+	}
+ 	else
+	{
+		stroke = 0
+ 	}
+}
+
+//---- OnMouseDoubleClick -------------------------------------------------------
+//This is set up much like OnMouseMove above, except this is checking to see if the user is double clicking on the ghost. You also don't need to touch any of this. 
+//Advanced users adding a third character, the same principles from OnMouseMove apply here as well! Make sure to add an elseif with the right number for your third character.
+
+OnMouseDoubleClick
+ {
+	//---- like with the OnMouseMove function above, this determines who the user is clicking on.
+	
+ 	if reference3 == 0 //if the character is 0, aka your main character
+	{
+		MouseDoubleClickSakura
+ 	}
+	else
+ 	{
+ 		MouseDoubleClickKero
+	}
+ }
+
+ //---- MouseDoubleClickSakura ----------------------------------------------------------
+ //Like the petting animation above, this is the reactions they have to being double clicked. These also rely on the collisions you set up in surfaces.txt! This set is specifically for the main character, as indicated by the Sakura in the name again.
+ 
+ //*********************Advanced User Info*******************************
+ //As a note, double clicking on a certain area of your ghost doesn't have to be the user hitting them. You could instead set up a collision for a piece of clothing, and then have the character talk about that bit of clothing when it's double clicked, for example. One of Smoker's double clicks gives her a high-five when she's in a certain pose. Maybe double clicking is patting them, or pointing behind them, or tapping them, or any number of things. You can be creative here with how they respond depending on what areas you've set up as collisions!
+ 
+ //If you don't want your character to be hittable at all, you can just delete everything in MouseDoubleClickSakura except OpenSakuraMenu. So it'd look like
+ 
+ //MouseDoubleClickSakura
+ //{
+ //OpenSakuraMenu
+ //}
+ 
+ //That's all there is to it. This method also applies to the secondary character, Kero, below this set.
+ //***********************************************************************
+ 
+MouseDoubleClickSakura
+ {
+ 	if reference4 == "Head" || reference4 == "Face" //here, this is checking to see if the user is double clicking on either the character's head OR their face, which for our purposes means they're hitting the ghost. More about operators at the walkthrough.
+	{
+		namiable -=6
+		nkovpunch += 1
+		if namiable >= 500
+		{
+		"\0\s[3]\f[italic,true](he flinches before you even get close\w1.\w1)\f[italic,false]\e"
+		"\0\s[3]Ow\w1!\e"
+		"\0\s[3]Hey\w1, what do you get from this\w1?\e"
+		"\0\s[3]That's my fucking face\w1. \w4\1\s[10]La\w1.\w1.\w1.\w2.\w3.\w4. Actually\w1, Nevermind\w1.\e"
+		"\0\s[0]I\w1'm not\w2-\w4 .\w2.\w2. \w4\n\n\f[italic,true](He stops himself, for some reason.)\f[italic,false]\n\n[half]\w8 Don't fucking hit me\w2.\e"
+		}
+		elseif namiable >= 200
+		{
+			"\0\s[0]Hey!\e"
+			"\1\s[10]Do you *have* to hit him? huh?\e"
+			"\1\s[10]Hey, what's your problem with him, huh? What did he do to you?\e"
+			"\1\s[10]What's your problem, %(username)?\e"
+			"\1\s[10]Hey, come on! What did he ever do to you?\e"
+			"\1\s[10]Quit it, %(username)!\e"
+		}
+		elseif namiable >= 50
+		{
+			"\1\s[10]Hey, don't hit him!\e"
+			"\1\s[10]Nobody's *making* you do this, %(username), what's the point?\e"
+			"\1\s[10]Leave him alone already!\e"
+			"\1\s[10]What's *wrong* with you?\e"
+			"\1\s[10]Do you *have* to do this?\e"
+			"\1\s[10]There's no way this can benifit you, %(username)!\e"
+		}
+		elseif namiable <= 0
+		{
+			"\0\s[0]...\e"
+			"\0\s[0]*(You think he's trying not to cry.)*\e"
+			"\0\s[0]*(Can't he at least be a little fun?)*\e"
+			"\0\s[0]*(The other one isn't defending him anymore.\w3 Interesting)*\e"
+			"\0\s[0]*(He's never stood up for himself that much, you suppose.)*\e"
+			"\0\s[0]*(The other one is silent.)*\e"
+			"\0\s[0]*(You wonder if you'll ever get him to cry.\w4 Probably not.)*\e"
+		}
+		else
+		{
+			"\1\s[10]Hey, fuck off man!\e"
+			"\1\s[10]%(username), *really*, stop it!\e"
+			"\1\s[10]*Please*, just leave him alone already!\e"
+			"\1\s[10]Hey, do you want something from him? No, what would you even...\e"
+			"\1\s[10]What do you get out of this, %(username)? Is it worth it?\e"
+			"\1\s[10]What's worth hurting someone else, %(username)?\e"
+			"\1\s[10]What's your problem, huh?\e"
+			"\1\s[10]Do you know how easy it is to just *not* fucking hit someone? Do you really?\e"
+		}
+ 	}
+	elseif reference4 == "Stomach"
+	{
+		nkovpunch += 1
+		if namiable >= 500
+		{
+	    "\0\s[3]Don't do that\w1.\e"
+		"\0\s[0]Fun fact\w3!\n\w4That hurts\w1.\e"
+		"\0\s[4]*(He flinches before you even get close\w1.\w1)*\e"
+		"\0\s[4].\w2.\w3.\w4.\w5.\w5.\w4 \1\s[17]Hey\w1, leave him alone\w1.\e"
+		"\0\s[4].\w2.\w2.\w4 \1\s[17]Hey, do you have to do that?\e"
+		"\0\s[4]\1\s[17]Hey, stop it!\e"
+		"\0\s[4]\1\s[17]*Clearly* that is something you *should not* be __doing__, *%(username)*.\e"
+		}
+		elseif namiable >= 200
+		{
+			"\0\s[0]*(He stumbles back a few steps. Come on, now.)*\e"
+		}
+		elseif namiable >= 50
+		{
+			"\0\s[0]*(He could've blocked that.)*\e"
+		}
+		elseif namiable <= 0
+		{
+			"\0\s[0]*(You have your suspicions.)*\e"
+		}
+		else
+		{
+			"\0\s[0]*(He won't look at you.)*\e"
+		}
+	}
+	elseif reference4 == "Bandadge"
+	{
+		if namiable >= 500
+		{
+			"\0\s[0]...\e"
+			"\0\s[0]......\e"
+			"\0\s[0].........\e"
+			"\0\s[0]... \n\n[half]\f[italic,true](He stays completely still.)\f[italic,false]\e"
+			"\0\s[0]\f[italic,true](You hold his wrist.\w3 He doesn't actually say anything, but is radiating intense discomfort.)\f[italic,false]\e"
+		}
+		elseif namiable >= 200
+		{
+			"\0\s[0]\f[italic,true](You make as if to hold his hand, but grab his wrist instead.)\n(Why did he stop moving...?)\f[italic,false]\e"
+		}
+		elseif namiable >= 50
+		{
+			"\0\s[0]\f[italic,true](Honestly you're not sure why you'd want to hold his wrist, but he doesn't seem to be complaining.)\f[italic,false]\e"
+		}
+		elseif namiable <= 0
+		{
+			"\0\s[0]\f[italic,true](You have your suspicions.)\f[italic,false\e"
+		}
+		else
+		{
+			"\0\s[0]\f[italic,true](He keeps looking away from you.)\f[italic,false]\e"
+		}
+	}
+	elseif reference4 == "Shoulders"
+	{
+		if namiable >= 500
+		{
+		// nkovpunch += 1 //ah shit forgot -- this is just a pat thing. ... variable for that too *sigh*
+		namiable -= 12
+		"\0\s[0]......\e"
+		"\0\s[0]...\e"
+		"\0\s[0].........\e"
+		"\0\s[4]\f[italic,true](He doesn't say anything, but looks uncomfortable.)\f[italic,false]\e"
+		"\0\s[0]\f[italic,true](You can feel him tense up when you try to pat him.)\f[italic,false]\e"
+		"\0\s[0]\f[italic,true](Shoulders have been pat.\w4 Not that he seems to like it much.)\f[italic,false\e"
+		}
+		elseif namiable >= 200
+		{
+			namiable -= 6
+			"\0\s[0]H\w2-hey\w2.\w2.\w2.\e"
+			"\0\s[0]*(He doesn't seem to like your pats...)*\e"
+			"\0\s[0]\f[italic,true](Hey, you're just trying to be friendly here. Don't people like pats?)\f[italic,false]\e"
+			"\0\s[0]*(You'd think giving him a pat would make him like you, but...)*\e"
+			"\1\s[10]Hey, is that necessary?\e"
+			"\1\s[10]Could you leave him alone?\e"
+			"\1\s[10]Can't you see he doesn't like that?\e"
+		}
+		elseif namiable >= 50
+		{
+			namiable -= 9
+			"\0\s[0]...\e"
+			"\1\s[10]Didn't I already tell you to leave him alone?\e"
+			"\1\s[10]Don't do that.\e"
+			"\1\s[10]I'm sure there are *plenty* of other people you can pat right now!\e"
+		}
+		elseif namiable <= 0
+		{
+			namiable -= 12
+			"\0\s[0]......\e"
+		}
+		else
+		{
+			namiable -= 9
+			"\0\s[0]...\e"
+		}
+	}
+	else
+ 	{
+		//Otherwise, if the user doubleclicks somewhere else on the character, they will open their menu as detailed in menu.dic.
+ 		OpenSakuraMenu
+	}
+ }
+
+ 
+ //---- MouseDoubleClickKero -----------------------------------------------------------
+ 
+ 
+MouseDoubleClickKero
+ {
+	yamiable -= 6
+ 	if reference4 == "Head" || reference4 == "Face"
+	{
+		yzhovpunch += 1
+		if yamiable >= 500
+		{
+			// "\1\s[10]Ow\w1, hey\w1!\w8\0\s[6]ha ha\w8\1\s[19]\n\n[half]Quiet.\e"
+			"\1\s[18]Hey\w1, what's your problem\w1? I haven't done anything\w1.\w2\e"
+			"\1\s[17]Hey!\e"
+			"\1\s[17]Ow!\e"
+			//"\1\s[10]\f[italic,true](For a moment, you think he's going to say something, but he doesn't.\w4 Strange, from someone so\w2 talkative.)\f[italic,false]\e"
+		}
+		elseif yamiable >= 200
+		{
+			"\1\s[10]Hey, fuck off!\e"
+			"\1\s[10]Don't you have anything better to do with your time?\e"
+			"1\s[10]Is this *needed*?\e"
+			"\1\s[10]Cut it out!\e"
+			"\1\s[10]Y'know, there's this thing? About hurting other people? And that it's generally bad?\e"
+			"\1\s[10]That fucking *hurts*, y'know!\e"
+			"\1\s[10]Ow, what the fuck %(username)?!\e"
+			"\1\s[10]Here I thought you were at least *decent*.\e"
+		}
+		elseif yamiable >= 50
+		{
+			"\1\s[10]Hey!\e"
+			"\1\s[10]Seriously, stop it!\e"
+			"\1\s[10]Hey, %(username)! Fuck off!\e"
+			"\1\s[10]That fucking *hurts* dude, don't you know that?\e"
+			"\1\s[10]%(username), don't fucking hit people!\e"
+			"\0\s[0]H\w2-\w2Hey\w2, leave him alone\w2!\e"
+			"\1\s[10]*Don't* fucking hit me, thanks!\e"
+			"\1\s[10]Do you think you could live without fucking hitting me? D'y'think you could make that happen?\e"
+		}
+		elseif yamiable <= 0
+		{
+			"\1\s[10]\f[italic,true](For a moment, you think he's going to say something, but he doesn't.\w4 Strange, from someone so\w2 talkative.)\f[italic,false]\e"
+			"\1\s[10]*(You wonder when he stopped talking to you.\w6 You miss his voice.)*\e"
+			"\1\s[10]Could y'not...?\e"
+			"\1\s[10]Tryin' t'knock me out over there...?\e"
+			"\1\s[10]*(That had to hurt.)*\e"
+			"\1\s[10]*(He doesn't stand up for himself, even.)*\e"
+			"\1\s[10]*(What happened to his fight?)*\e"
+			"\1\s[10]*(He should be fighting back.\w3 You want him to.)*\e"
+			"\1\s[10]*(Could you make __him__ cry...?)*\e"
+		}
+		else
+		{
+			"\1\s[10]Hey, is that really needed?\e"
+			"\1\s[10]I'm not really *asking* for a brain injury, but with th'way you're going...\e"
+			"\1\s[10]%(username), please...\e"
+			"\1\s[10]It doesn't hurt any less the more you do it, you do know that right?\e"
+			"\1\s[10]What'll it take for you to leave off?\e"
+			"\1\s[10]*(He looks tired.)*\e"
+		}
+	}
+	elseif reference4 == "Stomach"
+	{
+		if yamiable <= 500
+		{
+			//yzhovpunch += 1
+			//im changing instances of punch to poke for this -- he still has reason to dislike it put it makes more sense
+			"\1\s[17]My arms are crossed for a reason, buddy\w1.\e"
+			"\1\s[10]Alright, if you try to poke me, what makes you think I'll like it?\e"
+			"\1\s[10]If I ask you nicely, will you not poke me?\e"
+			"\1\s[17]Hey\w2, %(username)\w1.\w4 Go \w2to \w2hell.\e"
+		}
+		elseif yamiable <= 200
+		{
+			"\1\s[10]Hey, you like poking people? Huh? You like pretending your finger is a sharp knife and you're fucking stabbing someone with it?\e"
+			"\1\s[10]Do you live to poke people %(username)? Is that your *sole* purpose in life?\e"
+			"\1\s[10]You have anything better to do?\e"
+			"\1\s[10]G-d, that still hurts, you know.\e"
+			"\1\s[10]Here's some advice! Don't go around poking people.\e"
+			"\1\s[10]I can garuntee you, there's a million better ways to spend your time than sitting here and fucking poking me.\e"
+			"\1\s[10]G-d, really? Do you have to do that?\e"
+		}
+		elseif yamiable <= 50
+		{
+			"\1\s[10]Hey, fuck off.\e"
+			"\1\s[10]Go to hell, %(username).\e"
+			"\1\s[10]This fucking sucks and I hate being here.\e"
+			"\1\s[10]Fuck off already!\e"
+			"\1\s[10]Is this g-ddamn *necessary*? Huh?\e"
+			"\1\s[10]I *really* wish you'd just let us go home already!\e"
+			"\1\s[10]That hasn't stopped hurting since the last damn time you did it!\e"
+		}
+		elseif yamiable >= 0
+		{
+			"\1\s[10]*(He looks distinctly uncomfortable.)*\e"
+			"\1\s[10]*(You're not sure why __he__ won't cry. There's certainly enough reason to.)*\e"
+			"\1\s[10]*(Honestly, poking him isn't that fun now that he doesn't say anything anymore.)*\e"
+			"\1\s[10]*(How to get him to talk again...?)*\e"
+			"\1\s[10]*(The other one won't say anything, but he never did anyways. The loss of this one's voice is more disappointing.)*\e"
+			"\1\s[10]*(Honestly, you still don't get why he's so against a harmless little poke.)*\e"
+			"\1\s[10]*(You don't think he'll say anything else for now.)*\e"
+		}
+		else
+		{
+			"\1\s[10]I'm guessing you have a severe lack of self-control.\e"
+			"\1\s[10]Do you just enjoy hurting people? Is that your life goal?\e"
+			"\1\s[10]Thanks for checking! Still hurts, same as the last time you poked me.\e"
+			"\1\s[10]Can I interest you in perhaps, a therapist? I just get the feeling you have a lot going on. Y'know. Stuff that drives you to poke people when it's been proven they don't like it. That sort of thing.\e"
+			"\1\s[10]Could you fuck off and go to hell? Be a nice round trip and I wouldn't have to fucking deal with you for a while. That would be nice.\e"
+		}
+	}
+	elseif reference4 == "Shoulders"
+	{
+		if yamiable <= 500
+		{
+			"\1\s[19]Last I checked, we weren't really friends.\e"
+			"\1\s[18]Uh... thanks?\e"
+			"\1\s[18]...Alrighty then.\e"
+			"\1\s[10]Not really in need of any pats for comfort, here.\e"
+			"\1\s[10]Hey, it's rude to touch people if they haven't said you can already. \w4Seriously, I don't hardly know you yet.\e"
+		}
+		elseif yamiable <= 200
+		{
+			"\1\s[10]Don't do that.\e"
+			"\1\s[10]Could you find in yourself the fucks to give so that you'll stop?\e"
+			"\1\s[10]Hey, I really fucking hate that %(username). Just a warning.\e"
+			"\1\s[10]Please don't.\e"
+			"\1\s[10]You think you could like, not do that? %(username)?\e"
+			"\1\s[10]Could you fuck off?\e"
+			"\1\s[10]Don't fucking do that.\e"
+		}
+		elseif yamiable <= 50
+		{
+			"\1\s[10]Fuck off already!\e"
+			"\1\s[10]Didn't I tell you *not* to do that?\e"
+			"\1\s[10]Hey!\e"
+			"\1\s[10]Stop it!\e"
+			"\1\s[10]Is this really how you want to spend your time?\e"
+			"\1\s[10]I *told* you not to do that, so quit it!\e"
+		}
+		elseif yamiable >= 0
+		{
+			"\1\s[10]*(He looks about as uncomfortable as he can be.)*\e"
+			"\1\s[10]*(He's lost all his fight on the matter.)*\e"
+			"\1\s[10]*(You wonder why he doesn't like this so much.)*\e"
+			"\1\s[10]*(You have your suspicions on this subject.)*\e"
+			"\1\s[10]*(He's very pointedly not looking at you.)*\e"
+			"\1\s[10]*(You breifly consider stopping all this touching him.\w3 No, that just wouldn't be any fun.)*\e"
+		}
+		else
+		{
+			"\1\s[10]Coukd you find it in your heart to be nice for once?\e"
+			"\1\s[10]Hey, how many times do I have to tell you not to do that before you won't?\e"
+			"\1\s[10]Really?\e"
+		}
+	}
+	else
+	{
+		OpenKeroMenu
+	}
+ //*********************Advanced User Info*******************************
+ //There are other mouse related functions you could set up much like the above, such as OnMouseDragStart, OnMouseDragEnd, OnMouseWheel, and others which correspond to various things you can do with your mouse. You can probably guess what those functions do just by their names - OnMouseWheel would be if someone spun their mouse wheel over a certain area, for example. If you're interested in these, I'd recommend doing some reading at the CROW-SSP Encyclopedia to get a better idea of them and settle down for some trial and error learning as you try to put them in.
+ //***********************************************************************

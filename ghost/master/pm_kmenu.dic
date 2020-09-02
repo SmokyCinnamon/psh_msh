@@ -1,0 +1,162 @@
+//---- Secondary Character Menu ---------------------------------------------------------
+//This section has to do with the menu for the second character. If you don't want your second character to have a menu, you can just delete this whole chunk.
+
+OpenKeroMenu
+ {
+	"\1\s[10]\b[2]"
+	"\1\s[18]\b[2]"
+	
+	//You've seen so far that you can set up multiple options for menu introductions. You can also set up multiple poses to match up to multiple dialogue. So for example, when you open Triangle's menu, he may randomly do any of these three poses, and randomly choose from any of the four dialogue options below, before continuing with his menu. Make a close note of the -- dashes breaking these up.
+ 	--
+	"A menu."
+ 	"Menus! \w4.\w2.\w3.\w3.\w4 Are kind of boring."
+ 	"Not much in the way of things to do."
+ 	--
+	"\n\n[half]/
+	\![*]\q[Update,keroupdatecheck]\n/
+	\![*]\q[Give him a gift?,YzItemMenu]\n/
+	\![*]\q[Stat counter,ycountcheck]\n/
+ 	\![*]\q[Bug report,bugreport]\n/
+	//\![*]\q[Test variable,testvariable]\n\n/
+	//When you are done with the test variable, aka your ghost is finished or you just don't want it showing up when you publish your ghost beta or whatevs, simply add two // slashes in front of \![*] to comment the line out. In Notepad++, it will turn green. When you want to use it again, erase the two slashes to turn it back to normal.
+	\![*]\q[Nothing,keroCANCEL]\e"
+}
+
+//There are no real set things for the second character to do, really. You can mostly add whatever functions you want to them, their menu is totally free reign. In mine for example, Hunter has some games, a pseudo-FAQ for users, a bug report, an update option, and most importantly, a test variable. A lot of that is fairly complicated though, so I won't get into it here. Advanced Users can pick up Hunter and Smoker and study their menu.dic to see how I did it though, and those who read the coding page of the walkthrough and want to make their own functions can feel free to add them here. 
+//For the purposes of this simple template, I'll include two options that may come in handy - an update option and a bug report option, as well as the test variable.
+
+//If you click cancel. Replace dialogue as you want.
+Select.keroCANCEL
+{
+	"\1\s[10]Canceled.\e"
+}
+
+
+Select.YzItemMenu
+{
+	"\1\s[16]\b[2]\f[italic,true](Patiently awaiting gifts.)\n\n"
+	--
+	//keep in mind that his&pavel's menus don't have to correspond to each other. while they've both got dialogue about missing their respective guitars, Mikhail should be the only one to be able to recieve it from the user.
+	//also, if there's anything significant in pavel's dialogue, add in something here as a reference. (ex: the glass of water.)
+	"\![*]\q[Glass of water,ywaterglass]\n/
+	   // \![*]\q[thing,namething]\n/
+	    \![*]\q[Milk,ymlk]\n/
+		\![*]\q[A guitar,gitara]\n/
+		\![*]\q[A phone,telefon]\n/
+		\![*]\q[Book,book]\n/
+		\![*]\q[Stuffed Cat,yplushkitty]\n\n[half]/
+ 		\![*]\q[Nevermind,keroCANCEL]\e"
+}
+
+Select.ywaterglass
+{
+	// WGlass +=1
+	"\1\s[10]\f[italic,true](\w1.\w2.\w3.\w4He seems disappointed\w1.)\n%(yitend)\w4\e" 
+	
+	"\1\s[10]\f[italic,true](You give him a glass of water. \w4\nIt stays remarkably still, aside from when he drinks it.)\f[italic,false]\n%(yitend)\e"
+	
+	"\1\s[10]\f[italic,true](He gives it back to you)\f[italic,false]\w6\n\n[half]Not now, sorry.\n%(yitend)\e"
+	
+	"\1\s[10]\f[italic,true](He hands it\w8\0\s[0]\f[italic,true]over to Pasha.)\f[italic,false] \w8\w8\n\n[half]...\w6...\w4Thanks\w3?\n%(yitend)\e"
+}
+
+Select.ymlk
+{
+	"\1\s[10]\f[italic,true](Drink milk every day to have become Strong Bones.)\f[italic,false]\n%(yitend)\e"
+	
+	"\1\s[10]\f[italic,true](Daily milk quota has been reached.)\f[italic,false]\n%(yitend)\e"
+	
+	"\1\s[10]\f[italic,true](Have milk and find out just how strong your bones can become! Call now for free trial.)\f[italic,false]\n%(yitend)\e"
+}
+
+Select.yplushkitty
+{
+	yamiable += 6
+	"\1\s[10]Oh.\w4 My.\w4 G-d.\w8\nThis is the best thing in the entire world!\w2 Thank you so much, %(username)!\n%(yitend)\e"
+	//can only give once. something in the tutorial about it? 
+	//...but that's complicated aaaaaaahh
+}
+
+Select.gitara
+{
+	"\1\s[10]Nice try, %(username).\w4 I know you don't have that much money lying around.\n%(yitend)\e"
+}
+
+Select.telefon
+{
+	"\1\s[10]What, like you have a random phone somewhere?\w3\nBesides, I already have one.\n%(yitend)\e"
+}
+
+Select.book
+{
+	yamiable += 6
+	"\1\s[10]Oh neat, thanks.\w6\n\n[half]*(...He seems to be reading it upside down.)*\n%(yitend)\e"
+}
+// -- pet, punch & pat count. also useful for other things you want to keep track of!
+Select.ycountcheck
+{
+	YCountThings
+}
+
+//if totalhugs > 0
+//{
+//  ", hugged him %(totalhugs) time"
+//  --
+//  if totalhugs != 1; "s"
+//}
+
+YCountThings
+{
+	//"beep"
+	//if yzhovpets > 0
+	", \1\s[10]\b[2]\_q\f[italic,true](You've pet Misha %(yzhovpets) time"
+	//", %(yzhovpets) time"
+	--
+	if yzhovpets != 1; "s"
+	--
+	"\1\s[10].)\n"
+	--
+	//if yzhovpunch > 0
+	", (You've hit him %(yzhovpunch) time"
+	--
+	if yzhovpunch != 1; "s"
+	--
+	"\1\s[10].)\f[italic,false]\n"
+	--
+	"\![*](\q[Go back,keroCANCEL])\e"
+}
+//This is when they select bug report. This is mostly meant to briefly give the user information about you, the creator, and how to report a problem to you. This can be handy if the person forgot where they got their ghost or how to contact you. Add whatever info you like here.
+Select.bugreport
+{
+"\1\s[10]Seen a bug? \w5Let Smoky know at their tumblr, \a_[smokycinnamonroll.tumblr.com.]right here\a_ \w5We were downloaded from \_a[http://www.whereveryoupostedthem.com/]some place\_a.\n%(yendmenu)\e"
+}
+
+//When clicked, this will automatically tell the ghost to check for updates. More detail on updates in etc.dic. You can leave this alone.
+Select.keroupdatecheck
+{
+	"\1\s[10]\![updatebymyself]\e"
+}
+
+//--Test Variable --------------------------------------------------------
+//I briefly mentioned the test variable in bootend.dic and possibly in etc.dic as well, I'm not sure. What exactly is the test variable? Basically, it's a place you can plug in anything you want to test out. What this means is that you can write some ghost dialogue, then copy and paste it into the test variable dialogue snippet down there, reload your ghost, then choose "test variable" from your second character's menu. Check your dialogue to see if it looks right and if it does, put it back in aitalk, or edit it until it looks right and put it back. While you can use Script Input to test most of your ghost's dialogue, there are some lines it just can't do, and it can't help you test choices. But the test variable can! The dialogue/choices from OnFirstBoot are a prime candidate for testing with this variable.
+//You can also use this to test functions as I mentioned above by adding \![raise,function] at the end of it, although you can do this with Script Input as well. Advanced Users, the test variable is also great for testing out any new stuff you may add to your ghost, like mode settings, item values, functions, raising or lowering numbers, what have you.
+
+//It is ALWAYS A GOOD IDEA to test your dialogue! If you won't check it with the test variable, at least test it with Script Input! It'll save you so much trouble!
+
+Select.testvariable
+{
+	//yamiable = 500
+	//namiable = 500
+	//другдруга = 0
+	//friendlyall = namiable + yamiable
+	"\1\s[10]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\e"
+}
+
+/*    #\![*]\q[You're on a computer,computer]\n/
+    #\![*]\q[No.,nope]\e")
+    
+    #Select.computer
+    #write(r"\0\s0Whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat, that's cool. I guess we live here now.\w4\1\s0hhh\e")
+    
+    #Select.nope
+    #write(r"\0\s0Rude.\w4\1\s0h\e")*/
