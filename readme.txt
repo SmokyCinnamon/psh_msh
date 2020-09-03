@@ -1,6 +1,24 @@
 --Readme--
 
 <---- Release Notes ---->
+
+v1.0.2 -- typos, mostly
+> fixed a wait tag in boot dialogue missing a "\"
+> fixed certain variables not being set on first boot and therefore being broken
+> fixed a comma loading in pasha's text box when checking misha's stats
+> added back to menu options for Misha's menus
+> fixed a migrated period in the "if the world was ending, what would you do?" dialogue.
+> fixed the "(soft hair)" pet dialogue for misha missing an \f tag
+> possibly fixed variables being broken for users who do not want to download them a third time. open pasha's menu and click on "stat check" and it should be fine probably. (somone needs to test this)
+> gave pasha's blink & talk frames the proper outlines (note that they're still not entirely fixed.)
+> switched who was saying what in a certain line of winter dialogue to be more in-character
+> many \w tag changes. mostly just taking them out, but also increasing some of them by one, if you were wondering @-@
+> they should recognixe if you have cheerybot out now
+> added 8 new lines of dialogue
+
+V1.0.1 -- literally just a extra bracket that needed to be deleted. whoops.
+> extra bracket in string.dic got deleted
+
 V1.0 -- released! this is amazing because it's not likely to happen.
 
 <---- About ---->

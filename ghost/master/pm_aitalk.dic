@@ -144,7 +144,7 @@ RandomTalk : nonoverlap
 	
 	"\1\s[10]\f[italic,true](He starts to say something, then seems to think better of it.)\f[italic,false]\e"
 	
-	"\1\s[10]If the world was ending, what would you do?.\w8\0\s[8]I don't really know.\w8\1\n\n[half]\s[15]Thought you wouldn't\w8\0\n\n[half]\s[3]Then why'd you ask?\e"
+	"\1\s[10]If the world was ending, what would you do?\w8\0\s[8]I don't really know.\w8\1\n\n[half]\s[15]Thought you wouldn't.\w8\0\n\n[half]\s[3]Then why'd you ask?\e"
 	
 	"\1\s[10]You're more quiet then usual. \0\s[0]So?\e"
 	
@@ -316,9 +316,13 @@ RandomTalk : nonoverlap
 		
 		"\1\s[10]Hey.\w4 Hey, Pasha.\w6 \0\s[0]I'm not listening to you\w2.\w6 \1\s[10]\n\n[half]I swear, I'm not gonna--\w1\0\s[0]I *said*\w2 I'm not listening.\e:chain=snowmaaaan"
 		
-		"\0\s[0]Well, it's cold,\w2 cold,\w2 cold\w1 outside\w1, doctor in the dead\w2,\w1 in the dead of\w1 night\w2.\w1.\w1.\e"
+		"\0\s[0]Well, it's cold,\w3 cold,\w3 cold\w2 outside\w2, doctor in the dead\w3,\w2 in the dead of\w2 night\w3.\w2.\w2.\e"
 		
-		"\0\s[0]Hanukkah season.\w4\1\s[10]Janice.\w6\0\s[0]\n\n[half]I suppose.\e"
+		"\1\s[10]Hanukkah season.\w4\0\s[0]Janice\w2.\w6\0\s[0]\n\n[half]I suppose.\e"
+		
+		"\0\s[0]Janice\w2.\e"
+		
+		"\1\s[10]It's soooooooo cold...\w6\0\s[0]But are you complaining?\e"
 		
 		//"\0\s[0]I hope Vanya won't worry too much. We've really been here a while...\e"
 		
@@ -394,6 +398,10 @@ RandomTalk : nonoverlap
 		"\0\s[0]Hey, how do you spell evening?.\w8\1\s[10]E\w4 V\w4 E\w4 N\w4 I\w4 N\w4 G\w2.\e"
 		
 		"\0\s[0]Eve\w3ni\w2ng time\w1, so this is my eve\w2ning\w2 song\w2.\w2.\w2.\e"
+		
+		"\0\s[0]Are you getting tired\w2? I\w2'm getting tired\w2.\w6\1\s[10]I think that's just a you thing.\e"
+		
+		"\1\s[10]I would absolutely love to pet your cat right now.\w6\0\s[0]Hey\w2, %(username)\w2! Go beam my cat up here\w2!\e"
 	}
 	
 	
@@ -480,6 +488,12 @@ RandomTalk : nonoverlap
 		if другдруга == 0
 		{
 			"\1\s[10]What do you think Valya's up to right now?\w6\0\s[0]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"
+			
+			"\1\s[10]Jora would be *so* lost right about now if he were here.\w6\0\s[0]Y\w2'think\w2? He can take care of himself\w2.\w6\1\s[10]\n\n[half]Dude, *we* still don't know how to do like, anything.\w6\0\s[0]\n\n[half]Wrong\w2.\w4 We can explore computers\w2.\w4 And do other computer stuff\w2.\w6\1\s[10]\n\n[half]That... wasn't my point...\w6\0\s[0]\n\n[half]Oh yeah\w2? What was it then\w2?\e"
+			
+			"\0\s[0]Wonder how my cat\w2's doing\w2.\e"
+			
+			"\1\s[10]...It's kind of boring here.\e"
 		}
 		"\1\s[10]...\e"
 	}
@@ -510,7 +524,7 @@ RandomTalk : nonoverlap
 		"%(heshe) %(doesnt) like us very much."
 		"%(heshe) %(isnt) really... that nice."
 		"maybe it's better if I tell you when %(heshe) *%(isnt)* here."
-		"they remind me of... well, y'know."
+		"%(heshe) remind me of... well, y'know."
 		"I'll tell you later."
 		--
 		" \w6\0\s[0]\n\w2.\w2.\w2.\e"

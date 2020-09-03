@@ -120,7 +120,7 @@ MouseMoveKero
 				"\1\s[10]Yup\w2, that's definitely my head\w2.\e"
 				"\1\s[10]Uh...\e"
 				"\1\s[10]Whatever he tells you, my hair is not that soft. Quit it.\w4\n\n[half]\f[italic,true]\w4(\w1.\w2.\w3.\w4.\w5.\w6.\w7his hair is actually quite soft\w1.\w4 You almost want to pet it again\w1.\w1.\w1.)\f[italic,false]\e"
-				"\1\s[10]\f[italic,true](Soft hair.)[italic,false]\e"
+				"\1\s[10]\f[italic,true](Soft hair.)\f[italic,false]\e"
  			}
 			elseif reference4 == "Face"
 			{

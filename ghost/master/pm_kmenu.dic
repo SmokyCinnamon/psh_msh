@@ -44,8 +44,7 @@ Select.YzItemMenu
 		\![*]\q[A guitar,gitara]\n/
 		\![*]\q[A phone,telefon]\n/
 		\![*]\q[Book,book]\n/
-		\![*]\q[Stuffed Cat,yplushkitty]\n\n[half]/
- 		\![*]\q[Nevermind,keroCANCEL]\e"
+		\![*]\q[Stuffed Cat,yplushkitty]\n\n[half]%(yendmenu)\e"
 }
 
 Select.ywaterglass
@@ -109,7 +108,7 @@ YCountThings
 {
 	//"beep"
 	//if yzhovpets > 0
-	", \1\s[10]\b[2]\_q\f[italic,true](You've pet Misha %(yzhovpets) time"
+	"\1\s[10]\b[2]\_q\f[italic,true](You've pet Misha %(yzhovpets) time"
 	//", %(yzhovpets) time"
 	--
 	if yzhovpets != 1; "s"
@@ -117,13 +116,13 @@ YCountThings
 	"\1\s[10].)\n"
 	--
 	//if yzhovpunch > 0
-	", (You've hit him %(yzhovpunch) time"
+	" (You've hit him %(yzhovpunch) time"
 	--
 	if yzhovpunch != 1; "s"
 	--
 	"\1\s[10].)\f[italic,false]\n"
 	--
-	"\![*](\q[Go back,keroCANCEL])\e"
+	"%(yendmenu)\e"
 }
 //This is when they select bug report. This is mostly meant to briefly give the user information about you, the creator, and how to report a problem to you. This can be handy if the person forgot where they got their ghost or how to contact you. Add whatever info you like here.
 Select.bugreport

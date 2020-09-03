@@ -319,7 +319,7 @@ OnUpdateFailure
 	}
  	elseif reference0 == "md5 miss" //This is the final message displayed when you've run into an md5 error below at some point.
 	{
-		"\1\s[10]The MD5 hash of the files don't match.\e"
+		"\1\s[10]The MD5 hash of the files don't match.\e" //wait would this be doesnt
  	}
 	else //for other errors
  	{

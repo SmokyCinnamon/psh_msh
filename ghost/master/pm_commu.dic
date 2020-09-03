@@ -51,6 +51,13 @@ ReplyToGhost
 			"\0\s[10]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\e"
 		}
 	}
+	elseif reference0 == "CheeryBot"
+	{
+		res_reference0 = reference0
+		{
+			"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[10]I have never been his support group please stop that.\w6\0\s[0]Sure you aren\w2't\w2.\e"
+		}
+	}
 	else
 	{
 		res_reference0 = reference0

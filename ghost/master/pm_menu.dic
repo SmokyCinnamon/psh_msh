@@ -687,6 +687,7 @@ Select.dosomething
 		--
  		"\![*]\q[Open Calendar,CALENDAR]\n/
 		\![*]\q[Check Email,MailCheck]\n/
+		//\![*]\q[Check Time,OnSNTPBegin]\n/
 		\![*]\q[Open SSP Preferences,sspconfig]\n/
 		\![*]\q[Empty Recycle Bin,ChoiceGarbagecan]\n/
 		\![*]\q[System Information,ChoiceSystemInformation]\n\n/

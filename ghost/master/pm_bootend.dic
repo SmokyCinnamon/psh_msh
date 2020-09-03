@@ -45,6 +45,10 @@ OnFirstBoot
 	nowshell = "default_shell" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
 	namiable = 500 //for like, relationship systems and that, which will be hell to implement now that ive decided there will be no moving of dialogue. yamiable is misha's, obviously.
 	yamiable = 500
+	nkovpets = 0
+	yzhovpets = 0
+	nkovpunch = 0
+	yzhovpunch = 0
 	friendlyall = namiable + yamiable //also for relationship systems. cann i define it like this...?
 	другдруга = 0 //hopefully there's nothing against naming things in russian. this is for if they're uh. fighting or not. really lovely time i picked for theem to show up, but i figure it's more fun this way. more intruige. dialogue options, even! misha can be a mean little shit on purpose because he's concerned but also they're fighting
 	//don't ask me why he'd be mean i have no clue.
@@ -65,7 +69,7 @@ OnFirstBoot
 		//You'll also notice that this dialogue is black instead of grey. This is because of the use of the backwards slash as mentioned in the advanced section of the SakuraScripting page. Do you see near the bottom where it has \n\n[half]/ with the other slash at the end before the choices are listed? You will want to replace dialogue up that \n\n[half], but do not mess with the choices beyond that unless you know what you're doing.
 		//Always make sure to keep your dialogue in the quotation marks! And remember, you can't use quotation marks IN dialogue either. You can use two single apostrophes instead if you must. And REMEMBER what I said about \![enter,passivemode]! Do NOT delete that tag!
 		
-		"\![enter,passivemode]\1\s[10]\0\s[0]Hey, where are we?\1\s[10]\w2.\w3.\w4.\w4 Pasha, what'd you do this time?w8\0\s[0]\n\n[half]Nothing\w2! \w5How do I know *you* didn't do something\w2?\w6\1\n\n[half]\s[10]Oh, Pasha, there's\w1.\w2.\w2.\w8\0\s[0]\n\n[half]Huh\w2?\w5 Oh\w3. OH\w2.\n\n[half]\w4Hi\w2.\w6\1\n\n[half]\s[10]Hey. We didn't really see you there, sorry.\x\c\0\s[0]So\w2, uh\w2.\w3.\w3.\w3 I'm Pasha\w2, hi\w2.\w4\1\s[10]\n\n[half]I would happen to be Misha.\w3 I guess Pasha 'n I'll hang out here for the time being?\w6\1\c\s[10]So, hey, what're your pronouns?\w6\0\s[0]\n\n[half]For pronouny things\w1.\x\w8\1\c\s[10]\w2.\w3.\w4.\w4Sure. So\w2?\n\n[half]/
+		"\![enter,passivemode]\1\s[10]\0\s[0]Hey, where are we?\1\s[10]\w2.\w3.\w4.\w4 Pasha, what'd you do this time?\w8\0\s[0]\n\n[half]Nothing\w2! \w5How do I know *you* didn't do something\w2?\w6\1\n\n[half]\s[10]Oh, Pasha, there's\w1.\w2.\w2.\w8\0\s[0]\n\n[half]Huh\w2?\w5 Oh\w3. OH\w2.\n\n[half]\w4Hi\w2.\w6\1\n\n[half]\s[10]Hey. We didn't really see you there, sorry.\x\c\0\s[0]So\w2, uh\w2.\w3.\w3.\w3 I'm Pasha\w2, hi\w2.\w4\1\s[10]\n\n[half]I would happen to be Misha.\w3 I guess Pasha 'n I'll hang out here for the time being?\w6\1\c\s[10]So, hey, what're your pronouns?\w6\0\s[0]\n\n[half]For pronouny things\w1.\x\w8\1\c\s[10]\w2.\w3.\w4.\w4Sure. So\w2?\n\n[half]/
 		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
 		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
 		\![*]\q[They/Them/Their,choicefirsttheythem]\n/

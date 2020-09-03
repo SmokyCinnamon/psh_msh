@@ -26,7 +26,8 @@ nitend
 
 yendmenu
 {
-	"\![*]\q[Nevermind,keroCANCEL]\e"
+	"\![*]\q[Go back,OpenKeroMenu]\n/
+	\![*]\q[Nevermind,keroCANCEL]\e"
 }
 
 yitend
