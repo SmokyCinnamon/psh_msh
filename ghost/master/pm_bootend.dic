@@ -49,6 +49,8 @@ OnFirstBoot
 	yzhovpets = 0
 	nkovpunch = 0
 	yzhovpunch = 0
+	patp = 0
+	paty = 0
 	friendlyall = namiable + yamiable //also for relationship systems. cann i define it like this...?
 	другдруга = 0 //hopefully there's nothing against naming things in russian. this is for if they're uh. fighting or not. really lovely time i picked for theem to show up, but i figure it's more fun this way. more intruige. dialogue options, even! misha can be a mean little shit on purpose because he's concerned but also they're fighting
 	//don't ask me why he'd be mean i have no clue.

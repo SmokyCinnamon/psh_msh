@@ -9,6 +9,8 @@ CountThings
 	{
 	"\_q\b[2](You've hurt him %(nkovpunch) times.)\n"
 	--
+	"(You've made him uncomfortable %(patp) times.)\n"
+	--
 	"(You've also pet him %(nkovpets) times. Not that it matters.)\n"
 	--
 	"\![*](\q[Go back,BACKTOMENU])\e"
@@ -19,6 +21,8 @@ CountThings
 	--
 	"(You've punched Pasha %(nkovpunch) times.)\n"
 	--
+	"(You've pat Pasha %(patp) times).)\n"
+	--
 	"\![*](\q[Go back,BACKTOMENU])\e"
 	}
 	//fgufgauygfuq maybe remember the brackets if you don't want them to empty your recycle bin, then tell you your birthday. that was funny thoug, a+ for effort
@@ -26,6 +30,28 @@ CountThings
 
 IntCheck
 {
-	nkovpets = TOINT(nkovpets)
-	yzhovpets = TOINT(yzhovpets)
+	if nkovpets != TOINT(nkovpets) 
+	{ ; nkovpets = STRLEN(nkovpets) ; }
+	else
+	{ ; }
+	if nkovpunch != TOINT(nkovpunch) 
+	{ ; nkovpunch = STRLEN(nkovpunch) ; }
+	else
+	{ ; }
+	if patp != TOINT(patp) 
+	{ ; patp = STRLEN(patp) ; }
+	else
+	{ ; }
+	if yzhovpets != TOINT(yzhovpets) 
+	{ ; yzhovpets = STRLEN(yzhovpets) ; }
+	else
+	{ ; }
+	if yzhovpunch != TOINT(yzhovpunch) 
+	{ ; yzhovpunch = STRLEN(yzhovpunch) ; }
+	else
+	{ ; }
+	if paty != TOINT(paty) 
+	{ ; paty = STRLEN(paty) ; }
+	else
+	{ ; }
 }

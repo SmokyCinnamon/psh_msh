@@ -308,6 +308,7 @@ MouseDoubleClickSakura
 	}
 	elseif reference4 == "Shoulders"
 	{
+		patp += 1
 		if namiable >= 500
 		{
 		// nkovpunch += 1 //ah shit forgot -- this is just a pat thing. ... variable for that too *sigh*
