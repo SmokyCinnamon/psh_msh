@@ -49,6 +49,55 @@ MouseMoveSakura
  		if stroke >= 40 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want. FLELEs have it set to 50 for some reason, which makes it take longer than this.
 		{
  			stroke = 0 //resetting the stroke count
+			if spooktime == "on"
+			{
+				if reference4 == "Head" {
+					"\0\s[700]\b[11]Pets pets pets %(misha) says im a cat %(username) agrees ? %(username) yesno?\e"
+					"\0\s[700]\b[11]%(misha) did it too i miss him even if he's right there i do\e"
+					"\0\s[700]\b[11]%(misha)'s nice but %(username) you're different how do I feel ? about %(himher) ? \s[702]nononononono don't pet me i hate it hate it stopstopstop\e"
+					"\0\s[700]\b[11]wrong did i something ? do?\e"
+					"\0\s[700]\b[11]trust don't %(username) i you\e"
+					"\0\s[700]\b[11]not this thi%OnCreepyText('s this this this this this this this this this this this')\e"
+					"\0\s[700]\b[11]would pet why you ? me?\e"
+					"\0\s[700]\b[11]panic it he said %(username) get stop i attacks\e"
+				}
+				elseif reference4 == "Face" {
+					"\0\s[700]\b[11]%OnCreepyText('that hurts i'm sorry i'm sorry i'm sorry it hurts stop please please please')%(username)\e"
+					if sa == "on" {"\0\s[700]\b[11]%OnCreepyText('don't touch my face nonono don't like that')\e"
+					"\0\s[700]\b[11]%OnCreepyTextWait('forget forget i want to')\e"
+					"\0\s[700]\b[11]%OnCreepyText('i'm sorry i talked i won't anymore just stop stop stop stop please')\e"
+					"\0\s[700]\b[11]%OnCreepyText('i know what i did but i'm sorry didn't mean to make you upset i didn't didn't didn't please stop')\e"
+					"\0\s[700]\b[11](He just starts sobbing...?)\e"
+					"\0\s[700]\b[11]%OnCreepyText('let my guard down i shouldn't have i know now i know')\e"
+					"\0\s[700]\b[11]%OnCreepyTextWait('no stop stop stop it')\e"}
+				}
+				elseif reference4 == "Shoulders" {
+					if sa == "on" {"\0\s[700]\b[11](he's pretty clearly trying not to cry...)\e"
+					"\0\s[700]\b[11](is he shaking...?)\e"
+					"\0\s[700]\b[11](he's full-on crying without a single sound...)\e"
+					"\0\s[700]\b[11](something tells you this might not have been a good idea...)\e"
+					"\0\s[700]\b[11](he whimpers at your touch...)\e"
+					"\0\s[700]\b[11](he freezes the moment you touch him...)\e"}
+					"\0\s[700]\b[11](this doesn't feel right...)\e"
+				}
+				elseif reference4 == "Neck" {
+					"\0\s[700]\b[11](A warm alternative to his counterpart.)\e"
+					if sh == "on"
+					{
+						"\0\s[700]i ?  oh? oh? that %(username) not stop like\e"
+						"\0\s[700]\b[11](That's... definitely a scar there, yup. You never noticed that before...)\e"
+						"\0\s[700]\b[11]noticed nice that's %(username) off now okokok\e"
+						"\0\s[700]\b[11]%OnCreepyTextWait('What's the point?')\e"
+					}
+					if sa == "on" {
+						"\0\s[700]\b[11](he just starts crying...)\e"
+					}
+				}
+				else
+				{stroke = 0}
+			}
+			else
+			{
 			namiable -= 1
 			if reference4 == "Head" //do you remember the names of the areas you set up for your collisions in surfaces.txt? This is where they come into play! This is where you'd put in the name of your collision, such as head, face, horns, tail, ears, whatever. As mentioned in surfaces.txt, you can add as many collisions to a pose as you want, as long as you make sure to add them all in here so they can actually be used.
  			{
@@ -64,9 +113,9 @@ MouseMoveSakura
 				nkovpets += 1
 				namiable -= 2
  				"\0\s[3]Please don't\w2.\e"
- 				"\0\s[0]That's my face\w1, yup\w2.\e"
- 				"\0\s[4]Uh\w2. \w8\1\s[10]Hey\w1, don't do that\w2.\e"
-				"\0\s[0]Th\w1a\w1a\w1aaaanks\w2.\n\n[half]\w6\fitalic,true](He seems to be making an attempt at being sarcastic.)\f[italic,false]\e"
+ 				"\0\s[8]That's my face\w1, yup\w2.\e"
+ 				"\0\s[4]Uh\w2. \w8\1\s[19]Hey, don't do that\w2.\e"
+				"\0\s[9]Th\w2a\w2a\w2aaaanks\w3.\n\n[half]\w6\fitalic,true](He seems to be making an attempt at being sarcastic.)\f[italic,false]\e"
  			}
 			elseif reference4 == "Stomach"
 			{
@@ -76,21 +125,21 @@ MouseMoveSakura
 				"\0\s[0]Bleh\w1.\e"
 				"\0\s[9]Fuck off. \w4\1\s[10]Language\w1, Pasha\w1. \w4\0\s[0]I said what I said\w1.\e"
 				"\0\s[9]Quit it, please and thank you\w2.\e"
-				"\0\s[0]\f[italic,true](He leans away from your hand.\w2 What? You were just trying to be friendly, dude.)\f[italic,false]\w6\1\s[19]Not cool man. That can't be constituted as friendly.\e"
+				//"\0\s[9]\f[italic,true](He leans away from your hand.\w2 What? You were just trying to be friendly, dude.)\f[italic,false]\w6\1\s[19]Not cool man. That can't be constituted as friendly.\e"
 			}
 			elseif reference == "Bandadge"
 			{
 				namiable -= 5
 			    "\0\s[4]\w1.\w2.\w2. \w6\e"
-				"\0\s[0]Ow\w1.\e"
-				"\0\s[0]Hey\w1. Don't touch that\w1.\e"
+				"\0\s[9]Ow\w1.\e"
+				"\0\s[9]Hey\w1. Don't touch that\w1.\e"
 			}
 			elseif reference4 == "Shoulders"
 			{
 				nkovpets += 1
 				namiable -= 23
-				"\0\s[0]...\e"
-				"\0\s[0]hey, don't...\e"
+				"\0\s[3]...\e"
+				"\0\s[3]hey, don't...\e"
 				"\0\s[3]\f[italic,true](He tenses up as soon as you touch him.\w4 Maybe don't do that.)\f[italic,false]\e"
 			}
  		}
@@ -100,7 +149,7 @@ MouseMoveSakura
  		// If the mouse isn't over the ghost, it'll zero out the stroke value.
 		stroke = 0
  	}
-}
+ }}
 
  //---- MouseMoveKero -----------------------------------------------------------------
  
@@ -112,46 +161,90 @@ MouseMoveKero
  		if stroke >= 40
 		{
 			stroke = 0
-			if reference4 == "Head"
- 			{
-				yzhovpets += 1
-				"\1\s[10]Hey, you trying to pet me\w2?\e"
-				"\1\s[10]Thanks, but I don't think my hair is that soft\w1. \0\s[0]He lies\w3, it is\w1. \1\s[11]\n\n[half]Shut up\w1.\e"
-				"\1\s[10]Yup\w2, that's definitely my head\w2.\e"
-				"\1\s[10]Uh...\e"
-				"\1\s[10]Whatever he tells you, my hair is not that soft. Quit it.\w4\n\n[half]\f[italic,true]\w4(\w1.\w2.\w3.\w4.\w5.\w6.\w7his hair is actually quite soft\w1.\w4 You almost want to pet it again\w1.\w1.\w1.)\f[italic,false]\e"
-				"\1\s[10]\f[italic,true](Soft hair.)\f[italic,false]\e"
- 			}
-			elseif reference4 == "Face"
+			if spooktime == "on"
 			{
-				yzhovpets += 1
-				"\1\s[19]Tha\w1a\w2a\w2a\w1t's my face\w1. Quit it\w1.\e"
-				"\1\s[18]Buy me a drink first\w2.\e"
-				"\1\s[17]Havin fun\w1? Stroking faces\w2?\e"
-				"\1\s[17]Yeah it's fun over here, getting stroked for no damn reason.\w4 Real fun.\e"
-				"\1\s[17]Oh, am I supposed to ignore this hand suddenly stroking me out of nowhere? Yeah, good luck with that.\e"
-				"\1\s[10]\f[italic,true](He just stares at you.\w6Maybe this isn't the best course of action.)\e"
-				
-			}	
-			elseif reference4 == "Stomach"
-			{
-				yzhovpets += 1
-				"\1\s[17]Weirdo\w2.\e"
-				"\1\s[17]\f[italic,true](He takes a step back\w1.)\f[italic,false]\e"
-				"\1\s[17]Yup, pet his arms. I'm sure he'll like that."
-				"\1\s[17]Okay, I've just gotta say? We don't really know each other that well?\e"
-				"\1\s[17]...\e"
-				"\1\s[10]Hey.\w4 Stop\w2.\e"
+				if reference4 == "Head" 
+				{
+					"\1\s[60]\b[11](You try petting him.\w4 Still nothing...)\e"
+					"\1\s[60]\b[11](That's it, he has to be dead. No complaints at all.)\e"
+					"\1\s[60]\b[11](Yeah, he's... he's dead.)\e"
+					"\1\s[60]\b[11](Dead men tell no tales. Also, they don't complain.)\e"
+					"\1\s[60]\b[11](If he were alive right now, you feel like this would be going a completely different direction.)\e"
+					"\1\s[60]\b[11](No response. Probably because he's dead.)\e"
+					"\1\s[60]\b[11](You can pet him, but it won't do much.)\e"
+					"\1\s[60]\b[11](Surprisingly, he's actually dead.)\e"
+					"\1\s[60]\b[11](A man of few words.)\nHe's still dead, that didn't change.)\e"
+					"\1\s[60]\b[11](Maybe THIS time he'll say something.)\w6\n(\w4.\w4.\w4.\w4 Nope. More than likely he's dead.)\e"
+				"\1\s[60]\b[11](Looks like he won't answer...)\e"}
+				elseif reference4 == "Face" 
+				{
+					"\1\s[60]\b[11](You stroke his face. A little cold.)\e"
+					"\1\s[60]\b[11](He seemed pretty against face stroking.)\e"
+					"\1\s[60]\b[11](You gently stroke his face. No response.)\e"
+					"\1\s[60]\b[11](Still nothing.)\e"
+					"\1\s[60]\b[11](Being dead, he can't really object.)\e"
+					"\1\s[60]\b[11](Cold dead face.)\n(I don't wanna think about it.)\e"
+					"\1\s[60]\b[11](His face is only moving because of the outside force consisting of you.)\e"
+					"\1\s[60]\b[11](Did he have a partner?)\e"
+					"\1\s[60]\b[11](He looks really young.)\e"
+					"\1\s[60]\b[11](Stroking reminds my soul once more of the most important thing,\w3 stroking I again... something something...)\e"
+				"\1\s[60]\b[11](The other one seems agitated.)\e"}
+				elseif reference4 == "Shoulders" 
+				{
+					"\1\s[60]\b[11](This feels like a violation of some unspoken rule.)\e"
+					"\1\s[60]\b[11](Aside from the fact that this is a dead person, you just don't feel good about doing this.)\e"
+					"\1\s[60]\b[11]%OnCreepyTextWait('STOP STOP STOP STOP STOP')\e"
+					"\1\s[60]\b[11](This gives you the opposite of warm fuzzy feelings.)\e"
+					"\1\s[60]\b[11]%OnCreepyTextWait('I'm gonna have a panic attack seriously stop that')\e"
+					"\1\s[60]\b[11](He's dead, but this doesn't make you feel any better.)\e"
+				"\1\s[60]\b[11](...)\w4\0\s[700] stop stop stop %(username) bad bad not good for him don't do that no n\e"}
+				else 
+				{
+					stroke = 0
+				}
 			}
-			elseif reference4 == "Shoulders"
+			else
 			{
-				yzhovpets += 1
-				"\1\s[14]... \n\n[half]\f[italic,true](He edges away from your hand.)\f[italic,false]\e"
-				"\1\s[14]Kindly fuck off and do not pet me.\e"
-				"\1\s[14]Yup, loving getting petted for no reason.\nJust having the best time in the world over here.\e"
-				"\1\s[14]Don't do that.\e"
-				"\1\s[17]Fuck off, %(username). \w4\0\s[0]Hehehe.\e"
-				"\1\s[13]\f[italic,true](Wherever he is, it's not here.\w4 Not such a good idea, then.)\f[italic,false]\e"
+				if reference4 == "Head"
+				{
+					yzhovpets += 1
+					"\1\s[18]Hey, you trying to pet me\w2?\e"
+					"\1\s[10]Thanks, but I don't think my hair is that soft\w1. \0\s[0]He lies\w3, it is\w1. \1\s[11]\n\n[half]Shut up\w1.\e"
+					"\1\s[10]Yup\w2, that's definitely my head\w2.\e"
+					"\1\s[18]Uh...\e"
+					"\1\s[10]Whatever he tells you, my hair is not that soft. Quit it.\w4\n\n[half]\f[italic,true]\w4(\w1.\w2.\w3.\w4.\w5.\w6.\w7his hair is actually quite soft\w1.\w4 You almost want to pet it again\w1.\w1.\w1.)\f[italic,false]\e"
+					"\1\s[19]\f[italic,true](Soft hair.)\f[italic,false]\e"
+				}
+				elseif reference4 == "Face"
+				{
+					yzhovpets += 1
+					"\1\s[19]Tha\w1a\w2a\w2a\w1t's my face\w1. Quit it\w1.\e"
+					"\1\s[18]Buy me a drink first\w2.\e"
+					"\1\s[17]Havin fun\w1? Stroking faces\w2?\e"
+					"\1\s[17]Yeah it's fun over here, getting stroked for no damn reason.\w4 Real fun.\e"
+					"\1\s[17]Oh, am I supposed to ignore this hand suddenly stroking me out of nowhere? Yeah, good luck with that.\e"
+					"\1\s[18]\f[italic,true](He just stares at you.\w6Maybe this isn't the best course of action.)\e"	
+				}	
+				elseif reference4 == "Stomach"
+				{
+					yzhovpets += 1
+					"\1\s[17]Weirdo\w2.\e"
+					"\1\s[17]\f[italic,true](He takes a step back\w1.)\f[italic,false]\e"
+					"\1\s[17]Yup, pet his arms. I'm sure he'll like that."
+					"\1\s[17]Okay, I've just gotta say? We don't really know each other that well?\e"
+					"\1\s[17]...\e"
+					"\1\s[19]Hey.\w4 Stop\w2.\e"
+				}
+				elseif reference4 == "Shoulders"
+				{
+					yzhovpets += 1
+					"\1\s[14]... \n\n[half]\f[italic,true](He edges away from your hand.)\f[italic,false]\e"
+					"\1\s[14]Kindly fuck off and do not pet me.\e"
+					"\1\s[14]Yup, loving getting petted for no reason.\nJust having the best time in the world over here.\e"
+					"\1\s[14]Don't do that.\e"
+					"\1\s[17]Fuck off, %(username). \w4\0\s[0]Hehehe.\e"
+					"\1\s[13]\f[italic,true](Wherever he is, it's not here.\w4 Not such a good idea, then.)\f[italic,false]\e"
+				}
 			}
  		}
 	}
@@ -159,7 +252,7 @@ MouseMoveKero
 	{
 		stroke = 0
  	}
-}
+ }
 
 //---- OnMouseDoubleClick -------------------------------------------------------
 //This is set up much like OnMouseMove above, except this is checking to see if the user is double clicking on the ghost. You also don't need to touch any of this. 
@@ -197,6 +290,77 @@ OnMouseDoubleClick
  
 MouseDoubleClickSakura
  {
+	if spooktime == "on"
+	{
+		if reference4 == "Head" || reference4 == "Face"
+		{
+			"\0\s[700]\b[11]don't like that %(username) didn't you know already i dont i dont\e"
+			"\0\s[700]\b[11]%(username) don't\e"
+			"\0\s[700]\b[11]i'm sorry i didn't mean to i forgot forgot %OnCreepyText('забыл забыл забыл') если сможешь прости меня прости\e"
+			"\0\s[700]\b[11]my fault but aren't you mean shouldn't you be nice but but but it's my fault isn't it it is it is\e"
+			"\0\s[700]\b[11]hey hey hey stop\e"
+			if sa == "on" {"\0\s[700]\b[11]that was before before before had to be had to misha's here isn't he\e"
+			"\0\s[700]\b[11]i don't miss it at all one night once happened not again %(username) you aren't like that right\e"
+			"\0\s[700]\b[11]can't you stop please %(username) stop st\e"}
+			"\0\s[700]\b[11]i know i know i know i know\e"
+			"\0\s[700]\b[11]not important is it never told him never told %(himher) guess that doesn't matter\e"
+			"\0\s[700]\b[11]%(username) %(username) %(username)\e"
+			"\0\s[700]\b[11]%(heshe) %(wont) stop i wonder i wonder misha's dead he's dead that's why\e"
+			"\0\s[700]\b[11]can't help %(username) can't help me go back go back go back\e"
+			"\0\s[700]\b[11]thought you wouldn't i did i did i was wrong then %(username) tell me i was wrong\e"
+			"\0\s[700]\b[11]my fault how'd you guess is it because he's dead g-d he's dead won't come back can't do it not allowed not possible\e"
+			"\0\s[700]\b[11]did you know %(username)%OnCreepyTextWait('??????????????????????????') no you did of course you did why else would you hit me you know you know who told you wasn't me was it maybe i forgot i forget\e"
+		if sh == "on"{"\0\s[700]\b[11]won't happen again i know i know i know %(username) i tried to cut it out of me but that didn't work it didn't didn't\e"}}
+		elseif reference4 == "Shoulders"
+		{
+			if sa == "on"
+			{
+				"\0\s[700]\b[11]talked %(username) did know i again it i try do not\e"
+				"\0\s[700]\b[11]said i'm %(username) already sorry i\e"
+				"\0\s[700]\b[11]do what i did\e"
+				"\0\s[700]\b[11]%(misha) %(misha) %(misha) nonono already he's can't dead help\e"
+				if sh == "on"
+				{
+					"\0\s[700]\b[11]i'll show you i'll show you ok ok ok just stop %OnCreepyText('stopstopstop')\e"
+				}
+			}
+		}
+		elseif reference4 == "Stomach"
+		{
+			"\0\s[700]You don't have to you know wouldn't hurt so much then\e"
+			"\0\s[700]Ow ow ow ow ow ow ow\e"
+			if sa =="on" {"\0\s[700]\b[11]%OnCreepyText('hurts it hurts it hurts') %OnCreepyTextWait('стой стой стой')\e"
+			"\0\s[700]\b[11]%OnCreepyText('помоги миша миша помоги мне')\e"
+			"\0\s[700]\b[11]stopstopstopstopstopsto\e"
+			"\0\s[700]\b[11]nonono you're not supposed to do that\e"
+			"\0\s[700]\b[11]you win you it i'll win do you win you win\e"
+			"\0\s[700]\b[11]%OnCreepyText('stop stop that hurts please leave me alone i'll be quiet just stop')\e"
+			"\0\s[700]\b[11]%OnCreepyText('i'll be quiet this time i will i will just leave me alone please please please')\e"}
+			"\0\s[700]\b[11]%OnCreepyTextWait('победа без боя')\e"
+			"\0\s[700]\b[11](...He just starts sobbing.)\e"
+		}
+		elseif reference4 == "Wrist"
+		{
+			if sh == "on" {
+				"\0\s[700]Nice nice did it myself can't show him though he's dead\e"
+				"\0\s[700]You noticed noticed good to know it almost worked but not really though did it did it\e"
+				"\0\s[700]Concerned? concerned?\e"
+				"\0\s[700]I'd do it here but %(misha) might notice can't have that no\e"
+				"\0\s[700]%OnCreepyTextWait('Good eye') %(username) can't do it here he'd see\e"
+				"\0\s[700]%(username) don't bring it up ok ok %OnCreepyTextWait('ok thank you')\e"
+				"\0\s[700]%(username) saw? %(username) %(username) %(username) %(username)\e"
+		}}
+		elseif reference4 == "Neck"
+		{
+			if sh == "on"
+			{
+				"\0\s[700]He's been dead %(username) don't let it scare you though i guess he's not much company now\e"
+				"\0\s[700]Worried? Nonono i'm good \w4good good\w3 %(username) shouldn't worry nope\e"
+		"\0\s[700]Слишком много %OnCreepyTextWait('слишком много слишком много')\e"}}
+		else {OpenSakuraMenu}
+	}
+	else
+	{
  	if reference4 == "Head" || reference4 == "Face" //here, this is checking to see if the user is double clicking on either the character's head OR their face, which for our purposes means they're hitting the ghost. More about operators at the walkthrough.
 	{
 		namiable -=6
@@ -207,46 +371,46 @@ MouseDoubleClickSakura
 		"\0\s[3]Ow\w1!\e"
 		"\0\s[3]Hey\w1, what do you get from this\w1?\e"
 		"\0\s[3]That's my fucking face\w1. \w4\1\s[10]La\w1.\w1.\w1.\w2.\w3.\w4. Actually\w1, Nevermind\w1.\e"
-		"\0\s[0]I\w1'm not\w2-\w4 .\w2.\w2. \w4\n\n\f[italic,true](He stops himself, for some reason.)\f[italic,false]\n\n[half]\w8 Don't fucking hit me\w2.\e"
+		"\0\s[9]I\w1'm not\w2-\w4 .\w2.\w2. \w4\n\n\f[italic,true](He stops himself, for some reason.)\f[italic,false]\n\n[half]\w8 Don't fucking hit me\w2.\e"
 		}
 		elseif namiable >= 200
 		{
-			"\0\s[0]Hey!\e"
+			"\0\s[9]Hey!\e"
 			"\1\s[10]Do you *have* to hit him? huh?\e"
-			"\1\s[10]Hey, what's your problem with him, huh? What did he do to you?\e"
-			"\1\s[10]What's your problem, %(username)?\e"
-			"\1\s[10]Hey, come on! What did he ever do to you?\e"
-			"\1\s[10]Quit it, %(username)!\e"
+			"\1\s[18]Hey, what's your problem with him, huh? What did he do to you?\e"
+			"\1\s[19]What's your problem, %(username)?\e"
+			"\1\s[18]Hey, come on! What did he ever do to you?\e"
+			"\1\s[19]Quit it, %(username)!\e"
 		}
 		elseif namiable >= 50
 		{
-			"\1\s[10]Hey, don't hit him!\e"
-			"\1\s[10]Nobody's *making* you do this, %(username), what's the point?\e"
-			"\1\s[10]Leave him alone already!\e"
-			"\1\s[10]What's *wrong* with you?\e"
-			"\1\s[10]Do you *have* to do this?\e"
-			"\1\s[10]There's no way this can benifit you, %(username)!\e"
+			"\1\s[17]Hey, don't hit him!\e"
+			"\1\s[19]Nobody's *making* you do this, %(username), what's the point?\e"
+			"\1\s[17]Leave him alone already!\e"
+			"\1\s[17]What's *wrong* with you?\e"
+			"\1\s[17]Do you *have* to do this?\e"
+			"\1\s[17]There's no way this can benifit you, %(username)!\e"
 		}
 		elseif namiable <= 0
 		{
-			"\0\s[0]...\e"
-			"\0\s[0]*(You think he's trying not to cry.)*\e"
-			"\0\s[0]*(Can't he at least be a little fun?)*\e"
-			"\0\s[0]*(The other one isn't defending him anymore.\w3 Interesting)*\e"
-			"\0\s[0]*(He's never stood up for himself that much, you suppose.)*\e"
-			"\0\s[0]*(The other one is silent.)*\e"
-			"\0\s[0]*(You wonder if you'll ever get him to cry.\w4 Probably not.)*\e"
+			"\0\s[3]...\e"
+			"\0\s[3]*(You think he's trying not to cry.)*\e"
+			"\0\s[3]*(Can't he at least be a little fun?)*\e"
+			"\0\s[3]*(The other one isn't defending him anymore.\w3 Interesting)*\e"
+			"\0\s[3]*(He's never stood up for himself that much, you suppose.)*\e"
+			"\0\s[3]*(The other one is silent.)*\e"
+			"\0\s[3]*(You wonder if you'll ever get him to cry.\w4 Probably not.)*\e"
 		}
 		else
 		{
-			"\1\s[10]Hey, fuck off man!\e"
-			"\1\s[10]%(username), *really*, stop it!\e"
-			"\1\s[10]*Please*, just leave him alone already!\e"
-			"\1\s[10]Hey, do you want something from him? No, what would you even...\e"
-			"\1\s[10]What do you get out of this, %(username)? Is it worth it?\e"
-			"\1\s[10]What's worth hurting someone else, %(username)?\e"
-			"\1\s[10]What's your problem, huh?\e"
-			"\1\s[10]Do you know how easy it is to just *not* fucking hit someone? Do you really?\e"
+			"\1\s[17]Hey, fuck off man!\e"
+			"\1\s[18]%(username), *really*, stop it!\e"
+			"\1\s[18]*Please*, just leave him alone already!\e"
+			"\1\s[18]Hey, do you want something from him? No, what would you even...\e"
+			"\1\s[19]What do you get out of this, %(username)? Is it worth it?\e"
+			"\1\s[18]What's worth hurting someone else, %(username)?\e"
+			"\1\s[17]What's your problem, huh?\e"
+			"\1\s[17]Do you know how easy it is to just *not* fucking hit someone? Do you really?\e"
 		}
  	}
 	elseif reference4 == "Stomach"
@@ -264,46 +428,46 @@ MouseDoubleClickSakura
 		}
 		elseif namiable >= 200
 		{
-			"\0\s[0]*(He stumbles back a few steps. Come on, now.)*\e"
+			"\0\s[4]*(He stumbles back a few steps. Come on, now.)*\e"
 		}
 		elseif namiable >= 50
 		{
-			"\0\s[0]*(He could've blocked that.)*\e"
+			"\0\s[4]*(He could've blocked that.)*\e"
 		}
 		elseif namiable <= 0
 		{
-			"\0\s[0]*(You have your suspicions.)*\e"
+			"\0\s[3]*(You have your suspicions.)*\e"
 		}
 		else
 		{
-			"\0\s[0]*(He won't look at you.)*\e"
+			"\0\s[3]*(He won't look at you.)*\e"
 		}
 	}
 	elseif reference4 == "Bandadge"
 	{
 		if namiable >= 500
 		{
-			"\0\s[0]...\e"
-			"\0\s[0]......\e"
-			"\0\s[0].........\e"
-			"\0\s[0]... \n\n[half]\f[italic,true](He stays completely still.)\f[italic,false]\e"
-			"\0\s[0]\f[italic,true](You hold his wrist.\w3 He doesn't actually say anything, but is radiating intense discomfort.)\f[italic,false]\e"
+			"\0\s[4]...\e"
+			"\0\s[4]......\e"
+			"\0\s[4].........\e"
+			"\0\s[4]... \n\n[half]\f[italic,true](He stays completely still.)\f[italic,false]\e"
+			"\0\s[4]\f[italic,true](You hold his wrist.\w3 He doesn't actually say anything, but is radiating intense discomfort.)\f[italic,false]\e"
 		}
 		elseif namiable >= 200
 		{
-			"\0\s[0]\f[italic,true](You make as if to hold his hand, but grab his wrist instead.)\n(Why did he stop moving...?)\f[italic,false]\e"
+			"\0\s[4]\f[italic,true](You make as if to hold his hand, but grab his wrist instead.)\n(Why did he stop moving...?)\f[italic,false]\e"
 		}
 		elseif namiable >= 50
 		{
-			"\0\s[0]\f[italic,true](Honestly you're not sure why you'd want to hold his wrist, but he doesn't seem to be complaining.)\f[italic,false]\e"
+			"\0\s[4]\f[italic,true](Honestly you're not sure why you'd want to hold his wrist, but he doesn't seem to be complaining.)\f[italic,false]\e"
 		}
 		elseif namiable <= 0
 		{
-			"\0\s[0]\f[italic,true](You have your suspicions.)\f[italic,false\e"
+			"\0\s[9]\f[italic,true](You have your suspicions.)\f[italic,false\e"
 		}
 		else
 		{
-			"\0\s[0]\f[italic,true](He keeps looking away from you.)\f[italic,false]\e"
+			"\0\s[9]\f[italic,true](He keeps looking away from you.)\f[italic,false]\e"
 		}
 	}
 	elseif reference4 == "Shoulders"
@@ -313,41 +477,41 @@ MouseDoubleClickSakura
 		{
 		// nkovpunch += 1 //ah shit forgot -- this is just a pat thing. ... variable for that too *sigh*
 		namiable -= 12
-		"\0\s[0]......\e"
-		"\0\s[0]...\e"
-		"\0\s[0].........\e"
+		"\0\s[9]......\e"
+		"\0\s[9]...\e"
+		"\0\s[9].........\e"
 		"\0\s[4]\f[italic,true](He doesn't say anything, but looks uncomfortable.)\f[italic,false]\e"
-		"\0\s[0]\f[italic,true](You can feel him tense up when you try to pat him.)\f[italic,false]\e"
-		"\0\s[0]\f[italic,true](Shoulders have been pat.\w4 Not that he seems to like it much.)\f[italic,false\e"
+		"\0\s[9]\f[italic,true](You can feel him tense up when you try to pat him.)\f[italic,false]\e"
+		"\0\s[9]\f[italic,true](Shoulders have been pat.\w4 Not that he seems to like it much.)\f[italic,false\e"
 		}
 		elseif namiable >= 200
 		{
 			namiable -= 6
-			"\0\s[0]H\w2-hey\w2.\w2.\w2.\e"
-			"\0\s[0]*(He doesn't seem to like your pats...)*\e"
-			"\0\s[0]\f[italic,true](Hey, you're just trying to be friendly here. Don't people like pats?)\f[italic,false]\e"
-			"\0\s[0]*(You'd think giving him a pat would make him like you, but...)*\e"
-			"\1\s[10]Hey, is that necessary?\e"
-			"\1\s[10]Could you leave him alone?\e"
-			"\1\s[10]Can't you see he doesn't like that?\e"
+			"\0\s[3]H\w2-hey\w2.\w2.\w2.\e"
+			"\0\s[4]*(He doesn't seem to like your pats...)*\e"
+			"\0\s[3]\f[italic,true](Hey, you're just trying to be friendly here. Don't people like pats?)\f[italic,false]\e"
+			"\0\s[4]*(You'd think giving him a pat would make him like you, but...)*\e"
+			"\0\s[4]\1\s[19]Hey, is that necessary?\e"
+			"\0\s[4]\1\s[19]Could you leave him alone?\e"
+			"\0\s[4]\1\s[19]Can't you see he doesn't like that?\e"
 		}
 		elseif namiable >= 50
 		{
 			namiable -= 9
-			"\0\s[0]...\e"
-			"\1\s[10]Didn't I already tell you to leave him alone?\e"
-			"\1\s[10]Don't do that.\e"
-			"\1\s[10]I'm sure there are *plenty* of other people you can pat right now!\e"
+			"\0\s[4]...\e"
+			"\0\s[4]\1\s[10]Didn't I already tell you to leave him alone?\e"
+			"\0\s[4]\1\s[10]Don't do that.\e"
+			"\0\s[4]\1\s[10]I'm sure there are *plenty* of other people you can pat right now!\e"
 		}
 		elseif namiable <= 0
 		{
 			namiable -= 12
-			"\0\s[0]......\e"
+			"\0\s[9]......\e"
 		}
 		else
 		{
 			namiable -= 9
-			"\0\s[0]...\e"
+			"\0\s[3]...\e"
 		}
 	}
 	else
@@ -355,7 +519,7 @@ MouseDoubleClickSakura
 		//Otherwise, if the user doubleclicks somewhere else on the character, they will open their menu as detailed in menu.dic.
  		OpenSakuraMenu
 	}
- }
+ }}
 
  
  //---- MouseDoubleClickKero -----------------------------------------------------------
@@ -363,6 +527,68 @@ MouseDoubleClickSakura
  
 MouseDoubleClickKero
  {
+	if spooktime == "on"
+	{ if reference4 == "Head" {
+		"\1\s[60]\b[11](No protest...)\e"
+		"\1\s[60]\b[11](You pat his head.)\n\w4.\w4.\w4.\w4\n(No sign of life.)\e"
+		"\1\s[60]\b[11](Feels kind of weird touching a dead body.)\e"
+		"\1\s[60]\b[11](Anything more than a pat on the head feels like it would break something.)\e"
+		"\1\s[60]\b[11](Maybe you *do* have the heart to punch him now, but... you might break something.)\e"
+		"\1\s[60]\b[11](*pat pat*.)\e"
+		"\1\s[60]\b[11](Still pretty dead.)\e"
+		"\1\s[60]\b[11](Looks like you won't get a reaction.)\e"
+		"\1\s[60]\b[11](Dead body's kind of just chilling. At this point, it might not be worth it to think about how he's standing.)\e"
+		"\1\s[60]\b[11](You pat his head. Nothing changes.)\e"
+		"\1\s[60]\b[11](As dead as a dead person can be.)\e"
+	"\1\s[60]\b[11](You wish you could convince yourself he's just sleeping. With his eyes open. Yeah...)\e"}
+	elseif reference4 == "Face" {
+		"\1\s[60](His face feels pretty cold.)\e"
+		"\1\s[60](Still dead, just like the last time you checked.)\e"
+		"\1\s[60](You gently touch his cold, dead cheek. It's pretty cold. And dead.)\e"
+		"\1\s[60](A gentle pat on the cheek and... yup, still dead.)\e"
+		"\1\s[60](Maybe if you pat his cheek enough times he'll come back to life.\e"
+		"\1\s[60]\b[11](Considering how touchy he was about... well, touching when he was alive, this does feel kind of strange.)\e"
+		"\1\s[60]\b[11](...He's dead, still.)\e"
+		"\1\s[60]\b[11](Pat him any harder and it would probably be considered a slap. Not that he can really object...)\e"
+		"\1\s[60]\b[11](You can't just pat him back to life. That's not how this works.)\e"
+		"\1\s[60]\b[11](You've never really thought about it before, but he can only be in his early twenties, at most.)\e"
+		"\1\s[60]\b[11](Very much still dead.)\e"
+		"\1\s[60]\b[11](You hold his face in your hand for a moment.)\w4\n(The light's gone out of his eyes...)\e"
+	"\1\s[60]\b[11](How old is he again...?)\e"}
+	elseif reference4 == "Shoulders" {
+		"\1\s[60](You shake his shoulder.\w4 Nothing happens.)\e"
+		"\1\s[60]\b[11](You shake his shoulder.\w4 No response.)\e"
+		"\1\s[60]\b[11](Kind of hard to get a dead person's attention.)\e"
+		"\1\s[60]\b[11](If you concentrate, you can almost feel warmth.)\e"
+		"\1\s[60]\b[11](Being a dead body, his arm just flops around in response to you shaking it.)\e"
+		"\1\s[60]\b[11](Does shaking his shoulder count as frantic?)\e"
+		"\1\s[60]\b[11](The other one is staring at you.)\e"
+		"\1\s[60]\b[11](Kind of just dead.)\e"
+		"\1\s[60]\b[11](You shake his shoulder. The other one somehow radiates intense disapproval.)\e"
+		"\1\s[60]\b[11](The other one probably isn't saying anything of note. Just mumbling.)\e"
+		"\1\s[60]\b[11](He looks... shaken.)\w5\n\n(Ba dum tss.)\e"
+	"\1\s[60]\b[11](The shaken dead.)\e"}
+	elseif reference4 == "Stomach" {
+		"\1\s[60]\b[11](Technically you could be trying to punch him, but these text boxes dictate what you do, so you aren't. Does make dialogue a tiny bit harder, but well... he's dead. You try and get an answer out of a dead person.)\e"
+		"\1\s[60]\b[11](As dead as possible.)\e"
+		"\1\s[60]\b[11](Pretty weird to try and punch a dead person.)\e"
+		"\1\s[60]\b[11](That jacket really is cool though. You'll have to ask him about it...)\w4\n\n(When you find a time machine, that is.)\e"
+		"\1\s[60]\b[11](Are you trying to be mean? What's in it for you?)\e"
+		"\1\s[60]\b[11]%OnCreepyTextWait('%(username) leave it alone already, I didn't do anything')\e"
+		"\1\s[60]\b[11](You pat the dead body. Kinda dead, though, so he doesn't say anything.)\e"
+		"\1\s[60]\b[11](*Pat pat*.)\w4\n\n(The other one seems to be judging you.)\e"
+		"\1\s[60]\b[11](This would be fun if he liked it and wasn't dead.)\e"
+		"\1\s[60]\b[11](You pat him. He doesn't really protest, being dead and all.)\e"
+		"\1\s[60]\b[11](Dead people don't generally remember things, do they?)\e"
+		"\1\s[60]\b[11](Almost feels like he's breathing.)\e"
+		"\1\s[60]\b[11](Pat pat pat.)\e"
+		"\1\s[60]\b[11](Pat pat pat pat pat.)\e"
+	"\1\s[60]\b[11](He never said you could pat him, dead or not.)\e"}
+	elseif reference4 == "Foot" {
+	"\1\s[60]\b[11](You found the foot. It's definitely twisted the wrong way.)\e"}
+	else {OpenKeroMenu}
+	}
+	else {
 	yamiable -= 6
  	if reference4 == "Head" || reference4 == "Face"
 	{
@@ -377,46 +603,46 @@ MouseDoubleClickKero
 		}
 		elseif yamiable >= 200
 		{
-			"\1\s[10]Hey, fuck off!\e"
-			"\1\s[10]Don't you have anything better to do with your time?\e"
-			"1\s[10]Is this *needed*?\e"
-			"\1\s[10]Cut it out!\e"
-			"\1\s[10]Y'know, there's this thing? About hurting other people? And that it's generally bad?\e"
-			"\1\s[10]That fucking *hurts*, y'know!\e"
-			"\1\s[10]Ow, what the fuck %(username)?!\e"
-			"\1\s[10]Here I thought you were at least *decent*.\e"
+			"\1\s[17]Hey, fuck off!\e"
+			"\1\s[19]Don't you have anything better to do with your time?\e"
+			"\1\s[17]Is this *needed*?\e"
+			"\1\s[17]Cut it out!\e"
+			"\1\s[19]Y'know, there's this thing? About hurting other people? And that it's generally bad?\e"
+			"\1\s[17]That fucking *hurts*, y'know!\e"
+			"\1\s[17]Ow, what the fuck %(username)?!\e"
+			"\1\s[18]Here I thought you were at least *decent*.\e"
 		}
 		elseif yamiable >= 50
 		{
-			"\1\s[10]Hey!\e"
-			"\1\s[10]Seriously, stop it!\e"
-			"\1\s[10]Hey, %(username)! Fuck off!\e"
-			"\1\s[10]That fucking *hurts* dude, don't you know that?\e"
-			"\1\s[10]%(username), don't fucking hit people!\e"
-			"\0\s[0]H\w2-\w2Hey\w2, leave him alone\w2!\e"
-			"\1\s[10]*Don't* fucking hit me, thanks!\e"
-			"\1\s[10]Do you think you could live without fucking hitting me? D'y'think you could make that happen?\e"
+			"\1\s[17]Hey!\e"
+			"\1\s[17]Seriously, stop it!\e"
+			"\1\s[17]Hey, %(username)! Fuck off!\e"
+			"\1\s[18]That fucking *hurts* dude, don't you know that?\e"
+			"\1\s[17]%(username), don't fucking hit people!\e"
+			"\0\s[9]H\w2-\w2Hey\w2, leave him alone\w2!\e"
+			"\1\s[17]*Don't* fucking hit me, thanks!\e"
+			"\1\s[18]Do you think you could live without fucking hitting me? D'y'think you could make that happen?\e"
 		}
 		elseif yamiable <= 0
 		{
-			"\1\s[10]\f[italic,true](For a moment, you think he's going to say something, but he doesn't.\w4 Strange, from someone so\w2 talkative.)\f[italic,false]\e"
-			"\1\s[10]*(You wonder when he stopped talking to you.\w6 You miss his voice.)*\e"
-			"\1\s[10]Could y'not...?\e"
-			"\1\s[10]Tryin' t'knock me out over there...?\e"
-			"\1\s[10]*(That had to hurt.)*\e"
-			"\1\s[10]*(He doesn't stand up for himself, even.)*\e"
-			"\1\s[10]*(What happened to his fight?)*\e"
-			"\1\s[10]*(He should be fighting back.\w3 You want him to.)*\e"
-			"\1\s[10]*(Could you make __him__ cry...?)*\e"
+			"\1\s[18]\f[italic,true](For a moment, you think he's going to say something, but he doesn't.\w4 Strange, from someone so\w2 talkative.)\f[italic,false]\e"
+			"\1\s[14]*(You wonder when he stopped talking to you.\w6 You miss his voice.)*\e"
+			"\1\s[14]Could y'not...?\e"
+			"\1\s[14]Tryin' t'knock me out over there...?\e"
+			"\1\s[14]*(That had to hurt.)*\e"
+			"\1\s[14]*(He doesn't stand up for himself, even.)*\e"
+			"\1\s[14]*(What happened to his fight?)*\e"
+			"\1\s[14]*(He should be fighting back.\w3 You want him to.)*\e"
+			"\1\s[14]*(Could you make __him__ cry...?)*\e"
 		}
 		else
 		{
-			"\1\s[10]Hey, is that really needed?\e"
-			"\1\s[10]I'm not really *asking* for a brain injury, but with th'way you're going...\e"
-			"\1\s[10]%(username), please...\e"
-			"\1\s[10]It doesn't hurt any less the more you do it, you do know that right?\e"
-			"\1\s[10]What'll it take for you to leave off?\e"
-			"\1\s[10]*(He looks tired.)*\e"
+			"\1\s[18]Hey, is that really needed?\e"
+			"\1\s[18]I'm not really *asking* for a brain injury, but with th'way you're going...\e"
+			"\1\s[13]%(username), please...\e"
+			"\1\s[19]It doesn't hurt any less the more you do it, you do know that right?\e"
+			"\1\s[19]What'll it take for you to leave off?\e"
+			"\1\s[19]*(He looks tired.)*\e"
 		}
 	}
 	elseif reference4 == "Stomach"
@@ -426,47 +652,47 @@ MouseDoubleClickKero
 			//yzhovpunch += 1
 			//im changing instances of punch to poke for this -- he still has reason to dislike it put it makes more sense
 			"\1\s[17]My arms are crossed for a reason, buddy\w1.\e"
-			"\1\s[10]Alright, if you try to poke me, what makes you think I'll like it?\e"
-			"\1\s[10]If I ask you nicely, will you not poke me?\e"
+			"\1\s[19]Alright, if you try to poke me, what makes you think I'll like it?\e"
+			"\1\s[18]If I ask you nicely, will you not poke me?\e"
 			"\1\s[17]Hey\w2, %(username)\w1.\w4 Go \w2to \w2hell.\e"
 		}
 		elseif yamiable <= 200
 		{
-			"\1\s[10]Hey, you like poking people? Huh? You like pretending your finger is a sharp knife and you're fucking stabbing someone with it?\e"
-			"\1\s[10]Do you live to poke people %(username)? Is that your *sole* purpose in life?\e"
-			"\1\s[10]You have anything better to do?\e"
-			"\1\s[10]G-d, that still hurts, you know.\e"
-			"\1\s[10]Here's some advice! Don't go around poking people.\e"
-			"\1\s[10]I can garuntee you, there's a million better ways to spend your time than sitting here and fucking poking me.\e"
-			"\1\s[10]G-d, really? Do you have to do that?\e"
+			"\1\s[18]Hey, you like poking people? Huh? You like pretending your finger is a sharp knife and you're fucking stabbing someone with it?\e"
+			"\1\s[18]Do you live to poke people %(username)? Is that your *sole* purpose in life?\e"
+			"\1\s[18]You have anything better to do?\e"
+			"\1\s[19]G-d, that still hurts, you know.\e"
+			"\1\s[17]Here's some advice! Don't go around poking people.\e"
+			"\1\s[19]I can guaruntee you, there's a million better ways to spend your time than sitting here and fucking poking me.\e"
+			"\1\s[17]G-d, really? Do you have to do that?\e"
 		}
 		elseif yamiable <= 50
 		{
-			"\1\s[10]Hey, fuck off.\e"
-			"\1\s[10]Go to hell, %(username).\e"
-			"\1\s[10]This fucking sucks and I hate being here.\e"
-			"\1\s[10]Fuck off already!\e"
-			"\1\s[10]Is this g-ddamn *necessary*? Huh?\e"
-			"\1\s[10]I *really* wish you'd just let us go home already!\e"
-			"\1\s[10]That hasn't stopped hurting since the last damn time you did it!\e"
+			"\1\s[17]Hey, fuck off.\e"
+			"\1\s[19]Go to hell, %(username).\e"
+			"\1\s[19]This fucking sucks and I hate being here.\e"
+			"\1\s[17]Fuck off already!\e"
+			"\1\s[17]Is this g-ddamn *necessary*? Huh?\e"
+			"\1\s[17]I *really* wish you'd just let us go home already!\e"
+			"\1\s[17]That hasn't stopped hurting since the last damn time you did it!\e"
 		}
 		elseif yamiable >= 0
 		{
-			"\1\s[10]*(He looks distinctly uncomfortable.)*\e"
-			"\1\s[10]*(You're not sure why __he__ won't cry. There's certainly enough reason to.)*\e"
-			"\1\s[10]*(Honestly, poking him isn't that fun now that he doesn't say anything anymore.)*\e"
-			"\1\s[10]*(How to get him to talk again...?)*\e"
-			"\1\s[10]*(The other one won't say anything, but he never did anyways. The loss of this one's voice is more disappointing.)*\e"
-			"\1\s[10]*(Honestly, you still don't get why he's so against a harmless little poke.)*\e"
-			"\1\s[10]*(You don't think he'll say anything else for now.)*\e"
+			"\1\s[14]*(He looks distinctly uncomfortable.)*\e"
+			"\1\s[14]*(You're not sure why __he__ won't cry. There's certainly enough reason to.)*\e"
+			"\1\s[14]*(Honestly, poking him isn't that fun now that he doesn't say anything anymore.)*\e"
+			"\1\s[14]*(How to get him to talk again...?)*\e"
+			"\1\s[14]*(The other one won't say anything, but he never did anyways. The loss of this one's voice is more disappointing.)*\e"
+			"\1\s[14]*(Honestly, you still don't get why he's so against a harmless little poke.)*\e"
+			"\1\s[14]*(You don't think he'll say anything else for now.)*\e"
 		}
 		else
 		{
-			"\1\s[10]I'm guessing you have a severe lack of self-control.\e"
-			"\1\s[10]Do you just enjoy hurting people? Is that your life goal?\e"
-			"\1\s[10]Thanks for checking! Still hurts, same as the last time you poked me.\e"
-			"\1\s[10]Can I interest you in perhaps, a therapist? I just get the feeling you have a lot going on. Y'know. Stuff that drives you to poke people when it's been proven they don't like it. That sort of thing.\e"
-			"\1\s[10]Could you fuck off and go to hell? Be a nice round trip and I wouldn't have to fucking deal with you for a while. That would be nice.\e"
+			"\1\s[18]I'm guessing you have a severe lack of self-control.\e"
+			"\1\s[17]Do you just enjoy hurting people? Is that your life goal?\e"
+			"\1\s[19]Thanks for checking! Still hurts, same as the last time you poked me.\e"
+			"\1\s[18]Can I interest you in perhaps, a therapist? I just get the feeling you have a lot going on. Y'know. Stuff that drives you to poke people when it's been proven they don't like it. That sort of thing.\e"
+			"\1\s[18]Could you fuck off and go to hell? Be a nice round trip and I wouldn't have to fucking deal with you for a while. That would be nice.\e"
 		}
 	}
 	elseif reference4 == "Shoulders"
@@ -476,48 +702,49 @@ MouseDoubleClickKero
 			"\1\s[19]Last I checked, we weren't really friends.\e"
 			"\1\s[18]Uh... thanks?\e"
 			"\1\s[18]...Alrighty then.\e"
-			"\1\s[10]Not really in need of any pats for comfort, here.\e"
-			"\1\s[10]Hey, it's rude to touch people if they haven't said you can already. \w4Seriously, I don't hardly know you yet.\e"
+			"\1\s[18]Not really in need of any pats for comfort, here.\e"
+			"\1\s[18]Hey, it's rude to touch people if they haven't said you can already. \w4Seriously, I don't hardly know you yet.\e"
 		}
 		elseif yamiable <= 200
 		{
-			"\1\s[10]Don't do that.\e"
-			"\1\s[10]Could you find in yourself the fucks to give so that you'll stop?\e"
-			"\1\s[10]Hey, I really fucking hate that %(username). Just a warning.\e"
-			"\1\s[10]Please don't.\e"
-			"\1\s[10]You think you could like, not do that? %(username)?\e"
-			"\1\s[10]Could you fuck off?\e"
-			"\1\s[10]Don't fucking do that.\e"
+			"\1\s[19]Don't do that.\e"
+			"\1\s[18]Could you find in yourself the fucks to give so that you'll stop?\e"
+			"\1\s[17]Hey, I really fucking hate that %(username). Just a warning.\e"
+			"\1\s[14]Please don't.\e"
+			"\1\s[18]You think you could like, not do that? %(username)?\e"
+			"\1\s[19]Could you fuck off?\e"
+			"\1\s[17]Don't fucking do that.\e"
 		}
 		elseif yamiable <= 50
 		{
-			"\1\s[10]Fuck off already!\e"
-			"\1\s[10]Didn't I tell you *not* to do that?\e"
-			"\1\s[10]Hey!\e"
-			"\1\s[10]Stop it!\e"
-			"\1\s[10]Is this really how you want to spend your time?\e"
-			"\1\s[10]I *told* you not to do that, so quit it!\e"
+			"\1\s[17]Fuck off already!\e"
+			"\1\s[17]Didn't I tell you *not* to do that?\e"
+			"\1\s[17]Hey!\e"
+			"\1\s[17]Stop it!\e"
+			"\1\s[17]Is this really how you want to spend your time?\e"
+			"\1\s[17]I *told* you not to do that, so quit it!\e"
 		}
 		elseif yamiable >= 0
 		{
-			"\1\s[10]*(He looks about as uncomfortable as he can be.)*\e"
-			"\1\s[10]*(He's lost all his fight on the matter.)*\e"
-			"\1\s[10]*(You wonder why he doesn't like this so much.)*\e"
-			"\1\s[10]*(You have your suspicions on this subject.)*\e"
-			"\1\s[10]*(He's very pointedly not looking at you.)*\e"
-			"\1\s[10]*(You breifly consider stopping all this touching him.\w3 No, that just wouldn't be any fun.)*\e"
+			"\1\s[14]*(He looks about as uncomfortable as he can be.)*\e"
+			"\1\s[14]*(He's lost all his fight on the matter.)*\e"
+			"\1\s[14]*(You wonder why he doesn't like this so much.)*\e"
+			"\1\s[14]*(You have your suspicions on this subject.)*\e"
+			"\1\s[14]*(He's very pointedly not looking at you.)*\e"
+			"\1\s[14]*(You breifly consider stopping all this touching him.\w3 No, that just wouldn't be any fun.)*\e"
 		}
 		else
 		{
-			"\1\s[10]Coukd you find it in your heart to be nice for once?\e"
-			"\1\s[10]Hey, how many times do I have to tell you not to do that before you won't?\e"
-			"\1\s[10]Really?\e"
+			"\1\s[13]Coukd you find it in your heart to be nice for once?\e"
+			"\1\s[18]Hey, how many times do I have to tell you not to do that before you won't?\e"
+			"\1\s[19]Really?\e"
 		}
 	}
 	else
 	{
 		OpenKeroMenu
 	}
+ }}
  //*********************Advanced User Info*******************************
  //There are other mouse related functions you could set up much like the above, such as OnMouseDragStart, OnMouseDragEnd, OnMouseWheel, and others which correspond to various things you can do with your mouse. You can probably guess what those functions do just by their names - OnMouseWheel would be if someone spun their mouse wheel over a certain area, for example. If you're interested in these, I'd recommend doing some reading at the CROW-SSP Encyclopedia to get a better idea of them and settle down for some trial and error learning as you try to put them in.
  //***********************************************************************

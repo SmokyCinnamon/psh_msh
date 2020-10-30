@@ -51,6 +51,54 @@ AiTalk
 
 RandomTalk : nonoverlap
 {
+	if spooktime == "on"
+	{
+		"\0\s[600]Oh g-d oh g-d oh g-d\e"
+		"\0\s[600]I hate this I hate this fuck fuck fuck fuck\e"
+		"\0\s[700]\b[11]I\n\n\nNever told him\e"
+		"\0\s[700]\b[11]Я\н\н\нНикогда ему не сказал\к"
+		"\0\s[700]\b[11]Do you\w6\w6 h\w4a\w4te me?\e"
+		"\0\s[700]\b[11]Ты мне\ж6\ж6 не\ж4на\ж4вижу?\к"
+		"\0\s[700]\b[11]Undeniably true its truth the the the\e"
+		"\0\s[700]\b[11]hey %OnCreepyTextWait('hey hey hey hey hey hey hey hey')\e"
+		"\0\s[700]\b[11]хей %OnCreepyTextWait('хей хей хей хей хей хей хей хей')\к"
+		"\0\s[700]\b[11]I need to leave tell him tell him tell him it doesnt ma\ntter he'll hate me\e"
+		"\1\s[60]\b[11](He doesn't move...)\e"
+		"\1\s[60]\b[11](Smells like ash...)\e"
+		"\1\s[60]\b[11](Looks like something happened to him.)\e"
+		"\0\s[700]he died he died        %(misha)   wont come back no    no  no\e"
+		"\0\s[700]он умер он умер        Мишка   не вернутся никогда    нет  нет\к"
+		"\0\s[700]scared scar%OnCreepyText('ed scared scared scared scared scare')d scared scared" //on creepytext is in etc. oncreepytextwait is for having a wait time -- better for shorter ones.
+		"\0\s[700]\b[11]your\n\n\n\n\n\n[half]place i'll take     your place\e"
+		"\0\s[700]\b[11]take ill it take ill back ill take it back\e"
+		"\0\s[700]\b[14]nononononononnononononononononononononononoonononononononononononnonnonononononoonoonononononononononononononononononono\e"
+		"\0\п[700]\b[14]нетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетне\к"
+		"\1\s[60]\b[11](Looks pretty dead.)\e"
+		"\1\s[60]\b[11]Всё в поря%OnCreepyText('дке, Паша,') мне х         о       ро ш     о\e"
+		"\0\s[600]this is wrong this is wrong this is wrong this is wrong\e"
+		"\0\s[600]I can't be back, %(username) tell me I'm not back please, please, he's dead g-d he's dead og g-d oh g-d oh g-d\e"
+		"\1\s[60]\b[11](No burn marks...)\e"
+		//"\1\s[60]\b[11](His foot's turned the wrong way.)\e"
+		"\1\s[60]\b[11](Cool jacket, though.)\e"
+		"\1\s[60]\b[11](You wonder if he's just pretending.)\e"
+		"\1\s[60]\b[11]%OnCreepyTextWait('IS THIS HOW IT ENDS?')"
+		"\1\s[60]\b[11]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
+		"\0\s[600]я виноватый, я виноватый, чёрт. чёртчёртчёртчёртчёртчёртчёрт\e"
+		"\0\s[702]\b[11]%(username) простите, пожалйста, прости мне я забыл я забыл. я виноват, простите простите\к"
+		"\0\п[700]\b[11]не я? не я? а ты, как ты? всё в порядке %(username)? да? да? это должен быть. ты будешь счастливый.\н\н(половина)научи меня быть счастливым\к"
+		"\0\s[702]i'm sorry i'm sorry won't do it again i won't i won't i won't\e"
+		"\0\s[702]простите простите я это больше не делаю не буду не буду не буду\к"
+		"\0\s[702]he's dead he can't say anything stop waiting stop stop стой стой стой стой стой\к"
+		if selfharm == "on" {
+			"\0\s[700]\b[11]You\n\nback take it back you did\n[half]wrong with me\n[half]should i save %(himher) put\nout\n[half] of my misery   ? i'll do it i will i will it's for the best %(username) he's already\e"
+			"\0\s[700]\b[11]you\w5 would pre\w3fer i   was dead yes ?\ni'll do it kill myself that's not hard nobody here vanya's gone gone %OnCreepyText('gone gone gone gone')\e"
+			"\0\s[700]\b[11]shouldn't be here i should die i should die i should die\e"
+			"\0\s[700]\b[11]i tried to join him wasnt it not right but i did remember misha you remember right\e"
+			"\0\s[700]\b[11]arms hurt why do they didn't do anything didn't hurt them this time misha knows does he? does he?\e"
+		}
+	}
+	else
+	{
 	//so remember how these things work? each other is for if they're arguing. 500 is neutral, 200 is uncomfortable, 50 is realizing you're kind of mean, in-between is becoming even more reclusive and 0 is when even misha stops trying to stand up to you. this is so mean but relationship systems are fun...
 	//ah someone helped. relationship = 0,scared = 1,neutral = 2,friends = 3 they probably trust you!
 	// one last note: friendlyall is their values added together and should determine more the overall tone of things, but the only way i see out of this is many many elseifs
@@ -70,7 +118,7 @@ RandomTalk : nonoverlap
 	
 	// if spooktime == "on"
 	// {
-	// "\1\s[10]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
+	// "\1\s[60]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
 	// }
 	// else
 	
@@ -272,12 +320,16 @@ RandomTalk : nonoverlap
 	
 	if nowshell == "default_shell" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
 	{
+
 	//Then these conversations are available! Note the brackets enclosing this set of dialogue.
-	//"\1\s[18]What happened to your wrist, anyways?\w8\0\s[3]...Nothing important. \w8\1\s[13]\n\n[half]Important enough for you to not tell me. \w8\0\s[4]\n\n[half]...\e"
+		if sh == "on"
+		{
+			"\1\s[18]What happened to your wrist, anyways?\w8\0\s[3]...Nothing important. \w8\1\s[13]\n\n[half]Important enough for you to not tell me. \w8\0\s[4]\n\n[half]...\e"
 	
-	//"\1\s[13]...So, how's Anchor 1 healing?\w8\0\s[9]Fine.\1\s[18]\n\n[half]Well, Vanya did say you'd tell me at some point. \w4\0\s[2]\n\n[half]Quit it! %(username) is right there! \w8\1\s[17]\n\n[half]Jeez, fine.\e" //shell related?
+			"\1\s[13]...So, how's Anchor 1 healing?\w8\0\s[9]Fine.\1\s[18]\n\n[half]Well, Vanya did say you'd tell me at some point. \w4\0\s[2]\n\n[half]Quit it! %(username) is right there! \w8\1\s[17]\n\n[half]Jeez, fine.\e" //shell related?
 	
-	// "\1\s[10]ah, it's kind of cold here.\w8\0\s[7]I don't wear long sleeves all the time.\e" //shell related? note that surface7 needs changed. doesn't match up as well with Mikhail's as it should.	
+			"\1\s[10]ah, it's kind of cold here.\w8\0\s[7]I don't wear long sleeves all the time.\e" //shell related? note that surface7 needs changed. doesn't match up as well with Mikhail's as it should.	
+		}
 	}
 	
 	//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
@@ -384,7 +436,9 @@ RandomTalk : nonoverlap
 	{
 		"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"
 		
-		//"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes
+		"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes
+		
+		"\0\s[0]Sundays are just so... so *boring*.\w6\1\s[10]Maybe to you.\w6\0\s[0]\n\n[half]Hey, what's that supposed to mean?\w6\1\s[10]\n\n[half]Nothing.\e"
 	}
 	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
 	if timeslot == "earlymorning"
@@ -392,6 +446,8 @@ RandomTalk : nonoverlap
 		"\0\s[0]Feels early.\w8\1\s[10]That's cause it is.\e"
 		
 		"\0\s[0]Can you read books like that this early?\w8\1\s[10]I don't see why not.\e" //pasha means upsode down.
+		
+		"\0\s[0]Can you read in *english* this early?\w6\1\s[10]Yes?\w6\0\s[0]\n\n[half]Oh, nothing, just that my brain meltswhenever I try.\w6\1\s[10]\n\n[half]Lovely imagery Pasha, thank you.\e"
 	}
 	if timeslot == "evening"
 	{
@@ -402,6 +458,10 @@ RandomTalk : nonoverlap
 		"\0\s[0]Are you getting tired\w2? I\w2'm getting tired\w2.\w6\1\s[10]I think that's just a you thing.\e"
 		
 		"\1\s[10]I would absolutely love to pet your cat right now.\w6\0\s[0]Hey\w2, %(username)\w2! Go beam my cat up here\w2!\e"
+		
+		"\1\s[10]*(...he's doing what is perhaps the worst attempt at air guitar anyone has ever seen. It's highly amusing.)*\e"
+		"\1\s[10]Hmm...\w6\0\s[0]Что-то не так?\w6\1\s[10]\n\n[half]Ах, нет. Просто думаю о наши друзья.\w6\0\s[0]\n\n[half]Ага, ну ладно. Иногда мне тоже.\e"
+		
 	}
 	
 	
@@ -481,44 +541,45 @@ RandomTalk : nonoverlap
 		}*/
 		"\0\s[9]So\w2.\w3.\w3.\w3 Um\w2, how\w2's it going\w2, %(username)\w2?\e"
 		"\0\s[9].\w2.\w2.\e"
-		"\0\s[0]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
+		"\0\s[8]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
 		"\1\s[10]Hey there, %(username).\e"
 		"\1\s[10]You have an interesting interpretation of what it means to be nice, %(username).\e"
-		"\1\s[10]What's up there, %(username)?\e"
+		"\1\s[18]What's up there, %(username)?\e"
+		//"\1\ы[10]Тест. да.\у"
 		if другдруга == 0
 		{
-			"\1\s[10]What do you think Valya's up to right now?\w6\0\s[0]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"
+			"\1\s[10]What do you think Valya's up to right now?\w6\0\s[8]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"
 			
 			"\1\s[10]Jora would be *so* lost right about now if he were here.\w6\0\s[0]Y\w2'think\w2? He can take care of himself\w2.\w6\1\s[10]\n\n[half]Dude, *we* still don't know how to do like, anything.\w6\0\s[0]\n\n[half]Wrong\w2.\w4 We can explore computers\w2.\w4 And do other computer stuff\w2.\w6\1\s[10]\n\n[half]That... wasn't my point...\w6\0\s[0]\n\n[half]Oh yeah\w2? What was it then\w2?\e"
 			
 			"\0\s[0]Wonder how my cat\w2's doing\w2.\e"
 			
-			"\1\s[10]...It's kind of boring here.\e"
+			"\1\s[19]...It's kind of boring here.\e"
 		}
 		"\1\s[10]...\e"
 	}
 	elseif friendlyall >= 100
 	{
-		"\1\s[10]Guess the user must not like us very much.\e"
-		"\1\s[10]Do you like, have something against us?\w3 Hello? \w3%(username)?\0\s[3]...\e"
-		"\1\s[10]Really not friendly, huh?\e"
-		"\1\s[10]So how's it going in the land of assholes, %(username)? Having fun?\e"
-		"\1\s[10]And what are you up to on this fine day, %(username)? Tormenting us?\e"
+		"\1\s[19]Guess the user must not like us very much.\e"
+		"\1\s[17]Do you like, have something against us?\w3 Hello? \w3%(username)?\0\s[3]...\e"
+		"\1\s[18]Really not friendly, huh?\e"
+		"\1\s[18]So how's it going in the land of assholes, %(username)? Having fun?\e"
+		"\1\s[17]And what are you up to on this fine day, %(username)? Tormenting us?\e"
 		//"\0\s[0]%(username) не\w2.\w2.\w2.\w3\nк нам не хорошо относится\w2, да\w2? \1\s[10]А ты только что узнал? Правда же, Паша, я думал, что уже сказал. Это-\w4\n\n*(He seems to have noticed your interest...)*\e"
-		"\0\s[0]You wouldn\w2't happen to have any music around here\w2, would you\w2?\e"
-		"\1\s[10]*(Sometimes you wonder about this one.)*\e"
-		"\1\s[10]*(He couldn't be more pointedly ignoring you.)*\e"
+		"\0\s[9]You wouldn\w2't happen to have any music around here\w2, would you\w2?\e"
+		"\1\s[14]\w4*(Sometimes you wonder about this one.)*\e"
+		"\1\s[19]*(He couldn't be more pointedly ignoring you.)*\e"
 		"\0\s[0]*(You wonder why he's become so fidgety.)*\e"
-		"\0\s[0]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
+		"\0\s[3]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
 		"\0\s[0]*(You wish he would stop fidgeting.\w4 It's distracting.)*\e"
-		"\1\s[10]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
+		"\1\s[18]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
 	}
 	elseif friendlyall <= 0
 	{
-		"\1\s[10]Wow.\e"
-		"\1\s[10]*(He keeps looking over his shoulder.\w3 Interesting.)*\e"
-		"\0\s[0]*(He doesn't fidget anymore.\w3 good.)*\e"
-		"\0\s[0]%(misha)\w2.\w3.\w3.\w6\1\s[10]?\w6\0\s[0]What do you think of %(username)\w3?\w4\1\s[10]Well... "
+		"\1\s[18]Wow.\e"
+		"\1\s[14]*(He keeps looking over his shoulder.\w3 Interesting.)*\e"
+		"\0\s[3]*(He doesn't fidget anymore.\w3 good.)*\e"
+		"\0\s[3]%(misha)\w2.\w3.\w3.\w6\1\s[10]?\w6\0\s[0]What do you think of %(username)\w3?\w4\1\s[18]Well... "
 		--
 		"\n*(He doesn't say anything.\w3 Disapppointing.)*"
 		"%(heshe) %(doesnt) like us very much."
@@ -527,33 +588,33 @@ RandomTalk : nonoverlap
 		"%(heshe) remind me of... well, y'know."
 		"I'll tell you later."
 		--
-		" \w6\0\s[0]\n\w2.\w2.\w2.\e"
+		" \w6\0\s[1]\n\w2.\w2.\w2.\e"
 		"\0\s[0]*(You wonder when the best time to talk to him would be.\w3 Soon, perhaps.)*\e" //menu option for... things
 		"\1\s[10]*(He's much less talkative than he used to be.\w3 That's a shame.)*\e"
 		"\1\s[10]*(Somehow, he seems completely calm and very nervous at the same time.)*\e"
 		"\1\s[10]*(The other one hardly talks to him anymore.\w3 It was probaby inevitable, really.)*\e"
 		"\0\s[0]*(This one has always been interesting.\w3 You'll get his secrets if you have to pry them out of him.)*\e"
-		"\1\s[10]*(You wonder why he seems so nervous.)*\e"
-		"\0\s[0]*(This one, if anything, is displaying a complete lack of emotion.\w3 You thought he would have been able to feel something by now, but perhaps not.)*\e"
+		"\1\s[14]*(You wonder why he seems so nervous.)*\e"
+		//"\0\s[0]*(This one, if anything, is displaying a complete lack of emotion.\w3 You thought he would have been able to feel something by now, but perhaps not.)*\e"
 		"\0\s[0]*(This one doesn't seem nearly as intruiging, now.\w3 You should at least find out what he's hiding, in the meantime.)*\e"
 	}
 	else
 	{
 		//"\1\s[10]this takes care of in-between 0 and fifty counting up.\e"
-		"\1\s[10]So, how's it going? Ah, nevermind, I don't think you care anyways.\e"
-		"\1\s[10]%(username)... %(username) really isn't nice, huh?\w6\0\s[0]...\e"
+		"\1\s[18]So, how's it going? Ah, nevermind, I don't think you care anyways.\e"
+		"\1\s[18]%(username)... %(username) really isn't nice, huh?\w6\0\s[0]...\e"
 		//"\1\s[10]Паша, пожалуйста, говори со мне.\w6\0\s[0]...\e" he sounds formal. maybe he shouldn't. fuck you russian for your long words
 		"\1\s[10]So %(username)... oh, I don't think you care, nevermind.\e"
 		//"\1\s[10]%(username), why are you like this?\w8\w8\![raise,OnMishaTalk]\e"
-		"\1\s[10]How's your day been, Pasha?\w6\0\s[0]...\e"
-		"\1\s[10]You missing your cat, Pasha?\w6\0\s[0]...\e"
-		"\1\s[10]%(username), you sure you don't just want like, a hug or something?\e" //misha over here like: I *will* offer you affection because that's hte only way we possibly have to get you to stop hating us
-		"\1\s[10]Pasha, hey, how've you been?\w6\0\s[0]...\e"
-		"\1\s[10]What do you think of calling Jora or someone? \w3If we can do it, I guess.\w6\0\s[0]...\e" //someday we will have all six on the same desktop and the world will explode. phone calls might be cute though
-		"\0\s[0]Hey\w2, um\w3.\w3.\w3. you doing okay?\w6\1\s[10]Mmh, about as well as I can be.\e" //pasha: i am noncomittal | misha: two can play at that game
-		"\0\s[0]Um\w3, %(misha)\w3.\w3.\w3.\w4\nNevermind\w3.\w3.\w3.\e"
+		"\1\s[10]How's your day been, Pasha?\w6\0\s[9]...\e"
+		"\1\s[10]You missing your cat, Pasha?\w6\0\s[9]...\e"
+		"\1\s[18]%(username), you sure you don't just want like, a hug or something?\e" //misha over here like: I *will* offer you affection because that's hte only way we possibly have to get you to stop hating us
+		"\1\s[10]Pasha, hey, how've you been?\w6\0\s[9]...\e"
+		"\1\s[10]What do you think of calling Jora or someone? \w3If we can do it, I guess.\w6\0\s[9]...\e" //someday we will have all six on the same desktop and the world will explode. phone calls might be cute though
+		"\0\s[0]Hey\w2, um\w3.\w3.\w3. you doing okay?\w6\1\s[18]Mmh, about as well as I can be.\e" //pasha: i am noncomittal | misha: two can play at that game
+		"\0\s[3]Um\w3, %(misha)\w3.\w3.\w3.\w4\nNevermind\w3.\w3.\w3.\e"
 		//"\0\s[0]H\w3-Hey\w2, %(username)\w2? Can I\w2, I\w2, I use\w2, um\w2, your internet browser\w2?\e"
-		"\0\s[0]Really wish we could call someone...\e"
+		"\0\s[9]Really wish we could call someone...\e"
 		"\1\s[10]*(Somehow, he looks less in control of things.)*\e"
 		"\1\s[10]*(You wonder about him sometimes.)*\e"
 		"\0\s[0]*(You wonder if you can tell him to stop fidgeting...)*\e"
@@ -568,6 +629,7 @@ RandomTalk : nonoverlap
 		"\0\s[0]Um\w2.\w2.\w2.\w2 Hi\w2, %(username)\w2.\e"
 		"\0\s[0]%(misha)\w2, do\w2-\w4\1\s[10]Заткнись.\w6\0\s[3]\n\n\w2.\w2.\w2.\e" //there has to be a harsher way of saying shut up. i do not know it
 		"\0\s[0]Um\w2.\w2.\w2. Mishka\w2-\w3\1\s[10]\4\e"
+	}
 	}
 }
 
@@ -645,48 +707,32 @@ OnMinuteChange
  	if minute == 0 //These check what time it is. uses the same as your phone, but the ghosts just say whatever. this is for if there are no current minutes, i guess?
 	{
  		if hour == 12 //And the hour equals 12, ie it's noon. You can change this to some other hour if you want.
-		{
- 			"\0\s[0]It's noon.\e"
-		}
+		{ if spooktime == "on"; {"\0\s[700]noon noon noon noon\e"}; else {;"\0\s[0]It's noon.\e"} }
  		elseif hour == 0 //midnight
 		{
+			if spooktime == "on"; {"\0\s[700]late told me\nsh\w4ouldn't be awake\e"}; else {
  			"\0\s[0]It's midnight\w2.\w4 \1\s[10]Kinda late\w2, wouldn't you agree %(username)\w2?\e"
- 			"\0\s[0]Midnight.\w4\1\s[10]That it is\w1.\e"
+ 			"\0\s[0]Midnight.\w4\1\s[10]That it is\w1.\e"}
 		}
 		elseif hour == 23 //if it's eleven
 		{
 			if minute == 55 //and the fancy: eleven fifty five.
-			{
-			"\1\s[10]5 to 12. Shouldn't you be asleep?\e"
-			}
+			{ if spooktime == "on"{"\1\s[60](Soon.)\e"}; else{"\1\s[10]5 to 12. Shouldn't you be asleep?\e"}}
 			else //if it isn't 11:55. These are meant to be examples of specific times you can check, you don't have to check for the same times. You can also always delete individual elseifs if you can't think of any time to check. Like, you could delete the elseif for hour == 23 and the subsequent checks below it, then move on to the elseif below for hour 7. This section is flexible.
-			{
-			"\\s[10]It's 23. Time for bed.\e"
-			}
+			{ if spooktime == "on"{"\0\s[700]sleep %OnCreepyText('sleep sleep sleep sleep sleep')\e"}; else{"\0\s[10]It's 23. Time for bed.\e"}}
 		}
 		elseif hour == 15 && minute == 30 //&& makes them go at the same time,basically. in theory this should be 3.30 but for reasons unknown to man, it's not. Zar's note said 7.30 on a sunday?
-		{
-			"\0\s[0]15:30, %(username).\e"
-		}
+		{ if spooktime == "on"; {"\0\s[700]three and\w4 a\w7 h a l f\e"}; else; {"\0\s[0]15:30, %(username).\e"}}
 		elseif hour == 16 && minute == 30 //note that these are for keeping you accountable, in all honesty.
-		{
-			"\0\s[0]16:30.\e"
-		}
-		elseif hour == 16 && minute == 45
-		{
-			"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"
-		}
+		{ if spooktime == "on"; {""}; else; {"\0\s[0]16:30.\e"}}
+		elseif hour == 16 && minute == 45; { if spooktime == "on"; {""}; else; {"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"}}
 		elseif hour == 16 //hour checks.
-		{
-			"\1\s[10]It's 16. Don't you have something to do soon?\e"
-		}
+		{ if spooktime == "on"; {"\1\s[60]\b[11](If you were the type to check the clock, you'd see that it's four. You're welcome.)\e"}; else; {"\1\s[10]It's 16. Don't you have something to do soon?\e"}}
 		elseif hour == 15
-		{
-			"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"
-		}
+		{ if spooktime == "on"; {"\0\s[700]\b[11]you were 15 once right right\e"}; else; {"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"}}
 		else
-		{
-			"\0\s[0]It's %(hour12)'o clock.\e"
+		{ if spooktime == "on"; {"\0\s[700]\b[11] hour hour %(hour12) am? pm?\w5 misha i don't know hey hey misha\e"}; else
+		{"\0\s[0]It's %(hour12)'o clock.\e"}
 			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
 		}
 	}
@@ -726,18 +772,21 @@ OnSecondChange
 		mikireflag = reference1
 	if reference2 == 1
 	{
+		if spooktime == "on"; {""}; else{
  		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
 		
  		"\0\s[0]Me and Misha are overlapping.\w8\1\s[19]Seeing as your resolution is %screenwidthx%screenheight, %(username), Shouldn't we have enough space?\4\e"
 		
 		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
 		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+		}
 	}
  }
- /*
+ 
  OnHourChange
  {
-	 if passmin == 59
+	if spookster == "on" && RAND(100) < 12; {spooktime = "on"; "\0\s[700]morning morning %(hour12) im sorry %(username) dont worry dont worry\e"}
+	/* if passmin == 59
  		{
 	 	passmin = 0
  		passhour= passhour + 1
@@ -770,26 +819,24 @@ OnSecondChange
 					"fall"
 				}
 			}
-		} 
- }*/
+		}*/
+ }
 
  //---- MikireTalk ---------------------------------------------------------------------
  //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.
  
 MikireTalk
- {
+ { if spooktime == "on"; {""}; else{
 	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring him back."
 	//this does in fact work. why would Misha lie to you?
 	//maybe if you're being mean. He may have an honest face but not many reservations about lying.
- }
+ }}
 
  //----EndMikireTalk--------------------------------------------------------------------
  //For after you bring the character back on screen.
  
 EndMikireTalk
- {
-	"\0\s[0]I'm no longer off the screen.\w8\1\s[16]Yay!\w8\0\s[9]\n\n[half]Party time.\e"
- }
+ {if spooktime == "on"; {""}; else{"\0\s[0]I'm no longer off the screen.\w8\1\s[16]Yay!\w8\0\s[9]\n\n[half]Party time.\e"}}
 
 
 //**** OnSurfaceRestore *****************************************************************
@@ -811,10 +858,14 @@ OnSurfaceRestore
  	//{
  	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
  	//}
- 	//else
- 	//{
-	//"\0\s[0]\1\s[10]\e"
-	//}
+	if spooktime == "on"
+	{
+		"\0\s[700]\1\s[60]\e"
+	}
+ 	else
+ 	{
+	"\0\s[0]\1\s[10]\e"
+	}
  }
 
  
@@ -834,5 +885,9 @@ OnKeyPress
 	elseif reference0 == "f1"
 	{
 	"\![open,readme]"
+	}
+	elseif reference0 == "f2"
+	{
+		OnTestvariable
 	}
 }

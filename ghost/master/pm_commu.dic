@@ -27,6 +27,7 @@ ReplyToUser
 
 ReplyToGhost
 {
+	//res_reference0 = reference0 ?
 	if reference0 == "Azura"
 	{
 		res_reference0 = reference0
@@ -34,7 +35,7 @@ ReplyToGhost
 			//"\1\s[10]Who're you?\w3 What's up with wings?\w3\0\s[0]\f[height,8]\f[italic,true]The\f[italic,false] wings\w2, Misha\w2.\f[height,false]\e"
 			//"\1\s[10]Your name's Azura, huh?\w4\0\s[0]Isn\w2't that a type of blue\w2.\w2.\w2.\w2?\e"
 			//"\1\s[10]Hey 'Zura.\w4\0\s[0]...Mishka\w2, you don\w2't know her yet\w2.\e"
-			"\0\s[0]Mmn\w2.\w3.\w3.\w6\1\s[10]What's wrong?\w4\0\s[0]...\f[height,8]she's looking at me\w2.\w2.\w2.\f[height,false]\e"
+			"\0\s[4]Mmn\w2.\w3.\w3.\w6\1\s[10]What's wrong?\w4\0\s[3]...\f[height,8]she's looking at me\w2.\w2.\w2.\f[height,false]\e"
 		}
 	}
 	elseif reference0 == "Wilson_P._Higgsbury"
@@ -48,7 +49,7 @@ ReplyToGhost
 	{
 		res_reference0 = reference0
 		{
-			"\0\s[10]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\e"
+			"\0\s[0]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\e"
 		}
 	}
 	elseif reference0 == "CheeryBot"
@@ -62,7 +63,7 @@ ReplyToGhost
 	{
 		res_reference0 = reference0
 		{
-		"\0\s[0]%(res_reference0).\w8\1\s[10]Odd thing to say.\e"
+		//"\0\s[0]%(res_reference0).\w8\1\s[10]Odd thing to say.\e"
 		
 		"\1\s[10]Hi, %(res_reference0).\e"
 		}

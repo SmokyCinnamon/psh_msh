@@ -3,23 +3,52 @@
 
 OpenKeroMenu
  {
-	"\1\s[10]\b[2]"
-	"\1\s[18]\b[2]"
+	if spooktime == "off"
+	{
+		"\1\s[10]\b[2]"
+		"\1\s[18]\b[2]"
 	
-	//You've seen so far that you can set up multiple options for menu introductions. You can also set up multiple poses to match up to multiple dialogue. So for example, when you open Triangle's menu, he may randomly do any of these three poses, and randomly choose from any of the four dialogue options below, before continuing with his menu. Make a close note of the -- dashes breaking these up.
- 	--
-	"A menu."
- 	"Menus! \w4.\w2.\w3.\w3.\w4 Are kind of boring."
- 	"Not much in the way of things to do."
- 	--
-	"\n\n[half]/
-	\![*]\q[Update,keroupdatecheck]\n/
-	\![*]\q[Give him a gift?,YzItemMenu]\n/
-	\![*]\q[Stat counter,ycountcheck]\n/
- 	\![*]\q[Bug report,bugreport]\n/
-	//\![*]\q[Test variable,testvariable]\n\n/
-	//When you are done with the test variable, aka your ghost is finished or you just don't want it showing up when you publish your ghost beta or whatevs, simply add two // slashes in front of \![*] to comment the line out. In Notepad++, it will turn green. When you want to use it again, erase the two slashes to turn it back to normal.
-	\![*]\q[Nothing,keroCANCEL]\e"
+		//You've seen so far that you can set up multiple options for menu introductions. You can also set up multiple poses to match up to multiple dialogue. So for example, when you open Triangle's menu, he may randomly do any of these three poses, and randomly choose from any of the four dialogue options below, before continuing with his menu. Make a close note of the -- dashes breaking these up.
+		--
+		"A menu."
+		"Menus! \w4.\w2.\w3.\w3.\w4 Are kind of boring."
+		"Not much in the way of things to do."
+		--
+		"\n\n[half]/
+		\![*]\q[Update,keroupdatecheck]\n/
+		\![*]\q[Talk to a ghost,OnCommunicate]\n/
+		\![*]\q[Give him a gift?,YzItemMenu]\n/
+		\![*]\q[Stat counter,ycountcheck]\n/
+		\![*]\q[Bug report,bugreport]\n/
+		\![*]\q[Test variable,OnTestvariable]\n\n/
+		//When you are done with the test variable, aka your ghost is finished or you just don't want it showing up when you publish your ghost beta or whatevs, simply add two // slashes in front of \![*] to comment the line out. In Notepad++, it will turn green. When you want to use it again, erase the two slashes to turn it back to normal.
+		\![*]\q[Nothing,keroCANCEL]\e"
+	}
+	else
+	{
+		if RAND(10) < 6
+		{
+		"\1\s[60]\b[11]"
+		--
+		"(Smells like ash...)"
+		"(He's not looking at you... is he?)"
+		"\0\s[700]\b[11]hesdeadhesdeadhesdeadhesdeadhesdead\1"
+		"(If he blinks, you're out.)"
+		"(Somehow, this isn't reassuring.)"
+		"(Looks like he can't help you...)"
+		"(He won't answer...)"
+		--
+		"\n\n[half]\![*]\q[He's dead.,donehere]\e"
+		}
+		else
+		{
+			"\0\s[700]\b[11]He's dead %(username) won't answer can't do anything for %(himher) anymore прости прости прости\e"
+			"\0\s[700]\b[11]I meant to meant to meant to maybe %(heshe) can forgive me прости прощай\e"
+			"\0\s[700]\b[11]Forgot forgot too late cant help you %(username)\e"
+			"\0\s[700]\b[11]Leave him leave him %OnCreepyTextWait('buried him') простите простите\e"
+			
+		}
+	}
 }
 
 //There are no real set things for the second character to do, really. You can mostly add whatever functions you want to them, their menu is totally free reign. In mine for example, Hunter has some games, a pseudo-FAQ for users, a bug report, an update option, and most importantly, a test variable. A lot of that is fairly complicated though, so I won't get into it here. Advanced Users can pick up Hunter and Smoker and study their menu.dic to see how I did it though, and those who read the coding page of the walkthrough and want to make their own functions can feel free to add them here. 
@@ -142,13 +171,15 @@ Select.keroupdatecheck
 
 //It is ALWAYS A GOOD IDEA to test your dialogue! If you won't check it with the test variable, at least test it with Script Input! It'll save you so much trouble!
 
-Select.testvariable
+OnTestvariable
 {
 	//yamiable = 500
 	//namiable = 500
 	//другдруга = 0
 	//friendlyall = namiable + yamiable
-	"\1\s[10]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\e"
+	if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
+	"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
+	//"\1\s[10]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\n\e"
 }
 
 /*    #\![*]\q[You're on a computer,computer]\n/

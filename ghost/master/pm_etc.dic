@@ -5,6 +5,60 @@
 //I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
 //It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
 
+//this isnt technically a disclaimer (yet) but it *is* important.
+OnDisclaimer
+{
+	"\1\s[16]\b2\_qHey, question? This is important.\nCan you mess with these for me a second?\nRemember: you can change this in Pasha's config menu later.\0\s[9]\b2\n"
+	--
+	if spookster == "" {spookster = "off"}
+	--
+	{"\![*]Horror/Blood: \q[%(spookster),allaboardthebloodtrain]\n"}
+	--
+	if sh == "" {sh = "off"}
+	--
+	{"\![*]References to suicide/Self harm:\q[%(sh),thatsfairmetoo]\n"}
+	--
+	if sa == "" {sa = "off"}
+	--
+	{"\![*]References to sexual assault: \q[%(sa),ihatethisoptionjustsoyoureaware]\n"}
+	--
+	{"\![*]\q[All of the above,allgood]\n"}
+	--
+	//\![*]\q[Body horror and BLOOD,allaboardthebloodtrain]\n/
+	//\![*]\q[Good with suicide and self harm only.,thatsfairmetoo]\n/
+	//\![*]\q[References to sa,ihatethisoptionjustsoyoureaware]\n/
+	//\![*]\q[Specific combination,hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh]\n/
+	"\![*]\q[None of that!,deargdwhatkindofghostisthis]\n\![*]\q[Config,OnTalkConfig]%(nendmenu)\e"
+}
+Select.allgood
+{
+	"\1\s[16]Well, you're in for a trip, to break the fourth wall even more.\e"; selfharm = "on"; spookster = "on"; sa = "on"
+}
+Select.allaboardthebloodtrain
+{
+	if spookster != "on"; {spookster = "on"}; else {spookster = "off"}
+	--
+	OnDisclaimer
+	//"\1\s[14]...Alright, I guess.\e"; selfharm = "off"; spookster = "on"; sa == "off"
+}
+Select.thatsfairmetoo
+{
+	if sh != "on"; {sh = "on"}; else {sh = "off"}
+	--
+	OnDisclaimer
+	//"\1\s[16]If this wasn't a fourth wall break, I'd be having a crisis.\e"; selfharm = "on"; spookster = "off"; sa == "off"
+}
+Select.ihatethisoptionjustsoyoureaware
+{
+	if sa != "on"; {sa = "on"}; else {sa = "off"}
+	--
+	OnDisclaimer
+	//"\1\s[14]...Well, alright. You're all set.\e'"; selfharm = "off"; spookster = "off"; sa = "on"
+}
+Select.deargdwhatkindofghostisthis
+{
+	"\1\s[16]Just be aware you might miss out on certain features when they get added. That's a long way off, though.\e"; sh = "off"; spookster = "off"; sa == "off"
+}
 
 //--OnFileDrop2
 
@@ -155,7 +209,7 @@ OnVanishSelecting
 
 OnVanishSelected
 {
-	"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?w9\w9\e"
+	"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?\w9\w9\e"
 }
 
 
@@ -287,7 +341,7 @@ OnUpdateBegin
  
 OnUpdateReady
  {
-	"\1\s[10]There are %(reference[0]) new files.\w8\e"
+	"\1\s[10]There are %(reference0) new files.\w8\e"
 	
 	//reference0 here storing the number of new files. You don't have to use it if you don't want to.
  }
@@ -299,14 +353,12 @@ OnUpdateReady
 OnUpdateComplete
  {
 	if reference0 == "none" //if the ghost had nothing to update with
- 	{
- 		"\1\s[10]Nothing new.\e"
-	}
+ 	{"\1\s[10]Nothing new.\e"}
  	else //if the ghost has updated successfully
-	{
-		"\1\s[10]Update worked! Maybe there's new things?\e"
- 	}
+	{"\1\s[10]Update worked! Maybe there's new things?\w4\0\s[0]Check changelog? Do... you want to?\n\![*]\q[yes,opencl]\n\!\q[no,done]\e"}
 }
+Select.opencl
+{ "\0\s[0]\![open,file,changelog.txt] There you go!\e"}
 
  //---- OnUpdateFailure -------------------------------------------------------------
  //Error messages if the update process fails in some way.
@@ -314,18 +366,12 @@ OnUpdateComplete
 OnUpdateFailure
  {
 	if reference0 == "timeout" //if the connection times out
- 	{
- 		"\1\s[10]Connection up and timed out. You might have to try again.\e"
-	}
+ 	{"\1\s[10]Connection up and timed out. You might have to try again.\e"}
  	elseif reference0 == "md5 miss" //This is the final message displayed when you've run into an md5 error below at some point.
-	{
-		"\1\s[10]The MD5 hash of the files don't match.\e" //wait would this be doesnt
- 	}
-	else //for other errors
- 	{
- 		"\1\s[10]Update's gone wrong.\w8\0\s[0]Because of the error '%(reference0)'.\e"
+	{"\1\s[10]The MD5 hash of the files don't match.\e" //wait would this be doesnt
 	}
- }
+	else //for other errors
+ 	{"\1\s[10]Update's gone wrong.\w8\0\s[0]Because of the error '%(reference0)'.\e"}}
 
 
  //---- OnUpdate.OnDownloadBegin ------------------------------------------------
@@ -336,11 +382,12 @@ OnUpdate.OnDownloadBegin
  {
  	if "aitalk" _in_ reference0 //this is checking to see what kind of files are being downloaded. In this case, it's looking for files called aitalk in the download queue. If you want to have a specialized bit of dialogue for each type of file, you can expand this with elseifs and by replacing aitalk with whatever file you have in mind. Keep in mind my warning above though.
  	{
- 		"\0\s[0]We're gonna have more to talk about.\w8\1\s[10]It's in the aitalk file.\e"
+ 		//"\0\s[0]We're gonna have more to talk about.\w8\1\s[10]It's in the aitalk file.\e"
+		"\0\s[0]Hm, words.\e"
  	}
  	else //for files not specified above
  	{
-	"\1\s[10]...\e"
+	//"\1\s[10]...\e"
 	
 	"\0\s[0]...\e"
 	}
@@ -350,25 +397,19 @@ OnUpdate.OnDownloadBegin
  //This checks the hash value of the files in the directory and the files listed in updates.dau, I believe. It will do this for every file the user downloads, so I again remind you of my warning above! For every file they download, they will have to go through three sets of unique dialogue, and it can get old fast. Not to mention it slows things down a lot. Again, I would recommend keeping this very brief, if not just replacing it with "..." instead.
  
 OnUpdate.OnMD5CompareBegin
- {
-	"\1\s[10]...\e"
- }
+ {"\1\s[10]...\e"}
 
  //---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
  //After they've checked the MD5 value and it matches. See above about the length of this message.
  
 OnUpdate.OnMD5CompareComplete
- {
-	"\0\s[0]MD5 check good.\e"
-}
+ {"\1\s[10]MD5 check good.\e"}
 
  //---- OnUpdate.OnMD5CompareFailure ---------------------------------------------------
  //If the MD5 values don't match, meaning if the file is missing or damaged or incomplete in some way. If you follow my Network Update directions carefully, this shouldn't come up very often, but don't be surprised if you run into it every now and then by forgetting a file here or there.
  
 OnUpdate.OnMD5CompareFailure
- {
-	"\0\s[0]The MD5 values don't match.\w8\e"
- }
+ {"\0\s[0]The MD5 values don't match.\w8\e"}
 
  
  
@@ -382,7 +423,8 @@ OnUpdate.OnMD5CompareFailure
  
 OnHeadlinesenseBegin
  {
-	"\0\s[0]%(reference0) selected.\e"
+	if spooktime == "on"; {"\0\s[700]\b[11]%(referenc0) gone pick someone else pick me i'll help i can help i'm helpful\e"}; else
+		{"\0\s[0]%(reference0) selected.\e"}
  }
 
  //---- OnHeadlinesense.OnFind --------------------------------------------------------
@@ -390,44 +432,40 @@ OnHeadlinesenseBegin
  
 OnHeadlinesense.OnFind
 {
+	if spooktime == "on"; { if reference2 == "First" || reference2 == "First and Last"; {"\0\b[14]\s[700]%(reference0):"}
+	elseif reference2 == "Next"; {"\0\b[14]\s[700]%(reference0):"}; elseif reference2 == "Last"; {"\0\b[14]\s[700]%(reference0):"}
+	--
+	"\n\n%reference3\n"
+ 	--
+ 	if reference2 == "First" || reference2 == "Next"
+	{"\![*]\q[Next,] - \![*]\q[donedonedonedone,Headline_Cancel]\e"}
+	else
+ 	{"\![*]\q[cantdoitcantbye,Headline_Cancel]\e"}}; else{
 	//----  What page You're on
- 	if reference2 == "First" || reference2 == "First and Last"
-	{
- 		//---- First page
-		"\0\b2\s[0]%(reference0):"
- 	}
+ 	if reference2 == "First" || reference2 == "First and Last" { //---- First page
+		"\0\b2\s[0]%(reference0):"}
 	elseif reference2 == "Next"
- 	{
-		//---- Second page
- 		"\0\b2\s[0]%(reference0):"
-	}
- 	elseif reference2 == "Last"
-	{
- 		//---- Last page
-		"\0\b2\s[0]%(reference0):"
- 	}
+ 	{ //---- Second page
+ 		"\0\b2\s[0]%(reference0):"}
+ 	elseif reference2 == "Last"{ //---- Last page
+		"\0\b2\s[0]%(reference0):"}
 	--
  	//---- Headlines
 	"\n\n%reference3\n"
  	--
 	//---- Pages
- 	if reference2 == "First" || reference2 == "Next"
-	{
- 		//---- Bottom buttons
-		"\![*]\q[Next,] - \![*]\q[Stop,Headline_Cancel]\e"
- 	}
-	else
- 	{
-		//---- Bottom buttons
- 		"\![*]\q[Stop,Headline_Cancel]\e"
- 	}
+ 	if reference2 == "First" || reference2 == "Next" { //---- Bottom buttons
+		"\![*]\q[Next,] - \![*]\q[Stop,Headline_Cancel]\e"}
+	else {//---- Bottom buttons
+ 		"\![*]\q[Stop,Headline_Cancel]\e"}}
 	
 }
 
 
 Select.Headline_Cancel
 {
-	"\0\s[0]Headline viewing complete.\e"
+	if spooktime == "on"; {"\0\s[700]\b[11]helped helped helped helped !!! helped %(himher) yes i'm helpful\e"}; else {
+	"\0\s[0]Headline viewing complete.\e"}
 	//Actually I take that back, you can change this line of dialogue here for when you're done looking at a headline to something else if you want.
 }
 
@@ -448,17 +486,11 @@ OnHeadlinesenseFailure
 	"\0\s[0]The feed can't updated.\w8\1\s[10]Huh. Why?\w8\0\s[0]\n\n[half]" //This sets up an exchange between the two characters. The final part of the exchange continues below in the if statements.
  	--
 	if reference0 == "can't download" //if they can't download the rss feed for some reason
- 	{
-		"Can't download."
- 	}
+ 	{"Can't download."}
 	elseif reference0 == "can't analyze" //if they can't read the file for some reason
- 	{
-		"Can't analyze."
- 	}
+ 	{"Can't analyze."}
 	else //other errors
- 	{
-		"I don't know."
- 	}
+ 	{"I don't know."}
 	--
  	"\e" //And here is the final /e, so you don't need to include it in the if statements above. Another one of the very rare cases this occurs.
 }
@@ -473,32 +505,26 @@ OnHeadlinesenseFailure
  //This will begin the creation of the updates2.dau file. Not unlike the other beginning functions you've seen throughout this file. Replace with whatever you like.
  
 OnUpdatedataCreating
- {
-	"\1\s[10]Creating updates2.dau.\e"
- }
+ {"\1\s[10]Creating updates2.dau.\e"}
 
  //---- OnUpdatedataCreated -------------------------------------------------------------
  //After the updates2.dau file has been successfully created. Replace with whatever.
  
 OnUpdatedataCreated
- {
-	"\0\s[0]Misha made updates2.dau!\e"
- }
+ {"\0\s[0]Misha made updates2.dau!\e"}
 
  //---- OnNarCreating ------------------------------------------------------------------
  //Along the same lines, this is when they begin creating a .nar file for your ghost. .nars are the format most ghosts will be in, something similar to a .zip file, and this is the format you'll be distributing your ghost in most likely. Replace the dialogue with whatever you like.
  
 OnNarCreating
- {
-	"\0\s[0]Making .nar file. I get to see other computers?\e"
- }
+ {"\0\s[0]Making nar file. I get to see other computers?\e"}
 
  //---- OnNarCreated -------------------------------------------------------------------
  //After the nar file has been successfully created.
  
 OnNarCreated
  {
-	"\0\s[0]I made'%(reference0)'! Misha didn't help very much.\e"
+	"\0\s[0]I made '%(reference0)'! Misha didn't help very much.\e"
 	//reference0 here will be the filename of the nar you just created. It should drop the nar in the folder where all your ghosts are listed, ssp\ghost\.
  }
 
@@ -515,6 +541,7 @@ OnSNTPBegin
  {
 	"\0\s[0]We're going to check the time. Is it wrong?\w9\1\s[10]Connecting to %(reference0).\e"
 	//%(reference0) here is the site they'll be using to check your clock. I wouldn't worry too much about what the site is or where it's defined, it should be accurate. Replace the dialogue with what you need, you don't have to use reference0 if you don't want to.
+	//this site doesn't work anymore & i do Not know where it's defined. :/
  }
 
 
@@ -544,25 +571,19 @@ OnSNTPCompare
  //After they've fixed your clock. Note the \6 tag - that's what actually changes the clock. Do not remove that tag. Replace the rest with what you want.
  
 OnSNTPEXECUTE
- {
-	"\0\s[0]Time's alright now.\6\e"
- }
+ {"\0\s[0]Time's alright now.\6\e"}
 
  //----　OnSNTPCANCEL ------------------------------------------------------------------
  //If you decide not to change your clock when they tell you it doesn't match. Replace with what you want.
  
 OnSNTPCANCEL
- {
-	"\0\s[0]Time's gonna stay wrong, then.\e"
- }
+ {"\0\s[0]Time's gonna stay wrong, then.\e"}
 
  //----　OnSNTPFailure ------------------------------------------------------------------
  //If they can't change the clock for some reason, possibly because the site timed out but it could be anything. Replace with what you want.
  
 OnSNTPFailure
- {
-	"\0\s[0]Oh... I cant change it.\w8\1\s[10]Something went wrong.\e"
- }
+ {"\0\s[0]Oh... I cant change it.\w8\1\s[10]Something went wrong.\e"}
 
 
  //--OnDisplayChange----------------------------------------------------------------
@@ -600,25 +621,19 @@ OnScreenSaverEnd
  //This supposedly is for when a program starts but I have honestly never gotten it to work or seen it happen. I wouldn't sweat these three related functions too much.
  
 OnApplicationBoot
- {
-	"\0\s[0]%(reference0) started.\e"
- }
+ {"\0\s[0]%(reference0) started.\e"}
 
  //---- OnApplicationClose --------------------------------------------------------------
  //See above, but for the program closing.
  
 OnApplicationClose
- {
-	"\0\s[0]%(reference0) closed.\e"
- }
+ {"\0\s[0]%(reference0) closed.\e"}
 
  //---- OnApplicationFileOpen ----------------------------------------------------------
  //I believe this is for when the program detailed above opens a document file of some kind.
  
 OnApplicationFileOpen
- {
-	"\0\s[0]Openin' %(reference1).\e"
- }
+ {"\0\s[0]Openin' %(reference1).\e"}
 
 
 
@@ -636,9 +651,7 @@ OnBatteryLow
  //Likewise, this is for if your battery is REALLY low. Replace as you like.
  
 OnBatteryCritical
-{
-	"\0\s[0]Hey, battery's super low! Please charge your computer!\e"
-}
+{"\0\s[0]Hey, battery's super low! Please charge your computer!\e"}
  
 //--OnBatteryNotify--------------------------------------------------------------------
 //This I believe checks to see if your laptop is plugged in or not. Originally this bit of code was commented out, so I suspect it may not work. It may need a plug-in of some sort. Either way, you can delete it or fill it out as you like.
@@ -659,7 +672,7 @@ OnBatteryNotify
 	elseif reference2 == "offline" //If you unplug your laptop
 	{
 		"\1\s[10]The laptop is not plugged in.\w8\0\s[0]Watch your battery.\e"
-	}
+	}*/
 }
 
 
@@ -668,9 +681,7 @@ OnBatteryNotify
  //A notification for if your system resources are low. I've never seen this happen and my system resources can run pretty low sometimes (woo windows xp woooo), so I suspect this one also may not work without the right plug-in, but I could be wrong. You might as well fill it out.
  
 OnSysResourceLow
- {
-	"\0\s[0]System resources are pretty low.\e"
- }
+ {"\0\s[0]System resources are pretty low.\e"}
 
 
  //--OnShellScaling
@@ -679,18 +690,44 @@ OnSysResourceLow
 OnShellScaling
 {
 	if reference0 >= 150 //this number is the percentage that you're scaling the ghost up to. In this case, it's 150%.
-	{
-		"\0\s[0]We are 150% the original size.\w8\1\s[10]we were too small?\e"
-	}
+	{"\0\s[0]We are 150% the original size.\w8\1\s[10]we were too small?\e"}
 	elseif reference0 == 100 //this is 100%
-	{
-		"\1\s[10]Normal sized.\e"
-	}
+	{"\1\s[10]Normal sized.\e"}
 	elseif reference0 == 50 //this is 50%. You can add any percentage that's listed under shell scaling if you want using more elseifs.
-	{
-		"\0\s[0]We are 50% the original size.\w8\1\s[10]Small screen?\e"
-	}
+	{"\0\s[0]We are 50% the original size.\w8\1\s[10]Small screen?\e"}
 }
 
 //_val =
 //FUNCTIONEX("time_check.dll","how_many_days",_lastyear,_lastmonth,_lastday,0,0,0)
+
+
+OnCreepyTextWait
+{
+    _len = STRLEN(_argv)
+    _display = ""
+    for _i = 0; _i < _len; _i++
+    {
+        _x = RAND(100) //Set this to the maximum X coordinate you want
+        _y = RAND(100) //Set this to the maximum Y coordinate you want
+        _w = RAND(10)  //Set this to the maximum pause time you want, or comment it out if you don't want random pauses
+        
+        _display += ("\_l[%(_x),%(_y)]" + SUBSTR(_argv,_i,1) + "\w%(_w)")
+    }
+    
+    "%(_display)"
+}
+
+OnCreepyText
+{
+    _len = STRLEN(_argv)
+    _display = ""
+    for _i = 0; _i < _len; _i++
+    {
+        _x = RAND(100)
+        _y = RAND(100)
+        
+        _display += ("\_l[%(_x),%(_y)]" + SUBSTR(_argv,_i,1) + "\w%(_w)")
+    }
+    
+    "%(_display)"
+}

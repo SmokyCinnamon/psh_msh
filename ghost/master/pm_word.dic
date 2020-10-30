@@ -4,11 +4,10 @@
 //apparently commas are not allowed
 
 OnItcheck : sequential
-{ 
-//italic check
- "\f[italic,true]" ; "\f[italic,false]"
-}
-Onbocheck : sequential { "\f[bold,true]" ; "\f[bold,false]" } ; Onstcheck : sequential { "\f[strike,true]" ; "\f[strike,false]" } ; Onuncheck : sequential { "\f[underline,true]" ; "\f[underline,false]" }
+{//italic check
+ "\f[italic,true]"; "\f[italic,false]"}
+ 
+Onbocheck : sequential { "\f[bold,true]"; "\f[bold,false]" } ; Onstcheck : sequential { "\f[strike,true]"; "\f[strike,false]" }; Onuncheck : sequential { "\f[underline,true]"; "\f[underline,false]" }
 
 nendmenu
 {
@@ -18,36 +17,16 @@ nendmenu
 }
 
 nitend
-{
-	"\![*]\q[Give him something else?,ItemMenu]\n/
-	\![*]\q[Go back,BACKTOMENU]\n/
-	%(nendmenu)"
-}
+{"\![*]\q[Give him something else?,ItemMenu]\n\![*]\q[Go back,BACKTOMENU]\n%(nendmenu)"}
 
 yendmenu
-{
-	"\![*]\q[Go back,OpenKeroMenu]\n/
-	\![*]\q[Nevermind,keroCANCEL]\e"
-}
+{"\![*]\q[Go back,OpenKeroMenu]\n\![*]\q[Nevermind,keroCANCEL]\e"}
 
 yitend
-{
-	"\![*]\q[Give him something else?,YzItemMenu]\n/
-	\![*]\q[Go back,OpenKeroMenu]\n/
-	%(yendmenu)"
-}
+{"\![*]\q[Give him something else?,YzItemMenu]\n\![*]\q[Go back,OpenKeroMenu]\n%(yendmenu)"}
 
 misha //because... i can?
-{
-	if RAND(100) < 95
-	{
-		"Misha"
-	}
-	else
-	{
-		"Mishka"
-	}
-}
+{if RAND(100) < 95; {"Misha"}; else; {"Mishka"}}
 
 internalenvelope
 {
@@ -119,75 +98,64 @@ lessonkor
 	"자본주의(ja-bon-ju-yi),capitalism"
 }
 
-//You can also format your envelopes like this as one line separated by semicolons, but personally I think the spaced lists above look nicer. It's up to you however you want to set them up.
+isix; {"%(spoop)"}
 
-blanklistparagraph
+
+
+spoop
 {
-	"List paragraph 1"; "List paragraph 2"; "List paragraph 3"; "List paragraph 4"; "List paragraph 5";
-}
+	if sh == "on" {
+		if RAND(100) < 50; {""}
+		else {
+		"\i[601]"; ""; ""
+		--
+		"\i[602]"; ""; ""
+		--
+		"\i[603]"; ""; ""
+		--
+		"\i[604]"; ""; ""
+		--
+		"\i[605]"; ""; ""
+		--
+		"\i[606]"; ""; ""
+		--
+		"\i[607]"; ""; ""
+		--
+		"\i[608]"; ""; ""
+		--
+		"\i[609]"; ""; ""
+		--
+		"\i[610]"; ""; ""}
+		}
+	else {
+		if RAND(100) < 50; {""}
+		else {
+		"\i[601]"; ""; ""
+		--
+		"\i[606]"; ""; ""
+		--
+		"\i[607]"; ""; ""
+		--
+		"\i[608]"; ""; ""}
+}}
 
-
+hesdead
+{if RAND(12) < 3; {""}; else {""; ""; ""; ""; "\i[61]"; "\i[62]"}}
  //**** Don't touch this ***************************************************************
  //This is code stuff and nothing for you to worry about, just save the .dic and move on! You're done!
  
  On_\person
-{
- 	person
-}
-
+{person}
 
 was
-{
-	if plural = 1
-	"were"
-	else
-		"was"
-}
-
+{if plural == 1; { "were" }; else; { "was" }}
 is
-{
-	if plural = 1
-	{
-		"are"
-	}
-	else
-	{
-		"is"
-	}
-}
-
+{if plural == 1; { "are" }; else; { "is" }}
 needs
-{
-	if plural = 1
-	{
-	"need"
-	}
-	else
-	{
-		"needs"
-	}
-}
-
+{if plural == 1; { "need" }; else; { "needs" }}
 doesnt
-{
-	if plural = 1
-	{
-	"don't"
-	}
-	else
-	{
-		"doesn't"
-	}
-}
-
+{if plural == 1; { "don't" }; else; { "doesn't" }}
 isnt
-{
-	if plural = 1
-	{
-	"aren't"
-	}
-	else
-	{
-		"isn't"
-	}
-}
+{if plural == 1; { "aren't" }; else; { "isn't" }}
+need
+{if plural == 1; { "need" }; else; { "needs" }}

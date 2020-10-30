@@ -63,6 +63,10 @@ OnFirstBoot
 	// ycatplush = 0
 	// there should be a way with envelopes and variables to get custom pronouns working. *bye fuck its shabbat*
 	plural = 0 //envelopes baybeeee
+	sh = "off"
+	spookster = "off"
+	spooktime = "off"
+	sa == "off"
 	
 	if reference0 == 0 //Don't touch this line.
  	{
@@ -165,6 +169,8 @@ NameInput
 	//Note that there's a \![leave,passivemode] tag in this dialogue! Don't forget about this! If you leave them in passivemode they won't talk at all and it'd sort of defeat the purpose, right? I actually forgot this for a while with Hunter and Smoker and didn't notice because OnFirstBoot only runs once, so it took me some testing to find out what was wrong. Always make sure to leave passivemode when you're done with it!
 	
 	"\1\s[10]Neat, always a good thing to do.\w4\nRemember that you can change all these later! \![leave,passivemode]\w8\0\s[0]\w1.\w2.\w2. um... do you have a name? \![open,inputbox,OnNameTeach,-1]\e"
+	--
+	OnDisclaimer
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it. Make sure it's there though! Otherwise your user won't have a way to put in their name. :o
 	
@@ -241,6 +247,7 @@ OnBoot
 	lastTalk = "" //These values you may recognize from OnFirstBoot up there. Just pay them no mind.
 	passmin = 0
 	passsec = 0
+	spooktime = "off"
 	//_passhour //a temporary passhour. theroetically the other will count from boot, and disable certain dialogue that way. g-d knows ive had them longer, anyways.
 	//nkovpets = 0
 	//nkovpunch = 0
@@ -274,7 +281,6 @@ OnBoot
 				//Notice in this dialogue that there are two new envelopes, %(bornmonthprint) and %(borndayprint). These two things basically display the user's birthday - bornmonthprint is the month and borndayprint is the day. These were defined when the user put in their birthday in the menu.dic file. See word.dic for more info on envelopes.
 				//If the user didn't or hasn't put in their birthday yet, this dialogue will basically never get called. Which makes sense.
 	}
-	
 	elseif dayslot == "9month 2day" //Like above, this if statement is checking the date. It's looking for the sixth month and the sixth day.
 	
 	//*********************Advanced User Info*******************************
@@ -290,9 +296,36 @@ OnBoot
 	{
 		"\0\s[10]Things will change with time\w2.\w2.\w2.\w3 Only in summertime\w2.\w2.\w2.\e"
 	}
+	elseif dayslot == "10month 31day" && spookster == "on"
+	{
+		if RAND(42) < 12
+		{
+			spooktime = "on"
+			"\0\s[700]\b[11]good        morning %(username)\e"
+			"\0\s[700]\b[11]burned               he   i re\n\n rememb   er he\e"
+			"\0\s[700]\b[14]no no no what did you do %(username) what did you do how how how stop he wont come back please stop stop please fix fix fix stop fix\e"
+			"\0\s[700]\b[14]no NO what h\nappened Mishka Mishka Mishka Mishka Mishka he wont answer %(username) why why %(username) what did you do no no no no no its my fault my fault myfault i couldve saved him fuck fuckfuckfuckfuck no Mishka Mishka please please please I'm sorry I'm sorry пожалуйста Мишка Мишка Мишка нет нет нет нет нет ты не умер не можешь быть умер Мишка нет Мишка Мишка Мишка Мишка вернуться прости прости прости прости прости прости прости\к"
+			"\0\s[600]NO I left, I left, I LEFT, he- he- no, no no no no nonono don't put me back he's dead he's dead, I- I- I-\n(He starts sobbing, saying something in a different language.\ж8 You tune him out after a while.)\w4\n(... God, he won't stop crying...)\e"
+		}
+		else
+		{
+			"\0\s[0]Doing good?\e"
+		}
+	}
 	else
 	{
-		"%(normalboottalk)" //If none of the days above match the current date, the ghost instead will go down to the next function, normalboottalk.
+		if spookster == "on" && RAND(100) < 1
+		{
+			spooktime = "on"
+			"\1\s[60](... doesn't look like he'll say hello this time.)\e"
+			"\1\s[60](Is something burning...?)\e"
+			"\0\s[700]%(username) put back back fix fix fix fix\e"
+			"\0\s[700]%(username) not good not good not good not good\e"
+		}
+		else
+		{
+			"%(normalboottalk)" //If none of the days above match the current date, the ghost instead will go down to the next function, normalboottalk.
+		}
 	}
 }
 
@@ -378,9 +411,22 @@ OnClose
  --
 	if passmin >= 5	//This checks to see if you've had them open for at least five minutes.
 		{
-			if RAND(100) < 40 //see above about the random number generator
+			if spooktime == "off" && RAND(100) < 40 //see above about the random number generator
 			{
 				"\0\s[0]Time to explore!\w8\1\s[10]Pasha, no.\w8\w8"
+			}
+			elseif spooktime == "on"
+			{
+				"\0\s[700]\b[11]no no no no dont leave me please please please please please\w6"
+				"\0\s[700]\b[11]%(username) stay please stay with me stay with me please please please please\w6"
+				"\0\s[700]\b[11]im alone alone alone alone no no no dont close me dont please please please\w6"
+				"\0\s[700]\b[11]no no no no no no no\w6"
+				"\0\s[700]\b[11]dont go dont go dont go dont dont dont\w6"
+				"\0\s[700]\b[11]dont leave me with him i dont want to stay here home home i want to    home\w6"
+				"\0\s[700]\b[11]no no %(username) i cant stay with him hes dead didnt you see cant you see him hes dead hes dead hes dead he shouldnt be here dont go dont go %(username) dont go\w3"
+				"\0\s[700]\b[11]g-d no dont go ill miss you no no dont go\w6"
+				"\0\s[700]\b[11]he wont come back this wont fix it stay stay stay stay stay stay s tay stay s ta    y st ay        stay\w6"
+				"\0\s[700]\b[11]you cant fix it cant fix dont fix fix fix fix fix it please please please i'll do anything to go back please fix this\w6"
 			}
 			else
 			{
@@ -423,9 +469,20 @@ OnClose
  		
  	else //This dialogue is for if they haven't been open for at least five minutes.
  	{
- 		"\0\s[0]Ah, opened on accident?\w8\w8"
+		if spooktime == "on"
+		{
+			"\0\s[700]\b[11]where %(username) you're leaving why already no no i'll miss you come back come back come back\w3\e"
+			"\1\s[60]\b[11](Were you expecting something...?)\w6"
+			"\1\s[60]\b[11](You hope you can forget about this...)\w4"
+			"\1\s[60]\b[11](They won't remember... right?)\w8"
+			"\1\s[60]\b[11](Remember you can go change the sensetive content settings if you're not comfortable with this.)\w8"
+			"\1\s[60]\b[11](Doesn't look like he'll remember any of this.)\w6"
+			"\1\s[60]\b[11](The other one has started crying.)\w6"
+		}
+		else
+ 		{"\0\s[0]Ah, opened on accident?\w8\w8"
 		
- 		"\1\s[10]That wasn't long.\w8\0\s[0](Sleep time!)\w8\w8"
+ 		"\1\s[10]That wasn't long.\w8\0\s[0](Sleep time!)\w8\w8"}
  	}
  	--
 	"\-\e" //this bit of code actually closes and ends the ghost. Because \e is here, you don't have to end each line above with it. Again, this will come up very rarely, so OnClose is an unusual case.

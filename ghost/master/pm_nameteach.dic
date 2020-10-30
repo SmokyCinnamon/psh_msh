@@ -168,9 +168,7 @@ NameDone
 //CUSTOM PRONOUNS HERE WE GOOOOOOOO
 //for the record i had to look at cheerybot's code to figure this out.
 OnPronounTeach
-{
-	"\0\s[0]So... could you tell me what your pronouns are please? this first one would be, for example, he, she, they, zie, or something like that. \n(English has so many more...) \![open,inputbox,OnHeshe,-1]\e"
-}
+{"\0\s[0]So... could you tell me what your pronouns are please? this first one would be, for example, he, she, they, zie, or something like that. \n(English has so many more...) \![open,inputbox,OnHeshe,-1]\e"}
 
 OnHeshe
 {
@@ -216,6 +214,4 @@ Select.addplural
 }
 
 Select.done
-{
-	"\1\s[10]You're all set! come back later if you find out we missed something.\e"
-}
+{"\1\s[10]You're all set! come back later if you find out we missed something.\e"}

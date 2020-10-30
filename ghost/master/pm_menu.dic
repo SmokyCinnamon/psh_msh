@@ -15,11 +15,22 @@
 
 OpenSakuraMenu
 {
+	if spooktime == "on"
+	{
+		"\0\s[700]\b[14]Nothing there cant save you %OnCreepyText('help help help')\e"
+		"\0\s[700]\b[14]can't remember sorry sorry\e"
+		"\0\s[700]\b[14]nothing forgot %OnCreepyText('too late слишком поздно')\e"
+		"\0\s[700]\b[14]no help for %(himher) not me\e"
+		"\0\s[700]\b[14]%(username) %OnCreepyText('too much stop') i can't i can't\e"
+	}
+	else
+	{
 		"\0\s[0]\b2..."
 		"\0\s[0]\b2Menu time."
 		"\0\s[0]\b2It's a menu."
 		--
 		MenuRun
+	}
 }
 
 //--MenuRun
@@ -60,7 +71,9 @@ MenuRun
 	"\![*]\q[You want to talk to him,OnPashaTalk]\n/
 	\![*]\q[Config Menu,configmenu]\n/
 	\![*]\q[Give him a gift?,ItemMenu]\n/
-	//\![*]\q[Play hangman,playhangman]\n/ as a note pasha likes it when you play this game but i saw something about it being better to do a variation on this, which shouldn't be too hard as it doesn't have any visuals in the ghost version.
+	\![*]\q[Play spaceman,playspaceman]\n/
+	//as a note pasha likes it when you play this game but i saw something about it being better to do a variation on this, which shouldn't be too hard as it doesn't have any visuals in the ghost version.
+	//spaceman is you have a little stick figure taken by aliens, i think its cute)
 	\![*]\q[Stat counter,countcheck]\n/
 	\![*]\q[Functions,dosomething]\n\n[half/
  	\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
@@ -85,20 +98,7 @@ OnLastTalk
 //This is figuring out what day of the week it is. Leave it alone.
 GetWeekDay
 {
-	if weekday == 0
-	{"Sun"}
-	elseif weekday == 1
-	{"Mon"}
-	elseif weekday == 2
-	{"Tue"}
-	elseif weekday == 3
-	{"Wed"}
-	elseif weekday == 4
-	{"Thu"}
-	elseif weekday == 5
-	{"Fri"}
-	else
-	{"Sat"}
+	if weekday == 0; {"Sun"}; elseif weekday == 1; {"Mon"}; elseif weekday == 2; {"Tue"}; elseif weekday == 3; {"Wed"}; elseif weekday == 4; {"Thu"}; elseif weekday == 5; {"Fri"}; else; {"Sat"}
 }
 
 //This is finding out whether it's AM or PM. Leave it alone.
@@ -150,7 +150,7 @@ Select.BACKTOMENU
 //If someone selects configmenu, this will lead to TalkConfig.
 Select.configmenu
 	{
-		TalkConfig
+		OnTalkConfig
 	}
 	
 Select.eachother
@@ -245,17 +245,17 @@ Select.plushkitty
 
 Select.gdihatebeans
 {
-	if _borsh = 3
+	if _borsh == 3
 	{
 		namiable += 3
 		"\0\s[0]You are my best friend. \w4\1\s[10]Hey!\0\n%(nitend)\e"
 	}
-	elseif _borsh = 2
+	elseif _borsh == 2
 	{
 		namiable += 6
 		"\0\s[0]%(username), a person can only eat so much... fortunately, I like this. A lot. Please make more.\n%(nitend)\e"
 	}
-	elseif _borsh = 1
+	elseif _borsh == 1
 	{
 		_borsh = 2
 		namiable += 12
@@ -310,9 +310,9 @@ Select.countcheck
 //--TalkConfig
 //This menu allows the user to change their name and other information, as well as put in their birthday and change how often the ghost speaks. You shouldn't need to touch any of what's under TalkConfig, although you can adjust dialogue in the following functions related to it.
 
-TalkConfig
+OnTalkConfig
 {
-	"\0\b[2]\_q\" 
+	"\0\b[2]\" 
 	//This bit of dialogue sets up a large balloon and a quick session, like above, so all the text will appear immediately. The rest is formatted to display the information and options to change it. I wouldn't touch any of it if you don't know what you're doing.
 	//I'll briefly explain the font tags I used here. \f[bold,1] turns bold on, \f[bold,0] turns it off, not unlike a <b> tag. \f[sup,1] turns superscript on (making it tiny and above the text) and \f[sup,0] turns it off. I touch on these tags in the walkthrough on SakuraScript.
 	--
@@ -322,8 +322,14 @@ TalkConfig
 	--
 	"\f[bold,1]Birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n\n"
 	--
-	"\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,0]\n\n"
-	--		
+	"\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,0]\n"
+	--
+	if spookster == "on" && sh == "on" && sa == "on"; {"\f[bold,1]Sensitive content:\f[bold,0] On \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}; elseif spookster == "off" && sh == "off" && sa == "off"; {"\f[bold,1]Sensitive content:\f[bold,0] Off \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
+	//elseif spookster == "off" && selfharm == "on"; {"\f[bold,1]Sensitive content:\f[bold,0] Ok with self harm/suicide \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
+	//elseif spookster == "on" && selfharm == "off"; {"\f[bold,1]Sensitive content:\f[bold,0] Ok with body horror/blood \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
+	else {
+	"\f[bold,1]Sensitive content:\f[bold,0] Custom \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
+	--
 		{
 		"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n\n[half]\n"
 		}
@@ -437,75 +443,18 @@ OnUserBornMonth
 Printmonth
 {
 	if bornmonth == 1
-	{
-		"January"
-	}
-	elseif bornmonth == 2
-	{
-		"February"
-	}
-	elseif bornmonth == 3
-	{
-		"March"
-	}
-	elseif bornmonth == 4
-	{
-		"April"
-	}
-	elseif bornmonth == 5
-	{
-		"May"
-	}
-	elseif bornmonth == 6
-	{
-		"June"
-	}
-	elseif bornmonth == 7
-	{
-		"July"
-	}
-	elseif bornmonth == 8
-	{
-		"August"
-	}
-	elseif bornmonth == 9
-	{
-		"September"
-	}
-	elseif bornmonth == 10
-	{
-		"October"
-	}
-	elseif bornmonth == 11
-	{
-		"November"
-	}
+	{"January"}; elseif bornmonth == 2; {"February"}; elseif bornmonth == 3; {"March"}; elseif bornmonth == 4; {"April"}; elseif bornmonth == 5; {"May"}; elseif bornmonth == 6; {"June"}; elseif bornmonth == 7; {"July"}; elseif bornmonth == 8; {"August"}; elseif bornmonth == 9; {"September"}; elseif bornmonth == 10; {"October"}; elseif bornmonth == 11; {"November"}
 	else
-	{
-		"December"
-	}
+	{"December"}
 }
 
 //This adds an appropriate suffix to the number for the day. No need to mess with this either.
 
 Printday
 {
-	if bornday == 1 || bornday == 21 || bornday == 31
-	{
-	"%(bornday)st"
-	}
-	elseif bornday == 2 || bornday == 22
-	{
-	"%(bornday)nd"
-	}
-	elseif bornday == 3 || bornday == 23
-	{
-	"%(bornday)rd"
-	}
+	if bornday == 1 || bornday == 21 || bornday == 31; {"%(bornday)st"}; elseif bornday == 2 || bornday == 22; {"%(bornday)nd"}; elseif bornday == 3 || bornday == 23; {"%(bornday)rd"}
 	else
-	{
-	"%(bornday)th"
-	}
+	{"%(bornday)th"}
 }	
 
 //--OnUserBornDay
@@ -757,16 +706,12 @@ Select.ChoiceSystemInformation
 	
 //This is when the user chooses to check their email. The rest of this function plays out in etc.dic. You can leave this alone.
 Select.MailCheck
-	{
-		"\![biff]\e"
-	}
+	{"\![biff]\e"}
 
 
 //This is when the user ends their headline session. Headlines are detailed more in etc.dic. Replace dialogue with what strikes you.
 Select.HEADLINECANCEL
- 	{
- 		"\0\s[0]Finished with headlines.\e"
-	}
+ 	{"\0\s[0]Done.\e"}
 
 	
 //---- OnChoiceTimeout ---------------------------------------------------------
@@ -774,14 +719,14 @@ Select.HEADLINECANCEL
 
 OnChoiceTimeout
  {
-	"\0\s[0]Timed out. Go open the menu again!\e"
+	if spooktime = "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}
  }
  
  //Written by Zichqec, with help from Nimanao
 StartHangman //Sets up variables for the game
 {
 	namiable += 12
-    wordtoguess = hangmanwords
+    wordtoguess = spacemanwords
     guessedletters = ""
     incorrectletters = ""
     displayword = ""
@@ -791,7 +736,7 @@ StartHangman //Sets up variables for the game
     Hangman
 }
 
-Select.playhangman //Same as above, but for when the user selects 'play again'.
+Select.playspaceman //Same as above, but for when the user selects 'play again'.
 {
 	namiable += 12
     StartHangman 
@@ -818,7 +763,7 @@ Hangman //Main window of the game
     --
     if (STRLEN(incorrectletters) / 2) >= maxwrongguesses //If the user is out of guesses. The STRLEN bit is the length of the incorrect letters the player has guessed so far. Since that variable contains spaces, we divide it by 2 to get the actual amount of letters that have been guessed. If you want the user to get more tries, adjust the starting value of maxwrongguesses when the game starts.
     {
-        "\0\s[0]\b[2]Aw\w2, you didn\w2't get it\w2!\w8\s[0] Was %(wordtoguess)\w2, sorry\w2.\n\n\![*]\q[Play again,playhangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+        "\0\s[0]\b[2]Aw\w2, you didn\w2't get it\w2!\w8\s[0] Was %(wordtoguess)\w2, sorry\w2.\n\n\![*]\q[Play again,playspaceman]\n\![*]\q[I'm done,cancelnodialogue]\e"
     }
     elseif lettersleft > 0 //If the user still has guesses and there are still letters unknown
     {
@@ -844,7 +789,7 @@ Hangman //Main window of the game
     }
     else //If lettersleft is still 0 after the for loop is done, all the letters are filled in! You win.
     {
-        "\0\s[0]\b[2]Wow\w2, you got it\w2!\w8\w8\s[0] It was %(wordtoguess)\w2-\w2-\w3 good job\w2!\n\n\![*]\q[Play again,playhangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+        "\0\s[0]\b[2]Wow\w2, you got it\w2!\w8\w8\s[0] It was %(wordtoguess)\w2-\w2-\w3 good job\w2!\n\n\![*]\q[Play again,playspaceman]\n\![*]\q[I'm done,cancelnodialogue]\e"
     }
 }
 
@@ -887,11 +832,11 @@ OnGuessHangman //When the user has put in a guess
         
         if reference0 == wordtoguessL //If you guess the word correctly
         {
-            "\0\s[0]\b[2]Hey\w2, that\w2's right\w2!\w3 Word was %(wordtoguess)\w2.\w8\s[0] And there were %(lettersleft) letters still blank\w2, too\w2.\w3 Good job\w2!\n\n\![*]\q[Play again,playhangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+            "\0\s[0]\b[2]Hey\w2, that\w2's right\w2!\w3 Word was %(wordtoguess)\w2.\w8\s[0] And there were %(lettersleft) letters still blank\w2, too\w2.\w3 Good job\w2!\n\n\![*]\q[Play again,playspaceman]\n\![*]\q[I'm done,cancelnodialogue]\e"
         }
         else //If your guess is incorrect. Instant lose. You can comment out that part if you don't like it.
         {
-            "\0\s[0]\b[2]Aw\w2, that\w2's not right at all\w2.\w8\w8\s[0] Was actually %(wordtoguess)\w2.\n\n\![*]\q[Play again,playhangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+            "\0\s[0]\b[2]Aw\w2, that\w2's not right at all\w2.\w8\w8\s[0] Was actually %(wordtoguess)\w2.\n\n\![*]\q[Play again,playspaceman]\n\![*]\q[I'm done,cancelnodialogue]\e"
         }
     }
 }
@@ -922,7 +867,7 @@ Select.HangmanQuit //When the user chooses to give up. You can have this direct 
     MenuRun
 }
 
-hangmanwords //Words it can choose. Expand this as far as you like! It's much more fun if you add a lot of words to this. If you have other envelopes full of words for your ghost, you could even just stick those in here! You can also use phrases, whatever you want.
+spacemanwords //Words it can choose. Expand this as far as you like! It's much more fun if you add a lot of words to this. If you have other envelopes full of words for your ghost, you could even just stick those in here! You can also use phrases, whatever you want.
 {
     "привет"
 	"здравствуйте"

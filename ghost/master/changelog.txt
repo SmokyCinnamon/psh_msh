@@ -1,0 +1,36 @@
+v1.2.0 -- its halloween time! if you're reading this, pasha has a disclaimer in his menu that you need to go look at before certain things will happen. you NEED to. that and the update dialogue should now point you over here :)
+> added a missing envelope
+> made some changes to the update dialogue and removed a set of brackets causing an issue
+> fixed a block comment missing the ending */
+> fixed a missing slash in uninstall dialogue
+> changed some = into ==, the borsch option in the items menu will now display the correct dialogue
+> added the talk to ghost option in misha's menu. looks like it only works if there's another ghost on screen who also has communication features, though.
+> added a certain game back in, but it's only in russian. sorry.
+> added like 5 new lines of dialogue.
+> added a line in the update complete dialogue to direct you here for notes! hello)
+> made an attempt to get italics working right. i want markdown formatting, damnit
+> you won't see this either but added in a way to actually efficiently code in russian. find & replace ily
+> added a BUNCH of proper surfaces, mostly just for petting and stuff
+> removed a line where they would assume that the other ghost's name was what they said. only really applies for ghosts they won't recognize. which would happen to be most of them, but still
+> i lied i added a lot more dialogue
+> on that note I added some really cool stuff but you have to go read the disclaimer thing over in pasha's menu. it's important PLEASE READ IT otherwise you will NOT get stuff that you may want to see.
+> deleted most of what i put in the readme so that it's less long. here's hoping i didn't delete anything important...
+> added a color variant to their balloon! they have a balloon. it's important for the Optimal Experience.
+
+v1.0.2 -- typos, mostly
+> fixed a wait tag in boot dialogue missing a "\"
+> fixed certain variables not being set on first boot and therefore being broken
+> fixed a comma loading in pasha's text box when checking misha's stats
+> added back to menu options for Misha's menus
+> fixed a migrated period in the "if the world was ending, what would you do?" dialogue.
+> fixed the "(soft hair)" pet dialogue for misha missing an \f tag
+> fixed variables being broken for users who do not want to download them a third time. open pasha's menu and click on "stat check" and it should be fine probably.
+> gave pasha's blink & talk frames the proper outlines (note that they're still not entirely fixed.)
+> switched who was saying what in a certain line of winter dialogue to be more in-character
+> many \w tag changes. mostly just taking them out, but also increasing some of them by one, if you were wondering @-@
+> they should recognixe if you have cheerybot out now
+> added 8 new lines of dialogue
+> finally added pat variables. *pat pat*
+
+V1.0.1 -- literally just a extra bracket that needed to be deleted. whoops.
+> extra bracket in string.dic got deleted
