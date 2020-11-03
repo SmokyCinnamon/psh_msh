@@ -573,6 +573,14 @@ RandomTalk : nonoverlap
 		"\0\s[3]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
 		"\0\s[0]*(You wish he would stop fidgeting.\w4 It's distracting.)*\e"
 		"\1\s[18]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
+		"\1\s[10]You uh..... busy? Or something? %(username)?\e"
+		"\1\s[10]And the award for asshole of the year goes to...\e"
+		"\1\s[10]You're kinda... not...\w5 something...\e"
+		"\0\s[0](Is he... eating his hand...?)\e" //I really really need that surface hh
+		"\0\s[0](He's humming something to himself.)\e"
+		"\0\s[9](Looking everywhere except you.)\e"
+		"\1\s[0]I sincerely hope you are a better person than I think you are.\e"
+		"\1\s[0]I...\w4 You could just uninstall us, y'know. I don't want to stay here.\e"
 	}
 	elseif friendlyall <= 0
 	{
@@ -783,8 +791,9 @@ OnSecondChange
 	}
  }
  
- OnHourChange
+ OnHourTimeSignal
  {
+	friendlyall = namiable + yamiable //to update it & keep track of things
 	if spookster == "on" && RAND(100) < 12; {spooktime = "on"; "\0\s[700]morning morning %(hour12) im sorry %(username) dont worry dont worry\e"}
 	/* if passmin == 59
  		{

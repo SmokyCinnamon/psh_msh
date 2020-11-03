@@ -85,73 +85,36 @@ MenuRun
 //Leave this next bit alone.
 //Advanced users, note that this is formatted as Select.linkedfunction? Remember how it went \q[Displayed Name,linkedfunction] above? When a user clicks an option that doesn't begin with On, they'll be linked to Select.linkedfunction. Pay close attention as we go through and you'll see this in action.
 Select.altalk
-{
-	AiTalk
-}
+{AiTalk}
 
 //Leave this alone
 OnLastTalk 
-{
-"%(lastTalk)\e"
-}
+{"%(lastTalk)\e"}
 
 //This is figuring out what day of the week it is. Leave it alone.
 GetWeekDay
-{
-	if weekday == 0; {"Sun"}; elseif weekday == 1; {"Mon"}; elseif weekday == 2; {"Tue"}; elseif weekday == 3; {"Wed"}; elseif weekday == 4; {"Thu"}; elseif weekday == 5; {"Fri"}; else; {"Sat"}
-}
+{if weekday == 0; {"Sun"}; elseif weekday == 1; {"Mon"}; elseif weekday == 2; {"Tue"}; elseif weekday == 3; {"Wed"}; elseif weekday == 4; {"Thu"}; elseif weekday == 5; {"Fri"}; else; {"Sat"}}
 
 //This is finding out whether it's AM or PM. Leave it alone.
 GetAP
-{
- 	if hour >= 0 && hour <= 11
- 		{
- 			"AM"
- 		}
- 	else
- 		{
- 			"PM"
- 		}
-}
+{if hour >= 0 && hour <= 11; {"AM"}; else; {"PM"}}
 
 //This is figuring out the minute. Leave it alone.
 Getnowmin
-{
-	if minute >= 0 && minute <=9
-		{
-			"0%(minute)"
-		}
-	else
-		{
-			"%(minute)"
-		}
-}
+{if minute >= 0 && minute <=9; {"0%(minute)"}; else {"%(minute)"}}
 
 //This is figuring out the hour. Leave it alone.
 Getnowhour
-{
-	if hour12 >= 0 && hour12 <=9
-		{
-			"0%(hour12)"
-		}
-	else
-		{
-			"%(hour12)"
-		}
-}
+{if hour12 >= 0 && hour12 <=9; {"0%(hour12)"}; else; {"%(hour12)"}}
 
 //If someone selects an option linked to BACKTOMENU, it will go back to MenuRun.
 
 Select.BACKTOMENU
-	{
-		MenuRun
-	}
+	{MenuRun}
 
 //If someone selects configmenu, this will lead to TalkConfig.
 Select.configmenu
-	{
-		OnTalkConfig
-	}
+	{OnTalkConfig}
 	
 Select.eachother
 {
@@ -350,37 +313,25 @@ Select.TEACHPRONOUN
 
 Select.choicemasc
 {
-	presuffix = "masculine"
-	himher = "him"
-	heshe = "he"
-	hisher = "his"
-	plural = 0
+	presuffix = "masculine"; himher = "him"; heshe = "he"; hisher = "his"; plural = 0
 	--
-	"\0\s[0]The pronouns are now he him and his.\e"
+	"\0\s[0]Pronouns are now he/him\e"
 	//Leave the part above the double dashes alone. You can replace the snip of dialogue however with whatever you like.
 }
 
 Select.choicefem
 {
-	presuffix = "feminine"
-	himher = "her"
-	heshe = "she"
-	hisher = "her"
-	plural = 0
+	presuffix = "feminine"; himher = "her"; heshe = "she"; hisher = "her"; plural = 0
 	--
-	"\0\s[0]The pronouns are now she her and her.\e"
+	"\0\s[0]Pronouns are now she/her\e"
 	//as above, you can also replace this dialogue.
 }
 
 Select.choiceneither
 {
-	presuffix = "undefine"
-	himher = "them"
-	heshe = "they"
-	hisher = "their"
-	plural = 1
+	presuffix = "undefine"; himher = "them"; heshe = "they"; hisher = "their"; plural = 1
 	--
-	"\0\s[0]The pronouns are now they them and their.\e"
+	"\0\s[0]Pronouns are now they/them\e"
 	//and this one.
 }
 
@@ -406,7 +357,7 @@ Select.TEACHBDAY
 	{
 		dayslot = GetDaySlot //This is setting up in case today is the user's birthday.
 		
-		"\0\s[0]What month were you born? \w8Write the number.\![open,inputbox,OnUserBornMonth,-1]\e"
+		"\0\s[0]What month were you born? \w6uuum, number.\![open,inputbox,OnUserBornMonth,-1]\e"
 		
 		//You can replace the dialogue up to the \![open,inputbox,OnUserBornMonth,-1] tag, leave that alone. You'll need the input box to get the information. Note that the month HAS to be put in in number format as well, so you might want to have your ghost mention that.
 		
@@ -427,13 +378,13 @@ OnUserBornMonth
 			bornmonth = _tempmonth
 			bornmonthprint = Printmonth
 			
-			"\0\s[0]So you were born in %(bornmonthprint).\n\w8What day was it?\![open,inputbox,OnUserBornDay,-1]\e"
+			"\0\s[0]%(bornmonthprint)? I guess?\n\w6Any specific day, or...?\![open,inputbox,OnUserBornDay,-1]\e"
 			
 			//Here you can see the use of a bornmonthprint envelope to show the user what month they put in. Notice that it opens an inputbox at the end the same way the one above did. You can replace the dialogue up to the input box just as with above.
 			}
 		else //if the month isn't a valid month, like 32 or something.
 			{
-			"\0\s[0]That's not a valid month. Try again.\![open,inputbox,OnUserBornMonth,-1]\e"
+			"\0\s[0]I don't think that exists...\![open,inputbox,OnUserBornMonth,-1]\e"
 			
 			//You can replace this dialogue as well up to the \! tag, as mentioned. You need to leave the tag for the input box so they can put in a correct month.
 			}
@@ -478,7 +429,7 @@ OnUserBornDay
 				}
 			else //if the day isn't valid, like the 10046th or something.
 				{
-					"\0\s[0]That's not a valid day. Try again.\![open,inputbox,OnUserBornDay,-1]\e"
+					"\0\s[0]No, I think months are only so long.\![open,inputbox,OnUserBornDay,-1]\e"
 					
 					//Similar as you can see to the month check above. You can replace the dialogue here up to the tag as you just did, but make sure to leave the input box tag so the user can put in a correct day.
 				}
@@ -497,7 +448,7 @@ OnUserBornDay
 				}
 			else
 				{
-					"\0\s[0]That's not a valid day. Try again.\![open,inputbox,OnUserBornDay,-1]\e"
+					"\0\s[0]No, I think months are only so long.\![open,inputbox,OnUserBornDay,-1]\e"
 					
 					//And the same as above again! You see the pattern here?
 				}
@@ -515,7 +466,7 @@ OnUserBornDay
 				}
 			else
 				{
-					"\0\s[0]That's not a valid day. Try again.\![open,inputbox,OnUserBornDay,-1]\e"
+					"\0\s[0]No, I think months are only so long.\![open,inputbox,OnUserBornDay,-1]\e"
 				}
 		}		
 }
@@ -537,7 +488,7 @@ birthchecked
 		}*/
 	else //if the birthday is not listed above.
 		{
-			"\0\s[0]Your birthday is %(bornmonthprint) %(borndayprint). We'll remember.\e"
+			"\0\s[0]Birth is %(bornmonthprint) of the %(borndayprint), I guess I'll keep that in mind.\e"
 			//note the use of envelopes to display the newly set birthday properly. You can replace this dialogue as well, and you can use %(bornmonthprint) and %(borndayprint) to display the month and day in the new dialogue, if you want.
 		}
 }
@@ -560,15 +511,13 @@ Select.talkinter
 
 //If the user doesn't want to change the rate. You can change all of the dialogue in any of these options if you want to reflect the choice the user made. You TECHNICALLY could also change the value in talktime to reflect some other way of measuring time but I would NOT recommend it, it'd just be confusing I'm sure.
 Select.TalksTill
-	{
-		"\0\s[0]Clicked on accident? \w8\1\s[10]No change to how often we talk.\e"
-	}
+	{"\0\s[0]Clicked on accident? \w8\1\s[16]No changes.\e"}
 
 //If the user chooses every 30 seconds.
 Select.TALKMAX
 	{
  		talktime = "30 seconds" //this sets up the envelope properly
-		aitalkinterval = 45 //this changes the actual rate
+		aitalkinterval = 30 //this changes the actual rate
 		
  		"\0\s[0]Every 30 seconds.\w8 \1\s[10]Talkative.\e"
 	}
@@ -577,7 +526,7 @@ Select.TALKMAX
 Select.TALKHIGH
 	{
  		talktime = "minute"
-		aitalkinterval = 90
+		aitalkinterval = 60
 		
  		"\0\s[0]Every minute. \w8\1\s[10]Try not to lose track of time, alright %(username)?\e"
 	}
@@ -586,7 +535,7 @@ Select.TALKHIGH
 Select.TALKNORMAL
 	{
  		talktime = "3 minutes"
-		aitalkinterval = 270
+		aitalkinterval = 180
 		
  		"\0\s[0]Every three minutes.\e"
 	}
@@ -595,7 +544,7 @@ Select.TALKNORMAL
 Select.TALKPOOR
 	{
  		talktime = "5 minutes"
-		aitalkinterval = 400
+		aitalkinterval = 300
 		
  		"\1\s[10]We'll talk every five minutes.\w8\0\s[0]Not very often\w2, huh?\e"
 	}
@@ -612,16 +561,13 @@ Select.TALKNONE
 	
 //This is when the user chooses to change their name. It's linked to the functions outlined in nameteach.dic. Nothing to touch here.
 Select.TEACHNAME
-	{
-		OnTeachName	
-	}
+	{OnTeachName}
 
 	
 //If the user selects cancel in a menu. Replace as you like, or just leave them blank.
 Select.CANCEL
 	{
 		"\0\s[0]Canceled.\e"
-		
 		"\0\s[0]Goin' back to standing around.\e"
  	}
 
@@ -718,9 +664,7 @@ Select.HEADLINECANCEL
 //If the user is given a menu with choices, but doesn't pick one of the choices, it will eventually time out. At that point, they will say this dialogue. Replace with whatever you like, or leave it blank.
 
 OnChoiceTimeout
- {
-	if spooktime = "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}
- }
+ {if spooktime = "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}}
  
  //Written by Zichqec, with help from Nimanao
 StartHangman //Sets up variables for the game
@@ -880,6 +824,7 @@ spacemanwords //Words it can choose. Expand this as far as you like! It's much m
 	"невероятно"
 	"единственный"
 	"кошка"
+	"один"
 	
 }
 

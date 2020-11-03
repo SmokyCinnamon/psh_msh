@@ -12,19 +12,16 @@
 
 OnMouseMove
  {
-  	if nowmode != "QUIZ"
- 	{
-		//---- reference3 determines the character in question
-		if reference3 == 0 //if the character is 0, aka the main character
-		{
-			//---- it will run the mouse functions for that character
-			MouseMoveSakura
-		}
-		else //if the character isn't 0, then it must be the side character.
-		{
-			//---- this will run the mouse functions for the side character.
-			MouseMoveKero
-		}
+	//---- reference3 determines the character in question
+	if reference3 == 0 //if the character is 0, aka the main character
+	{
+		//---- it will run the mouse functions for that character
+		MouseMoveSakura
+	}
+	else //if the character isn't 0, then it must be the side character.
+	{
+		//---- this will run the mouse functions for the side character.
+		MouseMoveKero
 	}
  }
  
@@ -173,9 +170,11 @@ MouseMoveKero
 					"\1\s[60]\b[11](No response. Probably because he's dead.)\e"
 					"\1\s[60]\b[11](You can pet him, but it won't do much.)\e"
 					"\1\s[60]\b[11](Surprisingly, he's actually dead.)\e"
-					"\1\s[60]\b[11](A man of few words.)\nHe's still dead, that didn't change.)\e"
+					"\1\s[60]\b[11](A man of few words.)\n(He's still dead, that didn't change.)\e"
 					"\1\s[60]\b[11](Maybe THIS time he'll say something.)\w6\n(\w4.\w4.\w4.\w4 Nope. More than likely he's dead.)\e"
-				"\1\s[60]\b[11](Looks like he won't answer...)\e"}
+					"\1\s[60]\b[11](Looks like he won't answer...)\e"
+					"\1\s[60]\i[60]\b[11](Soft hair...)\w4\n(The other one doesn't seem to approve.)\e"
+				}
 				elseif reference4 == "Face" 
 				{
 					"\1\s[60]\b[11](You stroke his face. A little cold.)\e"
@@ -263,13 +262,9 @@ OnMouseDoubleClick
 	//---- like with the OnMouseMove function above, this determines who the user is clicking on.
 	
  	if reference3 == 0 //if the character is 0, aka your main character
-	{
-		MouseDoubleClickSakura
- 	}
+	{MouseDoubleClickSakura}
 	else
- 	{
- 		MouseDoubleClickKero
-	}
+ 	{MouseDoubleClickKero}
  }
 
  //---- MouseDoubleClickSakura ----------------------------------------------------------
@@ -363,6 +358,12 @@ MouseDoubleClickSakura
 	{
  	if reference4 == "Head" || reference4 == "Face" //here, this is checking to see if the user is double clicking on either the character's head OR their face, which for our purposes means they're hitting the ghost. More about operators at the walkthrough.
 	{
+		if nkovpunch == 0
+		{
+			"\0\s[9]\f[italic,1](He flinches.)\f[italic,0]\n\n... hey, %(username), you're... um... are you trying to do something...?\n\n/
+			\*\![*]\q[Absolutely,OnWhymustyouhurtmeinthisway,Nhead]\n\![*]\q[No! I would never!,ithasbeennotedthatyouaregood]\e"
+		}
+		else{
 		namiable -=6
 		nkovpunch += 1
 		if namiable >= 500
@@ -412,9 +413,13 @@ MouseDoubleClickSakura
 			"\1\s[17]What's your problem, huh?\e"
 			"\1\s[17]Do you know how easy it is to just *not* fucking hit someone? Do you really?\e"
 		}
+		}
  	}
 	elseif reference4 == "Stomach"
 	{
+		if nkovpunch = 0
+		{"\0\s[9]... %(username)?\n\![*]\q[Oh no I'm so sorry!!!,ithasbeennotedthatyouaregood]\n\![*]\q[i find hurting you very amusing actually,OnWhymustyouhurtmeinthisway,Hitp]\e"}
+		else {
 		nkovpunch += 1
 		if namiable >= 500
 		{
@@ -441,6 +446,7 @@ MouseDoubleClickSakura
 		else
 		{
 			"\0\s[3]*(He won't look at you.)*\e"
+		}
 		}
 	}
 	elseif reference4 == "Bandadge"
@@ -472,6 +478,11 @@ MouseDoubleClickSakura
 	}
 	elseif reference4 == "Shoulders"
 	{
+		if patp == 0
+		{
+			"\0\s[3]*(He looks like he's about to cry...)*\n\![*]\q[Yeah don't care,OnWhymustyouhurtmeinthisway,Patn]\n\![*]\q[Rethink the pat,ithasbeennotedthatyouaregood]\e"
+		}
+		else {
 		patp += 1
 		if namiable >= 500
 		{
@@ -512,6 +523,7 @@ MouseDoubleClickSakura
 		{
 			namiable -= 9
 			"\0\s[3]...\e"
+		}
 		}
 	}
 	else
@@ -589,10 +601,11 @@ MouseDoubleClickKero
 	else {OpenKeroMenu}
 	}
 	else {
-	yamiable -= 6
  	if reference4 == "Head" || reference4 == "Face"
 	{
+		if yzhovpunch == 0 {"\1\s[16]Little wary of that mouse there, %(username).\n\![*]\q[Ok but fuck off,OnWhymustyouhurtmeinthisway,Mhead]\n\![*]\q[Oh ok sorry!!,ithasbeennotedthatyouaregood]\e"}; else {
 		yzhovpunch += 1
+		yamiable -= 6
 		if yamiable >= 500
 		{
 			// "\1\s[10]Ow\w1, hey\w1!\w8\0\s[6]ha ha\w8\1\s[19]\n\n[half]Quiet.\e"
@@ -644,9 +657,10 @@ MouseDoubleClickKero
 			"\1\s[19]What'll it take for you to leave off?\e"
 			"\1\s[19]*(He looks tired.)*\e"
 		}
-	}
+	}}
 	elseif reference4 == "Stomach"
 	{
+		yamiable -= 6
 		if yamiable <= 500
 		{
 			//yzhovpunch += 1
@@ -697,6 +711,9 @@ MouseDoubleClickKero
 	}
 	elseif reference4 == "Shoulders"
 	{
+		if paty == 0 {"\1\s[19]Gonna have to ask you to stop, %(username).\n\![*]\q[Can do,ithasbeennotedthatyouaregood]\n\![*]\q[Lol nope,OnWhymustyouhurtmeinthisway,Patm]\e"} else {
+		paty += 1
+		yamiable -= 6
 		if yamiable <= 500
 		{
 			"\1\s[19]Last I checked, we weren't really friends.\e"
@@ -731,7 +748,7 @@ MouseDoubleClickKero
 			"\1\s[14]*(You wonder why he doesn't like this so much.)*\e"
 			"\1\s[14]*(You have your suspicions on this subject.)*\e"
 			"\1\s[14]*(He's very pointedly not looking at you.)*\e"
-			"\1\s[14]*(You breifly consider stopping all this touching him.\w3 No, that just wouldn't be any fun.)*\e"
+			"\1\s[14]*(You briefly consider stopping all this touching him.\w3 No, that just wouldn't be any fun.)*\e"
 		}
 		else
 		{
@@ -739,12 +756,22 @@ MouseDoubleClickKero
 			"\1\s[18]Hey, how many times do I have to tell you not to do that before you won't?\e"
 			"\1\s[19]Really?\e"
 		}
-	}
+	}}
 	else
-	{
-		OpenKeroMenu
-	}
+	{OpenKeroMenu}
  }}
  //*********************Advanced User Info*******************************
  //There are other mouse related functions you could set up much like the above, such as OnMouseDragStart, OnMouseDragEnd, OnMouseWheel, and others which correspond to various things you can do with your mouse. You can probably guess what those functions do just by their names - OnMouseWheel would be if someone spun their mouse wheel over a certain area, for example. If you're interested in these, I'd recommend doing some reading at the CROW-SSP Encyclopedia to get a better idea of them and settle down for some trial and error learning as you try to put them in.
  //***********************************************************************
+ Select.ithasbeennotedthatyouaregood; {namiable += 3; yamiable +=3; "\1\s[10]Yeah, you better not have been trying anything.\e"}
+ OnWhymustyouhurtmeinthisway //checking for the references i set. they do need to be in quotes...
+ {
+	//"\1\s[10]%(reference0)\e"
+	if reference0 == "Nhead" {nkovpunch += 1; namiable -= 12; "\0\s[3]This- this isn't the kind of thing you can just take back, %(username)...\e"}
+	elseif reference0 == "Hitp" {nkovpunch += 1; namiable -= 12; "\0\s[3]...\w3\1\s[19]Hey! Don't do that, %(username)!\e"}
+	elseif reference0 == "Patn" {patp += 1; namiable -= 18; "\0\s[3](...He froze.)\e"}
+	elseif reference0 == "Mhead" {yzhovpunch += 1; yamiable -= 18; "\1\s[19]Ow! Fuck off, %(username)!\e"}
+	elseif reference0 == "Patm" {paty += 1; yamiable -= 24; "\1\s[19]Fuck you.\w4\-"}
+	else
+	{"\1\s[10]Really?\e"}
+ }

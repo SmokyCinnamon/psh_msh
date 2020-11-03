@@ -13,7 +13,6 @@ nendmenu
 {
 	"\![*]\q[Nevermind,CANCEL]"
 	//\![*]\q[Give him a gift?,ItemMenu]\n/
-	
 }
 
 nitend
@@ -23,7 +22,7 @@ yendmenu
 {"\![*]\q[Go back,OpenKeroMenu]\n\![*]\q[Nevermind,keroCANCEL]\e"}
 
 yitend
-{"\![*]\q[Give him something else?,YzItemMenu]\n\![*]\q[Go back,OpenKeroMenu]\n%(yendmenu)"}
+{"\![*]\q[Give him something else?,YzItemMenu]\n%(yendmenu)"}
 
 misha //because... i can?
 {if RAND(100) < 95; {"Misha"}; else; {"Mishka"}}

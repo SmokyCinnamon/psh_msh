@@ -1,3 +1,19 @@
+v1.2.1 -- aaaaaaaa
+> fixed some menu option formatting not being right, like when Pasha asks you if you want to see the changelog
+> fixed the hourchange being the wrong thing. ...Don't ask me how it even worked beforehand. (i do want to test that though lol)
+> fixed a... sort-of bug where Misha would like you 6 less EVERY time you double clicked him, including opening the menu. whoops
+> added a check to see if you actually wanted to hit them or not, on that note
+> did some more code optimization -- it's harder to read now but i dont have to SCROLL
+> changed some function dialogue to be more in character! you're probably not going to see it, but it's there
+> fixed an extra "go back" button in misha's dialogue. not too sure what was up with that
+> changed it so that a certain two variables aren't just added together on boot anymore. (they're on the hour now, too.) maybe your relationship dialogue will be more dynamic! idk who knows
+> speaking of, as an aside, you can give things to misha to make him like you again. that should fix things.
+> fixed some typos
+> set the relationship level a little higher in firstboot to give you a little wiggle room (just a *little*.)
+> fixed an extra ending parentheses in pasha's stat menu
+> fixed some time intervals not working right
+> may have added more dialogue tbh i don't remember
+
 v1.2.0 -- its halloween time! if you're reading this, pasha has a disclaimer in his menu that you need to go look at before certain things will happen. you NEED to. that and the update dialogue should now point you over here :)
 > added a missing envelope
 > made some changes to the update dialogue and removed a set of brackets causing an issue

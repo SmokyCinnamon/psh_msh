@@ -31,9 +31,7 @@ OnDisclaimer
 	"\![*]\q[None of that!,deargdwhatkindofghostisthis]\n\![*]\q[Config,OnTalkConfig]%(nendmenu)\e"
 }
 Select.allgood
-{
-	"\1\s[16]Well, you're in for a trip, to break the fourth wall even more.\e"; selfharm = "on"; spookster = "on"; sa = "on"
-}
+{"\1\s[16]Well, you're in for a trip, to break the fourth wall even more.\e"; selfharm = "on"; spookster = "on"; sa = "on"}
 Select.allaboardthebloodtrain
 {
 	if spookster != "on"; {spookster = "on"}; else {spookster = "off"}
@@ -82,43 +80,29 @@ OnFileDrop2
 			\q[No thanks,SetWallpaper_Cancel]\e"
 		}
 		when ".mid", ".wav", ".mp3", ".wma", ".au" //Other file formats you might want to give your ghost a specific response to.
-		{
-			"\1\s[10]%(_filename)%(_fileext) music file. \0\s[0]Maybe something from би-2?\e"
-		}
+		{"\1\s[10]%(_filename)%(_fileext) music file. \0\s[0]Maybe something from би-2?\e"}
 		others //Any other file format. As a note here, if you drop something ghost-related on them that does not have an install.txt, then they won't install it and will just say this response. If you are testing your balloon or nar files and you get this response instead of a proper installation, you should check and make sure you have an install.txt in the file!
-		{
-			"\0\s[0]This is %(_filename)%(_fileext).\e"
-		}
+		{"\0\s[0]This is %(_filename)%(_fileext).\e"}
 	}
 }
 
 //This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
 
 Select.SetWallpaper_0
-{
-	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]Centered.\e"
-}
+{"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]Centered.\e"}
 Select.SetWallpaper_1
-{
-	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]Tiled.\e"
-}
+{"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]Tiled.\e"}
 Select.SetWallpaper_2
-{
-	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]Stretched.\e"
-}
+{"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]Stretched.\e"}
 Select.SetWallpaper_Cancel
-{
-	"\0\s[0]Don't want this as your background?\1\s[10]Guess not.\e"
-}
+{"\0\s[0]Don't want this as your background?\1\s[10]Guess not.\e"}
 
 
  //---- OnInstallBegin -------------------------------------------------------
  //OnInstallBegin is called when a file with an included install.txt is dropped on your ghost. This primarily means things like .nar files for other ghosts or .zip files containing balloons or shells for your ghosts. Primarily ghost-related things. Replace as you want.
  
 OnInstallBegin
- {
-	"\0\s[0]Huh, installing something?\w8\1\s[10]This zip or nar has an install.txt file.\e"
- }
+ {"\0\s[0]Huh, installing something?\w8\1\s[10]This zip or nar has an install.txt file.\e"}
 
  //---- OnInstallComplete -------------------------------------------------------
  //OnInstallComplete runs once the file above has finished installing.
@@ -147,19 +131,21 @@ OnInstallComplete
  	}
 	elseif reference0 == "ghost" //if the type of the file they're installing is a ghost.
  	{
-		"\s[0]We've installed a new Ghost.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[6]New ghost\w2! New ghost\w2!\w8\1\s[10]%(reference1), huh? Don't forget about us, alright %(username)?\e"
 		//Reference1 here would be the name of the ghost. Replace as needed.
  	}
 	elseif reference0 == "balloon" //if the type of file is a balloon
  	{
-		"\s[0]We've installed a new balloon.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[6]A balloon\w2! What's it look like?\w8\1\s[16]Called %(reference1).\e"
 		//Reference1 here would be the name of the balloon. Replace as needed.
  	}
 	elseif reference0 == "plugin" //if the type of file is a plug-in, like a saori of some kind.
  	{
-		"\s[0]We've installed a plug-in.\w8\1\s[10]It's called %(reference1).\e"
+		"\s[0]%(reference1)\w2? What's that do\w2?\e"
 		//Reference1 here would be the name of the plug-in. Replace as needed.
  	}
+	else
+	{"\0\s[9]Well\w2, I'm\w2.\w2.\w2. not sure *what* this is\w2, but it's installed\w2! \s[0]That\w2's good right\w4\1\s[10]Presumabley so, yes\e"}
 }
 
 //---- OnInstallFailure -------------------------------------------------------
@@ -200,34 +186,26 @@ OnInstallRefuse
 //When you select the uninstall option in the menu.
 
 OnVanishSelecting
-{
-	"\0\s[0]Oh, uninstalling?\w8\1\s[10]Well, we'll get to go home...\e"
-}
+{"\0\s[0]Oh, uninstalling?\w8\1\s[10]Well, we'll get to go home...\e"}
 
 //OnVanishSelected
 //When you decide to uninstall them. 
 
 OnVanishSelected
-{
-	"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?\w9\w9\e"
-}
+{"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?\w9\w9\e"}
 
 
 //--OnVanishCancel
 //If you select Uninstall from the menu, but decide not to do it.
 
 OnVanishCancel
-{
-	"\0\s[0]... I guess we're staying after all.\e"
-}
+{"\0\s[0]... I guess we're staying after all.\e"}
 
 //--TalkVanishButtonHold
 //I believe this calls if you click and hold the button on either the menu option for uninstalling them, or possibly the option itself. Be careful if you're trying to test this! You'd hate to uninstall all your hard work, right? I'd probably just make sure the dialogue looks right via Script Input and leave it at that.
 
 TalkVanishButtonHold
-{
-	"\1\s[10]Hey, if you're sending us home don't just hold the button. Nobody gets anywhere that way.\e"
-}
+{"\1\s[10]Hey, if you're sending us home don't just hold the button. Nobody gets anywhere that way.\e"}
 
 
  //---- OnVanished -----------------------------------------
@@ -270,26 +248,18 @@ OnBIFFBegin
 OnBIFFComplete
  {
 	if reference0 == 0 //If you have no new mail.
- 	{
- 		"\0\s[0]Nothin' new. That good?\e"
-	}
+ 	{"\0\s[0]Nothin' new. That good?\e"}
 	elseif reference0 == 1 //If you have one new email.
- 	{
- 		"\0\s[0]One entire email! That's nice, right?\e"
-	}
+ 	{"\0\s[0]One entire email! That's nice, right?\e"}
 	elseif reference0 > 1 && reference0 < 11 //If you have more than one email but less than eleven.
 	{
 		"\0\s[0]%(reference0) entire emails! That's nice, right?\e"
 		//reference0 here stores the amount of new email it finds.
 	}
 	elseif reference0 > 100 //If there are over one hundred new emails.
-	{
-		"\0\s[0]%(reference0) entire emails! That's...... a lot, actually.\w8\1\s[10]Wow, yeah.\e"
-	}
+	{"\0\s[0]%(reference0) entire emails! That's...... a lot, actually.\w8\1\s[10]Wow, yeah.\e"}
  	else //For any other number of emails.
-	{
-		"\0\s[0]%(reference0) entire emails! That's nice, right?\e"
- 	}
+	{"\0\s[0]%(reference0) entire emails! That's nice, right?\e"}
 }
 
  //---- OnBIFFFailure ---------------------------------------------------------------
@@ -331,7 +301,7 @@ OnBIFFFailure
  
 OnUpdateBegin
  {
-	"\0\s[0]Starting the update.\w8\e"
+	"\0\s[0]Starting update.\w8\e"
 	
 	"\1\s[10]Updating now...\w8\e"
  }
@@ -355,7 +325,7 @@ OnUpdateComplete
 	if reference0 == "none" //if the ghost had nothing to update with
  	{"\1\s[10]Nothing new.\e"}
  	else //if the ghost has updated successfully
-	{"\1\s[10]Update worked! Maybe there's new things?\w4\0\s[0]Check changelog? Do... you want to?\n\![*]\q[yes,opencl]\n\!\q[no,done]\e"}
+	{"\1\s[10]Update worked! Maybe there's new things?\w4\0\s[0]Check changelog? Do... you want to?\n\![*]\q[yes,opencl]\n\![*]\q[no,done]\e"}
 }
 Select.opencl
 { "\0\s[0]\![open,file,changelog.txt] There you go!\e"}

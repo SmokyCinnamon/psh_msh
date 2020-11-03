@@ -99,10 +99,16 @@ Select.ymlk
 
 Select.yplushkitty
 {
-	yamiable += 6
-	"\1\s[10]Oh.\w4 My.\w4 G-d.\w8\nThis is the best thing in the entire world!\w2 Thank you so much, %(username)!\n%(yitend)\e"
-	//can only give once. something in the tutorial about it? 
-	//...but that's complicated aaaaaaahh
+	if _kibby == 1
+	{"\1\s[6](You already gave that to him...)\n%(yitend)\e"}
+	else
+	{
+		_kibby = 1
+		yamiable += 6
+		"\1\s[10]Oh.\w4 My.\w4 G-d.\w8\nThis is the best thing in the entire world!\w2 Thank you so much, %(username)!\n%(yitend)\e"
+		//can only give once. something in the tutorial about it? 
+		//...but that's complicated aaaaaaahh
+	}
 }
 
 Select.gitara
@@ -144,6 +150,10 @@ YCountThings
 	--
 	"\1\s[10].)\n"
 	--
+	"(You've pat him %(paty) time"
+	--
+	if paty != 1; "s"
+	--
 	//if yzhovpunch > 0
 	" (You've hit him %(yzhovpunch) time"
 	--
@@ -156,7 +166,7 @@ YCountThings
 //This is when they select bug report. This is mostly meant to briefly give the user information about you, the creator, and how to report a problem to you. This can be handy if the person forgot where they got their ghost or how to contact you. Add whatever info you like here.
 Select.bugreport
 {
-"\1\s[10]Seen a bug? \w5Let Smoky know at their tumblr, \a_[smokycinnamonroll.tumblr.com.]right here\a_ \w5We were downloaded from \_a[http://www.whereveryoupostedthem.com/]some place\_a.\n%(yendmenu)\e"
+"\1\s[10]Seen a bug? \w5Let Smoky know at vis tumblr, \a_[smokycinnamonroll.tumblr.com.]right here\a_ \w5We were downloaded from \_a[http://www.whereveryoupostedthem.com/]some place\_a.\n%(yendmenu)\e"
 }
 
 //When clicked, this will automatically tell the ghost to check for updates. More detail on updates in etc.dic. You can leave this alone.
@@ -173,13 +183,17 @@ Select.keroupdatecheck
 
 OnTestvariable
 {
-	//yamiable = 500
-	//namiable = 500
+	//yamiable = 550
+	//namiable = 550
+	nkovpunch = 0
+	patp = 0
+	yzhovpunch = 0
+	paty = 0
 	//другдруга = 0
-	//friendlyall = namiable + yamiable
-	if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
-	"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
-	//"\1\s[10]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\n\e"
+	friendlyall = namiable + yamiable
+	//if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
+	//"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
+	"\1\s[10]\b[2]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\n\e"
 }
 
 /*    #\![*]\q[You're on a computer,computer]\n/

@@ -17,11 +17,23 @@ CountThings
 	}
 	else
 	{
-    "\_q\b[2](You've pet Pasha %(nkovpets) times.)\n"
+    "\_q\b[2](You've pet Pasha %(nkovpets) time"
 	--
-	"(You've punched Pasha %(nkovpunch) times.)\n"
+	if nkovpets != 1; "s"
 	--
-	"(You've pat Pasha %(patp) times).)\n"
+	".)\n"
+	--
+	"(You've punched Pasha %(nkovpunch) time"
+	--
+	if nkovpunch != 1; "s"
+	--
+	".)\n"
+	--
+	"(You've pat Pasha %(patp) time"
+	--
+	if patp != 1; "s"
+	--
+	".)\n"
 	--
 	"\![*](\q[Go back,BACKTOMENU])\e"
 	}
@@ -30,28 +42,10 @@ CountThings
 
 IntCheck
 {
-	if nkovpets != TOINT(nkovpets) 
-	{ ; nkovpets = STRLEN(nkovpets) ; }
-	else
-	{ ; }
-	if nkovpunch != TOINT(nkovpunch) 
-	{ ; nkovpunch = STRLEN(nkovpunch) ; }
-	else
-	{ ; }
-	if patp != TOINT(patp) 
-	{ ; patp = STRLEN(patp) ; }
-	else
-	{ ; }
-	if yzhovpets != TOINT(yzhovpets) 
-	{ ; yzhovpets = STRLEN(yzhovpets) ; }
-	else
-	{ ; }
-	if yzhovpunch != TOINT(yzhovpunch) 
-	{ ; yzhovpunch = STRLEN(yzhovpunch) ; }
-	else
-	{ ; }
-	if paty != TOINT(paty) 
-	{ ; paty = STRLEN(paty) ; }
-	else
-	{ ; }
+	if nkovpets != TOINT(nkovpets); {nkovpets = STRLEN(nkovpets)}; else; {}
+	if nkovpunch != TOINT(nkovpunch); {nkovpunch = STRLEN(nkovpunch)}; else; {}
+	if patp != TOINT(patp); {patp = STRLEN(patp)}; else; {}
+	if yzhovpets != TOINT(yzhovpets); {yzhovpets = STRLEN(yzhovpets)}; else; {}
+	if yzhovpunch != TOINT(yzhovpunch); {yzhovpunch = STRLEN(yzhovpunch)}; else; {}
+	if paty != TOINT(paty); {paty = STRLEN(paty)}; else; {}
 }
