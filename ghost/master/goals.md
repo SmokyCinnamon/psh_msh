@@ -1,5 +1,5 @@
 ~~functioning parser, leading to~~
-spookmode
+~~spookmode~~
 surfaces (?)
 ~~functioning counter~~ (as good as it can be, so...)
 relationship system (close to being done already)
@@ -7,5 +7,5 @@ relationship system (close to being done already)
 * relationship needs dialogue
 * items need to be better implemented
 * aitalk dialogue mostly
-* menus (?)
-~~* envelopes for menus~~
+~~menus (?)~~
+~~envelopes for menus~~

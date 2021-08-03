@@ -5,7 +5,23 @@
 //I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
 //It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
 
+Pool
+{
+	_output = IARRAY
+	if TOINT(_argv[1]) //If the check that was sent in is true
+	{
+		_targetarray = IARRAY
+		EVAL("_targetarray = %(_argv[0])") //Get the dialogues within the pool that was requested
+		foreach _targetarray; _dialogue
+		{
+			_output ,= _dialogue //Add each dialogue to the output array
+		}
+	}
+	_output
+}
+
 //this isnt technically a disclaimer (yet) but it *is* important.
+//not fucking rewording it this time. if i get my files back i'll merge the two.
 OnDisclaimer
 {
 	"\1\s[16]\b2\_qHey, question? This is important.\nCan you mess with these for me a second?\nRemember: you can change this in Pasha's config menu later.\0\s[9]\b2\n"
@@ -700,4 +716,69 @@ OnCreepyText
     }
     
     "%(_display)"
+}
+
+//rss search function for the cnadle lighting + havdalah times!!
+//i love you zi
+//so, technically i believe this would still fall under the no work rule if you tried to open them...? there's not much i can do other than direct the user to some other ghost. just leave a note saying about when they'll be back, or something.
+//geonameid=000000
+//620214 belarus my beloved
+//zip=00000
+OnSearchShabbat
+{
+	"\![execute,rss-get,https://www.hebcal.com/shabbat?cfg=r&geonameid=4619800&b=18&M=on&lg=s&pubDate=0,--async=OnGetShabbat,--file=shabbat.txt,--timeout=2000]"
+}
+
+OnGetShabbat
+{
+	//shabbat[0] will be the candle lighting time, formatted as ##:##
+	//shabbat[1] will be the Havdalah time, formatted as ##:##
+	
+	shabbat = IARRAY //Clears the shabbat array so we start with a clean slate
+	
+	_i = FOPEN('var/shabbat.txt','r') //Opens the file from the rss-get so we can read it
+	--
+	_buff = ""
+	for _buff = FREAD('var/shabbat.txt'); _buff != -1; _buff = FREAD('var/shabbat.txt') //This loop reads each line of the file until it reaches the end. _buff is the current line of the file
+	{
+		if RE_SEARCH(_buff,'<title>Candle lighting: ((\d?\d):(\d\d))pm') //Regex search for the candle lighting time
+		{
+			shabbat[0] = RE_GETSTR[1] //Sets
+			against[0] = RE_GETSTR[2] //second section
+			against[1] = RE_GETSTR[3] //third
+		}
+		if RE_SEARCH(_buff,'<title>Havdalah: ((\d?\d):(\d\d))pm') //Regex search for the Havdalah time
+		{
+			shabbat[1] = RE_GETSTR[1] 
+			against[2] = RE_GETSTR[2]
+			against[3] = RE_GETSTR[3]
+		}
+	}
+	--
+	_i = FCLOSE('var/shabbat.txt') //Closes the file since we're done
+	--
+	if shabbat == IARRAY //If the array is still empty, something must have gone wrong
+	{
+		"\_qCouldn't read file.\x"
+	}
+	else //If the search was successful - You can put whatever you want in the display, or skip the display altogether
+	//i need this part -- specifically to check agaisnt it. basically if your clock is anytime in between the candle lighting and havdalah, they won't show up. for hanukkah the time is just like...  when the candles are lit. not sure if they'd be fine to show up then...? maybe.
+	// . . .
+	//hour returns in 24h time. (?? or is it 12 they're confusing somehow). but... hm. if the minute is the same...
+	//againsthour = shabbat[0] + 12
+	//no... i need the minutes, don't i...? how do...
+	//if i set the second part as, say, againstminute, i can just check like: if hour >= againsthour && minute >= agaisntminute
+	{
+		"\_q\b[2]Result:\n\nCandle lighting: %(shabbat[0])pm\nHavdalah: %(shabbat[1])pm\ncurrent time: %hour:%minute\w8\w8\![*]\q[raise,OnAgainstMath]\x"
+	}
+}
+OnAgainstMath
+{
+	if against[0] != TOINT(against[0]); {against[0] = TOINT(against[0])}; else {}
+	if against[1] != TOINT(against[1]); {against[1] = TOINT(against[1])}; else {}
+	if against[2] != TOINT(against[2]); {against[2] = TOINT(against[2])}; else {}
+	if against[3] != TOINT(against[3]); {against[3] = TOINT(against[3])}; else {}
+	--
+	against[0] += 12; against[2] += 12
+	"%(against)\x"
 }

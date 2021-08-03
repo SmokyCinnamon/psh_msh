@@ -23,9 +23,7 @@ On_username
 //This is the URL where your ghost will look for updates. If you're setting up Network Updates YOU MUST change this to point at the right directory! Otherwise your ghost will not update properly! If you're not going to use the Network Update feature, just leave this section as it is or delete it, it should be fine.
 
 On_homeurl
-{
-	"https://raw.githubusercontent.com/SmokyCinnamon/psh_msh/master/"
-}
+{"https://raw.githubusercontent.com/SmokyCinnamon/psh_msh/master/"}
 
 
 //---- Top Menu Option Caption -----------------------------------------

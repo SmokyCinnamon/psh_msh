@@ -16,11 +16,12 @@ OpenKeroMenu
 		--
 		"\n\n[half]/
 		\![*]\q[Update,keroupdatecheck]\n/
-		\![*]\q[Talk to a ghost,OnCommunicate]\n/
+		\![*]\q[Bug report,bugreport]\n\n[half]/
+		\![*]\q[Talk to a ghost,OnStartTalking]\n/
 		\![*]\q[Give him a gift?,YzItemMenu]\n/
 		\![*]\q[Stat counter,ycountcheck]\n/
-		\![*]\q[Bug report,bugreport]\n/
-		\![*]\q[Test variable,OnTestvariable]\n\n/
+		\![*]\q[Ask about...,asky]\n/
+		//\![*]\q[Test variable,OnTestvariable]\n\n/
 		//When you are done with the test variable, aka your ghost is finished or you just don't want it showing up when you publish your ghost beta or whatevs, simply add two // slashes in front of \![*] to comment the line out. In Notepad++, it will turn green. When you want to use it again, erase the two slashes to turn it back to normal.
 		\![*]\q[Nothing,keroCANCEL]\e"
 	}
@@ -30,7 +31,7 @@ OpenKeroMenu
 		{
 		"\1\s[60]\b[11]"
 		--
-		"(Smells like ash...)"
+		//"(Smells like ash...)"
 		"(He's not looking at you... is he?)"
 		"\0\s[700]\b[11]hesdeadhesdeadhesdeadhesdeadhesdead\1"
 		"(If he blinks, you're out.)"
@@ -175,6 +176,54 @@ Select.keroupdatecheck
 	"\1\s[10]\![updatebymyself]\e"
 }
 
+Select.asky
+{ "\1\s[10]\b[2](You ask about...)\n/
+	\![*]\q[Friends,OnAsky]\n\![*]\q[How he's feeling,feelys]\n%(yendmenu)\e"
+}
+Select.feelys
+{"\1\s[10]Yeah no, I'm alright. You?\e"}
+
+OnAsky
+{ "\1\b2\q(You think he mentioned...)\n\n" //the asteriks are how many letters the names are. i could be an ass and do it in russian but i wont
+	--
+	if Friendys[0] == 1; "\![*]\q[Vadik,askFriendys0]\n"; else {"+++++  "}
+	--
+	if Friendys[1] == 1; "\![*]\q[Vanya,askFriendys1]\n"; else {"+++++\n"}
+	--
+	if Friendys[2] == 1; "\![*]\q[Pasha,askFriendys2]\n"; else {"+++++  "}
+	--
+	if Friendys[3] == 1; "\![*]\q[Valya,askFriendys3]\n"; else {"+++++\n"}
+	--
+	if Friendys[4] == 1; "\![*]\q[Jora,askFriendys4]\n"; else {"++++  "}
+	--
+	if Friendys[5] == 1; "\![*]\q[Lina,askFriendys5]\n"; else {"++++\n"}
+	--
+	"\n[half]\![*]\q[Ask something else,asky]\n%(yendmenu)\e"
+}
+Select.askFriendys0 //vadik would probably use оне, possibly with the кши ending in russian. not too important right now i guess
+{
+	"\1\s[10]\b[2]...That was a k sound, so I guess you're asking after Vadik? Ve's the most normal person out of all of us, I swear. Really good sense of humor. Autistic. Great at putting up with our shit, and also guitar solos. And ve likes classical music, too, I guess. Vadik is the perfect friend. Also, ve likes cats a whole heck of a lot. Even in our off time, ve's almost always at Pasha's, just to pet his cat. Which is fair, I mean, that cat's fluffy as hell.\e"
+}
+Select.askFriendys1
+{
+	"\1\s[10]\b[2]Vanya? We're assuming you said Vanya. He's... he's definitely a bundle of nerves. Although, he does like playing chess with me, so he's got that going for him. He's pretty much the mom friend of mom friends, but he's fun to hang out with. Him and Vadik tend to do things together, too. My theory is that Vadik gives off the most normal person vibes, so Vanya feels justified in taking him along on literally every single small errand.\n...I thought I was the normal person here, though, hmm...\w4\0\s[0](He's one of us %(username) don't be fooled.)\e"
+}
+Select.askFriendys2
+{
+	"\1\s[10]\b[2]Oh, Pashka? Nothing special, really, only my best friend in the entire universe. I'm not sure if you've heard of him, actually... Well, he's really great at singing, of course, and he loves cats. I love cats too, so it works out! Sometimes he'll even play guitar. You should listen to him sometime! Pasha's great.\e"
+}
+Select.askFriendys3
+{
+	"\1\s[10]\b[2]Who again?\w4\n*(You tell him you said Valya.)*\n\w4Oh, alright. Sorry, it's just with Vanya and Vadik, too... well, I guess that's another matter.\n Valya's pretty cool, him and Jora hang out a lot, but that's because they were in the same band before we met them. I mean, they're still *in it*, I'm not saying they aren't, those two are just also in our band. So we see them a lot too. Valya also plays drums, so if you ever need someone to play with a grilled-cheese induced concussion, he's your man. That's a joke! I'm joking! He wouldn't do that. ...I think. Probably. Pasha, do you think he'd do that...?\e"
+}
+Select.askFriendys4
+{
+	"\1\s[10]\b[2]Jora? There's a can of worms.  He's actually been like, professionally diagnosed as autistic, unlike the rest of us peasents, and... well, that's just speculation, so I won't tell you about that, %(username). So, he's our bassist, that's not relevant, but he is, and like. I have never seen a man smile that much! Every occasion is a smile occasion for him. Not to mention Pasha, but he's standing right there so we won't talk about him. Jora's a good friend, though, you can count on him in an emergency. He's possibly the only person I've met who loves driving with a passion. Not like, racing or anything, just... driving. Truly an american at heart, I swear.\e"
+}
+Select.askFriendys5
+{
+	"\1\s[10]Oh, did I tell you about Lina yet? She's Jora's girlfriend, but we met her because of her band. See, my uncle and us... well, that's another story. Anyways, Lina's the best. We're... well, we *were* on tour until whatever this is happened, and she was with us for that. Pasha thinks she makes his voice sound less so-so, and I agree that back vocals are good, but don't you think his voice is good on it's own, too? Oh! Not to downplay Lina at all, that's not what I meant! She's a great artist in her own right, and I'm really glad she agreed to come with us. I really love her music, and working with her is a charm. You should give her music a listen sometime, she's great.\w6\nAnyways, she comes over every once in a while to play with us, it's pretty fun.\e"
+}
 //--Test Variable --------------------------------------------------------
 //I briefly mentioned the test variable in bootend.dic and possibly in etc.dic as well, I'm not sure. What exactly is the test variable? Basically, it's a place you can plug in anything you want to test out. What this means is that you can write some ghost dialogue, then copy and paste it into the test variable dialogue snippet down there, reload your ghost, then choose "test variable" from your second character's menu. Check your dialogue to see if it looks right and if it does, put it back in aitalk, or edit it until it looks right and put it back. While you can use Script Input to test most of your ghost's dialogue, there are some lines it just can't do, and it can't help you test choices. But the test variable can! The dialogue/choices from OnFirstBoot are a prime candidate for testing with this variable.
 //You can also use this to test functions as I mentioned above by adding \![raise,function] at the end of it, although you can do this with Script Input as well. Advanced Users, the test variable is also great for testing out any new stuff you may add to your ghost, like mode settings, item values, functions, raising or lowering numbers, what have you.
@@ -183,17 +232,18 @@ Select.keroupdatecheck
 
 OnTestvariable
 {
+	//DreidelSpin = (Nun,Gimel,Hey,Shin)
+	//Friendys = (0,0,0,0,0,0) //vadik, vanya, pasha, valya, jora, lina
+	//rel = 0
 	//yamiable = 550
 	//namiable = 550
-	nkovpunch = 0
-	patp = 0
-	yzhovpunch = 0
-	paty = 0
-	//другдруга = 0
-	friendlyall = namiable + yamiable
-	//if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
-	//"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
-	"\1\s[10]\b[2]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\n fighting: %(другдруга)\n\e"
+	//friendlyall = namiable + yamiable
+	if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
+	"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
+	//"\1\s[10]\b[2]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\e"
+	//OnUpdateRel
+	//against[0] += 1
+	//if against[0] <= (hour/2) || against[0] >= hour {"working %(against[0]) %(hour)"} else {"idk tbh %(against[0]) %(hour)"}
 }
 
 /*    #\![*]\q[You're on a computer,computer]\n/

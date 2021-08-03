@@ -25,6 +25,10 @@ Onpashainput
 		namiable += 12
 		"\0\s[5]Awwwww\w3, that\w3's sweet\w3, %(petname)\w3."
 	}
+	elseif reference0 == "variablefix" {
+		yamiable = 550
+		"\0\s[10]yeah sorry about that.\e"
+	}
 	else
 	{
 		"\0\s[0]alright.\e"
@@ -35,4 +39,19 @@ Onpashainput
 Onmishainput
 {
 	"\1\s[10]Mmh."
+}
+
+//this is gonna get weird.
+
+OnTeachRus
+{
+	"\b[2]Sure, what do you want to know?\n\q[Alphabet,aya] \q[Words,slova]%(nendmenu)\e"
+}
+Select.aya
+{
+	"Yeah, that's always good.\n\q[Familiar,normal] or \q[Unfamiliar,what]?\e"
+}
+Select.normal
+{
+	"\b[2]Not too much interesting here. The most familiar letters are\nА, Е, К, М, О and Т. Nothing too special there. Keep in mind that an unstressed A sounds like O, and an unstressed O sounds like A. It's not really as confusing as it sonds at first.\xBut you may be wondering... there's other letters that look like english ones, right? So what's that about?\w6 Well, those would be В, Ё, Н, Р, and С. those are pronounced respectively like V, Yo (At the start of a word), N, R, and S. Ё (And E, now that I think of it) has a different pronunciation depending on whether it's at the start of a word or not. It's mostly pronounced as yo, though. Р is more of a rolled r, but I wouldn't worry if you can't pronounce it.\xSo, now that you've got that, how about some words?\w6\xКот, Том, and Та are easy enough. (та is actually a word by the way.) so... what about...\w4 Север\ж6, Рано, or Моё?\w6 Just take your time.\xGot it? In order: Kot, Tom, ta, sever, rano and moyo.\w6All of these are real words! Well, one's a name, I guess. So that's Tomcat, that, north, early and mine. Not much, but I'm working with the letter's I've got.\e"
 }

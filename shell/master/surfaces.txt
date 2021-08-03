@@ -338,6 +338,9 @@ collision3,45,120,70,139,Bandadge
 collision4,49,57,110,73,Shoulders
 
 element0,overlay,surface1502.png,0,0
+
+900interval,bind
+900pattern0,1902,2,bind,0,0
 }
 
 //Main Character Worried pose
@@ -350,6 +353,9 @@ collision3,45,120,70,139,Bandadge
 collision4,49,57,110,73,Shoulders
 
 element0,overlay,surface1503.png,0,0
+
+900interval,bind
+900pattern0,1903,2,bind,0,0
 }
 
 //Main Character Sad/Disappointed pose
@@ -422,52 +428,6 @@ collision3,45,120,70,139,Bandadge
 collision4,49,57,110,73,Shoulders
 
 element1,overlay,surface1509.png,0,0
-}
-//here we got the spoops
-//600 -- this is wrong, 700 and above-- whatever else
-surface600
-{
-	collision0,59,30,103,47,Head
-	collision1,63,45,99,71,Face
-	collision2,64,68,102,116,Stomach
-	collision3,49,57,70,74,Wrist
-	collision4,95,51,115,94,Arm
-element1,overlay,surface1600.png,0,0
-601interval,never
-601pattern0,1601,0,overlay,0,0
-602interval,never
-602pattern0,1602,0,overlay,0,0
-603interval,never
-603pattern0,1603,0,overlay,0,0
-604interval,never
-604pattern0,1604,0,overlay,0,0
-605interval,never
-605pattern0,1605,0,overlay,0,0
-606interval,never
-606pattern0,1606,0,overlay,0,0
-607interval,never
-607pattern0,1607,0,overlay,0,0
-608interval,never
-608pattern0,1608,0,overlay,0,0
-609interval,never
-609pattern0,1609,0,overlay,0,0
-610interval,never
-610pattern0,1610,0,overlay,0,0
-}
-surface700
-{
-element1,overlay,surface1700.png,0,0
-//element1,overlay,surface1701.png,0,0
-}
-surface701 //blank eyes
-{
-	element1,overlay,surface1700.png,0,0
-	element2,overlay,surface1701.png,0,0
-}
-surface702 //upset
-{
-	element1,overlay,surface1700.png,0,0
-	element2,overlay,surface1702.png,0,0
 }
 
 
@@ -616,21 +576,6 @@ collision3,48,60,110,75,Shoulders
 element1,overlay,surface2509.png,0,0
 }
 
-surface60 //spook
-{
-collision0,42,69,97,90,Shoulders
-collision1,45,25,84,42,Head
-collision2,51,38,85,64,Face
-collision3,52,81,90,141,Stomach
-collision4,42,190,74,235,Foot
-
-element1,overlay,surface2700.png,0,0
-61interval,never
-61pattern0,2701,0,overlay,0,0
-62interval,never
-62pattern0,2702,0,overlay,0,0
-}
-
 //And that's it! We're done! You can move on to some other aspect of your ghost now. But before we go, there are a few more little things you may want to think about.
 
 
@@ -651,15 +596,16 @@ collision0,56,9,100,25,Head
 	collision3,61,80,101,124,Stomach
 	collision4,49,117,63,143,Wrist
 	collision5,69,50,90,61,Neck
-
+}
 //Because this is under surface.append, that means that these collisions are being set for every surface between the number range specified, in this case every Surface from 500 to 590. Make sure to put surface.append at the end of your file, so it can append the values to surfaces that exist.
 
 //--bind-------------------------------------------------------------------------------
 
 //Bind is an interval function only used for dress-up items, therefore if your ghost has no dress-up items, you will not need to bind anything and can safely disregard this. See the walkthrough page about clothing for more details about bind. I'll comment these out since the template won't have clothing items.
-
-//51interval,bind
-//51pattern0,999,2,bind,0,0
+surface.append0-9,!2,!3
+{
+900interval,bind
+900pattern0,1900,2,bind,0,0
 
 //One final note on bind, note that it is also under surface.append along with the collisions up there. Meaning that this clothing would bind across those multiple surfaces just like the collisions. You can set up bind individually for a pose I think, but I honestly haven't messed around with it very much.
 }

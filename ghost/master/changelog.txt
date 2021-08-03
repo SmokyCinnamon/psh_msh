@@ -1,3 +1,22 @@
+!!!IMPORTANT: IF YOU WERRE ON V1.2.1 OR BELOW, GO TO PAGE 3 OF PASHA'S MENU AND CLICK "YOU WANT TO TALK TO HIM". TYPE "variablefix" (CASE SENSETIVE) IN THE DIALOGUE BOX. THIS WILL HELP YOU. !!!
+
+v1.2.2
+> dialogue added
+> made the relationship system even weirder. ...Have fun I guess???
+> updated the communication feature. i hate this
+> speaking of which that means i moved code around and i also hate that
+> rebalanced the boot dialogue to accomodate for **more dialogue**
+> fixed season getting and took out the code i left in aitalk
+> optimizing code 2: electric boogaloo; aka i cant read shit but! dont have to scroll!
+> made pasha's menu ~paginated~! i hope this isn't an inconvinience?
+> this means i moved more code around. see above for my opinions on that.
+> zi if you're reading this i said in my code and i will say it again: i love u
+> so halfway through gettiing this update finally fucking FINISHED my computer died and i lost practically all of my work. i am not upset about this. i dont know why you would think that. this is not me being upset about this.
+	> this part of the changelog was the ENTIRE FUCKING LENGTH of the rest of the changelog
+		> i had COOL FORMATTING like how im typing right now
+> aitalk now has pools. i did not fix the brackets yet. probability might still be fucked.
+> yeah thats it. there was a lot in creepymode, a lot of things got optimized, and even more general dialogue had been added! aaaaand all nuked. sorry :/
+
 v1.2.1 -- aaaaaaaa
 > fixed some menu option formatting not being right, like when Pasha asks you if you want to see the changelog
 > fixed the hourchange being the wrong thing. ...Don't ask me how it even worked beforehand. (i do want to test that though lol)

@@ -34,7 +34,7 @@ OnFirstBoot
 	passmin = 0 
 	passsec = 0
 	passhour = 0	// These two keep track of the time.
- 	username         = "USER" //This sets a temporary name for the user. It'll be replaced when they tell the ghost their name.
+ 	username         = "Никто" //This sets a temporary name for the user. It'll be replaced when they tell the ghost their name.
 	stroke           = 0	// Sets their being-pet state to zero.
  	teachusername    = 0	// Related to them learning your name.
 	mikireflag       = 0	// Determines behavior at certain points.
@@ -79,7 +79,7 @@ OnFirstBoot
 		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
 		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
 		\![*]\q[They/Them/Their,choicefirsttheythem]\n/
-		\![*]\q[custom,choicefirstcustom]\e"
+		\![*]\q[Custom,choicefirstcustom]\e"
 		
 		//\0\s[0]\n\n[half]Fourth wall break time\w1!\nMe and Misha can hang out and keep you company\w1, or whatever\w1.\w4\nPoke around in the menus and stuff\w1, and\w1, uh\w2.\w3.\w4.\w4 yeah\w1. That's it\w1. Rebuild the fourth wall\w1.\w8
 		
@@ -119,30 +119,21 @@ OnFirstBoot
 
 Select.choicefirsthehim
 {
-	presuffix = "masculine"
-	himher = "him"
-	heshe = "he"
-	hisher = "his"
+	presuffix = "masculine"; himher = "him"; heshe = "he"; hisher = "his"
 	--
 	NameInput
 }
 
 Select.choicefirstsheher
 {
-	presuffix = "feminine"
-	himher = "her"
-	heshe = "she"
-	hisher = "her"
+	presuffix = "feminine"; himher = "her"; heshe = "she"; hisher = "her"
 	--
 	NameInput
 }
 
 Select.choicefirsttheythem
 {
-	himher = "them"
-	heshe = "they"
-	hisher = "theirs"
-	plural = 1
+	himher = "them"; heshe = "they"; hisher = "theirs"; plural = 1
 	--
 	NameInput
 }
@@ -200,6 +191,18 @@ GetTimeSlot
 GetDaySlot
 {"%(month)month %(day)day"}
 
+//this isn't working and i havent a clue as to why. Tama seems to think im using invalid expressions????
+OnGetSeason //I checked sam n steve, I'm not too sure hwy winter has to have the or in there? But maybe it'll work now...
+{
+	if month >= 12 || month <= 2; {"winter"} 
+	elseif month >= "3" || month <= "5"; {"spring"}
+	elseif month >= "6" || month <= "8"; {"summer"}
+	//if month >= 9 && <= 11 //WHY does it not have an else at the end???? i am going to Riot
+    else  
+	// 9-11, or september to november. this also means more dialogue!!! yay :D
+	{season = "fall"}
+}
+
 //-----------------------Normal Booting----------------------------
 
 //From this point on, the dialogue will be for any normal boot of your ghost. You can specialize this for certain days or times if you like, or if you're uninterested, leave it very simple.
@@ -226,8 +229,8 @@ OnBoot
 	//yzhovpunch = 0
 	friendlyall = namiable + yamiable //not sure how else to handle this.
 	//WGlass = 0 //idk how temp variables work
-	"\![updatebymyself,checkonly]" //this checks for updates on startup.
 	"\0\s[0]\1\s[10]" //This sets them up in their neutral pose for now.
+	"\![updatebymyself,checkonly]" //this checks for updates on startup.
 	
 	//If you don't want to deal with individual day messages when you boot them, you can delete everything down to the end bracket for OnBoot (use Notepad++'s bracket tracking abilities to find where it is!) and instead add "%(normalboottalk)" to the end of the snip of dialogue up there that sets them up in their neutral poses. I'm pretty sure that should shortcut it properly.  Otherwise, read on ahead!
 	--
@@ -235,8 +238,12 @@ OnBoot
 	season = GetSeason
 	//timeslot = GetTimeSlot //You should remember these functions from above! They determine the date and time. Basically, it's using the functions GetDaySlot and GetTimeSlot to determine the two values for dayslot/timeslot that it will use in the following if statements. Those who read the coding page of the walkthrough and are interested in using your own functions, pay very close attention to this and study how it works!
 	//seasonslot = GetSeasonSlot
-	
-	if dayslot == userbirthday //Now we're getting into the if statements. These check what the date is and, if it's a certain value, displays special dialogue. Here, the if statement is looking at the dayslot value (which we just defined) and evaluating it using the == operator to see if it equals another value, in this case the value "userbirthday". Basically this is checking to see if it's the user's birthday.
+	if weekday == 5 { if against[0] <= hour && against[1] <= minute {
+		"\0\s[-1](Nobody's here... call someone else?)\n%*\q[Sure,??] %*\q[Nah,OnClose,nobodyhome]\n\n%(shabbat[0])_%(shabbat[2])\x"} else {"shabbat soon. would've made some challah but it is what it is."}}
+	elseif weekday == 6
+	{if against[2] >= hour && against[3] >= minute {
+		"\0\s[-1](Nobody's here...)\n%*\q[Switch,??] %*\q[Close,OnClose,nobodyhome]\n\n%(shabbat[0])_%(shabbat[2])\x"} else {"we're here! again. somehow. i guess we're just.... stuck here still then."}}
+	elseif dayslot == userbirthday //Now we're getting into the if statements. These check what the date is and, if it's a certain value, displays special dialogue. Here, the if statement is looking at the dayslot value (which we just defined) and evaluating it using the == operator to see if it equals another value, in this case the value "userbirthday". Basically this is checking to see if it's the user's birthday.
 	
 	//*********************Advanced User Info*******************************
 	//If you're checking a value in an if statement, remember! 
@@ -246,7 +253,7 @@ OnBoot
 	//***********************************************************************
 	
 	{
-				"\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8\1\s[10]Happy birthday, %(username)!\e" 
+				"\0\s[6]It's your birthday!!! \s[0]I didn't get anything, though...\w6\1\s[10]Happy birthday, %(username)!\e" 
 				
 				//Notice in this dialogue that there are two new envelopes, %(bornmonthprint) and %(borndayprint). These two things basically display the user's birthday - bornmonthprint is the month and borndayprint is the day. These were defined when the user put in their birthday in the menu.dic file. See word.dic for more info on envelopes.
 				//If the user didn't or hasn't put in their birthday yet, this dialogue will basically never get called. Which makes sense.
@@ -282,15 +289,38 @@ OnBoot
 			"\0\s[0]Doing good?\e"
 		}
 	}
+	elseif dayslot == "12month 10day" //&& <= "12month 19day" //hanukkah time! until i figure out things this... this needs updated. every year. sigh...
+	//also looking at it i really don't have much time huh
+	{
+		if day == 10
+		{"\p[2]\s[300]\0\s[6]Hey %(username)!!! Happy chanukah!!!!!!\w6\1\s[16]Happy chanukah! \1\s[10]Good to see you, %(username).\e"}
+		elseif day == 11
+		{"\p[2]\s[300]\i[2]%(hanukkahboot)\e"}
+		elseif day == 12
+		{"\p[2]\s[300]\i[3]%(hanukkahboot)\e"}
+		elseif day == 13
+		{"\p[2]\s[300]\i[4]%(hanukkahboot)\e"}
+		elseif day == 14
+		{"\p[2]\s[300]\i[5]%(hanukkahboot)\e"}
+		elseif day == 15
+		{"\p[2]\s[300]\i[6]%(hanukkahboot)\e"}
+		elseif day == 16
+		{"\p[2]\s[300]\i[7]%(hanukkahboot)\e"}
+		elseif day == 17
+		{"\p[2]\s[300]\i[8]%(hanukkahboot)\e"}
+		elseif day == 17
+		{"\p[2]\s[300]\i[8]%(hanukkahboot)\e"}
+	}
 	else
 	{
 		if spookster == "on" && RAND(100) < 6
 		{
 			spooktime = "on"
-			"\1\s[60](... doesn't look like he'll say hello this time.)\e"
-			"\1\s[60](Is something burning...?)\e"
-			"\0\s[700]%(username) put back back fix fix fix fix\e"
-			"\0\s[700]%(username) not good not good not good not good\e"
+			"\0\s[700]\1\s[60](... doesn't look like he'll say hello this time.)\e"
+			"\0\s[700]\1\s[60](Is something burning...?)\e"
+			"\1\s[60]\0\s[700]%(username) put back back fix fix fix fix\e"
+			"\1\s[60]\0\s[700]%(username) not good not good not good not good\e"
+			"\1\s[60]\0\s[600]%(username)\w2? g-d\w2, why is that......\n\nHe\w2's dead\w2, isn\w2't he\w2? Fuck\w2, fuck he\w2's...\e"
 		}
 		else
 		{
@@ -315,29 +345,38 @@ OnBoot
 normalboottalk
 {
 	if weekday == 6 && hour >= 19 //This checks if the weekday equals six, meaning saturday AND (using the && operator) if the hour is past 19. You can change these numbers or values to anything you like! As such you can check any combination of date and day and time for potential boot dialogue. You can also add more elseif checks for other days if you want.
-		{"\0\s[0]It's Saturday night.\e"}
-	elseif RAND(100) < 40 //What this does is choose a random number from 1-100, and then checks if that number is less than 40. If it's less than forty, then these dialogue pieces will occur. Remember, you can have multiple lines of dialogue within one set of brackets like this! You just need to make sure they're all enclosed in their own set of quotation marks.
+		{"\0\s[0]It's Saturday night...\e"}
+	elseif RAND(100) < 60 //What this does is choose a random number from 1-100, and then checks if that number is less than 40. If it's less than forty, then these dialogue pieces will occur. Remember, you can have multiple lines of dialogue within one set of brackets like this! You just need to make sure they're all enclosed in their own set of quotation marks.
 		{
-		"\0\s[0]Been lookin' around here, %(username). You got any phones or something like that?\w8\1\s[10]He thinks I'm not good company.\e"
-	
-		"\1\s[10]Hey, %(username), answer a question for me. Do I look intimidating?\w8\0\s[0](...Say yes.)\w8\1\s[17]\n\n[half]I wasn't talking to you.\e"
-	
-		"\0\s[0]Should we take over %(username)'s notepad app?\w8\1\s[10]No, Pasha, %(heshe) %(need) that thing.\e"
+		"\0\s[0]Been lookin' around here, %(username). \s[8]You got any phones or something like that?\w6\1\s[10]He thinks I'm not good company.\e"
+		"\1\s[18]Hey, %(username), answer a question for me. Do I look intimidating?\w8\0\s[0](...Say yes.)\w6\1\s[17]\n\n[half]I wasn't talking to you.\e"
+		"\0\s[8]Should we take over %(username)'s notepad app?\w8\1\s[10]No, Pasha, %(heshe) %(need) that thing.\e"
+		"\1\s[10]Hi %(username).\e"
+		"\0\s[6]Good to see you, %(username)!\e"
+		"\1\s[18]Oh hey, it's %(username). Someone was just going through %(hisher) %(folderuser)...\w6\0\s[9]I don't know what you're talking about.\e"
+		"\0\s[6]Hi there! Having a good day?\e"
+		"\0\s[8]Lina's not still mad at me, is she do you think?\w6\1\s[10]You're probably fine. She gets like that when she's stressed.\e"
+		"\0\s[8]Lina said she was thinking of proposing to Jora...\w4\nHeard anything from him?\w6\1\s[10]Isn't he a little young to be thinking about...\w4 Oh, hello %(username) -- didn't see you there, sorry.\e"
+		"\0\s[0]Valya wouldn't *really* have gotten a concussion from the grilled cheese, though, would he?\w6\1\s[10]Hey %(username), how's it going?\w4\0\s[9]Oh, hi.\e"
+		"\1\s[10]But you don't *really* mean it, do...\w4\s[18]Oh, %(username).\e"
+		"\0\s[8]What about your daughter? \1\s[10]Probably. I did talk...\n Hey there %(username).\0\s[0]\1 What's up?\e"
+		"\1\s[10]That's the thing, though, Jora...\nOh, %(username), hey! Doing anything interesting?\e"
+		"\0\s[0]I know I didn't, but-\w4\nUh, hey, %(username). It *is* a little disorienting, teleporting like that.\e"
 		}
  	else
  	{
 		//The following if statements check the time of the day as defined above in the GetTimeSlot function. Do you remember the names that it defined? Now we're going to use them!
 		
 		if timeslot == "earlymorning" //The following dialogue will be called if they are booted during the time specified in GetTimeSlot (in this case, the hour being more than/equal to 5 but less than/equal to 8). Remember, you can add as many lines of dialogue here as you want, or take away as many as you want! Replace the dialogue here with what you see fit.
-		{"\1\s[10]Isn't it kind of early?\w8\0\s[0]Not really.\e"}
+		{"\1\s[10]Isn't it kind of early?\w6\0\s[0]Not really...?\e"}
 		elseif timeslot == "morning"
 		{"\1\s[10]Good morning, %(username).\e"}
 		elseif timeslot == "lunch"
-		{"\1\s[10]Looks like it's around lunch time. \w8\0\s[0]Food time?\e"}
+		{"\1\s[10]Looks like it's around lunch time. \w6\0\s[0]Food time?\e"}
 		elseif timeslot == "afternoon"
 		{"\1\s[10]Afternoon, %(username). Things been good?\e"}
 		elseif timeslot == "evening"
-		{"\0\s[0]Good evening.\1\s[10]Hey.\e"}
+		{"\0\s[0]Good evening!\1\s[10]Hey.\e"}
 		elseif timeslot == "latenight"
 		{"\1\s[10]Got time before bed?\w8\0\s[0](We always have time.)\e"}
 		else //the last timeslot we haven't done is midnight, which is what's under here.
@@ -347,6 +386,18 @@ normalboottalk
  		"\1\s[10]Shouldn't you be asleep, %(username)?\w8\0\s[0]We never sleep, that's how we're always awake when you check on us.\w8\1\s[10]\n\n[half]Don't listen to him, we do sleep.\e"
 		}
 	}
+}
+
+hanukkahboot
+{
+	"\0\s[6]Janiceeeeeeeeeeeee\w6\1\s[10]You see what I have to put up with %(username)? Every day. Every day I am here.\w6\0\s[9]\n\n[half]You still love me though.\e"
+	"\1\s[10]It's chanukah time! Which means someone has illegal latkes.\w6\0\s[0]They're not illegal you just don't like them.\e"
+	"\1\s[16]Hey, %(username)! Hope you're having a good time today.\e"
+	"\1\s[10]Hi %(username)! Doing alright?\e"
+	"\1\s[10]Hey! Good to see you.\e"
+	"\0\s[6]I'm gonna make so many latkes you will not believe you eyes.\w6\1\s[10]And you are going to dip them in fucking applesauce. Applesauce! Do you beleive the nerve of this man, %(username)?\w6\0\s[0]\n\n[half]Ok that's insulting I am a man shaped human at the MOST. And applesauce is the best. You will not change my mind.\w6\1\s[10]\n\n[half]Someday. Someday I will.\e"
+	"\0\s[6]Hello!! Hi %(username)!!! How is your day going? Personally, I could *not* be better.\w6\1\s[10]He's excited. I'm. . . Ok I don't know why.\w6\0\s[6]\n\n[half]Because!! It's chanukah! Why not ! ! !\w6\1\s[16]\n\n[half]Well . . . if you're happy.\e"
+	"\0\s[6]Did you know. Latkes and applesauce are the absolute best. I love them.\w6\1\s[10]They are not. I will eat mine absolutely plain before applesauce, and that. Is. Final.\w6\0\s[0]\n\n[half]No... come on, it's not a bad combination!! You should try it sometime.\w6\1\s[10]I'll pass on that one. %(username), you should tell him he's wrong sometime. Applesauce latkes are not, have never been, and never will be the shit.\e"
 }
 
 
@@ -363,6 +414,7 @@ normalboottalk
 
 OnClose
  {
+	if reference0 == "nobodyhome" {"\0\s[-1](See you later, user.)\-\e"} else {
  timeslot = GetTimeSlot //as you saw above, it's checking the time.
  --
 	if passmin >= 5	//This checks to see if you've had them open for at least five minutes.
@@ -434,7 +486,7 @@ OnClose
  	}
  	--
 	"\-\e" //this bit of code actually closes and ends the ghost. Because \e is here, you don't have to end each line above with it. Again, this will come up very rarely, so OnClose is an unusual case.
- }
+ }}
 
 
  //-------------------------State Changing--------------------
@@ -446,7 +498,7 @@ OnClose
 //This will run when you minimize them and then bring them back up. Replace with what you like.
 
 OnWindowStateRestore
- {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}
+ {if spooktime == "on" {""} else {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
 
 
 //--OnGhostChanging
@@ -456,6 +508,11 @@ OnWindowStateRestore
  
 OnGhostChanging
  {
+	if spooktime == "on" { if reference0 == "Pavel" {"\0\s[600]nonono can\w2't i go back\w2? please\w2, just...\e"} else {
+	"\0\s[700]%(reference0) better %(heshe) you like %(username)?\n\n\nwhy not me? did i do something wrong? it's my fault sorry sorry sorry\w6\e"
+	"\0\s[700]this won't change anything, tell %(reference0) what\w6\e" //you saw
+	}}
+	else {
 	if reference0 == "Pavel" //Replace this with the name of your Sakura character as you put in install.txt or descript.txt. I set this up to use the full ghost's name with Hunter and Smoker but I forget exactly how I did it and I'm having trouble getting it to work again. I think I just didn't define the Sakura or Kero names in either descript.txt or install.txt. You can experiment with it yourself. Otherwise, leave it as your Sakura character's name.
 	{"\0\s[0]Reloading. Did something happen?\w8\w8\e"}
  	else //If you're switching to another Ghost.
@@ -464,7 +521,7 @@ OnGhostChanging
 		
 		//Replace this dialogue with whatever you like. Notice the use of the %(reference0) envelope here? In OnGhostChanging, %(reference0) stores the name of the ghost being swapped to, so if you want to display what you're switching to, you can use %(reference0) as in this example. You don't have to use %(reference0) if you don't want to though.
 	}
-}
+}}
 
 
 //--OnGhostChanged

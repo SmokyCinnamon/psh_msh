@@ -42,13 +42,14 @@ MenuRun
  	ap = GetAP
  	nowmin = Getnowmin
  	nowhour = Getnowhour
+	_pagenum = 1
 	//These four statements basically get the day of the week, whether it's AM or PM, the hour, and the time. It's putting together the information to display the time at the bottom of the balloon. Pay it no mind.
 	--
 	"\n\n\_q\b2" //The \n\n means two new lines as detailed in the walkthrough, and \_q means quick session, meaning all the text from this point on will display instantly instead of a few letters at a time like normal ghost dialogue.
 	--
 	if lastTalk != "" //What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
 	{
-	  "\![*]\q[Say again?,OnLastTalk]\n\n[half]"
+	  "\![*]\q[Say again?,OnLastTalk]\n"
 	  //If the ghost has said something, it will then display this menu option. You can replace "Repeat Last Dialogue" with whatever caption you like, such as "What were you saying?" or "What did you say?" or "Could you repeat that?" or something like that.
 	  
 	  //*********************Advanced User Info*******************************
@@ -58,10 +59,40 @@ MenuRun
 	  //***********************************************************************
 	}
 	--
- 	"\![*]\q[Tell him to talk?,altalk]\n"
-	
 	//This option will force the ghost to say something from aitalk if the user clicks it. Just replace "Say something" and "Say something 2" with whatever captions you think would be appropriate for such an option. IF you don't want two options for captions, delete one of the lines.
 	//Advanced users, you can add multiple captions for any option you add to a menu you make just like this, as long as you separate it from the other options into its own section with two dashes above and below.
+	//"%(fuckyoussp)\n/
+ 	"\![*]\q[Tell him to talk?,altalk]\n/
+	\![*]\q[Config Menu,configmenu]\n/
+	\![*]\q[Functions,dosomething]\n/
+	\![*]\q[Stat counter,countcheck]\n\n[half]/
+	<< < | 1 \q[2,OnPage2] \q[3,OnPage3] | \q[>,OnPage2] \q[>>,lastpage]\n/
+ 	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year), заряд:%(currentbattery)\e"
+	//\![raise,OnBatteryNotify]Battery:%(currentbattery)
+	//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
+	//change p's balloon font, his current one doesn't show the battery text, even if the percentage works just fine
+}
+OnPage2 { 
+	//wd = GetWeekDay
+ 	//ap = GetAP
+ 	//nowmin = Getnowmin
+ 	//nowhour = Getnowhour
+	_pagenum = 2
+	--
+	"\0\b[2]\_q%(_pagenum)\n\n[half]"
+	--
+	"\![*]\q[Give him a gift?,ItemMenu]\n/
+	\![*]\q[Play spaceman,playspaceman]\n/
+	//\![*]\q[Dreidel,playdreidel]\n/
+	\n\q[<<,MenuRun] \q[<,MenuRun] | \q[1,MenuRun] 2 \q[3,OnPage3] | \q[>,OnPage3] \q[>>,lastpage]\n/
+ 	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
+}
+OnPage3 {
+	_pagenum = 3
+	--
+	"\0\b[2]\_q%(_pagenum)\n\n[half]"
+	--
+	"\![*]\q[I have a question,OnAskMenu]\n"
 	--
 	if другдруга == 1 //if i comment out their dialogue for triggering it in the first place, it shoulldn't show up at all. dont have to comment it out for now.
 	{
@@ -69,40 +100,28 @@ MenuRun
 	}
 	--
 	"\![*]\q[You want to talk to him,OnPashaTalk]\n/
-	\![*]\q[Config Menu,configmenu]\n/
-	\![*]\q[Give him a gift?,ItemMenu]\n/
-	\![*]\q[Play spaceman,playspaceman]\n/
-	//as a note pasha likes it when you play this game but i saw something about it being better to do a variation on this, which shouldn't be too hard as it doesn't have any visuals in the ghost version.
-	//spaceman is you have a little stick figure taken by aliens, i think its cute)
-	\![*]\q[Stat counter,countcheck]\n/
-	\![*]\q[Functions,dosomething]\n\n[half/
- 	\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
-	//\![raise,OnBatteryNotify]Battery:%(currentbattery)
-	//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
-	//change p's balloon font, his current one doesn't show the battery text, even if the percentage works just fine
+	\![*]\q[When's candle lighting this week?,OnSearchShabbat]\n/
+	//\![*]\q[Russian?,OnTeachRus] | \![*]\q[Belarusian?,OnTeachBel]\n/
+	\n\q[<<,MenuRun] \q[<,OnPage2] | \q[1,MenuRun] \q[2,OnPage2] 3 | > >>\n/
+ 	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
 }
-
+//as a note pasha likes it when you play this game but i saw something about it being better to do a variation on this, which shouldn't be too hard as it doesn't have any visuals in the ghost version.
+	//spaceman is you have a little stick figure taken by aliens, i think its cute)
 //Leave this next bit alone.
 //Advanced users, note that this is formatted as Select.linkedfunction? Remember how it went \q[Displayed Name,linkedfunction] above? When a user clicks an option that doesn't begin with On, they'll be linked to Select.linkedfunction. Pay close attention as we go through and you'll see this in action.
 Select.altalk
 {AiTalk}
-
 //Leave this alone
-OnLastTalk 
-{"%(lastTalk)\e"}
-
+OnLastTalk {"%(lastTalk)\e"}
 //This is figuring out what day of the week it is. Leave it alone.
 GetWeekDay
 {if weekday == 0; {"Sun"}; elseif weekday == 1; {"Mon"}; elseif weekday == 2; {"Tue"}; elseif weekday == 3; {"Wed"}; elseif weekday == 4; {"Thu"}; elseif weekday == 5; {"Fri"}; else; {"Sat"}}
-
 //This is finding out whether it's AM or PM. Leave it alone.
 GetAP
 {if hour >= 0 && hour <= 11; {"AM"}; else; {"PM"}}
-
 //This is figuring out the minute. Leave it alone.
 Getnowmin
 {if minute >= 0 && minute <=9; {"0%(minute)"}; else {"%(minute)"}}
-
 //This is figuring out the hour. Leave it alone.
 Getnowhour
 {if hour12 >= 0 && hour12 <=9; {"0%(hour12)"}; else; {"%(hour12)"}}
@@ -269,7 +288,19 @@ Select.countcheck
 {
 	CountThings
 }
-
+OnAskMenu
+{"\0\s[9]\b[2]*(You ask about...)*\n/
+	//\![*]\q[His sweater,janice]\n/
+	\![*]\q[Secrets?,hedlovetotbh]\n/
+	\![*]\q[His wellbeing,wellyousee]\n%(nendmenu)\e"
+}
+Select.janice
+{"\0\s[0]Oh...\w4 Misha picked it out for me. It says 'get lit', I think. I dunno.\w6\1\s[16]Hey, it suits you.\w6\0\s[1]\n\n[half]. . . I guess\e"}
+Select.hedlovetotbh
+{"\0\s[9]I dunno what you're talking about.\e"}
+Select.wellyousee
+{"\0\s[9]Yeah I'm good, thanks.\w6\1\s[10]You could literally not be *any* more obvious.\w6\0\s[0]\n\n[half]Wanna bet?\e"}
+	
 //--TalkConfig
 //This menu allows the user to change their name and other information, as well as put in their birthday and change how often the ghost speaks. You shouldn't need to touch any of what's under TalkConfig, although you can adjust dialogue in the following functions related to it.
 
@@ -664,7 +695,7 @@ Select.HEADLINECANCEL
 //If the user is given a menu with choices, but doesn't pick one of the choices, it will eventually time out. At that point, they will say this dialogue. Replace with whatever you like, or leave it blank.
 
 OnChoiceTimeout
- {if spooktime = "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}}
+ {if spooktime == "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}}
  
  //Written by Zichqec, with help from Nimanao
 StartHangman //Sets up variables for the game
@@ -846,3 +877,81 @@ elseif lettersleft > 0 //If the user still has guesses and there are still lette
         "\n\![*]\q[Open the input box again,HangmanInput]\n\n\![*]\q[Give up,HangmanQuit]\e"
     }
 */
+Select.playdreidel {"\0\s[0]So, you know how to play, right?\n\![*]\q[Yup,OnStartDreidel] \![*]\q[Nope,explainpls]\e"}
+Select.explainpls
+{
+	"\0\s[9]That's sad, you should learn.\w4\n\s[0]Anyways, everyone starts with an amount of... something. Like nuts or pennies or gelt. (In this case gelt because I like chocolate ok. And if you don't know what that is basically chocolate coins.) And the amount is generally between 10 and 15. To start, everyone puts one piece in the pot, and then someone spins the dreidel, follows whatever they get and play goes clockwise.\w6\nWe *could* also spin for the start player because that's also fun, but I guess that would... take longer? So you're starting, %(username). Non-negotiable.\w4 Now: spinning! Dreidel go spinny. And then it falls over and whatever letter's on top you have to follow what it says.\w6\nThere are four sides, each with a letter: Nun, Gimel, Hey, and Shin. (If you're not in Israel.)\w4 If you get nun, congrats! Nothing happens. If it lands on gimel, you get everything in the pot, so I guess if you don't like chocolate that kind of sucks.\w4 For hey, you get half of whatever's in the pot. That's kind of better if you don't like chocolate? I don't know if you do. Probably. If there's an odd number you get half plus one extra.\w4 Shin, or peh, which is if you're in israel, means that you put one in. Say goodbye to your whatevers. Maybe forever.\w6\nIf you don't have anything left you're out, but some people play it where you ask someone else for a loan. We're not doing that right now. Sorry.\w4\nAnyways, once someone wins everything the game, or maybe just round is over.\nBasically dreidel go spinny, that's all you really need to worry about.\n\![*]Ok got it,OnStartDreidel] \![*]\q[Again?,explainpls]\e"
+}
+//half take = inpot divided by 2; playergelt += halftake; inpot -= halftake; not sure about the +1 thing though...
+OnStartDreidel
+{
+	playergelt = 9; mishagelt = 9; pashagelt = 9; inpot = 3; player = 0; DreidelSpin = (1,2,3,4) //; halftake = (inpot/2)
+	//_startplayer = 0
+	"\p[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)\n\q[Spin,gospinny]\![set,balloontimeout,-1]\e"
+}
+Select.gospinny { _len = ARRAYSIZE(DreidelSpin); _rand = RAND(_len); halftake = (inpot/2)//DreidelSpin[_rand] 
+//"\p[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\n\e"
+if DreidelSpin[_rand] == 1 { "\p2\s[304]\w6\s[300]\b2%(dreidelspin)\0\s[0]Aw, bad luck. Or maybe good luck! I dunno, actually.\w6\![raise,OnDreidelNext]\e"}
+elseif DreidelSpin[_rand] == 2 { if inpot == 0 {"\p2\s[301]\0\s[0]Doesn't look like you can get anything. Sorry, %(username)!\w6\![raise,OnDreidelNext]\e"} else {
+	playergelt += inpot; inpot = 0; "\p2\s[304]\w6\s[301]\b2%(dreidelspin)\1\s[10]Hm, good for you, %(username). Your luck gonna hold, though?\w6\![raise,OnDreidelNext]\e"}}
+elseif DreidelSpin[_rand] == 3 { if inpot == 0 {"\p2\s[304]\w6\s[302]\1\s[10]You'll have to wait on that one...\w6\![raise,OnDreidelNext]\e"} else {
+	playergelt += halftake; inpot -= halftake; "\p2\s[304]\w6\s[303]\b2%(dreidelspin)\0\s[0]Absolutely unprecedented. Wonder what you'll get next?\w6\![raise,OnDreidelNext]\e"}}
+else { playergelt -= 1; inpot += 1; "\p2\s[304]\w6\s[303]\b2%(dreidelspin)\0\s[0]Hm... Soon.\w6\![raise,OnDreidelNext]\e"}
+//"\0\s[0]You got %(dreidelspin)... I think.\e"
+}
+//player 0 - user, 1 - misha, 2 - pasha
+OnDreidelNext { if playergelt == 30 || mishagelt == 30 || pashagelt == 30 {
+	"\1\s[10]Huh, guess that's it.\w6\0\s[6]I had fun! What about you, %(username)? Wanna play again?\n\![*]\q[Yeah sure,OnStartDreidel] \![*]\q[Nah I'm good,backtogames]\![set,balloontimeout,-1]\e"} 
+	elseif playergelt == 0 
+	{"\1\s[10]Yeah, that'll be it for now.\w6\0\s[6]I had fun! Sorry you lost though. Wanna play again?\n\![*]\q[Yeah sure,OnStartDreidel] \![*]\q[Nah I'm good,backtogames]\![set,balloontimeout,-1]\e"}
+	else {
+	if player == 0
+	{
+		player = 1
+		"\1\s[10]\![raise,OnMishaTurns]\e"}
+	elseif player == 1
+	{
+		player = 2
+		"\0\s[0]\![raise,OnPashaTurns]\e"}
+	elseif player == 2
+	{
+		player = 0
+		"\p[2]\![raise,OnPlayerTurn]\e"}
+	else
+	{player = 1; "\1\s[10]\![raise,OnMishaTurns]\e"}
+}}
+OnMishaTurns
+{ _len = ARRAYSIZE(DreidelSpin); _rand = RAND(_len); halftake = (inpot/2)//DreidelSpin[_rand]
+	//"\p[2]\b[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)\e"
+	if mishagelt == 0; {"\p2\b2%(dreidelspin)\w4\1\s[16]Well... guess I'll sit and wait here for now.\w6\![raise,OnDreidelNext]\e"}
+	else {
+	if DreidelSpin[_rand] == 1 { 
+		"\p2\s[304]\w4\p2\s[300]\b2%(dreidelspin)\w4\1\s[10]Well damn. Whod've thought it? Anyways, guess I'm waiting.\w6\![raise,OnDreidelNext]\e"} 
+	elseif DreidelSpin[_rand] == 2 { if inpot == 0 {"\p2\s[304]\w4\p2\s[301]\w4\1\s[10]Ah... not right now, it would seem.\w6\![raise,OnDreidelNext]\e"} else {
+		mishagelt += inpot; inpot = 0; "\p2\s[304]\w4\p2\s[301]\b2%(dreidelspin)\w4\1\s[10]Oh cool, guess that's mine for now.\w6\![raise,OnDreidelNext]\e"}}
+	elseif DreidelSpin[_rand] == 3 { if inpot == 0 {"\p2\s[304]\w4\p\s[302]\w4\1\s[10]Yeah... not now. Next time, maybe.\w6\![raise,OnDreidelNext]\e"} else {
+		mishagelt += halftake; inpot -= halftake; "\p2\s[304]\w4\p2\s[302]\b2%(dreidelspin)\w4\1\s[10]Huh, alright.\w6\![raise,OnDreidelNext]\e"}}
+	else { 
+		mishagelt -= 1; inpot += 1; "\p2\s[304]\w6\s[303]\b2%(dreidelspin)\w4\1\s[10]Yet another loss to probably the hands of Pasha. Or maybe just %(username), I suppose.\w6\![raise,OnDreidelNext]\e"}
+	}
+}
+
+OnPashaTurns
+{ _len = ARRAYSIZE(DreidelSpin); _rand = RAND(_len); halftake = (inpot/2)
+	//"\p[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\n\e"
+	if pashagelt == 0 {"\p[2]\b[2]%(dreidelspin)\0\s[9](. . . You think he's chewing on his hand.)\w6\![raise,OnDreidelNext]\e"}
+	else {
+		if DreidelSpin[_rand] == 1//"Nun" 
+			{ "\p2\s[304]\w4\p2\s[300]\b2%(dreidelspin)\w4\0\s[0]Someday soon I will do something.\w6\![raise,OnDreidelNext]\e"} 
+		elseif DreidelSpin[_rand] == 2//"Gimel" 
+			{ if inpot == 0 {"\p2\s[304]\w4\p2\s[301]\w4\0\s[0]Gimel! ...Yeah, guess not right now, though.\w6\![raise,OnDreidelNext]\e"} else {
+				pashagelt += inpot; inpot = 0; "\p2\s[304]\w4\p2\s[301]\b2%(dreidelspin)\w4\0\s[0]Gimel! All your gelt are belong to me. If I win I'm eating all these.\w6\1\s[10]...Please don't.\w6\![raise,OnDreidelNext]\e"}}
+		elseif DreidelSpin[_rand] == 3//"Hey" 
+			{ if inpot == 0 {"\p2\s[304]\w4\p2\s[302]\0\s[0]Hey! ...But there's nothing there...\w6\![raise,OnDreidelNext]\e"} else {
+				pashagelt += halftake; inpot -= halftake; "\p2\s[304]\w4\p[2]\s[302]\b[2]%(dreidelspin)\w4\0\s[0]Hey! Not bad, not bad...\w6\![raise,OnDreidelNext]\e"}}
+		else 
+			{ pashagelt -= 1; inpot += 1; "\p2\s[304]\w4\p2\s[303]\b2%(dreidelspin)\w4\0\s[0]Oh I was going to eat that though.\w6\1\s[18]In the middle of the game...?\w6\![raise,OnDreidelNext]\e"}}
+}
+OnPlayerTurn
+{ "\p[2]\b[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)\n(Your turn...) \q[Spin,gospinny]\![set,balloontimeout,-1]\e"}
+Select.backtogames {"\p[2]\s[-]"; OnPage2}

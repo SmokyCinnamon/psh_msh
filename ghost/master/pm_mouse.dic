@@ -775,3 +775,37 @@ MouseDoubleClickKero
 	else
 	{"\1\s[10]Really?\e"}
  }
+ 
+ OnMouseWheel
+ {if reference3 == 0 {OnWheelSakura}; else {OnWheelKero}}
+ 
+ OnWheelSakura
+ { if sa == "on" { if reference4 == "Head" || "Face" { if rel == 3 { namiable -= 12
+	"\0\s[0]*(He takes in a sharp breath.)*\n\n%(username) could you, you not?\e"
+	"\0\s[0]I don't...\e"
+	"\0\s[9]...I think......\s[-1]\w4\1\s[10]Um... I'd better... go...\w3\s[-1]\w6\w6\w6\w6\n\n[half]\0\n\n[half]\1\s[10]\0\s[0]\1Don't do that again, %(username).\e"
+	"\0\s[9]Just...\e"
+	"\0\s[9]Don't- Don't do that, please.\e"
+	"\0\s[0]Please don't...\e"
+	"\0\s[0]H-Hey, %(username)...\e"
+	"\0\s[0]......Don't do that.\e"
+	"\0\s[9]Don't **fucking** touch me.\e"
+	"\0\s[0]%(username)...\e"
+	"\0\s[0]I- Please, don't do that?\e"
+	"\0\s[0]Nononono *stop*-\e"
+	"\0\s[0]I can't--\e"
+	"\0\s[0]Please just... please don't do that...\e"
+	}
+	elseif rel == 2 { namiable -=6
+	"\0\s[0]I- I really can't-\e"
+	"\0\s[0]%(username) I don't...\e"
+	"\0\s[0]S... stop...\e"
+	"\0\s[0]I- Please, don't... don't do that...\e"
+	"\0\s[0]Don't.... do that...\e"
+	"\1\s[19]Hey, stop.\e"
+	"\1\s[19]Well *clearly* he doesn't like that, %(username).\e"
+	"\1\s[19]Leave him alone.\e"
+	"\1\s[19]Hey, leave him alone %(username). Seriously.\e"
+	"\1\s[19]You don't need to do that, so stop.\e"
+	"\1\s[19]Hey, fuck off'n leave him be.\e"
+	}}}}

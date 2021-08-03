@@ -1,6 +1,52 @@
 //---------------------------Communication--------------------------
 
 //I'm going to level with you, I don't really get a lot of what's going on in this .dic file. I'm pretty sure it's related to having ghosts talk to each other, or acknowledge each other's presence in some way, but I don't really know. If someone else knows more about this than I do, I'd love to hear about it, but for now, leave it all alone except for a few lines near the bottom.
+// listen -- whatever is happening in this file is black magic. that being said, reconstructing it isn't *entirely* difficult, unless you already put a million ghosts in there (which is not these two. yet.) copy/pasting essentially from zar's guide because... h
+
+OnStartTalking
+{ _AlreadyTalked = 1 //setting flag. i put this in a local variable just because... it makes sense?
+	if ghostexcount > 0
+	{ _num = RAND(ghostexcount); _randghost = "%(ghostexlist[_num])"
+	// this is... checking if the ghosts around are above 0 and then choosing one randomly from that list to talk to?
+	--
+	case _randghost
+	{
+		when "CheeryBot" //zar says known ghosts -- add as many as needed. idk how that works, but trial and error...?
+		{
+			res_reference0 = "CheeryBot" //this is also setting a flag but... What the Fuck
+			"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[19]I have never been his support group please stop that.\w6\0\s[8]Sure you aren\w2't\w2.\w4\e"
+		}
+		when "Temmie"
+		{
+			res_reference0 = "Temmie"
+			"\0\s[8]Is that a cat...?\w4\e"
+		}
+		when "Vanya and Vadik"
+		{
+			res_reference0 = "Vanya and Vadik"
+			"\0\s[0]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\w4\e"
+		}
+		when "Azura"
+		{
+			res_reference0 = "Azura"
+			"\1\s[10]Who're you?\w3 What's up with wings?\w3\0\s[0]\f[height,8]\f[italic,true]The\f[italic,false] wings\w2, Misha\w2.\f[height,false]\w4\e"
+		}
+		when "RYS-0825" //? why is this s's name?
+		{
+			res_reference0 = "RYS-0825"
+			"\1\s[10]You're a... skeleton...?\w6\0\s[0]\f[height,10](That's... the least weird thing going on here, Mishka.)\f[height,normal]\w4\e"
+		}
+		others 
+		{
+			res_reference0 = _randghost //setting the flag to whatever ghost it picked
+			"\1\s[10]Hi, %(_randghost).\w4\e"
+		}
+	}}
+	else //no ghosts
+	{
+		"\1\s[10]I can't talk to someone who's not there...\e"
+	}
+}
 
 
 OnCommunicate
@@ -17,22 +63,18 @@ OnCommunicate
  	}
 }
 
-ReplyToUser
-{
-	TalkToUser
-}
+ReplyToUser; {TalkToUser}
 
 
 //Again, I just have to guess at what's going on here since I've never really seen this in action. I think what's going on here is that there is a limited functionality for having ghosts communicate with each other, but I don't really know how you'd set it up or even see it happen. I believe ReplyToGhost would be in response to something the other ghost is saying, but I'm not sure. I wouldn't really mess very much with this - you may even just want to blank out the dialogue entirely. I've never personally seen it come up. I may experiment with this later and see if I can figure out more about it, but for now I wouldn't worry too much.
 
 ReplyToGhost
 {
-	//res_reference0 = reference0 ?
+	res_reference0 = reference0 //?
 	if reference0 == "Azura"
 	{
 		res_reference0 = reference0
 		{
-			//"\1\s[10]Who're you?\w3 What's up with wings?\w3\0\s[0]\f[height,8]\f[italic,true]The\f[italic,false] wings\w2, Misha\w2.\f[height,false]\e"
 			//"\1\s[10]Your name's Azura, huh?\w4\0\s[0]Isn\w2't that a type of blue\w2.\w2.\w2.\w2?\e"
 			//"\1\s[10]Hey 'Zura.\w4\0\s[0]...Mishka\w2, you don\w2't know her yet\w2.\e"
 			"\0\s[4]Mmn\w2.\w3.\w3.\w6\1\s[10]What's wrong?\w4\0\s[3]...\f[height,8]she's looking at me\w2.\w2.\w2.\f[height,false]\e"
@@ -49,23 +91,34 @@ ReplyToGhost
 	{
 		res_reference0 = reference0
 		{
-			"\0\s[0]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\e"
+			"\1\s[16]So we're all stuck here together...\e"
 		}
 	}
 	elseif reference0 == "CheeryBot"
 	{
-		res_reference0 = reference0
+		res_reference0 = ""
 		{
-			"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[10]I have never been his support group please stop that.\w6\0\s[0]Sure you aren\w2't\w2.\e"
+			"\1\s[10]I'm more surprised that cheery would have gotten dialogue for us, than anything.\e"
+			//"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[19]I have never been his support group please stop that.\w6\0\s[8]Sure you aren\w2't\w2.\e"
 		}
+	}
+	elseif reference0 == "Temmie"
+	{
+		res_reference0 = ""
+		"\0\s[0]Can I pet you...?\e"
 	}
 	else
 	{
-		res_reference0 = reference0
-		{
+		if _AlreadyTalked == 0
+		{ _AlreadyTalked = 1; res_reference0 = reference0; "\1\s[10]Hm? Want something, %(res_reference0)?\e"
+		}
+		else { _AlreadyTalked = 0; res_reference0 = ""
+		"\1\s[10]\w6... guess that's all.\e"
+		}
+		/*{
 		//"\0\s[0]%(res_reference0).\w8\1\s[10]Odd thing to say.\e"
 		
 		"\1\s[10]Hi, %(res_reference0).\e"
-		}
+		}*/
 	}
 }

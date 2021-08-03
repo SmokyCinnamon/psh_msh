@@ -2,6 +2,10 @@
 
 <---- Release Notes ---->
 
+v1.1.1 -- fixed the numbering
+bet you thought i wouldn't. there's a lot in here that took a while to figure out because everything was happening and then continued to happen.
+basically burnout)))
+
 v1.2.0 -- its halloween time!
 (changelog)
 

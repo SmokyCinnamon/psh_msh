@@ -23,8 +23,12 @@ OnTranslate
 	_talk = REPLACE(_talk, "\s[600]", "\s[600]%(isix)")
 	_talk = REPLACE(_talk, "\s[60]", "\s[60]%(hesdead)")
  	_talk = REPLACE(_talk, "Anchor 1", "\_a[anchor1]that\_a")
- 	_talk = REPLACE(_talk, "Anchor 2", "\_a[anchor2]Anchor 2\_a")
- 	_talk = REPLACE(_talk, "Anchor 3", "\_a[anchor3]Anchor 3\_a")
+ 	_talk = REPLACE(_talk, "anLina", "\_a[anchor2]Lina\_a")
+ 	_talk = REPLACE(_talk, "anJora", "\_a[anchor3]Jora\_a")
+	_talk = REPLACE(_talk, "anValya", "\_a[anchor4]Valya\_a")
+	_talk = REPLACE(_talk, "anPasha", "\_a[anchor5]Pasha\_a")
+ 	_talk = REPLACE(_talk, "anVanya", "\_a[anchor6]Vanya\_a")
+	_talk = REPLACE(_talk, "anVadik", "\_a[anchor7]Vadik\_a")
 	
 		{
 		"%(_talk)"
@@ -51,19 +55,26 @@ OnAnchorSelect
 	else //if it's NOT a web address
 	{
 	case reference0 //case is a unique thing I've only really seen here in anchor.dic, and as far as I can tell it sets up reference0 for evaluation to see if matches any of the below criteria, which are all tagged with when. I wouldn't mess with much of this stuff unless you have a better grasp of this kind of thing than I do, haha. You can add as many things here as you want to set up above as long as you follow the basic format.
+	//Friendys = (0,0,0,0,0,0) vadik, vanya, pasha, valya, jora, lina
 		{
 			when "anchor1" //if the link is this value
 			{
 				"\1\s[18]Huh?\w2 Oh, just whatever happened to his wrist. You can see the bandage, right? \0\s[9]Yup, just tell %(username) about everything that's ever happened to me.\w4 Go right ahead.\e"
 			}
-			when "anchor2" //if the link is this value
-			{
-				"\0\s[0]This dialogue is for when Anchor 2 is clicked.\e"
-			}
+			when "anchor2"
+			{Friendys[6] = 1}
 			when "anchor3" //if the link is this value
-			{
-				"\1\s[10]This dialogue is for when Anchor 3 is clicked.\e"
-			}
+			{Friendys[5] = 1}
+			when "anchor4"
+			{Friendys[4] = 1}
+			when "anchor5"
+			{Friendys[3] = 1}
+			when "anchor6"
+			{Friendys[2] = 1}
+			when "anchor7"
+			{Friendys[1] = 1}
+			when "anchor8"
+			{Friendys[0] = 1}
 		}
 	}
 }

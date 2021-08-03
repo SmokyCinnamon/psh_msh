@@ -2,27 +2,18 @@
 //call these with %(thing) and they'll return one of the things on the list. double envelopes or whatever they are might be useful dialogue, once you figure them out
 //sometimes they just store things and call that instead, like %(username)
 //apparently commas are not allowed
-
-OnItcheck : sequential
-{//italic check
- "\f[italic,true]"; "\f[italic,false]"}
+iamgoingtocommitacrime
+{"noseriouslyiwill"}
+OnItcheck : sequential //italic check
+{"\f[italic,true]"; "\f[italic,false]"}
  
 Onbocheck : sequential { "\f[bold,true]"; "\f[bold,false]" } ; Onstcheck : sequential { "\f[strike,true]"; "\f[strike,false]" }; Onuncheck : sequential { "\f[underline,true]"; "\f[underline,false]" }
 
-nendmenu
-{
-	"\![*]\q[Nevermind,CANCEL]"
-	//\![*]\q[Give him a gift?,ItemMenu]\n/
+nendmenu {"\![*]\q[Nevermind,CANCEL]"; //\![*]\q[Give him a gift?,ItemMenu]\n/
 }
-
-nitend
-{"\![*]\q[Give him something else?,ItemMenu]\n\![*]\q[Go back,BACKTOMENU]\n%(nendmenu)"}
-
-yendmenu
-{"\![*]\q[Go back,OpenKeroMenu]\n\![*]\q[Nevermind,keroCANCEL]\e"}
-
-yitend
-{"\![*]\q[Give him something else?,YzItemMenu]\n%(yendmenu)"}
+nitend {"\![*]\q[Give him something else?,ItemMenu]\n\![*]\q[Go back,BACKTOMENU]\n%(nendmenu)"}
+yendmenu {"\![*]\q[Go back,OpenKeroMenu]\n\![*]\q[Nevermind,keroCANCEL]\e"}
+yitend {"\![*]\q[Give him something else?,YzItemMenu]\n%(yendmenu)"}
 
 misha //because... i can?
 {if RAND(100) < 95; {"Misha"}; else; {"Mishka"}}
@@ -78,11 +69,9 @@ J //huh? I'm not sure what this was...
 //This envelope in particular I think is fun. You can use this in dialogue to pretend like your ghost is looking through your user's files!
 
 usersfolder
-{
-	"%(username)'s Recycle Bin"
-	"%(username)'s Document folder"
-	"%(username)'s secret folder"
-}
+{"%(username)'s Recycle Bin"; "%(username)'s Document folder"; "%(username)'s secret folder"}
+folderuser
+{"Recycle Bin"; "Document folder"; "secret folder"; "Ghost folder"; "Pictures folder"}
 
 
 //Now, this next envelope is unique. I'm just going to leave it the way that cindysuke wrote it, but look carefully. This list has TWO values, separated by a comma. You can see the first is the Korean word, and the second is the definition of the word. This is used for a bit of dialogue cindysuke wrote where their ghost would teach the user a word in Korean. 
@@ -98,9 +87,6 @@ lessonkor
 }
 
 isix; {"%(spoop)"}
-
-
-
 spoop
 {
 	if sh == "on" {
@@ -138,8 +124,12 @@ spoop
 		"\i[608]"; ""; ""}
 }}
 
+dreidelspin {"%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)"}
+//{if RAND(4) == 1 {"Nun"}; elseif RAND(3) == 2 {"Gimel"}; elseif RAND(3) == 3 {"Hey"}; else {"Shin"}}
 hesdead
 {if RAND(12) < 3; {""}; else {""; ""; ""; ""; "\i[61]"; "\i[62]"}}
+relmean
+{if rel == 0 {"very mean"}; elseif rel == 1 {"sorta mean ish"}; elseif rel == 3 {"alright, probably."}; else {"can't say"}}
  //**** Don't touch this ***************************************************************
  //This is code stuff and nothing for you to worry about, just save the .dic and move on! You're done!
  
