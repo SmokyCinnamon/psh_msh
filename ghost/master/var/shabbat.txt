@@ -7,49 +7,41 @@
 <description>Weekly Shabbat candle lighting times for Dyersburg, Tennessee, USA</description>
 <language>en</language>
 <copyright>Copyright (c) 2021 Michael J. Radwin. All rights reserved.</copyright>
-<lastBuildDate>Tue, 03 Aug 2021 06:21:51 GMT</lastBuildDate>
+<lastBuildDate>Fri, 27 Aug 2021 23:28:54 GMT</lastBuildDate>
 <item>
-<title>Candle lighting: 7:39pm</title>
-<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-06&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210806-candle-lighting</link>
-<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-06#20210806-candle-lighting</guid>
-<description>Friday, August 06, 2021</description>
+<title>Candle lighting: 7:13pm</title>
+<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-27&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210827-candle-lighting</link>
+<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-27#20210827-candle-lighting</guid>
+<description>Friday, August 27, 2021</description>
 <category>candles</category>
-<pubDate>Tue, 03 Aug 2021 06:21:51 GMT</pubDate>
+<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
 <geo:lat>36.03452</geo:lat>
 <geo:long>-89.38563</geo:long>
 </item>
 <item>
-<title>Shabbat Mevarchim Chodesh Elul</title>
-<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-06&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210806-shabbat-mevarchim-chodesh-elul</link>
-<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-06#20210806-shabbat-mevarchim-chodesh-elul</guid>
-<description>Molad Elul: Sun, 43 minutes and 10 chalakim after 10:00</description>
-<category>mevarchim</category>
-<pubDate>Tue, 03 Aug 2021 06:21:51 GMT</pubDate>
+<title>Leil Selichot</title>
+<link>https://www.hebcal.com/holidays/leil-selichot-2021?utm_source=shabbat1c&amp;utm_medium=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/holidays/leil-selichot-2021#20210827-leil-selichot</guid>
+<description>Prayers for forgiveness in preparation for the High Holidays</description>
+<category>holiday</category>
+<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
 </item>
 <item>
-<title>Parashat Re'eh</title>
-<link>https://www.hebcal.com/sedrot/reeh-20210807?utm_source=shabbat1c&amp;utm_medium=rss</link>
-<guid isPermaLink="false">https://www.hebcal.com/sedrot/reeh-20210807#20210806-parashat-reeh</guid>
-<description>Torah: Deuteronomy 11:26-16:17
-Haftarah: I Samuel 20:18 - 20:42 | Shabbat Machar Chodesh</description>
+<title>Parashat Ki Tavo</title>
+<link>https://www.hebcal.com/sedrot/ki-tavo-20210828?utm_source=shabbat1c&amp;utm_medium=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/sedrot/ki-tavo-20210828#20210827-parashat-ki-tavo</guid>
+<description>Torah: Deuteronomy 26:1-29:8
+Haftarah: Isaiah 60:1 - 60:22</description>
 <category>parashat</category>
-<pubDate>Tue, 03 Aug 2021 06:21:51 GMT</pubDate>
+<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
 </item>
 <item>
-<title>Havdalah: 8:38pm</title>
-<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-07&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210807-havdalah</link>
-<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-07#20210807-havdalah</guid>
-<description>Saturday, August 07, 2021</description>
+<title>Havdalah: 8:10pm</title>
+<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-28&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210828-havdalah</link>
+<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-28#20210828-havdalah</guid>
+<description>Saturday, August 28, 2021</description>
 <category>havdalah</category>
-<pubDate>Tue, 03 Aug 2021 06:21:51 GMT</pubDate>
-</item>
-<item>
-<title>Rosh Chodesh Elul</title>
-<link>https://www.hebcal.com/holidays/rosh-chodesh-elul-2021?utm_source=shabbat1c&amp;utm_medium=rss</link>
-<guid isPermaLink="false">https://www.hebcal.com/holidays/rosh-chodesh-elul-2021#20210807-rosh-chodesh-elul</guid>
-<description>Start of month of Elul on the Hebrew calendar. Elul (אֱלוּל) is the 6th month of the Hebrew year, has 29 days, and corresponds to August or September on the Gregorian calendar.  רֹאשׁ חוֹדֶשׁ, transliterated Rosh Chodesh or Rosh Hodesh, is a minor holiday that occurs at the beginning of every month in the Hebrew calendar. It is marked by the birth of a new moon</description>
-<category>roshchodesh</category>
-<pubDate>Tue, 03 Aug 2021 06:21:51 GMT</pubDate>
+<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,218 @@
+DvaTalk : nonoverlap {
+	//if friendlyall >= 400
+	//"\0\s[0]You should sort this into sections sometime.\e"
+		
+		/*if другдруга == 0
+		{
+			"\0\s[8]So how\w2's your day been\w3?\w6\1\s[19]Fine. Had to spend it with you, obviously.\w4\1\s[18]\nDid you know he smokes, %(username)? \w4At this rate, your computer's going to get fucked up.\w4\0\s[2]\n\n[half]I--\w4\n\nI will *not*! Just because *you*\w4 like \w3%(username) doesn't mean I do\w3!\w3\s[3]\nBesides\w2, if you didn't want to\w3 hang out with me you could've just *said* so\w2.\w2.\w2.\w5\1\s[17]\n\n[half]Oh come on! There's nowhere else on this damn computer to even go!\w6\0\s[2]\n\n[half]Mishka\w3, just\w3, just\w3-\w2- \w3\1\s[17] But *fine*\w4 then,\w3 if you want me to go, I will!\4\4\0\s[4]Mishka\1\4\0\w2-\w2-\w4\n\n[half]\1\4\4\4\4\4\4\s[-1]\w6\w6\w6\w6\w6\w6\0\s[4]Mishka\w2.\w2.\w2.\w4\n\n[half]\w2.\w4.\w4.\w3\w6\n*\n(You think he looks like he's about to cry.)*\n\w4\s[3]I\w2.\w2.\w2. I won't fuck up your computer\w2, promise\w2.\w8 I dunno how I even could\w2.\1\s[10]\4\4\4\![raise,OnArgue]\e" //the last one should just point it to a thing that sets другдруга to one.
+		}*/
+	"\0\s[9]So\w2.\w3.\w3.\w3 Um\w2, how\w2's it going\w2, %(username)\w2?\e"
+	"\0\s[9].\w2.\w2.\e"
+	"\0\s[8]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
+	"\1\s[10]Hey there, %(username).\e"
+	//"\1\s[10]You have an interesting interpretation of what it means to be nice, %(username).\e"
+	"\1\s[18]What's up there, %(username)?\e"
+	//"\1\ы[10]Тест. да.\у"
+	"\1\s[10]...\e"
+	"\1\s[10]Guess there's not too much to do here. kinda boring.\e"
+	"\1\s[10]So uh... heard of Kino yet, %(username)? Pretty old band, but I like it. Real shame about their singer, though.\e" //older from the boy's point of view. this is what i get for putting them in the future...
+	"\1\s[10]Ey, listen %(username), tell me, if you happen to get your hands on some kind of guitar, alright? At least it would give me something to do...\e"
+	//pools
+	parallel Pool("Pool_totallyfine","%(другдруга == 0)")
+	parallel Pool("Pool_losinghope","%(friendlyall >= 100)")
+}
+Pool_losinghope : array {
+	"\1\s[19]Guess the user must not like us very much.\e"
+	"\1\s[17]Do you like, have something against us?\w3 Hello? \w3%(username)?\0\s[3]...\e"
+	"\1\s[18]Really not friendly, huh?\e"
+	"\1\s[18]So how's it going in the land of assholes, %(username)? Having fun?\e"
+	"\1\s[17]And what are you up to on this fine day, %(username)? Tormenting us?\e"
+	//"\0\s[0]%(username) не\w2.\w2.\w2.\w3\nк нам не хорошо относится\w2, да\w2? \1\s[10]А ты только что узнал? Правда же, Паша, я думал, что уже сказал. Это-\w4\n\n*(He seems to have noticed your interest...)*\e"
+	"\0\s[9]You wouldn\w2't happen to have any music around here\w2, would you\w2?\e"
+	"\1\s[14]\w4*(Sometimes you wonder about this one.)*\e"
+	"\1\s[19]*(He couldn't be more pointedly ignoring you.)*\e"
+	"\0\s[0]*(You wonder why he's become so fidgety.)*\e"
+	"\0\s[3]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
+	"\0\s[0]*(You wish he would stop fidgeting.\w4 It's distracting.)*\e"
+	"\1\s[18]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
+	"\1\s[10]You uh..... busy? Or something? %(username)?\e"
+	"\1\s[10]And the award for asshole of the year goes to...\e"
+	"\1\s[10]You're kinda... not...\w5 something...\e"
+	"\0\s[0](Is he... eating his hand...?)\e" //I really really need that surface hh
+	"\0\s[0](He's humming something to himself.)\e"
+	"\0\s[9](Looking everywhere except you.)\e"
+	"\1\s[10]I sincerely hope you are a better person than I think you are.\e"
+	"\1\s[10]I...\w4 You could just uninstall us, y'know. I don't want to stay here.\e"
+}
+Pool_totallyfine : array {
+	"\1\s[10]What do you think Valya's up to right now?\w6\0\s[8]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"		
+	"\1\s[10]Jora would be *so* lost right about now if he were here.\w6\0\s[0]Y\w2'think\w2? He can take care of himself\w2.\w6\1\s[10]\n\n[half]Dude, *we* still don't know how to do like, anything.\w6\0\s[0]\n\n[half]Wrong\w2.\w4 We can explore computers\w2.\w4 And do other computer stuff\w2.\w6\1\s[10]\n\n[half]That... wasn't my point...\w6\0\s[0]\n\n[half]Oh yeah\w2? What was it then\w2?\e"		
+	"\0\s[0]Wonder how my cat\w2's doing\w2.\e"	
+	"\1\s[19]...It's kind of boring here.\e"
+	"\1\s[10]So! Cats, huh?\w6\1\s[0]Yeah. Cats.\e"
+	"\1\s[10]%(username), you busy up there? Up to anything interesting?\e"
+	"\0\s[-1]\w2\1\s[19]Um... bye?\nI mean I didn't think... hm.\w4\nWait here for a bit %(username).\w2\x\1\s[-1]\w9\w9\1\s[10]\0\s[9]\1Hi! We're back.\e" //i am not implying anything i am not filtering anything nope not at all
+	"\1\s[10]You know what's weird about this place?\w4 It's just kind of like... warm. But the same warm. It doesn't change.\x So, uh, what's up with that %(username)? And could you turn it down maybe?\e" //it's impossible to be perfectly air-conditioned for everyone! that and i think most users so far are used to warmer tempuratures than there are in belarus
+	
+}
+
+AdzinTalk : nonoverlap {
+		//"\1\s[10]this takes care of in-between 0 and fifty counting up.\e"
+		"\1\s[18]So, how's it going? Ah, nevermind, I don't think you care anyways.\e"
+		"\1\s[18]%(username)... %(username) really isn't nice, huh?\w6\0\s[0]...\e"
+		//"\1\s[10]Паша, пожалуйста, говори со мне.\w6\0\s[0]...\e" he sounds formal. maybe he shouldn't. fuck you russian for your long words
+		"\1\s[10]So %(username)... oh, I don't think you care, nevermind.\e"
+		//"\1\s[10]%(username), why are you like this?\w8\w8\![raise,OnMishaTalk]\e"
+		"\1\s[10]How's your day been, Pasha?\w6\0\s[9]...\e"
+		"\1\s[10]You missing your cat, Pasha?\w6\0\s[9]...\e"
+		"\1\s[18]%(username), you sure you don't just want like, a hug or something?\e" //misha over here like: I *will* offer you affection because that's hte only way we possibly have to get you to stop hating us
+		"\1\s[10]Pasha, hey, how've you been?\w6\0\s[9]...\e"
+		"\1\s[10]What do you think of calling Jora or someone? \w3If we can do it, I guess.\w6\0\s[9]...\e" //someday we will have all six on the same desktop and the world will explode. phone calls might be cute though
+		"\0\s[0]Hey\w2, um\w3.\w3.\w3. you doing okay?\w6\1\s[18]Mmh, about as well as I can be.\e" //pasha: i am noncomittal | misha: two can play at that game
+		"\0\s[3]Um\w3, %(misha)\w3.\w3.\w3.\w4\nNevermind\w3.\w3.\w3.\e"
+		//"\0\s[0]H\w3-Hey\w2, %(username)\w2? Can I\w2, I\w2, I use\w2, um\w2, your internet browser\w2?\e"
+		"\0\s[9]Really wish we could call someone...\e"
+		"\1\s[10]*(Somehow, he looks less in control of things.)*\e"
+		"\1\s[10]*(You wonder about him sometimes.)*\e"
+		"\0\s[0]*(You wonder if you can tell him to stop fidgeting...)*\e"
+		"\1\s[10]*(He looks like he could say something to you any second now.)*\e"
+		"\1\s[10]*(You think he's kind of alright, when he doesn't speak.)*\e"
+		"\1\s[10]*(He doesn't seem at ease anymore.)*\e"
+		"\1\s[10]*(You wonder why he's not talking as much.\w3 It's a blessed moment of peace, but...)*\e"
+		parallel Pool("Pool_zfsa","%(sa == 'on')")
+}
+Pool_zfsa : array {
+	"\1\s[10]*(Seems like he's checked out.)*\e"
+}
+
+NolTalk : nonoverlap {
+	"\1\s[18]Wow.\e"
+	"\1\s[14]*(He keeps looking over his shoulder.\w3 Interesting.)*\e"
+	"\0\s[3]*(He doesn't fidget anymore.\w3 good.)*\e"
+	"\0\s[3]%(misha)\w2.\w3.\w3.\w6\1\s[10]Hm?\w6\0\s[9]\n\n[half]What do you think of %(username)\w3?\w4\1\s[18]\n\n[half]Well... "
+	--
+	"\n*(He doesn't say anything.\w3 Disapppointing.)*"
+	"%(heshe) %(doesnt) like us very much."
+	"%(heshe) %(isnt) really... that nice."
+	"maybe it's better if I tell you when %(heshe) *%(isnt)* here."
+	"%(heshe) remind me of... well, y'know."
+	"I'll tell you later."
+	--
+	" \w6\0\s[1]\n\w2.\w2.\w2.\e"
+	"\0\s[0]*(You wonder when the best time to talk to him would be.\w3 Soon, perhaps.)*\e" //menu option for... things
+	"\1\s[10]*(He's much less talkative than he used to be.\w3 That's a shame.)*\e"
+	"\1\s[10]*(Somehow, he seems completely calm and very nervous at the same time.)*\e"
+	"\1\s[10]*(The other one hardly talks to him anymore.\w3 It was probaby inevitable, really.)*\e"
+	"\0\s[0]*(This one has always been interesting.\w3 You'll get his secrets if you have to pry them out of him.)*\e"
+	"\1\s[14]*(You wonder why he seems so nervous.)*\e"
+	//"\0\s[0]*(This one, if anything, is displaying a complete lack of emotion.\w3 You thought he would have been able to feel something by now, but perhaps not.)*\e"
+	"\0\s[0]*(This one doesn't seem nearly as intruiging, now.\w3 You should at least find out what he's hiding, in the meantime.)*\e"
+	"\1\s[10](Hey, Pasha, Y'got a hairband on you?)\w4\0\s[0]*(He shakes his head.)*\w6\1\s[10]\n\n[half](...... That's... that's fine, then, don't worry about it.)\e"
+}
+
+SpookTalk : nonoverlap {
+	"\0\s[600]Oh g-d oh g-d oh g-d\e"
+	"\0\s[600]I hate this I hate this fuck fuck fuck fuck\e"
+	"\0\s[700]\b[11]I\n\n\nNever told him\e"
+	"\0\s[700]\b[11]Я\н\н\нНикогда ему не сказал\к"
+	"\0\s[700]\b[11]Do you\w6\w6 h\w4a\w4te me?\e"
+	"\0\s[700]\b[11]Ты мне\ж6\ж6 не\ж4на\ж4вижу?\к"
+	"\0\s[700]\b[11]Undeniably true its truth the the the\e"
+	"\0\s[700]\b[11]hey %CreepyTxtWait('hey hey hey hey hey hey hey hey')\e"
+	"\0\s[700]\b[11]хей %CreepyTxtWait('хей хей хей хей хей хей хей хей')\к"
+	"\0\s[700]\b[11]I need to leave tell him tell him tell him it doesnt ma\ntter he'll hate me\e"
+	"\1\s[60]\b[11](He doesn't move...)\e"
+	//"\1\s[60]\b[11](Smells like ash...)\e"
+	"\1\s[60]\b[11](Looks like something happened to him.)\e"
+	"\0\s[700]\b[11]he died he died        %(misha)   wont come back no    no  no\e"
+	"\0\s[700]\b[11]он умер он умер        Мишка   не вернутся никогда    нет  нет\к"
+	"\0\s[700]\b[11]scared scar%CreepyTxt('ed scared scared scared scared scare')d scared scared" //on creepytext is in etc. oncreepytextwait is for having a wait time -- better for shorter ones.
+	"\0\s[700]\b[11]your\n\n\n\n\n\n[half]place i'll take     your place\e"
+	"\0\s[700]\b[11]take ill it take ill back ill take it back\e"
+	"\0\s[700]\b[14]nononononononnononononononononononononononoonononononononononononnonnonononononoonoonononononononononononononononononono\e"
+		"\0\п[700]\b[14]нетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетне\к"
+	"\1\s[60]\b[11](Looks pretty dead.)\e"
+	"\1\s[60]\b[11]\i[61]Всё в поря%CreepyTxt('дке, Паша,') мне х         о       ро ш     о\e" //should i just comment this one out...?
+	"\0\s[600]this is wrong \s[600]this is wrong \s[600]this is wrong \s[600]this is wrong\e"
+	"\0\s[600]I can't be back, %(username) tell me I'm not back please, please, he's dead g-d he's dead og g-d oh g-d oh g-d\e"
+	//"\1\s[60]\b[11]\i[61](No burn marks...)\e"
+	"\1\s[60]\b[11](His foot's turned the wrong way.)\e"
+	"\1\s[60]\b[11](Cool jacket, though.)\e"
+	"\1\s[60]\b[11](You wonder if he's just pretending.)\e"
+	"\1\s[60]\b[11]\i[61]%CreepyTxtWait('IS THIS HOW IT ENDS?')"
+	"\1\s[60]\b[11]\i[61]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
+	"\0\s[600]я виноватый, я виноватый, чёрт. чёртчёртчёртчёртчёртчёртчёрт\e"
+	"\0\s[702]\b[11]%(username) простите, пожалйста, прости мне я забыл я забыл. я виноват, простите простите\к"
+	"\0\п[700]\b[11]не я? не я? а ты, как ты? всё в порядке %(username)? да? да? это должен быть. ты будешь счастливый.\н\н(половина)научи меня быть счастливым\к"
+	"\0\s[702]\b[11]i'm sorry i'm sorry won't do it again i won't i won't i won't\e"
+	"\0\s[702]\b[11]простите простите я это больше не делаю не буду не буду не буду\к"
+	"\0\s[702]\b[11]he's dead he can't say anything stop waiting stop stop стой стой стой стой стой\к"
+	"\0\s[700]\b[11]waiting? why? why bother? nothing will change, don't you remember?\e"
+	"\0\s[700]\b[11]can tell you why %(username)\n\nI\e"
+	"\0\s[700]\b[11]don't forget\e"
+	"\0\s[700]\b[11]you can\w2't change it %(username)\w2.\e"
+	"\0\s[700]\b[11]not just the fault of countless, only it was me the entire time\e"
+	"\0\s[700]\b[11]%(username) %(they) should've listened because nobody ever *hears*\e"
+	"\0\s[700]\b[11]well he wont come back so i dont see why youre here\e"
+	"\0\s[700]\b[11]I won't be back if you go\e"
+	"\0\s[700]\b[11]it was me though dont you remember?\n\n[half]it was me\n[half]          i did it after all\nit... was, wasn't it?\e"
+	"\0\s[700]\b[11]turn down the colors\e" //this is... more funny than anything else, i suppose
+	"\0\s[700]\b[11]take the time back time-table it's a clock isn't it? %(hour12)?\e"
+	"\0\s[700]\b[11]you know what you did\e"
+	"\0\s[700]\b[11]can't save you can't him %(they) %(username)\e"
+	"\0\s[700]\b[11]of course i remember that , а, the other that i can't forget\e"
+	"\0\s[700]\b[11]%(they)\w5 forget it forget it forget it\e"
+	"\0\s[700]\b[11]you dragged me from the grave\n[half]its\n[half]no wonder that you cant understand it\e"
+	"\0\s[700]\b[11]something from nothing\w9 im a dead man walking ive always been my rotting corpsee took the world by %WaitTxt('storm')\e" //maybe not the world; and maybe not by storm, but all things considered it does follow that they'd be fairly popular.
+	"\0\s[700]\b[11]%Jogg('wont you come back') %(username)? %Jogg('you left of course you did you always do') \_qit never changes\_q so why am i here?\e"
+	"\0\s[700]\b[11]%CreepyTxt('whats left of me do you know of course you dont of course you wouldnt why would you ever figure it out did you do it on your own did you look that far ahead') %WaitTxt('go ahead and look im waiting') %CreepyTxt('its over now anyways its been for a long time now this has been') \_qa long time coming\_q\x\b[11]%*\_a[https://smokycinnamon.github.io/indifferentsorrel/dis_spirited]_\_a\e" //404s for the forseeable future. maybe in a few years...
+	"\0\s[700]\b[11]you cant just #inot#/i take responsibility can you\n[half]if \_qitwasallyo\_qur fault anyways\n[half]if theres noone else to step up and take the blame?\nwhat does it matter, anyways, who did it on record?\n%WaitTxt('we all know it was me')\n\n\n[half].\e"
+	"\0\s[600]i- i need to leave i need to lea\s[700]\b[14]ve%Drippy('theres no crime without a culprit',12,80,0)\e"
+	"\0\s[600]a ty hto, čamu ź ya ne pamjacaju? cjabe hljaczeć na mjane...\w5\nperestan, kali laska, prosta... perestan. perestan.\e" 
+
+	//hey speaking of that comment down there here's a reminder for when you put the filter in.
+	"\0\s[700]\b[11]twisted was it burning metal couldnt i see it out the of\e"
+	"\0\s[700]\b[11]%Jogg('it was burning twisted metal i couldnt see it out of the')\e"
+	"\0\s[700]\b[11]%Jogg('you dont understand it do you the radio was still playing')\e"
+	"\0\s[700]\b[11]%Jogg('well its normal it happens it happens to everyone right statistically speaking i mean')\e" //no filter (yet) because he's talking about something different! i'll give you a hint zi, since you've said you look through these: notice a theme here?
+	"\0\s[600]wait\w3 wait waitwaitwaitwaitwait\w5 i needto go icant stay here who are you andwhy whatforwhatreasonwhyishe\s[700]\b[14]'s dead.\e"
+	"\0\s[700]\b[11]i dont know nobody ever knows how it happened you l\_qook aw\_qay and \b[14]%Drippy('thats your mistake',12,94,0)\e"
+	"\0\s[700]\b[11]of course I mean it i always do\n[half]i crawled up from the pit for %(them)\e" //the urge to put you and make it rhyme -- very tempting.
+	//pools
+	parallel Pool("Pool_stsh","%(sh == 'on')")
+	parallel Pool("Pool_stsa","%(sh == 'on')")
+	parallel Pool("Pool_stquestions","%(username != '')")
+}
+
+Pool_stsh : array {
+			"\0\s[700]\b[11]You\n\nback take it back you did\n[half]wrong with me\n[half]should i save %(himher) put\nout\n[half] of my misery   ? i'll do it i will i will it's for the best %(username) he's already\e"
+			"\0\s[700]\b[11]you\w5 would pre\w3fer i   was dead yes ?\ni'll do it kill myself that's not hard nobody here vanya's gone gone %OnCreepyText('gone gone gone gone')\e"
+			"\0\s[700]\b[11]shouldn't be here i should die i should die i should die\e"
+			"\0\s[700]\b[11]i tried to join him wasnt it not right but i did remember misha you remember right\e"
+			"\0\s[700]\b[11]arms hurt why do they didn't do anything didn't hurt them this time misha knows does he? does he?\e"
+			"\0\s[700]\b[11]hey %(username) can you kill me\e"
+			"\0\s[700]\b[11]%(they) %(understand) right %(they) %(have) to otherwise i i think i\e" //...not that it'd really be better if he knew the user knows. it's too far ahead at this point to matter, and he's already too scattered to make any proper sort of conversation - although i do enjoy making him more comprehensible because, as we have seen, I'm one very wordy bastard
+			//on the point of conversation though, what i wanted to say is that even if he could talk to you, it's not like he'd want to. Vanya was clearly an accident (though a good one, all things considered) and while it's fun to imagine, with everything going on, he doesn't really jump at those oppurtunities to talk it out. Having no filter certainly helps right here, though...
+			"\0\s[700]\b[11]%WaitTxt('sacrosanct') put a gun up to my \_qhead\_q fixed to the floor a knife in my chest \_qand drag me\_q down\e"
+			"\0\s[700]\b[11]not your fault i promise it wasnt you it wasnt what you did something else it had to have been\n[half]me\e"
+			"\0\s[700]\b[11]you know that though in the end i know how it has to end i know what ill do does that mean i have to like it?\e"
+}
+Pool_stsa : array {
+			"\0\s[700]\b[11]i don't remember really don't honestly hey mishka did you figure it out yet? did you know what they did to me?\s[702]\ni dont think i want to know knowledge shouldnt be a curse\e"
+			"\0\s[700]\b[11]thinking you don't want to know %(username) not supposed to happen is it though\e"
+			"\0\s[700]\b[11]standing with righted on the ground with the horizon line\n\n%(username) please dont\e"
+			"\0\s[700]\b[11]you understand-esh? %(username)? we're similar, on friend-to-friend, yes? or no? %(username) do you understand this?\e"
+			"\0\s[700]\b[11]he would have helped if i told him\n\n\nbut didn't he already know %(username)?\e"
+			"\0\s[700]\b[11]but he did know the moment he saw me. i think...\e"
+			"\0\s[700]\b[11]you forget: i never told him but...\e"
+			"\0\s[700]\b[11]he\nsaw me looked me over like a\n[half]fucking\n[half]no nevermind? you know what? %(heshe) shouldn't know.\e"
+			"\0\s[700]\b[11]dare you to ask him what it was\e"
+			"\0\s[700]\b[11]he knew all-in-all it's has to be truth\e"
+			"\0\s[700]\b[11]i'm not still here. don't ask me like i am.\e" //what... in what world does this make sense
+			"\0\s[700]\b[11]but im curious; did it pique your interest yet? you had to have seen it\e" //CHAIN!!!
+			"\0\s[700]\b[11]* (...he's trying to hide that he's crying.)\n* (interesting.)\e"
+			"\0\s[700]\b[11]i can feel it sometimes like there's something held beneath the surface and %Drippy('i just need'80,80,0) to-\n\n\w4...but thats not for here, is it?\e"
+			"\0\s[700]\b[11]im told its common\n[half]act like it never happened\n\n[half]whos to say it did, though ?  couldnt be me, don't you understand ?\cquietquietquiet\e" //for as important it is to the story i really don't incorporate it into these much, do i? but then, he's dying to talk to someone about it, and there's only one thing that carries over from now as of yet anywyas, so...
+			"\0\s[700]\b[11]%CreepyTxt('shhhh ja maŭčaju nje kaži kali laska ne prosi')\e"
+			"\0\s[700]\b[11]%Jogg('ja nie vedaju ćamu'), ale... heta lyź. %Jogg('jana mjanie kazala śto zanadta razmaŭljaju zanadta spjavaju') ćamu ź ŭsjo jaśće z taboj...?\x\c\b[11]cichacichacicha\e"
+}

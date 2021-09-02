@@ -42,3 +42,5 @@ menu.foreground.bitmap.filename,menu_foreground.png
 menu.sidebar.bitmap.filename,menu_sidebar.png
 
 //dressup
+
+seriko.use_self_alpha,false

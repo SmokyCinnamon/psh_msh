@@ -51,12 +51,12 @@ MouseMoveSakura
 				if reference4 == "Head" {
 					"\0\s[700]\b[11]Pets pets pets %(misha) says im a cat %(username) agrees ? %(username) yesno?\e"
 					"\0\s[700]\b[11]%(misha) did it too i miss him even if he's right there i do\e"
-					"\0\s[700]\b[11]%(misha)'s nice but %(username) you're different how do I feel ? about %(himher) ? \s[702]nononononono don't pet me i hate it hate it stopstopstop\e"
+					"\0\s[700]\b[11]%(misha)'s nice but %(username) you're different how do I feel ? about %(them) ? \w6\s[702]nononononono don't pet me i hate it hate it stopstopstop\e"
 					"\0\s[700]\b[11]wrong did i something ? do?\e"
 					"\0\s[700]\b[11]trust don't %(username) i you\e"
 					"\0\s[700]\b[11]not this thi%OnCreepyText('s this this this this this this this this this this this')\e"
 					"\0\s[700]\b[11]would pet why you ? me?\e"
-					"\0\s[700]\b[11]panic it he said %(username) get stop i attacks\e"
+					//"\0\s[700]\b[11]panic it he said %(username) get stop i attacks\e"
 				}
 				elseif reference4 == "Face" {
 					"\0\s[700]\b[11]%OnCreepyText('that hurts i'm sorry i'm sorry i'm sorry it hurts stop please please please')%(username)\e"
@@ -82,7 +82,7 @@ MouseMoveSakura
 					if sh == "on"
 					{
 						"\0\s[700]i ?  oh? oh? that %(username) not stop like\e"
-						"\0\s[700]\b[11](That's... definitely a scar there, yup. You never noticed that before...)\e"
+						"\0\s[700]\b[11](That's... definitely a scar there, yup. You never noticed that #ibefore#/i...)\e"
 						"\0\s[700]\b[11]noticed nice that's %(username) off now okokok\e"
 						"\0\s[700]\b[11]%OnCreepyTextWait('What's the point?')\e"
 					}
@@ -187,18 +187,17 @@ MouseMoveKero
 					"\1\s[60]\b[11](Did he have a partner?)\e"
 					"\1\s[60]\b[11](He looks really young.)\e"
 					"\1\s[60]\b[11](Stroking reminds my soul once more of the most important thing,\w3 stroking I again... something something...)\e"
-				"\1\s[60]\b[11](The other one seems agitated.)\e"}
-				elseif reference4 == "Shoulders" 
-				{
+					"\1\s[60]\b[11](The other one seems agitated.)\e"}
+				elseif reference4 == "Shoulders" {
 					"\1\s[60]\b[11](This feels like a violation of some unspoken rule.)\e"
 					"\1\s[60]\b[11](Aside from the fact that this is a dead person, you just don't feel good about doing this.)\e"
-					"\1\s[60]\b[11]%OnCreepyTextWait('STOP STOP STOP STOP STOP')\e"
+					//"\1\s[60]\b[11]%OnCreepyTextWait('STOP STOP STOP STOP STOP')\e"
 					"\1\s[60]\b[11](This gives you the opposite of warm fuzzy feelings.)\e"
-					"\1\s[60]\b[11]%OnCreepyTextWait('I'm gonna have a panic attack seriously stop that')\e"
+					"\1\s[60]\b[11]%CreepyTxt('I'm gonna have a panic attack seriously stop that')\e"
 					"\1\s[60]\b[11](He's dead, but this doesn't make you feel any better.)\e"
-				"\1\s[60]\b[11](...)\w4\0\s[700] stop stop stop %(username) bad bad not good for him don't do that no n\e"}
-				else 
-				{
+					//"\1\s[60]\b[11](...)\w4\0\s[700] stop stop stop %(username) bad bad not good for him don't do that no n\e"
+				}
+				else {
 					stroke = 0
 				}
 			}
@@ -291,20 +290,20 @@ MouseDoubleClickSakura
 		{
 			"\0\s[700]\b[11]don't like that %(username) didn't you know already i dont i dont\e"
 			"\0\s[700]\b[11]%(username) don't\e"
-			"\0\s[700]\b[11]i'm sorry i didn't mean to i forgot forgot %OnCreepyText('забыл забыл забыл') если сможешь прости меня прости\e"
+			"\0\s[700]\b[11]i'm sorry i didn't mean to i forgot forgot %CreepyTxt('забыл забыл забыл') если сможешь прости меня прости\e"
 			"\0\s[700]\b[11]my fault but aren't you mean shouldn't you be nice but but but it's my fault isn't it it is it is\e"
-			"\0\s[700]\b[11]hey hey hey stop\e"
+			"\0\s[700]\b[11]hey hey hey\w3 stop\e"
 			if sa == "on" {"\0\s[700]\b[11]that was before before before had to be had to misha's here isn't he\e"
 			"\0\s[700]\b[11]i don't miss it at all one night once happened not again %(username) you aren't like that right\e"
 			"\0\s[700]\b[11]can't you stop please %(username) stop st\e"}
 			"\0\s[700]\b[11]i know i know i know i know\e"
-			"\0\s[700]\b[11]not important is it never told him never told %(himher) guess that doesn't matter\e"
+			"\0\s[700]\b[11]not important is it never told him never told %(them) guess that doesn't matter\e"
 			"\0\s[700]\b[11]%(username) %(username) %(username)\e"
-			"\0\s[700]\b[11]%(heshe) %(wont) stop i wonder i wonder misha's dead he's dead that's why\e"
+			"\0\s[700]\b[11]%(they) %(wont) stop i wonder i wonder misha's dead he's dead that's why\e"
 			"\0\s[700]\b[11]can't help %(username) can't help me go back go back go back\e"
 			"\0\s[700]\b[11]thought you wouldn't i did i did i was wrong then %(username) tell me i was wrong\e"
 			"\0\s[700]\b[11]my fault how'd you guess is it because he's dead g-d he's dead won't come back can't do it not allowed not possible\e"
-			"\0\s[700]\b[11]did you know %(username)%OnCreepyTextWait('??????????????????????????') no you did of course you did why else would you hit me you know you know who told you wasn't me was it maybe i forgot i forget\e"
+			"\0\s[700]\b[11]did you know %(username)%CreepyTxtWait('??????????????????????????') no you did of course you did why else would you hit me you know you know who told you wasn't me was it maybe i forgot i forget\e"
 		if sh == "on"{"\0\s[700]\b[11]won't happen again i know i know i know %(username) i tried to cut it out of me but that didn't work it didn't didn't\e"}}
 		elseif reference4 == "Shoulders"
 		{
@@ -316,42 +315,46 @@ MouseDoubleClickSakura
 				"\0\s[700]\b[11]%(misha) %(misha) %(misha) nonono already he's can't dead help\e"
 				if sh == "on"
 				{
-					"\0\s[700]\b[11]i'll show you i'll show you ok ok ok just stop %OnCreepyText('stopstopstop')\e"
+					"\0\s[700]\b[11]i'll show you i'll show you ok ok ok just stop %CreepyTxt('stopstopstop')\e"
 				}
 			}
 		}
 		elseif reference4 == "Stomach"
 		{
-			"\0\s[700]You don't have to you know wouldn't hurt so much then\e"
-			"\0\s[700]Ow ow ow ow ow ow ow\e"
-			if sa =="on" {"\0\s[700]\b[11]%OnCreepyText('hurts it hurts it hurts') %OnCreepyTextWait('стой стой стой')\e"
-			"\0\s[700]\b[11]%OnCreepyText('помоги миша миша помоги мне')\e"
+			"\0\s[700]\b[11]You don't have to you know wouldn't hurt so much then\e"
+			"\0\s[700]\b[11]Ow ow ow ow ow ow ow\e"
+			if sa =="on" {"\0\s[700]\b[11]%CreepyTxt('hurts it hurts it hurts') %Drippy('стой стой стой'20,20,0)\e"
+			"\0\s[700]\b[11]%CreepyTxt('помоги миша миша помоги мне')\e"
 			"\0\s[700]\b[11]stopstopstopstopstopsto\e"
 			"\0\s[700]\b[11]nonono you're not supposed to do that\e"
 			"\0\s[700]\b[11]you win you it i'll win do you win you win\e"
-			"\0\s[700]\b[11]%OnCreepyText('stop stop that hurts please leave me alone i'll be quiet just stop')\e"
-			"\0\s[700]\b[11]%OnCreepyText('i'll be quiet this time i will i will just leave me alone please please please')\e"}
-			"\0\s[700]\b[11]%OnCreepyTextWait('победа без боя')\e"
+			"\0\s[700]\b[11]%CreepyTxt('stop stop that hurts please leave me alone i'll be quiet just stop')\e"
+			"\0\s[700]\b[11]%CreepyTxt('i'll be quiet this time i will i will just leave me alone please please please')\e"
+			"\0\s[700]\b[11]%CreepyTxtWait('победа без боя')\e"
 			"\0\s[700]\b[11](...He just starts sobbing.)\e"
-		}
+		}}
 		elseif reference4 == "Wrist"
 		{
 			if sh == "on" {
-				"\0\s[700]Nice nice did it myself can't show him though he's dead\e"
-				"\0\s[700]You noticed noticed good to know it almost worked but not really though did it did it\e"
-				"\0\s[700]Concerned? concerned?\e"
-				"\0\s[700]I'd do it here but %(misha) might notice can't have that no\e"
-				"\0\s[700]%OnCreepyTextWait('Good eye') %(username) can't do it here he'd see\e"
-				"\0\s[700]%(username) don't bring it up ok ok %OnCreepyTextWait('ok thank you')\e"
-				"\0\s[700]%(username) saw? %(username) %(username) %(username) %(username)\e"
+				"\0\s[700]\b[11]Nice nice did it myself can't show him though he's dead\e"
+				"\0\s[700]\b[11]You noticed noticed good to know it almost worked but not really though did it did it\e"
+				"\0\s[700]\b[11]Concerned? concerned?\e"
+				"\0\s[700]\b[11]I'd do it here but %(misha) might notice can't have that no\e"
+				"\0\s[700]\b[11]%CreepyTxtWait('Good eye') %(username) can't do it here he'd see\e"
+				"\0\s[700]\b[11]%(username) don't bring it up ok ok %CreepyTxtWait('ok thank you')\e"
+				"\0\s[700]\b[11]%(username) saw? \_q%(username) %(username) %(username) \_q%(username)\e"
 		}}
 		elseif reference4 == "Neck"
 		{
 			if sh == "on"
 			{
-				"\0\s[700]He's been dead %(username) don't let it scare you though i guess he's not much company now\e"
-				"\0\s[700]Worried? Nonono i'm good \w4good good\w3 %(username) shouldn't worry nope\e"
-		"\0\s[700]Слишком много %OnCreepyTextWait('слишком много слишком много')\e"}}
+				"\1\b[11]* (You point to the scar on his neck.)\w6"
+				--
+				"\0\s[700]\b[11]He's been dead %(username) don't let it scare you though i guess he's not much company now\e"
+				"\0\s[700]\b[11]Worried? Nonono i'm good \w4good good\w3 %(username) shouldn't worry nope\e"
+				"\0\s[700]\b[11]Слишком много %CreepyTxtWait('слишком много слишком много')\e"
+				"\0\s[700]\b[11]no not my best work i know \n[half]m\_qessed it all up\_q %WaitTxt('again')\e"
+		}}
 		else {OpenSakuraMenu}
 	}
 	else
@@ -449,7 +452,7 @@ MouseDoubleClickSakura
 		}
 		}
 	}
-	elseif reference4 == "Bandadge"
+	elseif reference4 == "Bandage"
 	{
 		if namiable >= 500
 		{
@@ -586,7 +589,7 @@ MouseDoubleClickKero
 		"\1\s[60]\b[11](Pretty weird to try and punch a dead person.)\e"
 		"\1\s[60]\b[11](That jacket really is cool though. You'll have to ask him about it...)\w4\n\n(When you find a time machine, that is.)\e"
 		"\1\s[60]\b[11](Are you trying to be mean? What's in it for you?)\e"
-		"\1\s[60]\b[11]%OnCreepyTextWait('%(username) leave it alone already, I didn't do anything')\e"
+		"\1\s[60]\b[11]%CreepyTxtWait('%(username) leave it alone already, I didn't do anything')\e"
 		"\1\s[60]\b[11](You pat the dead body. Kinda dead, though, so he doesn't say anything.)\e"
 		"\1\s[60]\b[11](*Pat pat*.)\w4\n\n(The other one seems to be judging you.)\e"
 		"\1\s[60]\b[11](This would be fun if he liked it and wasn't dead.)\e"
@@ -597,7 +600,13 @@ MouseDoubleClickKero
 		"\1\s[60]\b[11](Pat pat pat pat pat.)\e"
 	"\1\s[60]\b[11](He never said you could pat him, dead or not.)\e"}
 	elseif reference4 == "Foot" {
-	"\1\s[60]\b[11](You found the foot. It's definitely twisted the wrong way.)\e"}
+		"\1\s[60]\b[11]* "
+		--
+		"\1\s[60]\b[11](You found the foot. It's definitely twisted the wrong way.)\e"
+		"\i[62](You wonder what happened to him\w2. Whatever it was\w2, it looks pretty bad\w2.\w2.\w2. )\e" //try talking to pasha about it...
+		"(Hmm.)\e"
+		"(You can't place your finger on what, exactly, but there's something strange about all this...)\e"
+	}
 	else {OpenKeroMenu}
 	}
 	else {
@@ -779,8 +788,11 @@ MouseDoubleClickKero
  OnMouseWheel
  {if reference3 == 0 {OnWheelSakura}; else {OnWheelKero}}
  
- OnWheelSakura
- { if sa == "on" { if reference4 == "Head" || "Face" { if rel == 3 { namiable -= 12
+ OnWheelSakura{
+	if sa == "on" {
+		if reference4 == "Head" || "Face" {
+			if rel == 3 {
+				namiable -= 12
 	"\0\s[0]*(He takes in a sharp breath.)*\n\n%(username) could you, you not?\e"
 	"\0\s[0]I don't...\e"
 	"\0\s[9]...I think......\s[-1]\w4\1\s[10]Um... I'd better... go...\w3\s[-1]\w6\w6\w6\w6\n\n[half]\0\n\n[half]\1\s[10]\0\s[0]\1Don't do that again, %(username).\e"
@@ -796,7 +808,8 @@ MouseDoubleClickKero
 	"\0\s[0]I can't--\e"
 	"\0\s[0]Please just... please don't do that...\e"
 	}
-	elseif rel == 2 { namiable -=6
+	elseif rel == 2 {
+		namiable -=6
 	"\0\s[0]I- I really can't-\e"
 	"\0\s[0]%(username) I don't...\e"
 	"\0\s[0]S... stop...\e"

@@ -1,86 +1,264 @@
+version,1 //cursed
 //the base ones should at least mirror the original --- default - embarrassed - surprised - sad/disappointed - smiling - contented - angry - thoughtful - bored
 //...its mostly just the dressup stuff i want tbh
 //don't ask me how the extra shells are gonna work
 
 surface0
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1000,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1100,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1200,1,0,0
 }
 surface1
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1005,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1100,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1203,1,0,0
 }
 surface2
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1005,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1100,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1202,1,0,0
 }
 surface3
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1006,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1104,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1205,1,0,0
 }
 surface4
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1006,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1100,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1205,1,0,0
 }
 surface5
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1004,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1105,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1201,1,0,0
 }
 surface6
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1004,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1102,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1201,1,0,0
 }
 surface7
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1000,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1103,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1204,1,0,0
 }
 surface8
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1000,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1104,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1201,1,0,0
 }
 surface9
 {
+	element0,overlay,surface0.png,0,0
+	element1,overlay,surface100.png,0,0
+	element2,overlay,surface101.png,0,0
+	element3,overlay,surface102.png,0,0
+	element4,overlay,surface103.png,0,0
+	//intervals...?
+	//eyes - 1000
+	animation1.interval,always
+	animation1.pattern0,overlay,1006,1,0,0
+	//mouths - 1100
+	animation2.interval,always
+	animation2.pattern0,overlay,1101,1,0,0
+	//hair but yknow that doesnt matter
+	animation3.interval,always
+	animation3.pattern0,overlay,1150,1,0,0
+	//eye of the brow
+	animation4.interval,always
+	animation4.pattern0,overlay,1203,1,0,0
 }
 
-//misha
-surface10
+surface.append0-9,!5-6
 {
+	//Blink
+	animation100.interval,random,4
+	//animation100.pattern1,overlay,1000,50,0,0
+	animation100.pattern0,stop,1
+	//animation0.pattern0,overlay,-1,100,0,0
+	animation100.pattern1,overlay,1000,2,0,0
+	animation100.pattern2,overlay,1001,2,0,0
+	animation100.pattern3,overlay,1002,2,0,0
+	animation100.pattern4,overlay,1003,2,0,0
+	animation100.pattern5,overlay,1002,2,0,0
+	animation100.pattern6,overlay,1001,2,0,0
+	animation100.pattern7,overlay,-1,2,0,0
+	animation100.pattern8,start,1
+
+	//blushie
+	animation101.interval,never
+	animation101.pattern0,overlay,104,0,0,0
+	animation102.interval,never
+	animation102.pattern0,overlay,104,0,0,0
+	animation102.pattern1,overlay,105,0,0,0
 }
-surface11
+surface.append5-6
 {
-}
-surface12
-{
-}
-surface13
-{
-}
-surface14
-{
-}
-surface15
-{
-}
-surface16
-{
-}
-surface17
-{
-}
-surface18
-{
-}
-surface19
-{
+	//blushie
+	animation101.interval,never
+	animation101.pattern0,overlay,104,0,0,0
+	animation102.interval,never
+	animation102.pattern0,overlay,104,0,0,0
+	animation102.pattern1,overlay,105,0,0,0
 }
 
-surface.append0-9
+surface.append0-9 //this is appending this code to Surface500 through Surface590.
 {
-}
-surface.append10-19
-{
+	collision0,62,21,111,49,Head
+	collision1,58,42,116,74,Face
+	collision2,52,83,114,101,Shoulders
+	collision3,68,104,111,172,Stomach
+	collision4,54,152,71,176,Bandage
 }
 
 sakura.tooltips
 {
 Head,Hair looks fluffy... 
 Face,No pets here.  
-Shoulders,Pat the shoulders?
-}
-kero.tooltips
-{
-Head,Hair looks soft...
-Face,Don't stroke!
 Shoulders,Pat the shoulders?
 }

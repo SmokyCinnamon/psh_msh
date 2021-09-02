@@ -3,7 +3,7 @@
 
 OpenKeroMenu
  {
-	if spooktime == "off"
+	if spooktime == "off" || nowmode != "spooktime"
 	{
 		"\1\s[10]\b[2]"
 		"\1\s[18]\b[2]"
@@ -43,10 +43,10 @@ OpenKeroMenu
 		}
 		else
 		{
-			"\0\s[700]\b[11]He's dead %(username) won't answer can't do anything for %(himher) anymore прости прости прости\e"
-			"\0\s[700]\b[11]I meant to meant to meant to maybe %(heshe) can forgive me прости прощай\e"
+			"\0\s[700]\b[11]He's dead %(username) won't answer can't do anything for %(them) anymore прости прости прости\e"
+			"\0\s[700]\b[11]I meant to meant to meant to maybe %(they) can forgive me прости прощай\e"
 			"\0\s[700]\b[11]Forgot forgot too late cant help you %(username)\e"
-			"\0\s[700]\b[11]Leave him leave him %OnCreepyTextWait('buried him') простите простите\e"
+			"\0\s[700]\b[11]Leave him leave him %CreepyTxtWait('buried him') простите простите\e"
 			
 		}
 	}
@@ -167,7 +167,7 @@ YCountThings
 //This is when they select bug report. This is mostly meant to briefly give the user information about you, the creator, and how to report a problem to you. This can be handy if the person forgot where they got their ghost or how to contact you. Add whatever info you like here.
 Select.bugreport
 {
-"\1\s[10]Seen a bug? \w5Let Smoky know at vis tumblr, \a_[smokycinnamonroll.tumblr.com.]right here\a_ \w5We were downloaded from \_a[http://www.whereveryoupostedthem.com/]some place\_a.\n%(yendmenu)\e"
+"\1\s[10]Seen a bug? \w5Let Smoky know at vis tumblr, \_a[smokycinnamonroll.tumblr.com]right here.\_a \w5We were downloaded from \_a[http://www.smokycinnamon.github.com/psh_msh]github, probably\_a.\n%(yendmenu)\e"
 }
 
 //When clicked, this will automatically tell the ghost to check for updates. More detail on updates in etc.dic. You can leave this alone.
@@ -238,7 +238,8 @@ OnTestvariable
 	//yamiable = 550
 	//namiable = 550
 	//friendlyall = namiable + yamiable
-	if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
+	//if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
+	if nowmode != "spooktime" {nowmode = "spooktime"} else {nowmode = ""}
 	"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
 	//"\1\s[10]\b[2]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\e"
 	//OnUpdateRel

@@ -21,8 +21,14 @@ AiTalk
 		{
 		        {
 			        if CHAIN.IDName == "" {
+				    case nowmode {
+					when "spooktime" {lastTalk = SpookTalk}
+					others {
+						case rel {
+							when 0 {lastTalk = NolTalk}; when 1 {lastTalk = AdzinTalk}; when 2 {lastTalk = DvaTalk}
+							others {
  				    lastTalk = RandomTalk
-			        }
+			        }}}}}
 			        else {
 				    lastTalk = ChainTalk
 			        }
@@ -46,73 +52,12 @@ AiTalk
 
 RandomTalk : nonoverlap
 {
-	if spooktime == "on"
-	{
-		"\0\s[600]Oh g-d oh g-d oh g-d\e"
-		"\0\s[600]I hate this I hate this fuck fuck fuck fuck\e"
-		"\0\s[700]\b[11]I\n\n\nNever told him\e"
-		"\0\s[700]\b[11]Я\н\н\нНикогда ему не сказал\к"
-		"\0\s[700]\b[11]Do you\w6\w6 h\w4a\w4te me?\e"
-		"\0\s[700]\b[11]Ты мне\ж6\ж6 не\ж4на\ж4вижу?\к"
-		"\0\s[700]\b[11]Undeniably true its truth the the the\e"
-		"\0\s[700]\b[11]hey %OnCreepyTextWait('hey hey hey hey hey hey hey hey')\e"
-		"\0\s[700]\b[11]хей %OnCreepyTextWait('хей хей хей хей хей хей хей хей')\к"
-		"\0\s[700]\b[11]I need to leave tell him tell him tell him it doesnt ma\ntter he'll hate me\e"
-		"\1\s[60]\b[11](He doesn't move...)\e"
-		"\1\s[60]\b[11](Smells like ash...)\e"
-		"\1\s[60]\b[11](Looks like something happened to him.)\e"
-		"\0\s[700]\b[11]he died he died        %(misha)   wont come back no    no  no\e"
-		"\0\s[700]\b[11]он умер он умер        Мишка   не вернутся никогда    нет  нет\к"
-		"\0\s[700]\b[11]scared scar%OnCreepyText('ed scared scared scared scared scare')d scared scared" //on creepytext is in etc. oncreepytextwait is for having a wait time -- better for shorter ones.
-		"\0\s[700]\b[11]your\n\n\n\n\n\n[half]place i'll take     your place\e"
-		"\0\s[700]\b[11]take ill it take ill back ill take it back\e"
-		"\0\s[700]\b[14]nononononononnononononononononononononononoonononononononononononnonnonononononoonoonononononononononononononononononono\e"
-		"\0\п[700]\b[14]нетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетнетне\к"
-		"\1\s[60]\b[11](Looks pretty dead.)\e"
-		"\1\s[60]\b[11]\i[61]Всё в поря%OnCreepyText('дке, Паша,') мне х         о       ро ш     о\e" //should i just comment this one out...?
-		"\0\s[600]this is wrong \s[600]this is wrong \s[600]this is wrong \s[600]this is wrong\e"
-		"\0\s[600]I can't be back, %(username) tell me I'm not back please, please, he's dead g-d he's dead og g-d oh g-d oh g-d\e"
-		"\1\s[60]\b[11]\i[61](No burn marks...)\e"
-		//"\1\s[60]\b[11](His foot's turned the wrong way.)\e"
-		"\1\s[60]\b[11](Cool jacket, though.)\e"
-		"\1\s[60]\b[11](You wonder if he's just pretending.)\e"
-		"\1\s[60]\b[11]\i[61]%OnCreepyTextWait('IS THIS HOW IT ENDS?')"
-		"\1\s[60]\b[11]\i[61]\f[italic,true](He\w3 stares\w4.\w4 It\w3's all he ever\w6 does\w2.\f[italic,false]\e"
-		"\0\s[600]я виноватый, я виноватый, чёрт. чёртчёртчёртчёртчёртчёртчёрт\e"
-		"\0\s[702]\b[11]%(username) простите, пожалйста, прости мне я забыл я забыл. я виноват, простите простите\к"
-		"\0\п[700]\b[11]не я? не я? а ты, как ты? всё в порядке %(username)? да? да? это должен быть. ты будешь счастливый.\н\н(половина)научи меня быть счастливым\к"
-		"\0\s[702]\b[11]i'm sorry i'm sorry won't do it again i won't i won't i won't\e"
-		"\0\s[702]\b[11]простите простите я это больше не делаю не буду не буду не буду\к"
-		"\0\s[702]\b[11]he's dead he can't say anything stop waiting stop stop стой стой стой стой стой\к"
-		"\0\s[700]\b[11]waiting? why? why bother? nothing will change, don't you remember?\e"
-		"\0\s[700]\b[11]can tell you why %(username)\n\nI\e"
-		"\0\s[700]\b[11]don't forget\e"
-		"\0\s[700]\b[11]you can\w2't change it %(username)\w2.\e"
-		"\0\s[700]\b[11]not just the fault of countless, only it was me the entire time\e"
-		"\0\s[700]\b[11]%(username) %(heshe) should've listened because nobody ever *hears*\e"
-		"\0\s[700]\b[11]well he wont come back so i dont see why youre here\e"
-		"\0\s[700]\b[11]I won't be back if you go\e"
-		"\0\s[700]\b[11]it was me though dont you remember?\n\n[half]it was me\n[half]          i did it after all\nit... was, wasn't it?\e"
-		"\0\s[700]\b[11]turn down the colors\e" //this is... more funny than anything else, i suppose
-		"\0\s[700]\b[11]take the time back time-table it's a clock isn't it? %(hour12)?\e"
-		"\0\s[700]\b[11]you know what you did\e"
-		"\0\s[700]\b[11]can't save you can't him %(heshe) %(username)\e"
-		"\0\s[700]\b[11]of course i remember that , а, the other that i can't forget\e"
-		"\0\s[700]\b[11]%(heshe)\w5 forget it forget it forget it\e"
-		parallel Pool("Pool_stsh","%(sh == 'on')")
-		parallel Pool("Pool_stsa","%(sh == 'on')")
-	}
-	else
-	{
-	if rel == 3
-	{
 	//"\1\s[10]Code's broke.\w2\n\nThis is just to fix it.\e"
 	// TEXT FORMATTING -- SUPER USEFUL
 	// \f[height,(number)] default goes back to normal height. \f[strike,true/false/default] strikethrough, sub is subscript, sup is superscript, underline, bold, and italic speak for themselves, and [color,r,g,b] changes text to that color.
 	// \a_[address]actual text\_a for linking to websites and such
 	
 	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
-	{
 	"\1\s[10]How's your cat?\w2 Still fluffy?\w8\0\s[0]Fluffy as hell.\e"
 	
 	"\1\s[16]Well, where are you Varvara?\w8\0\s[9]...I'll let that one slide\e"
@@ -217,32 +162,6 @@ RandomTalk : nonoverlap
 	"\0\s[8]Talked to Vanya lately\w1?\w8\1\s[18]Not recently\w1, why\w1?\e:chain=firstchain"
 		
 	//"\1\s[13]Vanya isn't saying anything about Anchor 1 to me.\w8\0\s[9]Have you tried not being so intimidating? \e:chain=questionhim" //not sure if this should be shell related or not lol. probably, considering I have the anchor, but they don't have any other shells as of right now.
-	}
-	parallel Pool("Pool_Nowshell","%(nowshell != '')")
-	parallel Pool("Pool_winter","%(season == 'winter')")
-	/*if season == spring
-	{
-		"\1\s[10]Spring's nice because that's when all the flowers start to grow.\e"
-	}
-	if season == summer
-	{
-		"\0\s[0]Summer is a recipe for melted Pasha.\e"
-	}
-	if season == fall
-	{
-		"\1\s[10]Somebody's got a birthday coming up.\e"
-	}*/
-	parallel Pool("Pool_fevral","%(month == 2)")
-	parallel Pool("Pool_oktjabr","%(month == 10)")
-	parallel Pool("Pool_monday","%(weekday == 1)")
-	parallel Pool("Pool_tuesday","%(weekday == 2)")
-	parallel Pool("Pool_sreda","%(weekday == 3)")
-	parallel Pool("Pool_chatsver","%(weekday == 4)")
-	parallel Pool("Pool_friday","%(weekday == 5)")
-	parallel Pool("Pool_subota","%(weekday == 6)")
-	parallel Pool("Pool_sunday","%(weekday == 7)")
-	parallel Pool("Pool_ranoutra","%(timeslot == 'earlymorning')")
-	parallel Pool("Pool_vecher","%(timeslot == 'evening')")
 	
 	//--Multiple Responses	
 	{
@@ -272,108 +191,39 @@ RandomTalk : nonoverlap
 	"\0\s[0]Friend\w3 dear-to-me \w4\nWhat did\w3 you come-to-be?\w4\nYou were\w3 young, you were thin\w3...\e"
 	"\1\s[10]I hope you're feeling better, though.\w4\0\s[0]...me? Why?\w5\1\s[10]\n\n[half]That's... well, I'll get back to you on that later.\e"
 	
-	"Hey, %(misha)?\w4\1\s[10]What's up?\w6\0\s[9]You ever think about dying?\1\s[2]\w6\n\n\w3.\w4.\w4.\w5 What the fuck, dude.\e"
-	}
-	elseif rel == 2 
+	"Hey, %(misha)?\w4\1\s[10]What's up?\w6\0\s[9]You ever think about dying?\1\s[12]\w6\n\n\w3.\w4.\w4.\w5 What the fuck, dude.\e"
+	"Tabe nje zaminač...?\w4\1\s[18]Vielmi.\w2\0\s[9]\w4\n\n[half]A... ladna.\e"
+	//pools
+	parallel Pool("Pool_Nowshell","%(nowshell != '')")
+	parallel Pool("Pool_winter","%(season == 'winter')")
+	/*if season == spring
 	{
-	if friendlyall >= 400
-	{
-		//"\0\s[0]You should sort this into sections sometime.\e"
-		
-		/*if другдруга == 0
-		{
-			"\0\s[8]So how\w2's your day been\w3?\w6\1\s[19]Fine. Had to spend it with you, obviously.\w4\1\s[18]\nDid you know he smokes, %(username)? \w4At this rate, your computer's going to get fucked up.\w4\0\s[2]\n\n[half]I--\w4\n\nI will *not*! Just because *you*\w4 like \w3%(username) doesn't mean I do\w3!\w3\s[3]\nBesides\w2, if you didn't want to\w3 hang out with me you could've just *said* so\w2.\w2.\w2.\w5\1\s[17]\n\n[half]Oh come on! There's nowhere else on this damn computer to even go!\w6\0\s[2]\n\n[half]Mishka\w3, just\w3, just\w3-\w2- \w3\1\s[17] But *fine*\w4 then,\w3 if you want me to go, I will!\4\4\0\s[4]Mishka\1\4\0\w2-\w2-\w4\n\n[half]\1\4\4\4\4\4\4\s[-1]\w6\w6\w6\w6\w6\w6\0\s[4]Mishka\w2.\w2.\w2.\w4\n\n[half]\w2.\w4.\w4.\w3\w6\n*\n(You think he looks like he's about to cry.)*\n\w4\s[3]I\w2.\w2.\w2. I won't fuck up your computer\w2, promise\w2.\w8 I dunno how I even could\w2.\1\s[10]\4\4\4\![raise,OnArgue]\e" //the last one should just point it to a thing that sets другдруга to one.
-		}*/
-		"\0\s[9]So\w2.\w3.\w3.\w3 Um\w2, how\w2's it going\w2, %(username)\w2?\e"
-		"\0\s[9].\w2.\w2.\e"
-		"\0\s[8]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
-		"\1\s[10]Hey there, %(username).\e"
-		"\1\s[10]You have an interesting interpretation of what it means to be nice, %(username).\e"
-		"\1\s[18]What's up there, %(username)?\e"
-		//"\1\ы[10]Тест. да.\у"
-		parallel Pool("Pool_totallyfine","%(другдруга == 0)")
-		"\1\s[10]...\e"
+		"\1\s[10]Spring's nice because that's when all the flowers start to grow.\e"
 	}
-	elseif friendlyall >= 100
+	if season == summer
 	{
-		"\1\s[19]Guess the user must not like us very much.\e"
-		"\1\s[17]Do you like, have something against us?\w3 Hello? \w3%(username)?\0\s[3]...\e"
-		"\1\s[18]Really not friendly, huh?\e"
-		"\1\s[18]So how's it going in the land of assholes, %(username)? Having fun?\e"
-		"\1\s[17]And what are you up to on this fine day, %(username)? Tormenting us?\e"
-		//"\0\s[0]%(username) не\w2.\w2.\w2.\w3\nк нам не хорошо относится\w2, да\w2? \1\s[10]А ты только что узнал? Правда же, Паша, я думал, что уже сказал. Это-\w4\n\n*(He seems to have noticed your interest...)*\e"
-		"\0\s[9]You wouldn\w2't happen to have any music around here\w2, would you\w2?\e"
-		"\1\s[14]\w4*(Sometimes you wonder about this one.)*\e"
-		"\1\s[19]*(He couldn't be more pointedly ignoring you.)*\e"
-		"\0\s[0]*(You wonder why he's become so fidgety.)*\e"
-		"\0\s[3]*(He seems uncomfortable.\w3 Why would he not be at ease here?)*\e"
-		"\0\s[0]*(You wish he would stop fidgeting.\w4 It's distracting.)*\e"
-		"\1\s[18]You don't like us, do you %(username)?\w6\nWhy not just let us go home?\e"
-		"\1\s[10]You uh..... busy? Or something? %(username)?\e"
-		"\1\s[10]And the award for asshole of the year goes to...\e"
-		"\1\s[10]You're kinda... not...\w5 something...\e"
-		"\0\s[0](Is he... eating his hand...?)\e" //I really really need that surface hh
-		"\0\s[0](He's humming something to himself.)\e"
-		"\0\s[9](Looking everywhere except you.)\e"
-		"\1\s[10]I sincerely hope you are a better person than I think you are.\e"
-		"\1\s[10]I...\w4 You could just uninstall us, y'know. I don't want to stay here.\e"
+		"\0\s[0]Summer is a recipe for melted Pasha.\e"
 	}
-	else
+	if season == fall
 	{
-		//"\1\s[10]this takes care of in-between 0 and fifty counting up.\e"
-		"\1\s[18]So, how's it going? Ah, nevermind, I don't think you care anyways.\e"
-		"\1\s[18]%(username)... %(username) really isn't nice, huh?\w6\0\s[0]...\e"
-		//"\1\s[10]Паша, пожалуйста, говори со мне.\w6\0\s[0]...\e" he sounds formal. maybe he shouldn't. fuck you russian for your long words
-		"\1\s[10]So %(username)... oh, I don't think you care, nevermind.\e"
-		//"\1\s[10]%(username), why are you like this?\w8\w8\![raise,OnMishaTalk]\e"
-		"\1\s[10]How's your day been, Pasha?\w6\0\s[9]...\e"
-		"\1\s[10]You missing your cat, Pasha?\w6\0\s[9]...\e"
-		"\1\s[18]%(username), you sure you don't just want like, a hug or something?\e" //misha over here like: I *will* offer you affection because that's hte only way we possibly have to get you to stop hating us
-		"\1\s[10]Pasha, hey, how've you been?\w6\0\s[9]...\e"
-		"\1\s[10]What do you think of calling Jora or someone? \w3If we can do it, I guess.\w6\0\s[9]...\e" //someday we will have all six on the same desktop and the world will explode. phone calls might be cute though
-		"\0\s[0]Hey\w2, um\w3.\w3.\w3. you doing okay?\w6\1\s[18]Mmh, about as well as I can be.\e" //pasha: i am noncomittal | misha: two can play at that game
-		"\0\s[3]Um\w3, %(misha)\w3.\w3.\w3.\w4\nNevermind\w3.\w3.\w3.\e"
-		//"\0\s[0]H\w3-Hey\w2, %(username)\w2? Can I\w2, I\w2, I use\w2, um\w2, your internet browser\w2?\e"
-		"\0\s[9]Really wish we could call someone...\e"
-		"\1\s[10]*(Somehow, he looks less in control of things.)*\e"
-		"\1\s[10]*(You wonder about him sometimes.)*\e"
-		"\0\s[0]*(You wonder if you can tell him to stop fidgeting...)*\e"
-		"\1\s[10]*(He looks like he could say something to you any second now.)*\e"
-		"\1\s[10]*(You think he's kind of alright, when he doesn't speak.)*\e"
-		"\1\s[10]*(He doesn't seem at ease anymore.)*\e"
-		"\1\s[10]*(You wonder why he's not talking as much.\w3 It's a blessed moment of peace, but...)*\e"
-		parallel Pool("Pool_zfsa","%(sa == 'on')")
-	}
-}
-	elseif rel == 0 //there is no 1 because i can't think.
-	{
-		"\1\s[18]Wow.\e"
-		"\1\s[14]*(He keeps looking over his shoulder.\w3 Interesting.)*\e"
-		"\0\s[3]*(He doesn't fidget anymore.\w3 good.)*\e"
-		"\0\s[3]%(misha)\w2.\w3.\w3.\w6\1\s[10]Hm?\w6\0\s[9]\n\n[half]What do you think of %(username)\w3?\w4\1\s[18]\n\n[half]Well... "
-		--
-		"\n*(He doesn't say anything.\w3 Disapppointing.)*"
-		"%(heshe) %(doesnt) like us very much."
-		"%(heshe) %(isnt) really... that nice."
-		"maybe it's better if I tell you when %(heshe) *%(isnt)* here."
-		"%(heshe) remind me of... well, y'know."
-		"I'll tell you later."
-		--
-		" \w6\0\s[1]\n\w2.\w2.\w2.\e"
-		"\0\s[0]*(You wonder when the best time to talk to him would be.\w3 Soon, perhaps.)*\e" //menu option for... things
-		"\1\s[10]*(He's much less talkative than he used to be.\w3 That's a shame.)*\e"
-		"\1\s[10]*(Somehow, he seems completely calm and very nervous at the same time.)*\e"
-		"\1\s[10]*(The other one hardly talks to him anymore.\w3 It was probaby inevitable, really.)*\e"
-		"\0\s[0]*(This one has always been interesting.\w3 You'll get his secrets if you have to pry them out of him.)*\e"
-		"\1\s[14]*(You wonder why he seems so nervous.)*\e"
-		//"\0\s[0]*(This one, if anything, is displaying a complete lack of emotion.\w3 You thought he would have been able to feel something by now, but perhaps not.)*\e"
-		"\0\s[0]*(This one doesn't seem nearly as intruiging, now.\w3 You should at least find out what he's hiding, in the meantime.)*\e"
-		"\1\s[10](Hey, Pasha, Y'got a hairband on you?)\w4\0\s[0]*(He shakes his head.)*\w6\1\s[10]\n\n[half](...... That's... that's fine, then, don't worry about it.)\e"
-	}
-	else
+		"\1\s[10]Somebody's got a birthday coming up.\e"
+	}*/
+	parallel Pool("Pool_fevral","%(month == 2)")
+	parallel Pool("Pool_oktjabr","%(month == 10)")
+	parallel Pool("Pool_monday","%(weekday == 1)")
+	parallel Pool("Pool_tuesday","%(weekday == 2)")
+	parallel Pool("Pool_sreda","%(weekday == 3)")
+	parallel Pool("Pool_chatsver","%(weekday == 4)")
+	parallel Pool("Pool_friday","%(weekday == 5)")
+	parallel Pool("Pool_subota","%(weekday == 6)")
+	parallel Pool("Pool_sunday","%(weekday == 7)")
+	parallel Pool("Pool_ranoutra","%(timeslot == 'earlymorning')")
+	parallel Pool("Pool_vecher","%(timeslot == 'evening')")
+	parallel Pool("Pool_questions","%(username != '')")
+	/*else
 	{
 		"\1\s[10]Um, if you're seeing this, i think something broke.\e"
-	}
+	}*/
 	if другдруга == 1 //maybe i could call this with \![raise,stuff]
 	{
 		//"\1\s[10]This is if we've been fighting.\e"
@@ -381,9 +231,7 @@ RandomTalk : nonoverlap
 		"\0\s[0]%(misha)\w2, do\w2-\w4\1\s[10]Заткнись.\w6\0\s[3]\n\n\w2.\w2.\w2.\e" //there has to be a harsher way of saying shut up. i do not know it
 		"\0\s[0]Um\w2.\w2.\w2. Mishka\w2-\w3\1\s[10]\4\e"
 	}
-	}
 }
-
 //pools
 Pool_Nowshell : array {
 if nowshell == "default_shell"
@@ -399,8 +247,7 @@ if nowshell == "default_shell"
 	}
 	if nowshell == "summer" //i got all the seasons but nothing in them
 	{
-	"\0\s[0]Honestly im not sure how this and season related dialogue are different.\e"
-	
+	"\0\s[0]Honestly im not sure how this and season related dialogue are different.\e"	
 	"\0\s[0]but its useful for other shells.\e"
 	}
 }
@@ -431,113 +278,57 @@ Pool_winter : array {
 		if day >= 10 || day <= 18
 		{
 			"\0\s[0]Latkes...\w6\1\s[10]That's all?\e"
-		}
-		
-	}}}
+		}	
+}}}
 Pool_fevral : array {
-if month == 2
-	{
-		"\0\s[0]There's a song called february\w1.\w8\1\s[10]Yeah\w1.\e"
-		
-		"\1\s[10]How much do you think I would have to pay Jora to get him to not wear his boots for a day or two?\w6 \0\s[0]I don't think you could give him any amount of money and have him be willing to do that\w2.\e"
-		
-	}
+	"\0\s[0]There's a song called february\w1.\w8\1\s[10]Yeah\w1.\e"	
+	"\1\s[10]How much do you think I would have to pay Jora to get him to not wear his boots for a day or two?\w6 \0\s[0]I don't think you could give him any amount of money and have him be willing to do that\w2.\e"
 }	
 Pool_oktjabr : array {
-	if month == 10
-	{
-		//"\0\s[0]October! Did you know that Smoky was born in october?\w8\1\s[10]Nice fun fact, anyways.\e"
-		
-		"\0\s[0]Ghosts might be around, so you better watch out for them, %(username).\w8\1\s[10]Pasha, we *are* ghosts.\e"
-		
-		"\1\s[10]Hey, aren't you cold?\w8\0\s[0]No\w2.\w2.\w2.\w2?\w4\nAre you\w2?\e"
-		
-		"\1\s[10]...\n\n[half]\w4*(Looks like he's thinking about something\w1.)\n\w8(You wonder how important it is\w2.)*\e"
-	}
+	//"\0\s[0]October! Did you know that Smoky was born in october?\w8\1\s[10]Nice fun fact, anyways.\e"	
+	"\0\s[0]Ghosts might be around, so you better watch out for them, %(username).\w8\1\s[10]Pasha, we *are* ghosts.\e"	
+	"\1\s[10]Hey, aren't you cold?\w8\0\s[0]No\w2.\w2.\w2.\w2?\w4\nAre you\w2?\e"	
+	"\1\s[10]...\n\n[half]\w4*(Looks like he's thinking about something\w1.)\n\w8(You wonder how important it is\w2.)*\e"
 }
 Pool_monday : array {
-		"\0\s[0]Monday\w2, wonday\w2.\w8\1\s[10]Huh?\e"
-		"\0\s[0]Why go back to work on monday when sundays are *also* free? Just a thought.\w6\1\s[10]Generally because sundays are... More people's day off...?\w4 That and honestly, would you want to work while you had dirty dishes just lying around at home? Would you really?\e"
-	}
+	"\0\s[0]Monday\w2, wonday\w2.\w8\1\s[10]Huh?\e"
+	"\0\s[0]Why go back to work on monday when sundays are *also* free? Just a thought.\w6\1\s[10]Generally because sundays are... More people's day off...?\w4 That and honestly, would you want to work while you had dirty dishes just lying around at home? Would you really?\e"
+}
 Pool_tuesday : array {
-		"\0\s[0]Tuesday\w2, newsday\w2.\w8\1\s[10]???\e"
-		"\0\s[0]%(username)\w2, did you know that tuesday is officially pizza day\w2?\w4\nThis is a fact\w2.\e"
-	}
+	"\0\s[0]Tuesday\w2, newsday\w2.\w8\1\s[10]???\e"
+	"\0\s[0]%(username)\w2, did you know that tuesday is officially pizza day\w2?\w4\nThis is a fact\w2.\e"
+}
 Pool_sreda : array {
-		"\0\s[0]Wednesday\w2, tensday\w2.\w8\1\s[10]...??????\e"
-	}
+	"\0\s[0]Wednesday\w2, tensday\w2.\w8\1\s[10]...??????\e"
+}
 Pool_chatsver : array {
-		"\0\s[0]Thursday\w2, fursday\w2.\w8\1\s[10]That.\w2.\w2.\w2 doesn't make a lot of sense. \w8\0\s[0]\n\n[half]Does it have to\w2?\e"
-	}
+	"\0\s[0]Thursday\w2, fursday\w2.\w8\1\s[10]That.\w2.\w2.\w2 doesn't make a lot of sense. \w8\0\s[0]\n\n[half]Does it have to\w2?\e"
+}
 Pool_friday : array {
-		"\0\s[0]Friday\w2, tryday\w2.\w8\1\s[10]Who taught you these?\e"
-	}
+	"\0\s[0]Friday\w2, tryday\w2.\w8\1\s[10]Who taught you these?\e"
+}
 Pool_subota : array {
-		"\0\s[0]Saturday\w2, caturday\w2.\w6\n.\w2.\w2.\w2 I like cats\w2.\w8\1\s[10]Where did you learn these puns\w?\e"
-	}
+	"\0\s[0]Saturday\w2, caturday\w2.\w6\n.\w2.\w2.\w2 I like cats\w2.\w8\1\s[10]Where did you learn these puns\w?\e"
+}
 Pool_sunday : array {
-		"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"
-		
-		"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes
-		
-		"\0\s[0]Sundays are just so... so *boring*.\w6\1\s[10]Maybe to you.\w6\0\s[0]\n\n[half]Hey, what's that supposed to mean?\w6\1\s[10]\n\n[half]Nothing.\e"
+	"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"	
+	"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes	
+	"\0\s[0]Sundays are just so... so *boring*.\w6\1\s[10]Maybe to you.\w6\0\s[0]\n\n[half]Hey, what's that supposed to mean?\w6\1\s[10]\n\n[half]Nothing.\e"
 }
 Pool_ranoutra : array {
-		"\0\s[0]Feels early.\w8\1\s[10]That's cause it is.\e"
-		
-		"\0\s[0]Can you read books like that this early?\w8\1\s[10]I don't see why not.\e" //pasha means upsode down.
-		
-		"\0\s[0]Can you read in *english* this early?\w6\1\s[10]Yes?\w6\0\s[0]\n\n[half]Oh, nothing, just that my brain meltswhenever I try.\w6\1\s[10]\n\n[half]Lovely imagery Pasha, thank you.\e"
+	"\0\s[0]Feels early.\w8\1\s[10]That's cause it is.\e"	
+	"\0\s[0]Can you read books like that this early?\w8\1\s[10]I don't see why not.\e" //pasha means upsode down.	
+	"\0\s[0]Can you read in *english* this early?\w6\1\s[10]Yes?\w6\0\s[0]\n\n[half]Oh, nothing, just that my brain meltswhenever I try.\w6\1\s[10]\n\n[half]Lovely imagery Pasha, thank you.\e"
 }
 Pool_vecher : array {
-		"\0\s[0]Hey, how do you spell evening?.\w8\1\s[10]E\w4 V\w4 E\w4 N\w4 I\w4 N\w4 G\w2.\e"
-		
-		"\0\s[0]Eve\w3ni\w2ng time\w1, so this is my eve\w2ning\w2 song\w2.\w2.\w2.\e"
-		
-		"\0\s[0]Are you getting tired\w2? I\w2'm getting tired\w2.\w6\1\s[10]I think that's just a you thing.\e"
-		
-		"\1\s[10]I would absolutely love to pet your cat right now.\w6\0\s[0]Hey\w2, %(username)\w2! Go beam my cat up here\w2!\e"
-		
-		"\1\s[10]*(...he's doing what is perhaps the worst attempt at air guitar anyone has ever seen. It's highly amusing.)*\e"
-		"\1\s[10]Hmm...\w6\0\s[0]Что-то не так?\w6\1\s[10]\n\n[half]Ах, нет. Просто думаю о наши друзья.\w6\0\s[0]\n\n[half]Ага, ну ладно. Иногда мне тоже.\e"
+	"\0\s[0]Hey, how do you spell evening?.\w8\1\s[10]E\w4 V\w4 E\w4 N\w4 I\w4 N\w4 G\w2.\e"	
+	"\0\s[0]Eve\w3ni\w2ng time\w1, so this is my eve\w2ning\w2 song\w2.\w2.\w2.\e"	
+	"\0\s[0]Are you getting tired\w2? I\w2'm getting tired\w2.\w6\1\s[10]I think that's just a you thing.\e"	
+	"\1\s[10]I would absolutely love to pet your cat right now.\w6\0\s[0]Hey\w2, %(username)\w2! Go beam my cat up here\w2!\e"	
+	"\1\s[10]*(...he's doing what is perhaps the worst attempt at air guitar anyone has ever seen. It's highly amusing.)*\e"
+	"\1\s[10]Hmm...\w6\0\s[0]Что-то не так?\w6\1\s[10]\n\n[half]Ах, нет. Просто думаю о наши друзья.\w6\0\s[0]\n\n[half]Ага, ну ладно. Иногда мне тоже.\e"
 		
 }
-
-Pool_stsh : array {
-			"\0\s[700]\b[11]You\n\nback take it back you did\n[half]wrong with me\n[half]should i save %(himher) put\nout\n[half] of my misery   ? i'll do it i will i will it's for the best %(username) he's already\e"
-			"\0\s[700]\b[11]you\w5 would pre\w3fer i   was dead yes ?\ni'll do it kill myself that's not hard nobody here vanya's gone gone %OnCreepyText('gone gone gone gone')\e"
-			"\0\s[700]\b[11]shouldn't be here i should die i should die i should die\e"
-			"\0\s[700]\b[11]i tried to join him wasnt it not right but i did remember misha you remember right\e"
-			"\0\s[700]\b[11]arms hurt why do they didn't do anything didn't hurt them this time misha knows does he? does he?\e"
-			"\0\s[700]\b[11]hey %(username) can you kill me\e"
-}
-Pool_stsa : array {
-			"\0\s[700]\b[11]i don't remember really don't honestly hey mishka did you figure it out yet? did you know what they did to me?\s[702]\ni dont think i want to know knowledge shouldnt be a curse\e"
-			"\0\s[700]\b[11]thinking you don't want to know %(username) not supposed to happen is it though\e"
-			"\0\s[700]\b[11]standing with righted on the ground with the horizon line\n\n%(username) please dont\e"
-			"\0\s[700]\b[11]you understand-esh? %(username)? we're similar, on friend-to-friend, yes? or no? %(username) do you understand this?\e"
-			"\0\s[700]\b[11]he would have helped if i told him\n\n\nbut didn't he already know %(username)?\e"
-			"\0\s[700]\b[11]but he did know the moment he saw me. i think...\e"
-			"\0\s[700]\b[11]you forget: i never told him but...\e"
-			"\0\s[700]\b[11]he\nsaw me looked me over like a\n[half]fucking\n[half]no nevermind? you know what? %(heshe) shouldn't know.\e"
-			"\0\s[700]\b[11]dare you to ask him what it was\e"
-			"\0\s[700]\b[11]he knew all-in-all it's has to be truth\e"
-			"\0\s[700]\b[11]i'm not still here. don't ask me like i am.\e" //what... in what world does this make sense
-}
-
-Pool_totallyfine : array {
-			"\1\s[10]What do you think Valya's up to right now?\w6\0\s[8]Hm\w2.\w2.\w2.\w4 Him and Jora are probably trying to figure out what happened to us\w2.\w5\1\s[10]\n\n[half]Vanya and Vadik... they're fine, I bet.\w6\0\s[0]\n\nNo\w2, Vanya won\w2't be\w2.\w6\1\s[10]\n\n[half]I suppose you'd be right about that.\e"
-			
-			"\1\s[10]Jora would be *so* lost right about now if he were here.\w6\0\s[0]Y\w2'think\w2? He can take care of himself\w2.\w6\1\s[10]\n\n[half]Dude, *we* still don't know how to do like, anything.\w6\0\s[0]\n\n[half]Wrong\w2.\w4 We can explore computers\w2.\w4 And do other computer stuff\w2.\w6\1\s[10]\n\n[half]That... wasn't my point...\w6\0\s[0]\n\n[half]Oh yeah\w2? What was it then\w2?\e"
-			
-			"\0\s[0]Wonder how my cat\w2's doing\w2.\e"
-			
-			"\1\s[19]...It's kind of boring here.\e"
-}
-
-Pool_zfsa : array {
-		"\1\s[10]*(Seems like he's checked out.)*\e"
-		}
 	
 //--Chains
 //Here is where you will put your bits of chain dialogue. They are outside of RandomTalk, which makes them a bit more flexible as I mentioned above. As you can see, this function is called "firstchain", which was the same tag we put at the end of the chain in aitalk with \e:chain=firstchain.
@@ -571,7 +362,7 @@ snowmaaaan
 }}CHAIN
 
 OnArgue //all this is is setting the argue dialogue either on or off.
-{if другдруга == 0; {другдруга = 1}; else { ""}}
+{if другдруга == 0; {другдруга = 1}; else {""}}
 
 
 OnMinuteChange
@@ -582,31 +373,31 @@ OnMinuteChange
  	if minute == 0 //These check what time it is. uses the same as your phone, but the ghosts just say whatever. this is for if there are no current minutes, i guess?
 	{
  		if hour == 12 //And the hour equals 12, ie it's noon. You can change this to some other hour if you want.
-		{ if spooktime == "on"; {"\0\s[700]noon noon noon noon\e"}; else {;"\0\s[0]It's noon.\e"} }
+		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]noon noon noon noon\e"}; else {;"\0\s[0]It's noon.\e"} }
  		elseif hour == 0 //midnight
 		{
-			if spooktime == "on"; {"\0\s[700]late told me\nsh\w4ouldn't be awake\e"}; else {
+			if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]late told me\nsh\w4ouldn't be awake\e"}; else {
  			"\0\s[0]It's midnight\w2.\w4 \1\s[10]Kinda late\w2, wouldn't you agree %(username)\w2?\e"
  			"\0\s[0]Midnight.\w4\1\s[10]That it is.\e"}
 		}
 		elseif hour == 23 //if it's eleven
 		{
 			if minute == 55 //and the fancy: eleven fifty five.
-			{ if spooktime == "on"{"\1\s[60](Soon.)\e"}; else{"\1\s[10]5 to 12. Shouldn't you be asleep?\e"}}
+			{ if spooktime == "on" || nowmode == "spooktime"{"\1\s[60](Soon.)\e"}; else{"\1\s[10]5 to 12. Shouldn't you be asleep?\e"}}
 			else //if it isn't 11:55. These are meant to be examples of specific times you can check, you don't have to check for the same times. You can also always delete individual elseifs if you can't think of any time to check. Like, you could delete the elseif for hour == 23 and the subsequent checks below it, then move on to the elseif below for hour 7. This section is flexible.
-			{ if spooktime == "on"{"\0\s[700]sleep %OnCreepyText('sleep sleep sleep sleep sleep')\e"}; else{"\0\s[10]It's 23. Time for bed.\e"}}
+			{ if spooktime == "on" || nowmode == "spooktime"{"\0\s[700]sleep %OnCreepyText('sleep sleep sleep sleep sleep')\e"}; else{"\0\s[10]It's 23. Time for bed.\e"}}
 		}
 		elseif hour == 15 && minute == 30 //&& makes them go at the same time,basically. in theory this should be 3.30 but for reasons unknown to man, it's not. Zar's note said 7.30 on a sunday?
-		{ if spooktime == "on"; {"\0\s[700]three and\w4 a\w7 h a l f\e"}; else; {"\0\s[0]15:30, %(username).\e"}}
+		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]three and\w4 a\w7 h a l f\e"}; else; {"\0\s[0]15:30, %(username).\e"}}
 		elseif hour == 16 && minute == 30 //note that these are for keeping you accountable, in all honesty.
-		{ if spooktime == "on"; {""}; else; {"\0\s[0]16:30.\e"}}
-		elseif hour == 16 && minute == 45; { if spooktime == "on"; {""}; else; {"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"}}
+		{ if spooktime == "on" || nowmode == "spooktime"; {""}; else; {"\0\s[0]16:30.\e"}}
+		elseif hour == 16 && minute == 45; {if spooktime == "on" || nowmode == "spooktime"; {""}; else; {"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"}}
 		elseif hour == 16 //hour checks.
-		{ if spooktime == "on"; {"\1\s[60]\b[11](If you were the type to check the clock, you'd see that it's four. You're welcome.)\e"}; else; {"\1\s[10]It's 16. Don't you have something to do soon?\e"}}
+		{if spooktime == "on" || nowmode == "spooktime"; {"\1\s[60]\b[11](If you were the type to check the clock, you'd see that it's four. You're welcome.)\e"}; else; {"\1\s[10]It's 16. Don't you have something to do soon?\e"}}
 		elseif hour == 15
-		{ if spooktime == "on"; {"\0\s[700]\b[11]you were 15 once right right\e"}; else; {"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"}}
+		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]\b[11]you were 15 once right right\e"}; else; {"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"}}
 		else
-		{ if spooktime == "on"; {"\0\s[700]\b[11] hour hour %(hour12) am? pm?\w5 misha i don't know hey hey misha\e"}; else
+		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]\b[11] hour hour %(hour12) am? pm?\w5 misha i don't know hey hey misha\e"}; else
 		{"\0\s[0]It's %(hour12)'o clock.\e"}
 			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
 		}
@@ -641,7 +432,7 @@ OnSecondChange
 		mikireflag = reference1
 	if reference2 == 1
 	{
-		if spooktime == "on"; {""}; else{
+		if spooktime == "on" || nowmode == "spooktime"; {""}; else{
 		//hugging surface...?
  		"\0\s[0]Don't FUCKING touch me.\w1\1\s[18]Alright, sorry...\4\e"
 		}
@@ -652,17 +443,17 @@ OnSecondChange
  {
 	friendlyall = namiable + yamiable //to update it & keep track of things
 	namiable += 3; yamiable += 3
-	if spookster == "on" && RAND(100) < 12; {spooktime = "on"; "\1\s[60]\0\s[700]morning morning %(hour12) im sorry %(username) dont worry dont worry\e"}
+	if spookster == "on" && RAND(100) < 12; {nowmode = "spooktime"; "\1\s[60]\0\s[700]morning morning %(hour12) im sorry %(username) dont worry dont worry\e"}
 	OnUpdateRel
  }
  OnUpdateRel
- {if friendlyall >= 1000; {rel = 3}; elseif friendlyall >= 50 {rel = 2} else {rel = 0}}
+ {if friendlyall >= 1000; {rel = 3}; elseif friendlyall >= 400 {rel = 2}; elseif friendlyall >= 100 {rel = 2} elseif friendlyall <= 0 {rel = 0} else {rel = 1}}
 
  //---- MikireTalk ---------------------------------------------------------------------
  //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.
  
 MikireTalk
-{ if spooktime == "on"; {""}; else {
+{ if spooktime == "on" || nowmode == "spooktime"; {""}; else {
 	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring him back."
 	//this does in fact work. why would Misha lie to you?
 	//maybe if you're being mean. He may have an honest face but not many reservations about lying.
@@ -672,9 +463,9 @@ MikireTalk
  //For after you bring the character back on screen.
  
 EndMikireTalk
- {if spooktime == "on"; {""}; else{"\0\s[0]Oh\w2, back to the land of the light\w2.\w6\1\s[16]Yay!\w6\0\s[9]\n\n[half]Party time\w2.\e"}}
+ {if spooktime == "on" || nowmode == "spooktime"; {""}; else{"\0\s[0]Oh\w2, back to the land of the light\w2.\w6\1\s[16]Yay!\w6\0\s[9]\n\n[half]Party time\w2.\e"}}
 
-OnSurfaceRestore {if spooktime == "on" {"\0\s[700]\1\s[60]\e"}; else {"\0\s[0]\1\s[10]\e"}}
+OnSurfaceRestore {if nowmode == "spooktime" {"\0\s[700]\1\s[60]\e"}; else {"\0\s[0]\1\s[10]\e"}}
 
  
  //--OnKeyPress

@@ -18,7 +18,7 @@
 OnTranslate
 	{
 	_talk = reference0
-	_talk = RE_REPLACE(_talk, CHR%"(?!(\[|\*))\*([^\*]+)\*(?!\*)", "\![embed,OnItcheck]") ; _talk = REPLACE(_talk, "**", "\![embed,Onbocheck]") ; _talk = REPLACE(_talk,"~~", "\![embed,Onstcheck]") ; _talk = REPLACE(_talk, "__", "\!embed,Onuncheck]")
+	//_talk = RE_REPLACE(_talk, CHR%"(?!(\[|\*))\*([^\*]+)\*(?!\*)", "\![embed,OnItcheck]") ; _talk = REPLACE(_talk, "**", "\![embed,Onbocheck]") ; _talk = REPLACE(_talk,"~~", "\![embed,Onstcheck]") ; _talk = REPLACE(_talk, "__", "\!embed,Onuncheck]")
 	_talk = REPLACE(_talk, "\п", "\s"); _talk = REPLACE(_talk, "\к", "\e"); _talk = REPLACE(_talk, "\ж", "\w"); _talk = REPLACE(_talk, "\н", "\n"); _talk = REPLACE(_talk, "(половина)", "[half]")
 	_talk = REPLACE(_talk, "\s[600]", "\s[600]%(isix)")
 	_talk = REPLACE(_talk, "\s[60]", "\s[60]%(hesdead)")

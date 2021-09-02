@@ -25,9 +25,9 @@ dic, pm_word.dic
 dic, pm_commu.dic
 dic, pm_nameteach.dic
 dic, pm_anchor.dic
-dic, pm_config.dic
-dic,pm_parser.dic
-dic,pm_kmenu.dic
+dic, pm_aiextra.dic
+dic, pm_aiquestion.dic
+dic, pm_kmenu.dic
 
 //---- Log Location -------------------------------------------------------------------------
 //I'm not entirely sure what this does, but basically don't touch it.

@@ -66,7 +66,10 @@ OnFirstBoot
 	sh = "off"
 	spookster = "off"
 	spooktime = "off"
-	sa == "off"
+	sa = "off"
+	installdate = ("%(year)","%(month)","%(day)","%(hour)","%(minute)","%(second)","%(ghostver)") //This tracks the exact day and time the ghost was installed, in case you want to mess around with that later. It also tracks what version the user installed, which may be helpful for debugging!
+	nowmode = ""
+	boot = 1
 	
 	if reference0 == 0 //Don't touch this line.
  	{
@@ -76,9 +79,9 @@ OnFirstBoot
 		//Always make sure to keep your dialogue in the quotation marks! And remember, you can't use quotation marks IN dialogue either. You can use two single apostrophes instead if you must. And REMEMBER what I said about \![enter,passivemode]! Do NOT delete that tag!
 		
 		"\![enter,passivemode]\1\s[10]\0\s[0]Hey, where are we?\1\s[10]\w2.\w3.\w4.\w4 Pasha, what'd you do this time?\w8\0\s[0]\n\n[half]Nothing\w2! \w5How do I know *you* didn't do something\w2?\w6\1\n\n[half]\s[10]Oh, Pasha, there's\w1.\w2.\w2.\w8\0\s[0]\n\n[half]Huh\w2?\w5 Oh\w3. OH\w2.\n\n[half]\w4Hi\w2.\w6\1\n\n[half]\s[10]Hey. We didn't really see you there, sorry.\x\c\0\s[0]So\w2, uh\w2.\w3.\w3.\w3 I'm Pasha\w2, hi\w2.\w4\1\s[10]\n\n[half]I would happen to be Misha.\w3 I guess Pasha 'n I'll hang out here for the time being?\w6\1\c\s[10]So, hey, what're your pronouns?\w6\0\s[0]\n\n[half]For pronouny things\w1.\x\w8\1\c\s[10]\w2.\w3.\w4.\w4Sure. So\w2?\n\n[half]/
-		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
-		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
-		\![*]\q[They/Them/Their,choicefirsttheythem]\n/
+		\w5\_q\![*]\q[He/Him,OnPronoun,he,him,his,his,he's]\n/
+		\![*]\q[She/Her,OnPronoun,she,her,her,hers,she's]\n/
+		\![*]\q[They/Them,OnPronoun,they,them,their,theirs,they're,plural]\n/
 		\![*]\q[Custom,choicefirstcustom]\e"
 		
 		//\0\s[0]\n\n[half]Fourth wall break time\w1!\nMe and Misha can hang out and keep you company\w1, or whatever\w1.\w4\nPoke around in the menus and stuff\w1, and\w1, uh\w2.\w3.\w4.\w4 yeah\w1. That's it\w1. Rebuild the fourth wall\w1.\w8
@@ -119,14 +122,16 @@ OnFirstBoot
 
 Select.choicefirsthehim
 {
-	presuffix = "masculine"; himher = "him"; heshe = "he"; hisher = "his"
+	himher = "him"; heshe = "he"; hisher = "his"
+	they = "he"; them = "him"; their = "his"; theirs = "his"
 	--
 	NameInput
 }
 
 Select.choicefirstsheher
 {
-	presuffix = "feminine"; himher = "her"; heshe = "she"; hisher = "her"
+	himher = "her"; heshe = "she"; hisher = "her"
+	they = "she"; them = "her"; their = "her"; theirs = "hers"
 	--
 	NameInput
 }
@@ -134,6 +139,7 @@ Select.choicefirstsheher
 Select.choicefirsttheythem
 {
 	himher = "them"; heshe = "they"; hisher = "theirs"; plural = 1
+	they = "they"; them = "them"; their = "their"; theirs = "theirs"
 	--
 	NameInput
 }
@@ -221,7 +227,7 @@ OnBoot
 	lastTalk = "" //These values you may recognize from OnFirstBoot up there. Just pay them no mind.
 	passmin = 0
 	passsec = 0
-	spooktime = "off"
+	spooktime = "off"; nowmode = ""
 	//_passhour //a temporary passhour. theroetically the other will count from boot, and disable certain dialogue that way. g-d knows ive had them longer, anyways.
 	//nkovpets = 0
 	//nkovpunch = 0
@@ -238,10 +244,10 @@ OnBoot
 	season = GetSeason
 	//timeslot = GetTimeSlot //You should remember these functions from above! They determine the date and time. Basically, it's using the functions GetDaySlot and GetTimeSlot to determine the two values for dayslot/timeslot that it will use in the following if statements. Those who read the coding page of the walkthrough and are interested in using your own functions, pay very close attention to this and study how it works!
 	//seasonslot = GetSeasonSlot
-	if weekday == 5 { if against[0] <= hour && against[1] <= minute {
+	if weekday == 5 {if against[0] >= hour + 1 && against[1] >= minute {
 		"\0\s[-1](Nobody's here... call someone else?)\n%*\q[Sure,??] %*\q[Nah,OnClose,nobodyhome]\n\n%(shabbat[0])_%(shabbat[2])\x"} else {"shabbat soon. would've made some challah but it is what it is."}}
 	elseif weekday == 6
-	{if against[2] >= hour && against[3] >= minute {
+	{if against[2] <= hour + 1 && against[3] <= minute {
 		"\0\s[-1](Nobody's here...)\n%*\q[Switch,??] %*\q[Close,OnClose,nobodyhome]\n\n%(shabbat[0])_%(shabbat[2])\x"} else {"we're here! again. somehow. i guess we're just.... stuck here still then."}}
 	elseif dayslot == userbirthday //Now we're getting into the if statements. These check what the date is and, if it's a certain value, displays special dialogue. Here, the if statement is looking at the dayslot value (which we just defined) and evaluating it using the == operator to see if it equals another value, in this case the value "userbirthday". Basically this is checking to see if it's the user's birthday.
 	
@@ -277,7 +283,7 @@ OnBoot
 	{
 		if RAND(42) < 12
 		{
-			spooktime = "on"
+			nowmode = "spooktime"
 			"\0\s[700]\b[11]good        morning %(username)\e"
 			"\0\s[700]\b[11]burned               he   i re\n\n rememb   er he\e"
 			"\0\s[700]\b[14]no no no what did you do %(username) what did you do how how how stop he wont come back please stop stop please fix fix fix stop fix\e"
@@ -414,16 +420,16 @@ hanukkahboot
 
 OnClose
  {
-	if reference0 == "nobodyhome" {"\0\s[-1](See you later, user.)\-\e"} else {
+	if reference0 == "nobodyhome" {"\0\s[-1]\1\s[-1](See you later, user.)\-\e"} else {
  timeslot = GetTimeSlot //as you saw above, it's checking the time.
  --
 	if passmin >= 5	//This checks to see if you've had them open for at least five minutes.
 		{
-			if spooktime == "off" && RAND(100) < 40 //see above about the random number generator
+			if spooktime == "off" || nowmode != "spooktime" && RAND(100) < 40 //see above about the random number generator
 			{
 				"\0\s[0]Time to explore!\w8\1\s[10]Pasha, no.\w8\w8"
 			}
-			elseif spooktime == "on"
+			elseif spooktime == "on" || nowmode == "spooktime"
 			{
 				"\0\s[700]\b[11]no no no no dont leave me please please please please please\w6"
 				"\0\s[700]\b[11]%(username) stay please stay with me stay with me please please please please\w6"
@@ -469,7 +475,7 @@ OnClose
  		
  	else //This dialogue is for if they haven't been open for at least five minutes.
  	{
-		if spooktime == "on"
+		if spooktime == "on" || nowmode == "spooktime"
 		{
 			"\0\s[700]\b[11]where %(username) you're leaving why already no no i'll miss you come back come back come back\w3\e"
 			"\1\s[60]\b[11](Were you expecting something...?)\w6"
@@ -498,7 +504,7 @@ OnClose
 //This will run when you minimize them and then bring them back up. Replace with what you like.
 
 OnWindowStateRestore
- {if spooktime == "on" {""} else {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
+ {if spooktime == "on" || nowmode == "spooktime" {""} else {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
 
 
 //--OnGhostChanging
@@ -508,7 +514,7 @@ OnWindowStateRestore
  
 OnGhostChanging
  {
-	if spooktime == "on" { if reference0 == "Pavel" {"\0\s[600]nonono can\w2't i go back\w2? please\w2, just...\e"} else {
+	if spooktime == "on" || nowmode == "spooktime" {if reference0 == "Pavel" {"\0\s[600]nonono can\w2't i go back\w2? please\w2, just...\e"} else {
 	"\0\s[700]%(reference0) better %(heshe) you like %(username)?\n\n\nwhy not me? did i do something wrong? it's my fault sorry sorry sorry\w6\e"
 	"\0\s[700]this won't change anything, tell %(reference0) what\w6\e" //you saw
 	}}
@@ -550,11 +556,13 @@ OnGhostChanged
 
 OnShellChanging
  {
+	if nowmode == "spooktime" {} else {
 	if reference0 == "Hypothetical Shell that doesn't actually exist" //reference0 in OnShellChanging is the name of the shell you're swapping to. It should be defined in the descript.txt file in your shell folder. If you do have alternate shells, put in the right name here.
 	{
 	"\1\s[10]This dialogue is specifically for changing to this particular shell.\w8\0\w8\s[9]It totally exists.\w8\e"
 	//Then rewrite this line as appropriate.
 	}
+	elseif reference0 == "psh_msh" {}
 	else //if you don't have any specific dialogue for a specific shell
 	{
 	"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
@@ -563,7 +571,7 @@ OnShellChanging
 	
 	//Rewrite these two lines as you need.
 	}
- }
+ }}
  
  
  //--OnShellChanged
@@ -572,6 +580,7 @@ OnShellChanging
  
 OnShellChanged
  {
+	if nowmode == "spooktime" {} else {
  	if reference0 == "Nkov n Yezhov Default Shell" //Again, this is the name of your shell as you put in the descript.txt file for that shell.
  	{
  		nowshell = "default_shell" //This is the folder name for your shell. Not the same as the above! 
@@ -601,7 +610,7 @@ OnShellChanged
 	
 	//Note the %(reference[0]) here! This time that should store the name of whatever shell you're switching to. To be honest, I have not experimented with this too much because making shells is a pain in the tuckus, but I'm going to take cindysuke's coding on faith and assume reference[0] is correct instead of reference0. Replace this bit of dialogue as you need.
 	}
- }
+ }}
 
 
  //--OnDressupChanged

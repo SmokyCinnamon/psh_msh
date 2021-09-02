@@ -167,16 +167,18 @@ NameDone
 
 //CUSTOM PRONOUNS HERE WE GOOOOOOOO
 //for the record i had to look at cheerybot's code to figure this out.
-OnPronounTeach
-{"\0\s[0]So... could you tell me what your pronouns are please? this first one would be, for example, he, she, they, zie, or something like that. \n(English has so many more...) \![open,inputbox,OnHeshe,-1]\e"}
+OnPronounTeach {
+	"\1\s[10]write it in the box like 'they/them/their/theirs/they're', and add '/plural' if they're grammatically plural. \![open,inputbox,OnCustomPronounInput,-1]\e"
+}
+/*{"\0\s[0]So... could you tell me what your pronouns are please? this first one would be, for example, he, she, they, zie, or something like that. \n(English has so many more...) \![open,inputbox,OnHeshe,-1]\e"}
 
 OnHeshe
 {
-	/*if reference0 = "" || "  " || "    "
+	if reference0 = "" || "  " || "    "
 	{
 		"\0\s[0]Um... should we not refer to you as anything other than your name...? Oh, Smoky's going to have some time coding that... it's not here yet though, could you try again?\e"
 	}
-	else*/
+	else
 	{
 		heshe = reference0
 		"\0\s[0]%(heshe), right? That's great!\n(Holy shit I love this.)\n\nSo, this next one is like, him, her, them, or hir.\n\n(Mishka why did you never tell me about this.) \![open,inputbox,OnHimher,-1]\e"
@@ -211,7 +213,24 @@ Select.addplural
 	"\1\s[10]So that means something like, for example %(heshe) were. (Probably, Smoky doesn't know.) That right?\n/
 	\![*]\q[You got it,addplural]\n/
 	\![*]\q[No,done]\e"
-}
+}*/
 
 Select.done
 {"\1\s[10]You're all set! come back later if you find out we missed something.\e"}
+
+OnPronoun {
+	they = "%(reference0)"; them = "%(reference1)"; their = "%(reference2)"; theirs = "%(reference3)"; theyre = "%(reference4)"
+	if reference5 != ""; plural = 1
+	--
+	if boot == 1; NameInput
+	else; OnTalkConfig 
+}
+
+OnCustomPronounInput {
+	_pronouns = SPLIT(reference0,"/")
+	they = _pronouns[0]; them =  _pronouns[1]; their = _pronouns[2]; theirs = _pronouns[3]; theyre = _pronouns[4]
+	if _pronouns[5] != ""; plural = 1
+	--
+	if boot == 1; NameInput
+	else; OnTalkConfig 
+}

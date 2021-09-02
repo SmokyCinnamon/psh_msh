@@ -15,13 +15,13 @@
 
 OpenSakuraMenu
 {
-	if spooktime == "on"
+	if nowmode == "spooktime"
 	{
-		"\0\s[700]\b[14]Nothing there cant save you %OnCreepyText('help help help')\e"
+		"\0\s[700]\b[14]Nothing there cant save you %CreepyTxt('help help help')\e"
 		"\0\s[700]\b[14]can't remember sorry sorry\e"
-		"\0\s[700]\b[14]nothing forgot %OnCreepyText('too late слишком поздно')\e"
-		"\0\s[700]\b[14]no help for %(himher) not me\e"
-		"\0\s[700]\b[14]%(username) %OnCreepyText('too much stop') i can't i can't\e"
+		"\0\s[700]\b[14]nothing forgot %CreepyTxt('too late слишком поздно')\e"
+		"\0\s[700]\b[14]no help for %(them) not me\e"
+		"\0\s[700]\b[14]%(username) %CreepyTxt('too much stop') i can't i can't\e"
 	}
 	else
 	{
@@ -72,7 +72,7 @@ MenuRun
 	//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
 	//change p's balloon font, his current one doesn't show the battery text, even if the percentage works just fine
 }
-OnPage2 { 
+OnPage2 {
 	//wd = GetWeekDay
  	//ap = GetAP
  	//nowmin = Getnowmin
@@ -82,9 +82,11 @@ OnPage2 {
 	"\0\b[2]\_q%(_pagenum)\n\n[half]"
 	--
 	"\![*]\q[Give him a gift?,ItemMenu]\n/
-	\![*]\q[Play spaceman,playspaceman]\n/
+	\![*]\q[Play spaceman,playspaceman]\n"
+	--; if Flag("showinmenu") == 1; "%*\__q[OnMenuQuestion]Ask a question\__q\n"
+	--
 	//\![*]\q[Dreidel,playdreidel]\n/
-	\n\q[<<,MenuRun] \q[<,MenuRun] | \q[1,MenuRun] 2 \q[3,OnPage3] | \q[>,OnPage3] \q[>>,lastpage]\n/
+	"\n\q[<<,MenuRun] \q[<,MenuRun] | \q[1,MenuRun] 2 \q[3,OnPage3] | \q[>,OnPage3] \q[>>,lastpage]\n/
  	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
 }
 OnPage3 {
@@ -312,7 +314,7 @@ OnTalkConfig
 	--
 	"f[bold,1]Name:\f[bold,0] %(username) \f[sup,1](\q[Change it?,TEACHNAME])\f[sup,0]\n"
 	--
-	"\f[bold,1]Pronouns:\f[bold,0] %(heshe)/%(himher)/%(hisher) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
+	"\f[bold,1]Pronouns:\f[bold,0] %(they)/%(them) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
 	--
 	"\f[bold,1]Birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n\n"
 	--
@@ -336,10 +338,10 @@ OnTalkConfig
 Select.TEACHPRONOUN
 {
 	"\0\s[0]What pronouns do you want?\w5\n\n[half]\_q/
-		\![*]\q[He-His-Him,choicemasc]\n/
-		\![*]\q[She-Her-Her,choicefem]\n/	
-		\![*]\q[They-Their-Them,choiceneither]\n/
-		\![*]\q[Custom,OnPronounTeach]\e"
+		\![*]\q[He/Him,OnPronoun,he,him,his,his,he's]\n/
+		\![*]\q[She/Her,OnPronoun,she,her,her,hers,she's]\n/
+		\![*]\q[They/Them,OnPronoun,they,them,their,theirs,they're,plural]\n/
+		\![*]\q[Custom,OnPronounTeach]\n%(nendmenu)\_q\e"
 }
 
 Select.choicemasc
@@ -695,7 +697,7 @@ Select.HEADLINECANCEL
 //If the user is given a menu with choices, but doesn't pick one of the choices, it will eventually time out. At that point, they will say this dialogue. Replace with whatever you like, or leave it blank.
 
 OnChoiceTimeout
- {if spooktime == "on"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}}
+ {if spooktime == "on" || nowmode == "spooktime"; {""}; else; {"\0\s[0]Timed out. Go open the menu again!\e"}}
  
  //Written by Zichqec, with help from Nimanao
 StartHangman //Sets up variables for the game
@@ -882,10 +884,12 @@ Select.explainpls
 {
 	"\0\s[9]That's sad, you should learn.\w4\n\s[0]Anyways, everyone starts with an amount of... something. Like nuts or pennies or gelt. (In this case gelt because I like chocolate ok. And if you don't know what that is basically chocolate coins.) And the amount is generally between 10 and 15. To start, everyone puts one piece in the pot, and then someone spins the dreidel, follows whatever they get and play goes clockwise.\w6\nWe *could* also spin for the start player because that's also fun, but I guess that would... take longer? So you're starting, %(username). Non-negotiable.\w4 Now: spinning! Dreidel go spinny. And then it falls over and whatever letter's on top you have to follow what it says.\w6\nThere are four sides, each with a letter: Nun, Gimel, Hey, and Shin. (If you're not in Israel.)\w4 If you get nun, congrats! Nothing happens. If it lands on gimel, you get everything in the pot, so I guess if you don't like chocolate that kind of sucks.\w4 For hey, you get half of whatever's in the pot. That's kind of better if you don't like chocolate? I don't know if you do. Probably. If there's an odd number you get half plus one extra.\w4 Shin, or peh, which is if you're in israel, means that you put one in. Say goodbye to your whatevers. Maybe forever.\w6\nIf you don't have anything left you're out, but some people play it where you ask someone else for a loan. We're not doing that right now. Sorry.\w4\nAnyways, once someone wins everything the game, or maybe just round is over.\nBasically dreidel go spinny, that's all you really need to worry about.\n\![*]Ok got it,OnStartDreidel] \![*]\q[Again?,explainpls]\e"
 }
-//half take = inpot divided by 2; playergelt += halftake; inpot -= halftake; not sure about the +1 thing though...
+//half take = inpot divided by 2
+// playergelt += halftake
+// inpot -= halftake; not sure about the +1 thing though...
 OnStartDreidel
 {
-	playergelt = 9; mishagelt = 9; pashagelt = 9; inpot = 3; player = 0; DreidelSpin = (1,2,3,4) //; halftake = (inpot/2)
+	playergelt = 9; mishagelt = 9; pashagelt = 9; inpot = 3; player = 0; DreidelSpin = (1,2,3,4) // halftake = (inpot/2)
 	//_startplayer = 0
 	"\p[2]%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)\n\q[Spin,gospinny]\![set,balloontimeout,-1]\e"
 }

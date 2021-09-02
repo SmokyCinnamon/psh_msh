@@ -4,16 +4,11 @@
 //apparently commas are not allowed
 iamgoingtocommitacrime
 {"noseriouslyiwill"}
-OnItcheck : sequential //italic check
-{"\f[italic,true]"; "\f[italic,false]"}
- 
-Onbocheck : sequential { "\f[bold,true]"; "\f[bold,false]" } ; Onstcheck : sequential { "\f[strike,true]"; "\f[strike,false]" }; Onuncheck : sequential { "\f[underline,true]"; "\f[underline,false]" }
 
-nendmenu {"\![*]\q[Nevermind,CANCEL]"; //\![*]\q[Give him a gift?,ItemMenu]\n/
-}
-nitend {"\![*]\q[Give him something else?,ItemMenu]\n\![*]\q[Go back,BACKTOMENU]\n%(nendmenu)"}
-yendmenu {"\![*]\q[Go back,OpenKeroMenu]\n\![*]\q[Nevermind,keroCANCEL]\e"}
-yitend {"\![*]\q[Give him something else?,YzItemMenu]\n%(yendmenu)"}
+nendmenu {"%*\__q[CANCEL]Nevermind\__q"}
+nitend {"%*\__q[ItemMenu]Give him something else?\n%*\__q[BACKTOMENU]Go bacl\__q %(nendmenu)"}
+yendmenu {"%*\__q[OpenKeroMenu]Go back\__q %*\__q[keroCANCEL]Nevermind\__q\e"}
+yitend {"%*\__q[YzItemMenu]Give him something else?\n%(yendmenu)"}
 
 misha //because... i can?
 {if RAND(100) < 95; {"Misha"}; else; {"Mishka"}}
@@ -29,34 +24,7 @@ internalenvelope
 
 bandtime
 {
-	"би-2"
-	"Of Monsters And Men"
-	"Imagine Dragons"
-	"Bastille"
-	"Milky Chance"
-	"Сети"
-	"Кино"
-	"Лакмус"
-	"ДДТ"
-	"Сплин"
-}
-
-petname
-{
-	"dear"
-	"darling"
-	"kitten"
-	"precious"
-	"little paw"
-}
-
-Petname
-{
-	"Dear"
-	"Darling"
-	"Kitten"
-	"Precious"
-	"Little paw"
+	"би-2"; "Of Monsters And Men"; "Imagine Dragons"; "Bastille"; "Milky Chance"; "Сети"; "Кино"; "Лакмус"; "ДДТ"; "Сплин"
 }
 
 J //huh? I'm not sure what this was...
@@ -93,35 +61,23 @@ spoop
 		if RAND(100) < 50; {""}
 		else {
 		"\i[601]"; ""; ""
-		--
-		"\i[602]"; ""; ""
-		--
-		"\i[603]"; ""; ""
-		--
-		"\i[604]"; ""; ""
-		--
-		"\i[605]"; ""; ""
-		--
-		"\i[606]"; ""; ""
-		--
-		"\i[607]"; ""; ""
-		--
-		"\i[608]"; ""; ""
-		--
-		"\i[609]"; ""; ""
-		--
-		"\i[610]"; ""; ""}
+		--; "\i[602]"; ""; ""
+		--; "\i[603]"; ""; ""
+		--; "\i[604]"; ""; ""
+		--; "\i[605]"; ""; ""
+		--; "\i[606]"; ""; ""
+		--; "\i[607]"; ""; ""
+		--; "\i[608]"; ""; ""
+		--; "\i[609]"; ""; ""
+		--; "\i[610]"; ""; ""}
 		}
 	else {
 		if RAND(100) < 50; {""}
 		else {
 		"\i[601]"; ""; ""
-		--
-		"\i[606]"; ""; ""
-		--
-		"\i[607]"; ""; ""
-		--
-		"\i[608]"; ""; ""}
+		--; "\i[606]"; ""; ""
+		--; "\i[607]"; ""; ""
+		--; "\i[608]"; ""; ""}
 }}
 
 dreidelspin {"%(username): %(playergelt)\nMisha: %(mishagelt)\nPasha: %(pashagelt)\nIn pot: %(inpot)"}
@@ -137,14 +93,14 @@ relmean
 {person}
 
 was
-{if plural == 1; { "were" }; else; { "was" }}
+{if plural == 1; {"were" }; else; {"was" }}
 is
-{if plural == 1; { "are" }; else; { "is" }}
+{if plural == 1; {"are" }; else; {"is" }}
 needs
-{if plural == 1; { "need" }; else; { "needs" }}
+{if plural == 1; {"need" }; else; {"needs" }}
 doesnt
-{if plural == 1; { "don't" }; else; { "doesn't" }}
+{if plural == 1; {"don't" }; else; {"doesn't" }}
 isnt
-{if plural == 1; { "aren't" }; else; { "isn't" }}
+{if plural == 1; {"aren't" }; else; {"isn't" }}
 need
-{if plural == 1; { "need" }; else; { "needs" }}
+{if plural == 1; {"need" }; else; {"needs" }}

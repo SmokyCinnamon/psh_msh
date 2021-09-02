@@ -46,8 +46,7 @@ On_sakura.recommendsites
 	//And this is the site that it would link to. Note that a website address begins with %ASC(1) and ends with %ASC(2). Don't forget these!
 	
 	"Smoky's Tumblr"
-	--
-	"%ASC(1)http://smokycinnamonroll.tumblr.com/%ASC(2)"
+	--; "%ASC(1)http://smokycinnamonroll.tumblr.com/%ASC(2)"
 	--
 	
 	//"Smoky's Dreamwidth"
@@ -124,6 +123,23 @@ On_kero.recommendsites
 	"A03"
 	--
 	"%ASC(1)https://archiveofourown.org/users/SmokyCinnamonRoll/%ASC(2)"
+	--; ""; --; "%ASC(1)%ASC(2)";
+	--
+	"Belarusian Lacinka"; --; "%ASC(1)https://belarusianlacinka.com/lacinka/2020/05/26/Lacinka-Alphabet/%ASC(2)"
+	--
+	"Textbooks"; --; "%ASC(1)https://knihi.com/padrucniki.html%ASC(2)"
+	--
+	"Babadada (visual dictionary)"; --; "%ASC(1)https://babadada.com/topic/school/bel/en-US%ASC(2)"
+	--
+	"Lingohut"; --; "%ASC(1)https://www.lingohut.com/en/l112/learn-belarusian%ASC(2)"
+	--
+	"Mova Nanova"; --; "%ASC(1)https://uroki.movananova.by/classes/vitanni-i-zvaroty-akanne/%ASC(2)"
+	--
+	"Asvetnik"; --; "%ASC(1)http://asvetnik.by/%ASC(2)"
+	--
+	"Vyvuchaem Belaruskuju"; --; "%ASC(1)http://by.lang-study.com/RU/category/asnovy/%ASC(2)"
+	--
+	"Internet Polyglot"; --; "%ASC(1)https://www.internetpolyglot.com/finnish/lessons-en-be#%ASC(2)"
 	--
  }
 

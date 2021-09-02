@@ -1,4 +1,29 @@
 !!!IMPORTANT: IF YOU WERRE ON V1.2.1 OR BELOW, GO TO PAGE 3 OF PASHA'S MENU AND CLICK "YOU WANT TO TALK TO HIM". TYPE "variablefix" (CASE SENSETIVE) IN THE DIALOGUE BOX. THIS WILL HELP YOU. !!!
+!!!IMPORTANT: IF UPDATING FROM v1.2.2 OR BELOW, YOU WILL NEED TO RESET YOUR PRONOUNS IN THE CONFIG MENU !!!
+
+v.1.2.3
+> dialogue added
+> fixed the bug report dialogue in misha's menu - oops!
+> added new text functions for creepymode! gonna be honest with you that is
+where most of my energy goes
+> speaking of; most, if not all etc functions now have checks for creepymode! now they won't inexplicably be normal.
+> removed the third pronoun from the display in firstboot
+> removed the presuffix part of pronoun setting
+> custom pronouns are here and way less tedious! thank fuck.
+	> on that note, I changed the envelopes so you're gonna have to reset your pronouns now.
+		> also also @ devs feel free to add my code for this to your ghosts its really easy i promise
+		> seriously
+		> it doesnt take much
+		> you can find it in nameteach
+> fixed envelopes not working! how long has this been broken for
+> added a nowmode variable that is absolutely probably going to fuck something else up on release
+> fixed an == in firstboot! oops
+> shell changing dialogue now accounts for creepymode
+> new shell! you may have noticed it before but now it actually has like. images and stuff. go check it out! i like it.
+> changed how randomtalk is handled! I am resisting the urge to add new .dic files </3
+	> in the meantime, nonoverlap should stop being such a bitch. in other words; dialogue should stop repeating as much! yay
+	> if you're suddenly getting dialogue you havent seen before and theres not a reason for it uh...... let me know pls.
+> shuffled some files around! as such; i did not *add* dic files.
 
 v1.2.2
 > dialogue added
