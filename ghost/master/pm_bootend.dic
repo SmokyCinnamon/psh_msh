@@ -100,12 +100,15 @@ OnFirstBoot
 		//If you want your ghost to just refer to your user as "they" and want to skip the pronoun business altogether, then you can just delete the choices and end the dialogue with \e. You'll want to go into menu.dic and delete the pronoun choice option from the config menu as well.
 		//***********************************************************************
  	}
-	else
- 	{
+	else {
 		//---- This is dialogue for when you load them after the first time. It's a failsafe, as the OnBoot dialogue will mostly pre-empt it, but you can't be too careful. You'll see this if you try to run OnFirstBoot using ![raise].
 		//gaster's bootend says this is specifically for if you've uninstalled him. This means their first thing should probably get redone... maybe pretend the user just has a super good russian translator thing? that would mean taking out some other dialogue though, especially the day puns. hmm...
  		{
- 		"\1\s[10]\0\s[0]This is the alternate OnFirstBoot dialogue.\e"
+ 		"\![enter,passivemode]\1\s[10]\0\s[0]e? %WaitTxt('...') Miśa, śtoći ne...\w6 A, nu.\n\n[half]Pryvitanne! I'm uh, Pasha, and this is Misha.\w6\1\s[10]Huh? Oh, uh....... hi there?\w5 Sorry, still a bit tired... who are you?\x......oh wait, pronouns first because this code isnt getting restructured anytime soon.\n/
+		\w5\_q\![*]\q[He/Him,OnPronoun,he,him,his,his,he's]\n/
+		\![*]\q[She/Her,OnPronoun,she,her,her,hers,she's]\n/
+		\![*]\q[They/Them,OnPronoun,they,them,their,theirs,they're,plural]\n/
+		\![*]\q[Custom,choicefirstcustom]\e"
 		}
  	}
 }
@@ -120,25 +123,20 @@ OnFirstBoot
 //Notice how each choice is formatted as Select.choice. This is what I was talking about above with the difference between OnFunction and Function. These choices do not start with On, so they must begin with Select. instead. If you're setting up some quick choices for a menu you're only going to do once, then don't be afraid to use select. instead of having everything start with On.
 //***********************************************************************
 
-Select.choicefirsthehim
-{
-	himher = "him"; heshe = "he"; hisher = "his"
+Select.choicefirsthehim {
 	they = "he"; them = "him"; their = "his"; theirs = "his"
 	--
 	NameInput
 }
 
-Select.choicefirstsheher
-{
-	himher = "her"; heshe = "she"; hisher = "her"
+Select.choicefirstsheher {
 	they = "she"; them = "her"; their = "her"; theirs = "hers"
 	--
 	NameInput
 }
 
-Select.choicefirsttheythem
-{
-	himher = "them"; heshe = "they"; hisher = "theirs"; plural = 1
+Select.choicefirsttheythem {
+	plural = 1
 	they = "they"; them = "them"; their = "their"; theirs = "theirs"
 	--
 	NameInput
@@ -161,8 +159,7 @@ Select.choicefirstcustom //for the record, this needs tested on how to do it, ha
 //Just make sure you test them and they work, alright? I wrote more about coding and functions in the coding page for the walkthrough.
 //***********************************************************************
 
-NameInput
-{
+NameInput {
 	//Note that there's a \![leave,passivemode] tag in this dialogue! Don't forget about this! If you leave them in passivemode they won't talk at all and it'd sort of defeat the purpose, right? I actually forgot this for a while with Hunter and Smoker and didn't notice because OnFirstBoot only runs once, so it took me some testing to find out what was wrong. Always make sure to leave passivemode when you're done with it!
 	
 	"\1\s[10]Neat, always a good thing to do.\w4\nRemember that you can change all these later! \![leave,passivemode]\w8\0\s[0]\w1.\w2.\w2. um... do you have a name? \![open,inputbox,OnNameTeach,-1]\e"
@@ -181,8 +178,7 @@ NameInput
 
 //This is another unique function to tell what time of day it is. This is used for specialized dialogue related to the day. If you're uninterested, just ignore it. Either way, don't touch it. If you are going to use it though, make a note of the names used for each chunk of time, like earlymorning or lunch. Those are the names you'll be using later.
 
-GetTimeSlot
-{
+GetTimeSlot {
 	if hour >= 5 && hour <= 8; {"earlymorning"}; elseif hour >= 9 && hour <= 11; {"morning"}; elseif hour >= 12 && hour <= 14; {"lunch"}; elseif hour >= 15 && hour <= 17; {"afternoon"}; elseif hour >= 18 && hour <= 20; {"evening"}; elseif hour >= 21 && hour <= 24; {"latenight"}; else {"midnight"}
 }
 //*********************Advanced User Info*******************************
@@ -194,8 +190,7 @@ GetTimeSlot
 
 //Like the above, but to find out what day it is. You can primarily use this for specialized dialogue on certain days, like the user's birthday. Either way, don't touch it.
 
-GetDaySlot
-{"%(month)month %(day)day"}
+GetDaySlot {"%(month)month %(day)day"}
 
 //this isn't working and i havent a clue as to why. Tama seems to think im using invalid expressions????
 OnGetSeason //I checked sam n steve, I'm not too sure hwy winter has to have the or in there? But maybe it'll work now...
@@ -222,8 +217,7 @@ OnGetSeason //I checked sam n steve, I'm not too sure hwy winter has to have the
 //If you're defining new values that depend on what you were doing with your ghost (like say, if you've hit them, if they're in a certain mode of some kind) and are generally temporary, remember to put them in OnBoot and set them back to zero or off. For example, I have a counter in the Hunter Smoker ghost that keeps track of if you've hit one of them so that when you go into their menus, it will know to give you the option to apologize or not. So I made sure to add a hunterpunchcount = 0 tag at the beginning of OnBoot, that way when you boot them up, they start fresh and don't display the option if you haven't done anything wrong yet. It's unlikely this'll come up very much if you're not interested in expanding your ghost, but I'm making a note of it here anyway for enterprising developers, huge success.
 //***********************************************************************
 
-OnBoot
- {
+OnBoot {
 	lastTalk = "" //These values you may recognize from OnFirstBoot up there. Just pay them no mind.
 	passmin = 0
 	passsec = 0
@@ -275,23 +269,28 @@ OnBoot
 				//should this be his birthday? i dunno. is it going to be anyways? thats to be determined
 	}
 	//You can see how these basically work. You can add in new elseif statements along these same lines with your own dayslots if you want to have them say things for all sorts of days. You can also change these existing ones I put in as examples to other dates, like your character's birthdays, perhaps. This is up to you! If you don't care about this, you can delete all the elseifs and just leave the one for the user's birthday.
-	elseif season == "summer"
-	{
+	elseif season == "summer" {
 		"\0\s[10]Things will change with time\w2.\w2.\w2.\w3 Only in summertime\w2.\w2.\w2.\e"
+		"%(normalboottalk)"
 	}
-	elseif dayslot == "10month 31day" && spookster == "on"
-	{
+	elseif dayslot == "10month 31day" && spookster == "on" {
 		if RAND(42) < 12
 		{
 			nowmode = "spooktime"
-			"\0\s[700]\b[11]good        morning %(username)\e"
-			"\0\s[700]\b[11]burned               he   i re\n\n rememb   er he\e"
-			"\0\s[700]\b[14]no no no what did you do %(username) what did you do how how how stop he wont come back please stop stop please fix fix fix stop fix\e"
-			"\0\s[700]\b[14]no NO what h\nappened Mishka Mishka Mishka Mishka Mishka he wont answer %(username) why why %(username) what did you do no no no no no its my fault my fault myfault i couldve saved him fuck fuckfuckfuckfuck no Mishka Mishka please please please I'm sorry I'm sorry пожалуйста Мишка Мишка Мишка нет нет нет нет нет ты не умер не можешь быть умер Мишка нет Мишка Мишка Мишка Мишка вернуться прости прости прости прости прости прости прости\к"
-			"\0\s[600]NO I left, I left, I LEFT, he- he- no, no no no no nonono don't put me back he's dead he's dead, I- I- I-\n(He starts sobbing, saying something in a different language.\ж8 You tune him out after a while.)\w4\n(... God, he won't stop crying...)\e"
+			"\1\s[60]"
+			--; "\0\s[700]\b[11]good        morning %(username)"
+			"\0\s[700]\b[11]you promise itll change?"
+			"\0\s[700]\b[11]theres nothing there"
+			"\b[11]* (Doesn't look like he'll do anything...)"
+			"\0\s[600]wait\x\b[11]what\x\b[11]i didnt\x\s[700]\b[11]i didntsee it i swear i didnt it wasnt"
+			"\0\s[700]i called\n[half]youneveranswered"
+			"\0\s[700]its a fleeting memory of a face a voice  a a a a a  something\n\n\nHELP"
+			"\0\s[700]and it wont stop ringing it never does\n[half]i ANSWERED what do you WANT from me"
+			"\0\s[700]..."
+			"\0\s[600]who the fuck are you? what is this? wh..\s[700]...."
+			--; "\x"
 		}
-		else
-		{
+		else {
 			"\0\s[0]Doing good?\e"
 		}
 	}
@@ -317,19 +316,18 @@ OnBoot
 		elseif day == 17
 		{"\p[2]\s[300]\i[8]%(hanukkahboot)\e"}
 	}
-	else
-	{
-		if spookster == "on" && RAND(100) < 6
-		{
-			spooktime = "on"
-			"\0\s[700]\1\s[60](... doesn't look like he'll say hello this time.)\e"
-			"\0\s[700]\1\s[60](Is something burning...?)\e"
-			"\1\s[60]\0\s[700]%(username) put back back fix fix fix fix\e"
-			"\1\s[60]\0\s[700]%(username) not good not good not good not good\e"
-			"\1\s[60]\0\s[600]%(username)\w2? g-d\w2, why is that......\n\nHe\w2's dead\w2, isn\w2't he\w2? Fuck\w2, fuck he\w2's...\e"
+	else {
+		if spookster == "on" && RAND(100) < 6 {
+			nowmode = "spooktime"; "\1\s[60]"
+			"\0\s[700]\1\b[11](... doesn't look like he'll say hello this time.)\e"
+			//"\0\s[700]\1\s[60](Is something burning...?)\e"
+			//"\1\s[60]\0\s[700]%(username) put back back fix fix fix fix\e"
+			"\0\s[700]\b[11]%(username) not good not good not good not good\e"
+			"\0\s[600]\b[11]%(username)\w2? g-d\w2, why is that......\n\nHe\w2's dead\w2, isn\w2't he\w2? Fuck\w2, fuck he\w2's...\e"
+			"\0\s[700]\b[11]its not supposed to happen this way i promise just dont leave dont leave dont leave\e"
+			"\0\s[700]\b[11]%(username) dont you know how to fix this you should by now can you do it\n[half]%WaitTxt('the dead wont come back to life')\e"
 		}
-		else
-		{
+		else {
 			"%(normalboottalk)" //If none of the days above match the current date, the ghost instead will go down to the next function, normalboottalk.
 		}
 	}
@@ -348,8 +346,7 @@ OnBoot
 //Otherwise, just replace the upcoming pieces of dialogue with what you like.
 
 
-normalboottalk
-{
+normalboottalk {
 	if weekday == 6 && hour >= 19 //This checks if the weekday equals six, meaning saturday AND (using the && operator) if the hour is past 19. You can change these numbers or values to anything you like! As such you can check any combination of date and day and time for potential boot dialogue. You can also add more elseif checks for other days if you want.
 		{"\0\s[0]It's Saturday night...\e"}
 	elseif RAND(100) < 60 //What this does is choose a random number from 1-100, and then checks if that number is less than 40. If it's less than forty, then these dialogue pieces will occur. Remember, you can have multiple lines of dialogue within one set of brackets like this! You just need to make sure they're all enclosed in their own set of quotation marks.
@@ -362,15 +359,15 @@ normalboottalk
 		"\1\s[18]Oh hey, it's %(username). Someone was just going through %(hisher) %(folderuser)...\w6\0\s[9]I don't know what you're talking about.\e"
 		"\0\s[6]Hi there! Having a good day?\e"
 		"\0\s[8]Lina's not still mad at me, is she do you think?\w6\1\s[10]You're probably fine. She gets like that when she's stressed.\e"
-		"\0\s[8]Lina said she was thinking of proposing to Jora...\w4\nHeard anything from him?\w6\1\s[10]Isn't he a little young to be thinking about...\w4 Oh, hello %(username) -- didn't see you there, sorry.\e"
+		"\0\s[8]Lina said she was thinking of proposing to Jora...\w4\nHeard anything from him?\w6\1\s[10]Isn't he a little young to be thinking about...\w4 Oh, hello %(username) -- didn't see you there, sorry.\e" //what am i a child bride
 		"\0\s[0]Valya wouldn't *really* have gotten a concussion from the grilled cheese, though, would he?\w6\1\s[10]Hey %(username), how's it going?\w4\0\s[9]Oh, hi.\e"
 		"\1\s[10]But you don't *really* mean it, do...\w4\s[18]Oh, %(username).\e"
 		"\0\s[8]What about your daughter? \1\s[10]Probably. I did talk...\n Hey there %(username).\0\s[0]\1 What's up?\e"
 		"\1\s[10]That's the thing, though, Jora...\nOh, %(username), hey! Doing anything interesting?\e"
 		"\0\s[0]I know I didn't, but-\w4\nUh, hey, %(username). It *is* a little disorienting, teleporting like that.\e"
+		"\0\s[3]\1\s[17]If you'd just\w4\0\s[1]\1\s[11]-!\w6\n\w4\1\s[19]Uhhhh. Hi.\e" //but yknow, best friends, right?
 		}
- 	else
- 	{
+ 	else {
 		//The following if statements check the time of the day as defined above in the GetTimeSlot function. Do you remember the names that it defined? Now we're going to use them!
 		
 		if timeslot == "earlymorning" //The following dialogue will be called if they are booted during the time specified in GetTimeSlot (in this case, the hour being more than/equal to 5 but less than/equal to 8). Remember, you can add as many lines of dialogue here as you want, or take away as many as you want! Replace the dialogue here with what you see fit.
@@ -394,8 +391,7 @@ normalboottalk
 	}
 }
 
-hanukkahboot
-{
+hanukkahboot {
 	"\0\s[6]Janiceeeeeeeeeeeee\w6\1\s[10]You see what I have to put up with %(username)? Every day. Every day I am here.\w6\0\s[9]\n\n[half]You still love me though.\e"
 	"\1\s[10]It's chanukah time! Which means someone has illegal latkes.\w6\0\s[0]They're not illegal you just don't like them.\e"
 	"\1\s[16]Hey, %(username)! Hope you're having a good time today.\e"
@@ -418,8 +414,7 @@ hanukkahboot
 //Like above with OnBoot, just replace all the following pieces of dialogue with your own. It feels a bit redundant for me to point out every single piece and say "replace this", you know? If you've read the SakuraScript walkthrough page, you should know what a piece of dialogue looks like by now within code. Just go through OnClose and replace each bit with dialogue more suited for your ghost.
 //Note though that each bit here ends with \w8 instead of \e. That's because the actual end statement to close the ghost is at the very end, one of the very very rare times you won't have to end a line with \e. Instead, end it with \w8 so there's a little bit of a pause for the user before your ghost closes so they can read the last message.
 
-OnClose
- {
+OnClose {
 	if reference0 == "nobodyhome" {"\0\s[-1]\1\s[-1](See you later, user.)\-\e"} else {
  timeslot = GetTimeSlot //as you saw above, it's checking the time.
  --
@@ -429,31 +424,30 @@ OnClose
 			{
 				"\0\s[0]Time to explore!\w8\1\s[10]Pasha, no.\w8\w8"
 			}
-			elseif spooktime == "on" || nowmode == "spooktime"
-			{
-				"\0\s[700]\b[11]no no no no dont leave me please please please please please\w6"
-				"\0\s[700]\b[11]%(username) stay please stay with me stay with me please please please please\w6"
-				"\0\s[700]\b[11]im alone alone alone alone no no no dont close me dont please please please\w6"
-				"\0\s[700]\b[11]no no no no no no no\w6"
-				"\0\s[700]\b[11]dont go dont go dont go dont dont dont\w6"
-				"\0\s[700]\b[11]dont leave me with him i dont want to stay here home home i want to    home\w6"
-				"\0\s[700]\b[11]no no %(username) i cant stay with him hes dead didnt you see cant you see him hes dead hes dead hes dead he shouldnt be here dont go dont go %(username) dont go\w3"
-				"\0\s[700]\b[11]g-d no dont go ill miss you no no dont go\w6"
-				"\0\s[700]\b[11]he wont come back this wont fix it stay stay stay stay stay stay s tay stay s ta    y st ay        stay\w6"
-				"\0\s[700]\b[11]you cant fix it cant fix dont fix fix fix fix fix it please please please i'll do anything to go back please fix this\w6"
+			elseif spooktime == "on" || nowmode == "spooktime" {
+				"\0\s[700]\b[11]"
+				--
+				"no no no no dont leave me please please please please please\w6"
+				"%(username) stay please stay with me stay with me please please please please\w6"
+				"im alone alone alone alone no no no dont close me dont please please please\w6"
+				"no no no no no no no\w6"
+				"dont go dont go dont go dont dont dont\w6"
+				"dont leave me with him i dont want to stay here home home i want to    home\w6"
+				"no no %(username) i cant stay with him hes dead didnt you see cant you see him hes dead hes dead hes dead he shouldnt be here dont go dont go %(username) dont go\w3"
+				"g-d no dont go ill miss you no no dont go\w6"
+				"he wont come back this wont fix it stay stay stay stay stay stay s tay stay s ta    y st ay        stay\w6"
+				"you cant fix it cant fix dont fix fix fix fix fix it please please please i'll do anything to go back please fix this\w6"
+				"waitwaitwait youcant leave me here alone just stay please please just a little longer just stay\w3"
 			}
-			else
-			{
+			else {
 			if timeslot == "earlymorning" //5-8
 				{"\1\s[10]Did you stay up late?\w8\0\s[0](Or were you getting some early morning coding in?)\w8"}
 			elseif timeslot == "morning"
  				{"\0\s[0]Have a good morning.\w8\w8"}
- 			elseif timeslot == "lunch"
- 				{
+ 			elseif timeslot == "lunch" {
  					"\0\s[0]Going to get food? Can I have some?\w8\1\s[10]Pasha, I don't think that's how things work.\w8" //...add in an option to give lunch if you boot them after this plays.
  				}
-  			elseif timeslot == "evening"
- 				{
+  			elseif timeslot == "evening" {
  						// if weekday == 6 //here, a nested if statement is checking that if it's evening, is it also saturday? You can do this to check more specific times on other days as well. You can change this to some other day if you want, or just delete this little if/else section entirely and write your own evening related close dialogue.
  						// {
  						//	"\0\s[0]This is a Saturday evening close dialogue.\w8\1\s[10]Somewhat specific.\w8"
@@ -475,8 +469,7 @@ OnClose
  		
  	else //This dialogue is for if they haven't been open for at least five minutes.
  	{
-		if spooktime == "on" || nowmode == "spooktime"
-		{
+		if spooktime == "on" || nowmode == "spooktime" {
 			"\0\s[700]\b[11]where %(username) you're leaving why already no no i'll miss you come back come back come back\w3\e"
 			"\1\s[60]\b[11](Were you expecting something...?)\w6"
 			"\1\s[60]\b[11](You hope you can forget about this...)\w4"
@@ -484,6 +477,7 @@ OnClose
 			"\1\s[60]\b[11](Remember you can go change the sensetive content settings if you're not comfortable with this.)\w8"
 			"\1\s[60]\b[11](Doesn't look like he'll remember any of this.)\w6"
 			"\1\s[60]\b[11](The other one has started crying.)\w6"
+			"\0\s[700]\b[11]waitno this is the way its supposed to be you cant leave yet you dont even know" //i mean....
 		}
 		else
  		{"\0\s[0]Ah, opened on accident?\w8\w8"
@@ -515,7 +509,7 @@ OnWindowStateRestore
 OnGhostChanging
  {
 	if spooktime == "on" || nowmode == "spooktime" {if reference0 == "Pavel" {"\0\s[600]nonono can\w2't i go back\w2? please\w2, just...\e"} else {
-	"\0\s[700]%(reference0) better %(heshe) you like %(username)?\n\n\nwhy not me? did i do something wrong? it's my fault sorry sorry sorry\w6\e"
+	"\0\s[700]%(reference0) better %(they) you like %(username)?\n\n\nwhy not me? did i do something wrong? it's my fault sorry sorry sorry\w6\e"
 	"\0\s[700]this won't change anything, tell %(reference0) what\w6\e" //you saw
 	}}
 	else {
@@ -565,10 +559,7 @@ OnShellChanging
 	elseif reference0 == "psh_msh" {}
 	else //if you don't have any specific dialogue for a specific shell
 	{
-	"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
-	
-	"\1\s[10]This is another bit of dialogue for changing shells.\w8\0\s[8]I wonder how many people will actually have multiple shells?\e"
-	
+	"\0\s[0]Hm? Changing....... shell? I guess?\w3\e"
 	//Rewrite these two lines as you need.
 	}
  }}
@@ -606,7 +597,7 @@ OnShellChanged
  	}
  	else //For any shell without a specific name, or if you don't want to bother with individual responses to a shell.
  	{
-	"\0\s[0]This dialogue is after we've changed our shell to %(reference[0]).\w8\1\s[18]How many shells you got?\e"
+	"\0\s[0]Boop! Shell changed to %(reference[0])!\e"
 	
 	//Note the %(reference[0]) here! This time that should store the name of whatever shell you're switching to. To be honest, I have not experimented with this too much because making shells is a pain in the tuckus, but I'm going to take cindysuke's coding on faith and assume reference[0] is correct instead of reference0. Replace this bit of dialogue as you need.
 	}

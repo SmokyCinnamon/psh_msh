@@ -53,7 +53,11 @@ Pool_totallyfine : array {
 	"\1\s[10]%(username), you busy up there? Up to anything interesting?\e"
 	"\0\s[-1]\w2\1\s[19]Um... bye?\nI mean I didn't think... hm.\w4\nWait here for a bit %(username).\w2\x\1\s[-1]\w9\w9\1\s[10]\0\s[9]\1Hi! We're back.\e" //i am not implying anything i am not filtering anything nope not at all
 	"\1\s[10]You know what's weird about this place?\w4 It's just kind of like... warm. But the same warm. It doesn't change.\x So, uh, what's up with that %(username)? And could you turn it down maybe?\e" //it's impossible to be perfectly air-conditioned for everyone! that and i think most users so far are used to warmer tempuratures than there are in belarus
-	
+	"\1\s[10]So uh, heard of Zemfira at all, %(username)? I think her music's pretty nice.\e"
+	"\1\s[10]Hm...\w4 You ever tried learning another language, %(username)? Me'n Pasha both know english, russian, and belarusian, but that's sort of par for the course, so...\e"
+	"\1\s[10]Ej, Paša, u miane josć pytanne...\w6\0\s[8]Dyk i? Ja słuśaju.\w4\1\n\n[half]\w2Nu, što dumaeš o situacia ŭ dama? My tam ne były ŭ poslednii čas...\w6\0\n\n[half]Tak norm. Im ŭsio budze dobra.\e"
+	"\1\s[10]You like cats, %(username)? Pasha's got this real fluffy cat back home, very cute.\e"
+	"\1\s[10]You know how whenever you want to do something it's always the one thing you can't do right then?\w6\0\s[0].....Tak?\w6\1\n\n[half]that's me right now. with guitar. I want to fuck around on my guitar is what I'm saying.\w6\0\n\n[half]okej.\e"
 }
 
 AdzinTalk : nonoverlap {
@@ -168,7 +172,9 @@ SpookTalk : nonoverlap {
 	"\0\s[700]\b[11]%CreepyTxt('whats left of me do you know of course you dont of course you wouldnt why would you ever figure it out did you do it on your own did you look that far ahead') %WaitTxt('go ahead and look im waiting') %CreepyTxt('its over now anyways its been for a long time now this has been') \_qa long time coming\_q\x\b[11]%*\_a[https://smokycinnamon.github.io/indifferentsorrel/dis_spirited]_\_a\e" //404s for the forseeable future. maybe in a few years...
 	"\0\s[700]\b[11]you cant just #inot#/i take responsibility can you\n[half]if \_qitwasallyo\_qur fault anyways\n[half]if theres noone else to step up and take the blame?\nwhat does it matter, anyways, who did it on record?\n%WaitTxt('we all know it was me')\n\n\n[half].\e"
 	"\0\s[600]i- i need to leave i need to lea\s[700]\b[14]ve%Drippy('theres no crime without a culprit',12,80,0)\e"
-	"\0\s[600]a ty hto, čamu ź ya ne pamjacaju? cjabe hljaczeć na mjane...\w5\nperestan, kali laska, prosta... perestan. perestan.\e" 
+	"\0\s[600]a ty hto, čamu ź ya ne pamjacaju? cjabe hljaczeć na mjane...\w5\nperestan, kali laska, prosta... perestan. perestan.\e"
+	"\0\s[700]\b[11]i cal\n[half]    lled you \_qbut you di\_qdnt answer you never did you never do please leave a message af\w7ter the\x\b[11]\![open,inputbox]\x\e"
+	"\0\b[11]its the end of the line\n[half]\_qendof\_q%WaitTxt('the line') i dont know what you wante dwhy did you wait why are you always here why do i remember your face ?\e"
 
 	//hey speaking of that comment down there here's a reminder for when you put the filter in.
 	"\0\s[700]\b[11]twisted was it burning metal couldnt i see it out the of\e"

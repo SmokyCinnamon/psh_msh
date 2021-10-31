@@ -370,38 +370,7 @@ OnMinuteChange
 	timeslot = GetTimeSlot //this tells the ghost what time it is so the time related conversations above will work.
 	--
 	if weekday == 5 && hour >= against[0] && minute >= against[1] {"\t\*\0\s[-]\1\s[-]\0\s[-](...They just left...\n%*\q[Switch,??] %*\q[Quit,OnClose,nobodyhome]\e"}
- 	if minute == 0 //These check what time it is. uses the same as your phone, but the ghosts just say whatever. this is for if there are no current minutes, i guess?
-	{
- 		if hour == 12 //And the hour equals 12, ie it's noon. You can change this to some other hour if you want.
-		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]noon noon noon noon\e"}; else {;"\0\s[0]It's noon.\e"} }
- 		elseif hour == 0 //midnight
-		{
-			if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]late told me\nsh\w4ouldn't be awake\e"}; else {
- 			"\0\s[0]It's midnight\w2.\w4 \1\s[10]Kinda late\w2, wouldn't you agree %(username)\w2?\e"
- 			"\0\s[0]Midnight.\w4\1\s[10]That it is.\e"}
-		}
-		elseif hour == 23 //if it's eleven
-		{
-			if minute == 55 //and the fancy: eleven fifty five.
-			{ if spooktime == "on" || nowmode == "spooktime"{"\1\s[60](Soon.)\e"}; else{"\1\s[10]5 to 12. Shouldn't you be asleep?\e"}}
-			else //if it isn't 11:55. These are meant to be examples of specific times you can check, you don't have to check for the same times. You can also always delete individual elseifs if you can't think of any time to check. Like, you could delete the elseif for hour == 23 and the subsequent checks below it, then move on to the elseif below for hour 7. This section is flexible.
-			{ if spooktime == "on" || nowmode == "spooktime"{"\0\s[700]sleep %OnCreepyText('sleep sleep sleep sleep sleep')\e"}; else{"\0\s[10]It's 23. Time for bed.\e"}}
-		}
-		elseif hour == 15 && minute == 30 //&& makes them go at the same time,basically. in theory this should be 3.30 but for reasons unknown to man, it's not. Zar's note said 7.30 on a sunday?
-		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]three and\w4 a\w7 h a l f\e"}; else; {"\0\s[0]15:30, %(username).\e"}}
-		elseif hour == 16 && minute == 30 //note that these are for keeping you accountable, in all honesty.
-		{ if spooktime == "on" || nowmode == "spooktime"; {""}; else; {"\0\s[0]16:30.\e"}}
-		elseif hour == 16 && minute == 45; {if spooktime == "on" || nowmode == "spooktime"; {""}; else; {"\0\s[0]16:45. Hope you were paying attention, %(username)\w2.\w2.\w2.\w2?\e"}}
-		elseif hour == 16 //hour checks.
-		{if spooktime == "on" || nowmode == "spooktime"; {"\1\s[60]\b[11](If you were the type to check the clock, you'd see that it's four. You're welcome.)\e"}; else; {"\1\s[10]It's 16. Don't you have something to do soon?\e"}}
-		elseif hour == 15
-		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]\b[11]you were 15 once right right\e"}; else; {"\0\s[0]Hey, it's 15. \1\s[10]Things to do, websites to visit...\e"}}
-		else
-		{ if spooktime == "on" || nowmode == "spooktime"; {"\0\s[700]\b[11] hour hour %(hour12) am? pm?\w5 misha i don't know hey hey misha\e"}; else
-		{"\0\s[0]It's %(hour12)'o clock.\e"}
-			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
-		}
-	}
+ 	if minute == 0 && Flag("NotifHour") == 1 {OnNotifHour}
 	/*-- //do i need  these...?
 	{
 		if namiable >= 500 && yamiable >= 500

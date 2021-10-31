@@ -3,7 +3,7 @@
 
 OpenKeroMenu
  {
-	if spooktime == "off" || nowmode != "spooktime"
+	if nowmode != "spooktime"
 	{
 		"\1\s[10]\b[2]"
 		"\1\s[18]\b[2]"

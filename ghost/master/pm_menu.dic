@@ -308,36 +308,29 @@ Select.wellyousee
 
 OnTalkConfig
 {
-	"\0\b[2]\" 
+	"\0\b[2]\_q\" 
 	//This bit of dialogue sets up a large balloon and a quick session, like above, so all the text will appear immediately. The rest is formatted to display the information and options to change it. I wouldn't touch any of it if you don't know what you're doing.
 	//I'll briefly explain the font tags I used here. \f[bold,1] turns bold on, \f[bold,0] turns it off, not unlike a <b> tag. \f[sup,1] turns superscript on (making it tiny and above the text) and \f[sup,0] turns it off. I touch on these tags in the walkthrough on SakuraScript.
 	--
-	"f[bold,1]Name:\f[bold,0] %(username) \f[sup,1](\q[Change it?,TEACHNAME])\f[sup,0]\n"
-	--
-	"\f[bold,1]Pronouns:\f[bold,0] %(they)/%(them) \f[sup,1](\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
-	--
-	"\f[bold,1]Birthday:\f[bold,0] %(birthdayprint) \f[sup,1](\q[Change it?,TEACHBDAY])\f[sup,0]\n\n"
-	--
-	"\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,0]\n"
-	--
-	if spookster == "on" && sh == "on" && sa == "on"; {"\f[bold,1]Sensitive content:\f[bold,0] On \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}; elseif spookster == "off" && sh == "off" && sa == "off"; {"\f[bold,1]Sensitive content:\f[bold,0] Off \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
+	"__q[TEACHNAME]\f[bold,1]Name:\f[bold,0] %(username)\__q\n"
+	--; "\__q[TEACHPRONOUN]\f[bold,1]Pronouns:\f[bold,0] %(they)/%(them)\__q\n"
+	--; "\__q[TEACHBDAY]\f[bold,1]Birthday:\f[bold,0] %(birthdayprint)\__q\n\n"
+	--; "\__q[talkinter]\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime)\__q\n"
+	--; "\__q[OnQuestionFlag,notifhour]\f[bold,1]Hour Notifications:\f[bold,0] %Flag('NotifHour')\__q\n"
+	--; if spookster == "on" && sh == "on" && sa == "on"; {"\f[bold,1]Sensitive content:\f[bold,0] On \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}; elseif spookster == "off" && sh == "off" && sa == "off"; {"\f[bold,1]Sensitive content:\f[bold,0] Off \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
 	//elseif spookster == "off" && selfharm == "on"; {"\f[bold,1]Sensitive content:\f[bold,0] Ok with self harm/suicide \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
 	//elseif spookster == "on" && selfharm == "off"; {"\f[bold,1]Sensitive content:\f[bold,0] Ok with body horror/blood \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
 	else {
 	"\f[bold,1]Sensitive content:\f[bold,0] Custom \f[sup,1](\q[Actually...,OnDisclaimer])\f[sup,0]\n\n"}
 	--
-		{
-		"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n\n[half]\n"
-		}
-	--
-	"\![*]\q[Back to the menu,BACKTOMENU]\e"
+	"\![*]\q[Back to the menu,BACKTOMENU]\_q\e"
 }
 
 //This and the next few set up the pronouns, as you can see by the linkedfunction names. You can replace "\0\s[0]What pronouns do you want?" with your own dialogue if you prefer, but leave the rest of it alone.
 
 Select.TEACHPRONOUN
 {
-	"\0\s[0]What pronouns do you want?\w5\n\n[half]\_q/
+	"\0\s[0]\_qWhat pronouns do you want?\w5\n\n[half]/
 		\![*]\q[He/Him,OnPronoun,he,him,his,his,he's]\n/
 		\![*]\q[She/Her,OnPronoun,she,her,her,hers,she's]\n/
 		\![*]\q[They/Them,OnPronoun,they,them,their,theirs,they're,plural]\n/
@@ -613,13 +606,14 @@ Select.dosomething
  		"\0\s[0]\b2Set things up here, or maybe change them.\n\n"
 		"\0\s[0]\b2Functions menu! Kind of boring.\n\n"
 		--
- 		"\![*]\q[Open Calendar,CALENDAR]\n/
+ 		"\_q\![*]\q[Open Calendar,CALENDAR]\n/
 		\![*]\q[Check Email,MailCheck]\n/
 		//\![*]\q[Check Time,OnSNTPBegin]\n/
 		\![*]\q[Open SSP Preferences,sspconfig]\n/
-		\![*]\q[Empty Recycle Bin,ChoiceGarbagecan]\n/
-		\![*]\q[System Information,ChoiceSystemInformation]\n\n/
- 		\![*]\q[Back to main menu,BACKTOMENU]\e"
+		\![*]\q[Empty Recycle Bin,ChoiceGarbagecan]\n"
+		--; {"\![*]Enable Uninstall? (NOW : %(deleteshitai))\n\q[ON,deleteon] \q[OFF,deleteoff]\n"}
+		--; "\![*]\q[System Information,ChoiceSystemInformation]\n\n/
+ 		\![*]\q[Back to main menu,BACKTOMENU]\_q\e"
 }
 
 //When the user clicks Open Calender. This will open the calender function of SSP, an in-built feature that you don't have to worry about in the least.

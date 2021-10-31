@@ -52,7 +52,8 @@ Pool_stquestions : array {
 
 OnQuestionFlag {
 	case reference0 {
-		when "showinmenu" {if Flag("showinmenu") == 0; MiscFlags ,= "showinmenu"}
+		when "notifhour" {if Flag("NotifHour") != 1; MiscFlags ,= "NotifHour"; else {RemoveFlag("NotifHour")}
+		--; OnTalkConfig}
 		when "canbrush" {if Flag("canbrush") != 1; MiscFlags ,= "canbrush"; RemoveFlag("upsetday"); RemoveFlag("brushy")}
 		when "brushy" {if Flag("brushy") == 0; MiscFlags ,= "brushy"}
 	others {}}
