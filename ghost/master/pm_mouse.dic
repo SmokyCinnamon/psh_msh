@@ -46,7 +46,7 @@ MouseMoveSakura
  		if stroke >= 40 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want. FLELEs have it set to 50 for some reason, which makes it take longer than this.
 		{
  			stroke = 0 //resetting the stroke count
-			if spooktime == "on"
+			if nowmode == "spooktime"
 			{
 				if reference4 == "Head" {
 					"\0\s[700]\b[11]Pets pets pets %(misha) says im a cat %(username) agrees ? %(username) yesno?\e"
@@ -158,7 +158,7 @@ MouseMoveKero
  		if stroke >= 40
 		{
 			stroke = 0
-			if spooktime == "on"
+			if nowmode == "spooktime"
 			{
 				if reference4 == "Head" 
 				{
@@ -284,7 +284,7 @@ OnMouseDoubleClick
  
 MouseDoubleClickSakura
  {
-	if spooktime == "on"
+	if nowmode == "spooktime"
 	{
 		if reference4 == "Head" || reference4 == "Face"
 		{
@@ -542,7 +542,7 @@ MouseDoubleClickSakura
  
 MouseDoubleClickKero
  {
-	if spooktime == "on"
+	if nowmode == "spooktime"
 	{ if reference4 == "Head" {
 		"\1\s[60]\b[11](No protest...)\e"
 		"\1\s[60]\b[11](You pat his head.)\n\w4.\w4.\w4.\w4\n(No sign of life.)\e"
@@ -789,7 +789,7 @@ MouseDoubleClickKero
  {if reference3 == 0 {OnWheelSakura}; else {OnWheelKero}}
  
  OnWheelSakura{
-	if sa == "on" {
+	if sa == "on" &&nowmode != "spooktime" {
 		if reference4 == "Head" || "Face" {
 			if rel == 3 {
 				namiable -= 12

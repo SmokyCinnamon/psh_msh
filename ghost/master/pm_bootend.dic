@@ -420,7 +420,7 @@ OnClose {
  --
 	if passmin >= 5	//This checks to see if you've had them open for at least five minutes.
 		{
-			if spooktime == "off" || nowmode != "spooktime" && RAND(100) < 40 //see above about the random number generator
+			if (spooktime == "off" || nowmode != "spooktime") && RAND(100) < 40 //see above about the random number generator
 			{
 				"\0\s[0]Time to explore!\w8\1\s[10]Pasha, no.\w8\w8"
 			}
@@ -498,7 +498,7 @@ OnClose {
 //This will run when you minimize them and then bring them back up. Replace with what you like.
 
 OnWindowStateRestore
- {if spooktime == "on" || nowmode == "spooktime" {""} else {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
+ {if spooktime == "on" || nowmode == "spooktime" {"\0\s[600]\1\s[60]\w2\0\s[700]"} else {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
 
 
 //--OnGhostChanging

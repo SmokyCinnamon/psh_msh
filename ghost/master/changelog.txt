@@ -1,6 +1,12 @@
 !!!IMPORTANT: IF YOU WERRE ON V1.2.1 OR BELOW, GO TO PAGE 3 OF PASHA'S MENU AND CLICK "YOU WANT TO TALK TO HIM". TYPE "variablefix" (CASE SENSETIVE) IN THE DIALOGUE BOX. THIS WILL HELP YOU. !!!
 !!!IMPORTANT: IF UPDATING FROM v1.2.2 OR BELOW, YOU WILL NEED TO RESET YOUR PRONOUNS IN THE CONFIG MENU !!!
 
+v.1.2.4
+> fixed 3/4 of the creepymode checks still being on the old variable for mouse functions
+> fixed closing dialogue for creepymode having unenclosed operators and thinking an || included the && after it
+> fixed un-minimizing showing the wrong surfaces in creepymode
+> fixed using the scoll wheel on pasha not having a check for creepymode being active
+
 v.1.2.3
 > dialogue added
 > fixed the bug report dialogue in misha's menu - oops!
