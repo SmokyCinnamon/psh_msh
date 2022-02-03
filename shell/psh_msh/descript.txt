@@ -47,7 +47,7 @@ sakura.bindgroup10.name,face,glasses
 sakura.menuitem0,10
 sakura.bindgroup10.default,0
 sakura.bindgroup11.name,body,SLEEVES
-sakura.menuitem1,11
+//sakura.menuitem1,11
 sakura.bindgroup11.default,0
 
 seriko.use_self_alpha,false
