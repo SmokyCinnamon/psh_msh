@@ -8,16 +8,16 @@ surface10
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2000,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2100,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2200,1,0,0
 }
 surface11
@@ -28,16 +28,16 @@ surface11
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2004,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2102,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2203,1,0,0
 }
 surface12
@@ -48,16 +48,16 @@ surface12
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2004,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2102,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2205,1,0,0
 }
 surface13
@@ -68,16 +68,16 @@ surface13
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2006,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2102,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2202,1,0,0
 }
 surface14
@@ -88,16 +88,16 @@ surface14
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2005,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2102,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2202,1,0,0
 }
 surface15
@@ -108,16 +108,16 @@ surface15
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2007,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2103,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2205,1,0,0
 }
 surface16
@@ -128,16 +128,16 @@ surface16
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2007,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2100,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2201,1,0,0
 }
 surface17
@@ -148,16 +148,16 @@ surface17
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2000,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2102,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2203,1,0,0
 }
 surface18
@@ -168,16 +168,16 @@ surface18
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2004,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2101,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2205,1,0,0
 }
 surface19
@@ -188,16 +188,16 @@ surface19
 	element3,overlay,surface202.png,0,0
 	//intervals...?
 	//eyes - 2000
-	animation1.interval,always
+	animation1.interval,runonce
 	animation1.pattern0,overlay,2000,1,0,0
 	//mouths - 2100
-	animation2.interval,always
+	animation2.interval,runonce
 	animation2.pattern0,overlay,2101,1,0,0
 	//hair but yknow that doesnt matter
-	animation3.interval,always
+	animation3.interval,runonce
 	animation3.pattern0,overlay,2150,1,0,0
 	//eye of the brow
-	animation4.interval,always
+	animation4.interval,runonce
 	animation4.pattern0,overlay,2204,1,0,0
 }
 

@@ -1,0 +1,63 @@
+SpookBoot {
+	nowmode = "spooktime"
+	--; if dayslot == "10month 31day" {
+	"\1\s[60]"
+	--; "\0\s[700]\b[11]good        morning %(username)"
+	"\0\s[700]\b[11]you promise itll change?"
+	"\0\s[700]\b[11]theres nothing there"
+	"\b[11]* (Doesn't look like he'll do anything...)"
+	"\0\s[600]wait\x\b[11]what\x\b[11]i didnt\x\s[700]\b[11]i didntsee it i swear i didnt it wasnt"
+	"\0\s[700]i called\n[half]youneveranswered"
+	"\0\s[700]its a fleeting memory of a face a voice  a a a a a  something\n\n\nHELP"
+	"\0\s[700]and it wont stop ringing it never does\n[half]i ANSWERED what do you WANT from me"
+	"\0\s[700]..."
+	"\0\s[600]who the fuck are you? what is this? wh..\s[700]...."
+	--; "\x"
+	}
+	else {
+			nowmode = "spooktime"; "\1\s[60]"
+			"\0\s[700]\1\b[11](... doesn't look like he'll say hello this time.)\e"
+			//"\1\s[60]\0\s[700]%(username) put back back fix fix fix fix\e"
+			"\0\s[700]\b[11]%(username) not good not good not good not good\e"
+			"\0\s[600]\b[11]%(username)\w2? g-d\w2, why is that......\n\nHe\w2's dead\w2, isn\w2't he\w2? Fuck\w2, fuck he\w2's...\e"
+			"\0\s[700]\b[11]its not supposed to happen this way i promise just dont leave dont leave dont leave\e"
+			"\0\s[700]\b[11]%(username) dont you know how to fix this you should by now can you do it\n[half]%WaitTxt('the dead wont come back to life')\e"
+}}
+
+SpookClose {
+	if passmin >= 5 {
+				"\0\s[700]\b[11]"
+				--
+				"no no no no dont leave me please please please please please\w6"
+				"%(username) stay please stay with me stay with me please please please please\w6"
+				"im alone alone alone alone no no no dont close me dont please please please\w6"
+				"no no no no no no no\w6"
+				"dont go dont go dont go dont dont dont\w6"
+				"dont leave me with him i dont want to stay here home home i want to    home\w6"
+				"no no %(username) i cant stay with him hes dead didnt you see cant you see him hes dead hes dead hes dead he shouldnt be here dont go dont go %(username) dont go\w3"
+				"g-d no dont go ill miss you no no dont go\w6"
+				"he wont come back this wont fix it stay stay stay stay stay stay s tay stay s ta    y st ay        stay\w6"
+				"you cant fix it cant fix dont fix fix fix fix fix it please please please i'll do anything to go back please fix this\w6"
+				"waitwaitwait youcant leave me here alone just stay please please just a little longer just stay\w3"
+	}
+	else {
+			"\0\s[700]\b[11]where %(username) you're leaving why already no no i'll miss you come back come back come back\w3\e"
+			"\1\s[60]\b[11](Were you expecting something...?)\w6"
+			"\1\s[60]\b[11](You hope you can forget about this...)\w4"
+			"\1\s[60]\b[11](They won't remember... right?)\w8"
+			"\1\s[60]\b[11](Remember you can go change the sensetive content settings if you're not comfortable with this.)\w8"
+			"\1\s[60]\b[11](Doesn't look like he'll remember any of this.)\w6"
+			"\1\s[60]\b[11](The other one has started crying.)\w6"
+			"\0\s[700]\b[11]waitno this is the way its supposed to be you cant leave yet you dont even know" //i mean....
+}}
+
+SpookRestore {
+	"\0\s[600]\1\s[60]\w2\0\s[700]"
+}
+
+SpookChanging {
+if reference0 == "Pasha" {"\0\s[600]nonono can\w2't i go back\w2? please\w2, just...\e"} else {
+	"\0\s[700]%(reference0) better %(they) you like %(username)?\n\n\nwhy not me? did i do something wrong? it's my fault sorry sorry sorry\w6\e"
+	"\0\s[700]this won't change anything, tell %(reference0) what\w6\e" //you saw
+	}
+}

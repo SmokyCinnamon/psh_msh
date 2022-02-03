@@ -1,0 +1,10 @@
+MouseMoveSakuraFight {
+}
+
+DoubleClickSakuraFight {
+	if reference4 == "larm" {
+		"\0\s[102]!"
+	}
+	else {
+		OpenSakuraMenu
+}}

@@ -23,32 +23,7 @@ OpenKeroMenu
 		\![*]\q[Ask about...,asky]\n/
 		//\![*]\q[Test variable,OnTestvariable]\n\n/
 		//When you are done with the test variable, aka your ghost is finished or you just don't want it showing up when you publish your ghost beta or whatevs, simply add two // slashes in front of \![*] to comment the line out. In Notepad++, it will turn green. When you want to use it again, erase the two slashes to turn it back to normal.
-		\![*]\q[Nothing,keroCANCEL]\e"
-	}
-	else
-	{
-		if RAND(10) < 6
-		{
-		"\1\s[60]\b[11]"
-		--
-		//"(Smells like ash...)"
-		"(He's not looking at you... is he?)"
-		"\0\s[700]\b[11]hesdeadhesdeadhesdeadhesdeadhesdead\1"
-		"(If he blinks, you're out.)"
-		"(Somehow, this isn't reassuring.)"
-		"(Looks like he can't help you...)"
-		"(He won't answer...)"
-		--
-		"\n\n[half]\![*]\q[He's dead.,donehere]\e"
-		}
-		else
-		{
-			"\0\s[700]\b[11]He's dead %(username) won't answer can't do anything for %(them) anymore прости прости прости\e"
-			"\0\s[700]\b[11]I meant to meant to meant to maybe %(they) can forgive me прости прощай\e"
-			"\0\s[700]\b[11]Forgot forgot too late cant help you %(username)\e"
-			"\0\s[700]\b[11]Leave him leave him %CreepyTxtWait('buried him') простите простите\e"
-			
-		}
+		\![*]\q[Nothing,keroCANCEL]\n%(runformat)\e"
 	}
 }
 
@@ -167,7 +142,7 @@ YCountThings
 //This is when they select bug report. This is mostly meant to briefly give the user information about you, the creator, and how to report a problem to you. This can be handy if the person forgot where they got their ghost or how to contact you. Add whatever info you like here.
 Select.bugreport
 {
-"\1\s[10]Seen a bug? \w5Let Smoky know at vis tumblr, \_a[smokycinnamonroll.tumblr.com]right here.\_a \w5We were downloaded from \_a[http://www.smokycinnamon.github.com/psh_msh]github, probably\_a.\n%(yendmenu)\e"
+"\1\s[10]Seen a bug? \w5Let Smoky know at vis tumblr, \_a[smokycinnamonroll.tumblr.com]right here.\_a \w5We were downloaded from \_a[http://www.smokycinnamon.github.com/psh_msh]github, probably\_a.\nyou've had the ghost open for a total of %(totalrun[2]) days, %(totalrun[1]) hourse, and %(totalrun[0]) minutes.\n%(yendmenu)\e"
 }
 
 //When clicked, this will automatically tell the ghost to check for updates. More detail on updates in etc.dic. You can leave this alone.

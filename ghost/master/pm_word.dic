@@ -104,3 +104,5 @@ isnt
 {if plural == 1; {"aren't" }; else; {"isn't" }}
 need
 {if plural == 1; {"need" }; else; {"needs" }}
+
+runformat {"%(totalrun[2]) // %(totalrun[1]):%(totalrun[0])"}

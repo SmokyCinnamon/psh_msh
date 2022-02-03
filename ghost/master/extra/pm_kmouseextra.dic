@@ -1,0 +1,48 @@
+MouseMoveKeroFight {
+	LOGGING("%(stroke)")
+	if reference4 != "" {
+ 		stroke++ //if you move the mouse over the right areas, the stroke count will go up.
+		LOGGING("%(stroke) ONE STEP FURTHER")
+ 		if stroke >= 30
+		{
+			LOGGING("%(stroke) WE GOT IN")
+ 			stroke = 0 //resetting the stroke count
+			if reference4 == "Face" || reference4 == "Body" {
+				SequencePet
+			}
+			else {}
+		}
+	}
+}
+
+SequencePet : sequential {
+	if Flag("PATSAGGRESIVELY") != 1 {
+		"\1\s[31]Do *not* fucking pet men\e"
+		"\1\s[31]Hey, cut it out %(username)!\e"
+		"\1\s[32]I am *not* here to be your goddamn *entertainment*, %(username).\![raise,OnQuestionFlag,patsaggresivelu]\e"
+	}
+	else {
+		"\1\s[33]...\e"
+	}
+}
+
+DoubleClickKeroFight {
+	if (reference4 == "Face" || reference4 == "Body") {
+		SequenceClick
+	}
+	else {FightMenu_Msh}
+}
+
+SequenceClick : sequential {
+		"%(narrator)* (Pat pat.)\w6"; --
+		"\1\s[31]Hey, y'hear me right now? Yeah? This is me telling you up-fucking-front that I do *not* want you to do that." //in stark contrast to pasha! funny, that.
+		"\1\s[31]%Cutoff(username)- %(username), don't do that.\w4 Please."
+		"\1\s[31]I really- really'd rather you not, please and fucking thank you."
+		"\1\s[31]Idi nachuj!"
+		"%(narrator)\n\n[half]* (He jerks away.)\w6\1\s[32]I *mean* it, y'know!"
+		"%(narrator)\n\n[half]* (He jerks away.)\w6\1\s[32]Hey, could I ask you to stop? Think you have it in yourself to do that?"
+		"\1\s[32]%(narrator)\n\n[half]* (. . . he pulls away.)"
+		"\1\s[32]%(narrator)\n\n[half]* (. . . his breathing's unsteady.)"
+		"\1\s[33]%(narrator)\n\n[half]* (............ Looks like he's crying.)\![raise,OnQuestionFlag,patsaggresively]"
+		--; "\x\e"
+}

@@ -1,0 +1,63 @@
+OnFightMenu {
+	"%*\__q[callhim]Call Misha\__q\n/
+	%*\__q[openup]What's wrong?\__q\n/
+	%*\__q[webothknow]Are you hurt?\__q\n/
+	%*\__q[sawthat]What were you holding earlier?\__q\n/
+	%*\__q[reasonbeing]Did something happen between you two?\__q\n/
+	"
+	--
+	"\n\n%(runformat)\_q\x"
+}
+
+Select.callhim {
+	"\1\b[14] * (You call for Misha...)\w4\n* (...)\w6\n"
+	--; {
+	"* (Seems he won't come.)"
+	"* (He must not be able to hear you.)"
+	"\0\i[2]\1\b[14]* (Pasha won't look at you.)"
+	"* (You almost hear something in the distance...)"
+	}
+	--; "\x\e"
+}
+Select.openup {
+	"Huh? \i[2]Nothing's wrong\w4, I'm fine."
+	"Huh? \i[2]Nothing?\w4 Why do you want to know?"
+	"...It's my fault.\w6 Don't worry about it."
+	"\i[2]Nothing, why?"
+	"Where's this coming from?"
+	--; "\x\e"
+}
+Select.webothknow {
+	{"What kind of a question is that?\w4\n...\n"
+	--; {"Is it a threat?"
+		"Are you trying to imply something?"
+	}}
+	"\i[2]\1\b[14]* (...he looks away.)\w4\0No."
+	--; "\x\e"
+}
+Select.sawthat {
+	"...What are you talking about?\w6\1\b[12]* (You tell him he was holding something earlier. With all those colored ribbons or whatever they were?)\w6\0\n\n\i[2]No I wasn't."
+	"Why do you think I was holding something?"
+	"\i[2]Nothing."
+	--; "\x\e"
+}
+Select.reasonbeing : sequential {
+	"I...\w6\i[2]Nothing.\e"
+	"\i[2]...No.\e"
+	"You're... persistent.\e"
+	"...Just... \i[2]Don't worry about it.\e"
+	"What does it matter to you?\e"
+	"...\i[2].........\e"
+	"I... \i[2]I don't want to talk about it.\e" //the problem with being so obvious about it is that even when you don't want to be...
+	"%(username). It's not your problem.\w6\n\n[half]...he'll come back. He has to.\e"
+	"You really don't have to keep asking.\e"
+	"...You really want an answer, huh?\e" //like someone else you know, huh pasha?
+	"..."
+	"..."
+	"......"
+	"It... doesn't matter.\e"
+	"..."
+	"..."
+	"..."
+	"...\i[2]\w8\n\n[half]It wasn't anything important. My fault, anyways.\w6 ... Happy now?\e" //and yet.
+}

@@ -1,0 +1,41 @@
+FightMenu_Msh {
+	"\1\s[30]\b[2]"; --
+	"%*\q[Call for Pasha,hesinhiding]\n"; --
+	if Flag("somethinghappened") != 1 {"%*\q[Did something happen?,doureallywanttoknow]\n"}
+	else {"%*\q[What happened?,itsasecret]\n"}; --
+	"%*\q[You look different,manyskillsuchobservation]\n"; --
+	--; "\n\n%(runformat)\x\e"
+}
+
+Select.hesinhiding : sequential {
+	"\p[2]\s[-1]\b[11]* (You call for Pasha.)\w4\x\p[2]\b[11]* (...)"; --
+	"\1\s[30]"; --
+	"He won't come."
+	"He won't listen, you know."
+	"What are you hoping for, here?"
+	"Look, he's not gonna magically show up just because *you* called. Give it up already."
+}
+
+Select.doureallywanttoknow {
+	"\1\s[30]"; --
+	"What, to Pasha? Not particularly."
+	"...in a manner of speaking, sure."
+	if Flag("somethinghappened") != 1; MiscFlags ,= "somethinghappened"
+}
+
+Select.itsasecret : sequential {
+	"\1\s[30]"; --
+	"See, that's just none of your business."
+	"I'm certainly not telling *you*." //and pasha already knows...
+	"Go ask *him* if you're so determined."
+	"You'll just have to live with not knowing."
+}
+
+Select.manyskillsuchobservation : sequential {
+	"\1\s[30]"; --
+	"Yeah, I wonder why."
+	"...Did you want anything else?"
+	"..."
+	"..."
+	"Look, it's just a thing, alright? Gotta put my hair up. And before you ask, it's not important why and I'm *not* telling you."
+}

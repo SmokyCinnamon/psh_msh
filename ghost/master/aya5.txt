@@ -18,16 +18,29 @@ dic, shiori3.dic
 dic, pm_string.dic			
 dic, pm_aitalk.dic			
 dic, pm_bootend.dic		
-dic, pm_mouse.dic			
+dic, pm_mouse.dic
+dic, extra/pm_kmouseextra.dic			
 dic, pm_etc.dic			
 dic, pm_menu.dic
 dic, pm_word.dic
 dic, pm_commu.dic
 dic, pm_nameteach.dic
 dic, pm_anchor.dic
-dic, pm_aiextra.dic
+dic, extra/pm_aiextra.dic
 dic, pm_aiquestion.dic
 dic, pm_kmenu.dic
+dic, extra/pm_kmenuextra.dic
+dic, extra/pm_menuextra.dic
+dic, extra/pm_commuextra.dic
+dic, extra/pm_mouseextra.dic
+			
+dic, spooktime/aitalk.dic			
+dic, spooktime/bootend.dic		
+dic, spooktime/mouse.dic			
+dic, spooktime/etc.dic			
+dic, spooktime/menu.dic
+dic, spooktime/commu.dic
+dic, spooktime/kmenu.dic
 
 //---- Log Location -------------------------------------------------------------------------
 //I'm not entirely sure what this does, but basically don't touch it.

@@ -56,6 +56,7 @@ OnQuestionFlag {
 		--; OnTalkConfig}
 		when "canbrush" {if Flag("canbrush") != 1; MiscFlags ,= "canbrush"; RemoveFlag("upsetday"); RemoveFlag("brushy")}
 		when "brushy" {if Flag("brushy") == 0; MiscFlags ,= "brushy"}
+		when "patsaggresively" {if Flag("PATSAGGRESIVELY") == 0; MiscFlags ,= "PATSAGGRESIVELY"}
 	others {}}
 	--
 	case reference1 {

@@ -1,0 +1,27 @@
+surface30
+{
+	element0,overlay,surface30.png,0,0
+}
+surface31
+{
+	element0,overlay,surface31.png,0,0
+}
+surface32
+{
+	element0,overlay,surface32.png,0,0
+}
+surface33
+{
+	element0,overlay,surface33.png,0,0
+}
+surface34
+{
+	element0,overlay,surface34.png,0,0
+}
+
+surface.append30-34
+{
+	collision0,66,29,101,66,Face
+	collision1,56,67,110,125,Body
+	//idk man im tired & dont want to do more work than i have to
+}

@@ -1,0 +1,24 @@
+SpookeroMenu {
+		if RAND(10) < 6
+		{
+		"\1\s[60]\b[11]"
+		--
+		//"(Smells like ash...)"
+		"(He's not looking at you... is he?)"
+		"\0\s[700]\b[11]hesdeadhesdeadhesdeadhesdeadhesdead\1"
+		"(If he blinks, you're out.)"
+		"(Somehow, this isn't reassuring.)"
+		"(Looks like he can't help you...)"
+		"(He won't answer...)"
+		--
+		"\n\n[half]\![*]\q[He's dead.,donehere]\e"
+		}
+		else
+		{
+			"\0\s[700]\b[11]He's dead %(username) won't answer can't do anything for %(them) anymore прости прости прости\e"
+			"\0\s[700]\b[11]I meant to meant to meant to maybe %(they) can forgive me прости прощай\e"
+			"\0\s[700]\b[11]Forgot forgot too late cant help you %(username)\e"
+			"\0\s[700]\b[11]Leave him leave him %CreepyTxtWait('buried him') простите простите\e"
+			
+		}
+}

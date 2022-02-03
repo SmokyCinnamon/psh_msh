@@ -3,143 +3,143 @@
         Copyright(C) 2002 Tihiro Hayasaka (hayasita@na.rim.or.jp)
 +----------------------------------------------------------------------------+
 
-�@���L�̓����Ɋւ��鉉�Z���s���B
+　下記の日時に関する演算を行う。
 
-�@�E���͂��ꂽ�������o�߂������𒲂ׂ�
-�@�E���͂��ꂽ���Ԃ��o�߂���������Ԃ�
-�@�E���͂��ꂽ���܂ŉ������邩��Ԃ�
-�@�E���͂��ꂽ���܂ŉ��N�������������������b���邩��Ԃ�
+　・入力された時刻が経過したかを調べる
+　・入力された時間が経過した時刻を返す
+　・入力された日まで何日あるかを返す
+　・入力された日まで何年何月何日何時何分何秒あるかを返す
 
-�@�{�\�t�g�E�G�A�́ASAORI/1.0 universal �K�i�ɏ������Ă���B
-�@�Q�l�Fhttp://www.boreas.dti.ne.jp/~sdn/saori.html
+　本ソフトウエアは、SAORI/1.0 universal 規格に準拠している。
+　参考：http://www.boreas.dti.ne.jp/~sdn/saori.html
 
 +----------------------------------------------------------------------------+
-    �@�\
+    機能
 +----------------------------------------------------------------------------+
 
-�E���͂��ꂽ�������o�߂������𒲂ׂ�
+・入力された時刻が経過したかを調べる
 --
 Argument0: check_expiration
-Argument1: �N
-Argument2: ��
-Argument3: ��
-Argument4: ��
-Argument5: ��
-Argument6: �b
+Argument1: 年
+Argument2: 月
+Argument3: 日
+Argument4: 時
+Argument5: 分
+Argument6: 秒
 
-Result: ����
-    future : ����
-    present : ����
-    past : �ߋ�
+Result: 結果
+    future : 未来
+    present : 現在
+    past : 過去
 --
 
 
-�E���͂��ꂽ���Ԃ��o�߂���������Ԃ�
+・入力された時間が経過した時刻を返す
 --
 Argument0: make_expiration
-Argument1: ��
-Argument2: ��
-Argument3: ��
+Argument1: 日
+Argument2: 時
+Argument3: 分
 
-Result: 1970�N1��1��0��0��0�b����̌o�ߕb
-Value0: �N
-Value1: ��
-Value2: ��
-Value3: ��
-Value4: ��
-Value5: �b
+Result: 1970年1月1日0時0分0秒からの経過秒
+Value0: 年
+Value1: 月
+Value2: 日
+Value3: 時
+Value4: 分
+Value5: 秒
 --
 
-�E���͂��ꂽ���܂ŉ������邩��Ԃ�
-�@���͂��ߋ��̏ꍇ�A�����̓}�C�i�X�ƂȂ�B
+・入力された日まで何日あるかを返す
+　入力が過去の場合、答えはマイナスとなる。
 --
 Argument0: how_many_days
-Argument1: �N
-Argument2: ��
-Argument3: ��
-Argument4: ��
-Argument5: ��
-Argument6: �b
+Argument1: 年
+Argument2: 月
+Argument3: 日
+Argument4: 時
+Argument5: 分
+Argument6: 秒
 
-Result: ���P�ʂ̓�
-Value0: ��
-Value1: ���͂��ꂽ���̏C�������E�X��
-Value2: �����̏C�������E�X��
+Result: 日単位の答
+Value0: 日
+Value1: 入力された日の修正ユリウス日
+Value2: 今日の修正ユリウス日
 --
 
-�E���͂��ꂽ���܂ŉ��N�������������������b���邩��Ԃ�
-�@�����͕K�����̐���Ԃ��B
+・入力された日まで何年何月何日何時何分何秒あるかを返す
+　答えは必ず正の数を返す。
 --
 Argument0: how_many_times
-Argument1: �N
-Argument2: ��
-Argument3: ��
-Argument4: ��
-Argument5: ��
-Argument6: �b
+Argument1: 年
+Argument2: 月
+Argument3: 日
+Argument4: 時
+Argument5: 分
+Argument6: 秒
 
-Result: ����
-    future : ����
-    present : ����
-    past : �ߋ�
-Value0: �N
-Value1: ��
-Value2: ��
-Value3: ��
-Value4: ��
-Value5: �b
+Result: 結果
+    future : 未来
+    present : 現在
+    past : 過去
+Value0: 年
+Value1: 月
+Value2: 日
+Value3: 時
+Value4: 分
+Value5: 秒
 --
 
 +----------------------------------------------------------------------------+
-    ���쌠/�g�p����
+    著作権/使用条件
 +----------------------------------------------------------------------------+
 
-�@�{�\�t�g�E�G�A�̒��쌠�́A�����q(hayasita@na.rim.or.jp)���L����B
+　本ソフトウエアの著作権は、早坂千尋(hayasita@na.rim.or.jp)が有する。
 
-�@�n�b�J�[(hacker)���ƍߎ� �ƍl���Ă���l�̗��p�A�N���b�J�[�ł���Ȃ���
-�u�n�b�J�[�v�𖼏��҂̈�؂̎g�p���֎~����B
-�@�u�n�b�J�[�v�Ƃ������_����̍����A�ڗ���������̔ƍߎ҂ƁA�R���s���[�^������
-���m�Ȏ҂̂��߂Ɍ�p����A���ӔC�ȃ}�X�R�~�ɂ���čL�����Ă���B
-�@�C���^�[�l�b�g��ō��ӂ���Ă���u�n�b�J�[�v�Ɓu�N���b�J�[�v�̒�`�́ARFC
-(Request For Comments)�ԍ�1983�ɂ���Ē�߂�ꂽ���̂ł���B
-�@����RFC1983�́u�C���^�[�l�b�g�̋Z�p�W�����Ă���ۂɂ͕K���Q�Ƃ��ׂ����́v��
-�ʒu�t����ꂽ�����ł���B
+　ハッカー(hacker)＝犯罪者 と考えている人の利用、クラッカーでありながら
+「ハッカー」を名乗る者の一切の使用を禁止する。
+　「ハッカー」という名誉ある称号が、目立ちたがりの犯罪者と、コンピュータ文化に
+無知な者のために誤用され、無責任なマスコミによって広がっている。
+　インターネット上で合意されている「ハッカー」と「クラッカー」の定義は、RFC
+(Request For Comments)番号1983によって定められたものである。
+　このRFC1983は「インターネットの技術標準を提案する際には必ず参照すべきもの」と
+位置付けられた文書である。
 --
-RFC1983: I G. Malkin, "�C���^�[�l�b�g���[�U�[�p��W(Internet Users'
-Glossary)", 08/16/1996. ��蔲��
+RFC1983: I G. Malkin, "インターネットユーザー用語集(Internet Users'
+Glossary)", 08/16/1996. より抜粋
 
- �n�b�J�[
-        �V�X�e���A���ɃR���s���[�^��R���s���[�^�l�b�g���[�N�̓��I�Ȃ�
-        ���炫��[���������邱�ƂɊ�т��o����l�B���̌�͐������́u�N
-        ���b�J�[�v�ƌĂ΂��ׂ��̎��̕����ł��΂��Ό���Ďg����B�N
-        ���b�J�[���Q�Ƃ̂��ƁB
+ ハッカー
+        システム、特にコンピュータやコンピュータネットワークの内的なは
+        たらきを深く理解することに喜びを覚える人。この語は正しくは「ク
+        ラッカー」と呼ばれるべき蔑視の文脈でしばしば誤って使われる。ク
+        ラッカーも参照のこと。
 
- �N���b�J�[
-        �N���b�J�[�Ƃ̓R���s���[�^�V�X�e���Ɍ����������Ȃ��̂ɃA�N�Z�X��
-        �悤�Ƃ���l���ł���B�����̐l���͂��΂��΃n�b�J�[�Ƃ͑ΏƓI��
-        ���ӂ������Ă���A�V�X�e���ɐN�����鑽���̎�i���v���̂܂܂Ɏg���B
-        �n�b�J�[�A�R���s���[�^�ً}�Ή��`�[��(CERT)�A�g���C�̖ؔn�A�E�B
-        ���X�A���[�����Q�Ƃ̂��ƁB
+ クラッカー
+        クラッカーとはコンピュータシステムに権限を持たないのにアクセスし
+        ようとする人物である。これらの人物はしばしばハッカーとは対照的に
+        悪意を持っており、システムに侵入する多数の手段を思いのままに使う。
+        ハッカー、コンピュータ緊急対応チーム(CERT)、トロイの木馬、ウィ
+        ルス、ワームも参照のこと。
 --
 
 +----------------------------------------------------------------------------+
-    ����
+    履歴
 +----------------------------------------------------------------------------+
 
 20031002
 	Ver.1.11
-	���O�o�͋@�\�ǉ��i�ăR���p�C���K�v�j
-	�l����
+	ログ出力機能追加（再コンパイル必要）
+	人柱版
 20030528
 	Ver.1.10
-	how_many_times ��ǉ��i�ȈՃf�o�b�O�ςݐl���Łj
+	how_many_times を追加（簡易デバッグ済み人柱版）
 20030408
 	Ver.1.01
-	how_many_days ��Result ��Ԃ��Ȃ��s����C��
+	how_many_days でResult を返さない不具合を修正
 20021024
-        Ver.1.00�����[�X
+        Ver.1.00リリース
 
 +----------------------------------------------------------------------------+
-�����q hayasita@na.rim.or.jp
+早坂千尋 hayasita@na.rim.or.jp
 http://www.junkyard.jp
 

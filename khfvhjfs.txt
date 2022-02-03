@@ -1,0 +1,205 @@
+menu
+	if get_h == "On"
+	{
+		"\f[align,right]\f[height,80%]num_aleph Today is the %Ord(h_d) of %(h_m), %(h_y)"
+		--
+		if isholiday == 1
+		{
+			if ishanu != 0
+			{
+				"\nThe %Ord(ishanu) night of %(hrom)\n"
+				--
+				if (heard_h != 1) && (SHIORI3FW.IsVisible[1] == 1)
+				{
+					"(\q[Whats %(hrom)?,explain_h])"
+				}
+			}
+		}
+		--
+		"\f[height,default]\n\f[align,left]"
+	}
+
+	if get_h == ""; {get_h = "Off"}
+
+		\_l[2em]\q[Hebrew,get_h] (%(get_h))\n"
+
+Select.get_h
+{
+	if get_h != "On"
+	{
+		get_h = "On"
+		OnHebrewCal
+	}
+	else
+	{
+		get_h = "Off"
+	}
+	--
+	Select.settingmenu
+}
+
+time
+	if get_h == "On"
+	{
+		OnHebrewCal
+		--
+		hgreet = 0
+		--
+		if h_m == "Kislev"
+		{
+			isholiday = 1
+			--
+			if h_d == 25
+			{
+				ishanu = 1
+				
+				/*
+				K25 = 1
+				26 = 2
+				27 = 3
+				28 = 4
+				29 = 5
+				30/T1 = 6
+				T1/2 = 7
+				T2/3 = 8
+				*/
+			}
+			elseif h_d == 26
+			{
+				ishanu = 2
+			}
+			elseif h_d == 27
+			{
+				ishanu = 3
+			}
+			elseif h_d == 28
+			{
+				ishanu = 4
+			}
+			elseif h_d == 29
+			{
+				ishanu = 5
+			}
+			elseif h_d == 30
+			{
+				ishanu = 6
+			}
+			else
+			{
+				isholiday = 0
+				ishanu = 0
+			}
+
+		}
+		elseif h_m == "Tevet"
+		{
+			isholiday = 1
+			--
+			if h_d == 1
+			{
+				ishanu = 7
+			}
+			elseif h_d == 2
+			{
+				ishanu = 8
+			}
+			else
+			{
+				isholiday = 0
+				ishanu = 0
+			}
+		}
+		else
+		{
+			isholiday = 0
+		}
+		--
+		if ishanu != 0
+		{
+			"%(s0)Tonight is the %(Ord(ishanu)) night of %(hrom).\w6 %(hbless)\n"
+			hgreet = 1
+		}
+	}
+
+OnHebrewCal
+{
+	_url = "https://www.hebcal.com/converter?cfg=xml&gy=" + "%(GETTIME()[0])" + "&gm=" + "%(GETTIME()[1])" + "&gd=" + "%(GETTIME()[2])" + "&g2h=1"
+	--
+	"\![execute,http-get,%(_url),--async=OnHRead1,--file=hcal.html,--timeout=200]"
+	
+	LOGGING("1 %_url===========")
+	--
+	tomorrowis
+	
+	_url2 = "https://www.hebcal.com/converter?cfg=xml&gy=" + tomyear + "&gm=" + tommonth + "&gd=" + tomday + "&g2h=1"
+	--
+	"\![execute,http-get,%(_url2),--async=OnHRead2,--file=hcal2.html,--timeout=200]"
+	
+	LOGGING("2 %(_url2)===========")
+}
+
+
+OnHRead1
+{
+	LOGGING("arrived at h1===============")
+	_file = "var\\hcal.html"
+	_buff = ""
+	
+	_output = ''
+	
+	FCHARSET(1)
+	
+	if FOPEN(_file,'r')
+	{
+	    for _buff = FREAD(_file); _buff != -1; _buff = FREAD(_file)
+		{
+			_output += _buff
+		}
+	}
+	
+	h_data = SPLIT(_output,'"')
+	
+	hyear = h_data[9]
+	hmonth = h_data[11]
+	hday = h_data[13]
+	
+	if SUBSTR(hmonth,0,2) == "Sh"
+	{
+		hmonth = "Shevat"
+	}
+	--
+	FCLOSE(_file)
+}
+
+OnHRead2
+{
+	LOGGING("arrived at h2================")
+	_file2 = "var\\hcal2.html"
+	_buff2 = ""
+	
+	_output2 = ''
+	
+	FCHARSET(1)
+	
+	if FOPEN(_file2,'r')
+	{
+	    for _buff2 = FREAD(_file2); _buff2 != -1; _buff2 = FREAD(_file2)
+		{
+			_output2 += _buff2
+		}
+	}
+	
+	h_data6 = SPLIT(_output2,'"')
+	
+	hyear6 = h_data6[9]
+	hmonth6 = h_data6[11]
+	hday6 = h_data6[13]
+	
+	if SUBSTR(hmonth6,0,2) == "Sh"
+	{
+		hmonth6 = "Shevat"
+	}
+	--
+	FCLOSE(_file2)
+	
+}

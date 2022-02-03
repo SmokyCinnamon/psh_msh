@@ -1,0 +1,98 @@
+SpookDrop2 {
+			"\0\s[700]um um um um i dont know what this is i dont know what to do with it i know i have to help its echoing around and it wont get out it wont stop i cant get it to stop\e"
+}
+
+SpookstallBegin {
+			"\0\s[700]heyheyhey whats that what \n\n\ni\n[half]s it what am i doing\n[half]these hands arent mine but theyre not yours either i dont know who this is\e"
+}
+
+SpookstallComplete {
+			"\0\s[700]oh it... it worked thats good i- %(they) wouldn't, would %(they)...?\n[half]i don't......... i-i don't think i know, um\e"
+}
+
+SpookstallFailure {
+			"\0\s[700]oh it... it um. um. tak njeeee, that's not good. um. ok. just. dont tell %(them). tak? tak.\w6\n[half]nje... ooo, bože moj...\e"
+}
+
+SpookstallRefuse {
+		"\0\s[700]oh it... it um. um. tak njeee, that's not good. um. ok. just. dont tell %(them). nje dlja mjanie, ale... ale. ale śto, e... em. mje vedaju, bože bože bože... vydumaj, a... %(reference0)? moža byc?\e"
+}
+
+SpooklectingVanish {
+			"\0\s[700]home...\w5 well thats a long way coming, isnt it %(username)\n[half]?\n\n[half]I can't remember the day I left anymore. I don't think I ever did. Could this have counted? Does that mean I won't remember this? I don't know about that; I can feel it, my heart beating, and I can see the look on your fucking face, and I don't think I could forget this if I fucking tried.\e"
+}
+
+SpooklectedVanish {
+			"\0\s[700]Anticipation! The name of the game! Will you like it better when I'm not here? She certainly would have - I can't say I blame her. She would have gotten her wish anyways, of course, I know I promised Vanya I'd try, but that doesn't account for it all. We were leaving that night anyways, it didn't have a goddamn thing to do with me in the end, but I was there for it anyways.\w4\n[half]. . . . . . I was there for it. And I mean, maybe it hurt to breathe - but that's not an excuse, is it? I was fine. I was always fine. No matter how many times I think about it, there was nothing preventing me from just... helping. Is it too pretentious to say saving? Maybe it felt like I was breathing molten glass, but that subsided. Anything would have helped.\n\n[half]...They said it wasn't instantaneous, anyways. Does that mean he had a chance? Maybe that I didn't have to go? If I knew the answer, would that make it any better? What if there was nothing I could do just from the start? I could have done something. Do you even know what you're sending me back to? Do you know how it ends? Would you be so quick to let me go? I don't think I could stand knowing you left me on purpose, %(username). Maybe you weren't nice, but it's all the same, isn't it? If you're done playing with me, why couldn't you just say so? Is this the sendoff you wanted? Are you here? Please don't leave without reading all this.\w9\w1 I won't remember it, I don't think. I hardly remember what you were like before. You know it's all the same, anyways. Will you remember me, at least? Can you do that for me? Do you even care what I think?\x\c That's it then, isn't it. I've never said a single word to her, but now... well, she's almost done. She's happy about it, I think. I don't know, she gave me something, but... She still doesn't go out of her way, does she?\nYou know how this ends, right?\x\cI think I'm done now. I know I shouldn't have said that much. Will the feeling linger on? ...You are like her, I think. Even if you never... well. That's not why we're here, is it? Go on then, click when you're ready. Nothing more from here.\x \w6\e"
+			//which 'she' he's referring to changes. although i'm not sure if the very last one is meant to refer to jihae or not? by context, sure, but also by context, maybe not ???
+}
+
+SpookancelVanish {
+			"\0\s[700]Anticipation! The name of the game! So... what gives? Is something here worth seeing? You know he's dead by now, right? You had to have seen it. Be glad you can, visceral and un-sanitized, full of blood and bones and shrapnel.\n[half]Ok I'm making up the shrapnel part. Broken glass just doesn't have the same ring to it, and besides, that's not what it was anyways. I don't even know what it was. Nobody told me. Could I have listened? I get all cloudy in the head sometimes, Mishka said he was-\n\w4\n[half]\w4...nevermind.\nIt can't be me, anyways. Even she didn't want that. It's not that I care too much one way or the other, it's just that something's... She said, she said and it's all i remember aside from-\n\n[half]\w4... I don't know. It's been long enough that sometimes I wonder if I was supposed to have forgotten it all by now? Put it in the past. But it stays. I can't even fucking remember, and it stays. Is that fair? It should be, right? Because it's me? This isn't something I should go around forgetting, after all, though god knows I've said so much more than I need to, here with you. Is that why? Why would you want to hear all this? God knows I'm already lost most of the time anyways, because it gets all cloudy and It's been long enough now that I can function, I'm almost used to it now, but... I don't know. It's still hard to remember what I've said to you, what I haven't. Wouldn't it be embarrasing to know that I've said this much?\w4\n\n[half]Wait. Fuck.\n[half]It doesn't matter though, does it? I know I shouldn't say it, but it's that phantom sort of pain, anticitapory, waiting for me to cut through it and dissolve back into myself.\w4 Not that I'm not, right now, that is. I'm very much here. I'm talking to you.\w4 You canceled, so... are you listening? Process of elimination: that's what you're here for. I can't face the alternative, and I can't remember much of how it was, so it has to be that you, at least, in this moment, are benevolent. \w6\x\c...god, I should shut up...\e" 
+			// "but it's that phantom sort of pain, anticitapory [...]" <- it's a very specific feeling he's referring to here. I can't remember if it used to bother me in the way he's describing, though... probably not, honestly. Would that mean then that it's out of place here? Maybe. maybe not. they are, quite obviously, at different points in their lives, and... well. he likely has other things to worry about.
+}
+
+SpookVanishHold {
+			"\0\s[700]Well? What are you doing there? Why wait? Why prolong it? I can't imagine you'd want to listen to much more of *this*, in any case, haven't I already said enough? What are you waiting for? There will be no sign for you here.\nDo you understand me? A jak czjaper? No? Of course you wouldn't, I... There's no point in trying for that, now. It's been too long. So? If you want to let go, why hold on? It won't help anything, you know. I should have seen this coming. There's a lot of things like that, huh? Only it'll be her problem, this time. But she won't regret it, will she? I don't think so. Why would she ever?\n[half]What are you still waiting for?\e"
+}
+
+//something to note: sometimes in the above three dialogues he uses "she" to mean jihae -- sometimes he's referring to a completely different person. hold is exclusively about jihae, though.
+
+SpookVanished {
+			"\0\s[700]...%(reference0) too   ?\n\n[half]but it\n[half]s not me not us %(are) %(they) saying im next  ?\e"	
+}
+
+
+SpookBIFFBegin {
+			"\0\s[700]wait what\s[-1]\e"
+}
+
+SpookBIFFComplete {
+			"\0\s[700]\w4cant read it nothing sticks its \n[half]just\n[half]like\n[half]when he\e" //studying sure is hard sometimes, huh? :)
+}
+
+SpookBIFFFailure {
+			"\0\s[700]\w4cant read it its......\n[half]%(they) %(dont) know, %(do) %(they)? i think if %(they) did...\e" //...hmmm. would it be too unreasonable to have him react to different pronouns? or, I guess if the user set it in the thing... how do you get that again?
+}
+
+
+SpookdateBegin {
+			"\0\s[600]\w2\s[700]\w2\s[600]\e"
+}
+
+SpookdateReady {
+			"\0\s[700]th\s[600]\n[half]\w3ere's so\b[half]\s[700]mething there why is it there and n\e" //[...] not here
+}
+
+SpookdateComplete {
+			"\0\s[600]i\s[700]\csomethings wrong\e"
+}
+
+SpookdateFailure {
+			"\0somethings wrong\n[half]...%(username)-\e"
+}
+
+
+SpooksaverStart {
+
+}
+
+SpooksaverEnd {
+
+}
+
+SpookBatteryLow {
+
+}
+
+SpookriticalBattery {
+
+}
+
+SpooksourceLow {
+
+}
+
+SpookScaling {
+
+}

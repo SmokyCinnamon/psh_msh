@@ -21,14 +21,20 @@ AiTalk
 		{
 		        {
 			        if CHAIN.IDName == "" {
-				    case nowmode {
-					when "spooktime" {lastTalk = SpookTalk}
-					others {
-						case rel {
-							when 0 {lastTalk = NolTalk}; when 1 {lastTalk = AdzinTalk}; when 2 {lastTalk = DvaTalk}
-							others {
- 				    lastTalk = RandomTalk
-			        }}}}}
+						if nowmode == "spooktime" {lastTalk = SpookTalk} else {
+							case stage {
+								when 1 {
+									case nowmode {
+										when "fight" {lastTalk = FightTalk_Msh}
+										when "fightfight" {lastTalk = FightTalk}; when "reconvene" {lastTalk = reconTalk}
+										others {
+											lastTalk = RandomTalk
+								}}}
+								when 2 {lastTalk = RandomTalkTwo}
+								others {lastTalk = RandomTalkLh}
+							}
+						}
+					}
 			        else {
 				    lastTalk = ChainTalk
 			        }
@@ -42,70 +48,24 @@ AiTalk
 	}
  }
 
-
-//--RandomTalk 
- //Alright, here we go! This is where ALL your ghost's random dialogue will go! These are the conversations that they'll have with you or each other that pop up depending on the talk rate defined in menu.dic (or if you ignored that, set in bootend.dic in the first boot, which would be every five minutes).
- 
-//*********************Advanced User Info*******************************
-//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
-
-
 RandomTalk : nonoverlap
 {
-	//"\1\s[10]Code's broke.\w2\n\nThis is just to fix it.\e"
 	// TEXT FORMATTING -- SUPER USEFUL
 	// \f[height,(number)] default goes back to normal height. \f[strike,true/false/default] strikethrough, sub is subscript, sup is superscript, underline, bold, and italic speak for themselves, and [color,r,g,b] changes text to that color.
 	// \a_[address]actual text\_a for linking to websites and such
 	
 	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
 	"\1\s[10]How's your cat?\w2 Still fluffy?\w8\0\s[0]Fluffy as hell.\e"
-	
-	"\1\s[16]Well, where are you Varvara?\w8\0\s[9]...I'll let that one slide\e"
-	
-	// "\1\s[10]I am getting \f[italic,true]so\f[italic,false] many song ideas here.\w8\0\s[9]I'm glad one of us is.\e:chain=baaaaaaadliar"
-	
-	// "\1\s[18]You think we should see about contacting the others?\w8\0\s[0]Probably.\e"
-	
-	"\1\s[18]So, what's your favorite part of being here?\w8\0\s[0]I don't know. A break from being on tour, I guess. \w8\1\s[14]\n\n[half]Hm.\e"
-	
-	"\1\s[16]Everything is so\w4 c\w2o\w2l\w1d\e"
-	
-	//"\1\s[10]How've you been doing, %(username)?\w8\0\s[0]I hope you're doing good\w1, but it's alright if you're not.\e"
-	
-	"\1\s[10]Got any updates on your cat?\w8\0\s[0]As fluffy as ever. I was told he watched a video of one of our concerts and was captivated by it. \w8\1\s[10]\n\n[half]Aw, he misses you.\e"
-	
-	// "\1\s[10]Kinda wish I had my guitar...\e"
-	
-	"\1\s[10]So, Jora said the other day he was thinking about getting rid of his boots\w1.\w1.\w1.\w8\0\s[2]What\w1?\w1! No way! \w8\1\s[18]\n\n[half]I know! I told him if they'd lasted him this long, he should probably keep them until they \f[italic,true]actually\f[italic,false] started to wear out\w1.\e:chain=jorasboots"
-	
+	"\1\s[10]Got any updates on your cat?\w8\0\s[0]As fluffy as ever. I was told he watched a video of one of our concerts and was captivated by it. \w8\1\s[10]\n\n[half]Aw, he misses you.\e"	
 	"\1\s[10]I wish your cat would be here. \w8\0\s[4]Yeah\w1.\w1.\w1.\w2 \f[sub,true]fluffy little bastard\w2.\w2.\w2.\f[sub,false]\e"
-	
 	"\1\s[10]What's your cat been up to?\w8\0\s[0]Being large and fluffy. \w4\n\w2He's doing good.\e"
-	
 	"\1\s[10]I wonder if %(username) has any cats?\w8\0\s[0]I hope you keep them inside!\e" 
-	
 	"\1\s[10]%(username) seems kinda nice. \w8\0\s[9]I guess.\e"
-	
-	// "\1\s[10]Worlds are spinning\w8\0\s[0].\w3.\w4.\w5are\w1.\w4 Are you trying to write a song\w1.\e" //...nah. keep it in though
-	
 	"\1\s[10]Heard of the band %(bandtime), %(username)?"
-	
 	"\1\s[10]%(bandtime)'s music is pretty nice.\w8\0\s[0]You should give them a listen sometime.\e"
-	
 	"\1\s[10]Got any pets, %(username)?\w8\0\s[8]If you have cats, it's better to keep them inside.\e"
-	
 	"\1\s[10]Vadik wanted me to say something to you...\w8\0\s[8]Well? \w8\1\s[10]\n\n[half]...But I don't remember what it was.\e"
-	
 	"\1\s[18]Maybe we \f[italic,true]should\f[italic,false] comandeer %(username)'s notepad...\w8\0\s[0]I knew you'd see reason.\e"
-	
-	// "\1\s[10]Living in a computer is kinda strange...\w8\0\s[0]Yeah, no beds, no cats...\w4 \s[4]I kinda want to go home\w1.\e"
-	
-	// "\1\s[10]Man, we should go and try to message Vadik or someone.\w8\0\s[9]...Yeah, we \f[italic,true]were\f[italic,false] kind of on tour there...\e"
-	
-	//"\1\s[18]We could do so many songs about living in a computer.\w8\0\s[0]That's far too optimistic.\w4 Maybe one or two.\e"
-	
-	// "\1\s[19]...You don't have your guitar with you.\w8\0\s[4]Aw, hell.\e"
-	
 	"\1\s[10]Hmmm...\w8\0\s[8]???\e"
 	
 	{
@@ -116,53 +76,20 @@ RandomTalk : nonoverlap
 	--
 	" \w8\1\s[18]\n\n[half]Really? What about you\w2, %(username)?\e"
 	}
-	
-	"\1\s[16]Revol\w2u\w4t\w2i\w2o\w3n\w1.\w1.\w1.\w8\0\s[0]Hey, that's my song.\e"
-	
-	"\1\s[10]\f[italic,true](He starts to say something, then seems to think better of it.)\f[italic,false]\e"
-	
 	"\1\s[10]If the world was ending, what would you do?\w8\0\s[8]I don't really know.\w8\1\n\n[half]\s[15]Thought you wouldn't.\w8\0\n\n[half]\s[3]Then why'd you ask?\e"
-	
 	"\1\s[10]You're more quiet then usual. \0\s[0]So?\e"
-	
-	"\1\s[16]The road is my home\w2.\w2\nAnd it's not a place\w3 for love\w1.\e"
-		
 	"\1\s[18]So\w1, about the other day\w2.\w2.\w2.\w8\0\s[9]Don't\w1.\e"
-		
-	"\0\s[0]Thought\w4 you\w2'd be like this \w4\nUntil\w3 the\w3 end\w2.\w2.\w3.\w8\1\s[10]Haha\w8\0\s[1]\n\n[half]Shut up, it's stuck in my head.\w8\1\s[18]\n\n[half]I didn't say anything.\w8\0\s[0]\n\n[half]Probably thought it, though.\w8\1\s[18]\n\n[half]Thought what, exactly?\e"
-	
 	"\1\s[18]You think there's any paper here?\n\w2.\w4.\w4. Actually\w2, probably not.\e"
-	
 	"\0\s[0]%(username), what kind of music do you like?\w8\1\s[18]Maybe %(username) doesn't like music.\e"
-	
 	"\1\s[18]Jora's also told me that you had something to say.\w8\0\s[9]Yeeeeaaaaaaaaaah, uh, I'll get back to you on that later. \w8\1\s[19]\n\n[half]You sure about that?\e"
-	
-	"\1\s[10]I was looking at the sky the other night.\w8\0\s[8]...And? \w8\1\s[10]\n\n[half]There were a lot of stars, that's all. \w8\0\s[4]\n\n[half]Aw, I wish I could've seen that. It's always so cloudy...\e"
-	
 	"\1\s[10]How's the weather, %(username)? \w8\0\s[8]Is it nice out\w2?\e"
-	
-	"\1\s[16]And after all,\w3 everything's still here\w8\0\s[6]\f[italic,true](He hums along.)\f[italic,false]\e"
-		
-	"\1\s[18]I feel like everyone knows something but me...\w8\0\s[9]...\e"
-	
-	"\1\s[16]Mon\w3ey \w4for no\w4thing\w1.\w2.\w3.\w8\0\s[6](He hums along.)\e"
-				
-	"\1\s[10]Hey, Pasha? \w4\0\s[0]What's up? \w4\1\s[10]Just... Sorry. \0\s[4]\e"
-	
-	"\1\s[10]D'you think Vanya would've\0\s[8]\1\s[14]...\w2... Nevermind.\w2 Sorry.\e"
-	
-	"\0\s[0]I think\w2.\w2.\w2.\s[9] I'm worried about Jora\w2.\w6\1\s[10]Aren't we all?\e"
-	
+	"\1\s[18]I feel like everyone knows something but me...\w8\0\s[9]...\e"		
+	"\1\s[10]D'you think Vanya would've\0\s[8]\1\s[14]...\w2... Nevermind.\w2 Sorry.\e" //? not sure what exactly he was going to be saying here.
 	"\0\s[0]Aven's beem talking about inviting everyone over for my birthday this year\w2.\w3 I wish he wouldn't\w2.\e"
-	
-	"\0\s[0]Kinda wish Jora would talk about what's been bothering him\w2.\w6\1\s[10]A bit hypocritical, coming from you.\e" //this... i think should be a chain lmao
-	
+	"\0\s[0]Kinda wish Jora would talk about what's been bothering him\w2.\w6\1\s[10]A bit hypocritical, coming from you.\e" //this... i think should be a chain lmao	
 	"\0\s[8]What did Vanya say he was gonna do?\w8\1\s[18]I don't remember.\e" //thoughtful
-	
 	"\0\s[8]Talked to Vanya lately\w1?\w8\1\s[18]Not recently\w1, why\w1?\e:chain=firstchain"
-		
-	//"\1\s[13]Vanya isn't saying anything about Anchor 1 to me.\w8\0\s[9]Have you tried not being so intimidating? \e:chain=questionhim" //not sure if this should be shell related or not lol. probably, considering I have the anchor, but they don't have any other shells as of right now.
-	
+
 	//--Multiple Responses	
 	{
 	
@@ -184,15 +111,33 @@ RandomTalk : nonoverlap
 	-- //closing dashes
 	"\e" //Dialogue ends
 	}
-	
-	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+
 	"\1\s[10]Hey, darling, come out quickly to the yard...\w4\0\s[0](Just for you, I brought a\w3long the guitar.)\e"
 	"\1\s[10]We didn't know each other\w4 until this summer...\e"
-	"\0\s[0]Friend\w3 dear-to-me \w4\nWhat did\w3 you come-to-be?\w4\nYou were\w3 young, you were thin\w3...\e"
-	"\1\s[10]I hope you're feeling better, though.\w4\0\s[0]...me? Why?\w5\1\s[10]\n\n[half]That's... well, I'll get back to you on that later.\e"
-	
-	"Hey, %(misha)?\w4\1\s[10]What's up?\w6\0\s[9]You ever think about dying?\1\s[12]\w6\n\n\w3.\w4.\w4.\w5 What the fuck, dude.\e"
+	"\0\s[9]So\w2.\w3.\w3.\w3 Um\w2, how\w2's it going\w2, %(username)\w2?\e"
+	"\0\s[9].\w2.\w2.\e"
+	"\0\s[8]So\w2.\w2.\w2.\w4 What\w2's up\w2?\e"
+	"\1\s[10]Hey there, %(username).\e"
+	"\1\s[18]What's up there, %(username)?\e"
+	//"\1\ы[10]Тест. да.\у"
+	"\1\s[10]...\e"
+	"\1\s[10]Guess there's not too much to do here. kinda boring.\e"
+	"\1\s[10]So uh... heard of Kino yet, %(username)? Pretty old band, but I like it. Real shame about their singer, though.\e" //older from the boy's point of view. this is what i get for putting them in the future...
+	"\1\s[10]Ey, listen %(username), tell me, if you happen to get your hands on some kind of guitar, alright? At least it would give me something to do...\e"
+	"\0\s[0]Wonder how my cat\w2's doing\w2.\e"	
+	"\1\s[10]So! Cats, huh?\w6\1\s[0]Yeah. Cats.\e"
+	"\1\s[10]%(username), you busy up there? Up to anything interesting?\e"
+	"\0\s[-1]\w2\1\s[19]Um... bye?\nI mean I didn't think... hm.\w4\nWait here for a bit %(username).\w2\x\1\s[-1]\w9\w9\1\s[10]\0\s[9]\1Hi! We're back.\e" //i am not implying anything i am not filtering anything nope not at all
+	"\1\s[10]You know what's weird about this place?\w4 It's just kind of like... warm. But the same warm. It doesn't change.\x So, uh, what's up with that %(username)? And could you turn it down maybe?\e" //it's impossible to be perfectly air-conditioned for everyone! that and i think most users so far are used to warmer tempuratures than there are in belarus
+	"\1\s[10]So uh, heard of Zemfira at all, %(username)? I think her music's pretty nice.\e"
+	"\1\s[10]Hm...\w4 You ever tried learning another language, %(username)? Me'n Pasha both know english, russian, and belarusian, but that's sort of par for the course, so...\e"
+	"\1\s[10]Ej, Paša, u miane josć pytanne...\w6\0\s[8]Dyk i? Ja słuśaju.\w4\1\n\n[half]\w2Nu, što dumaeš o situacia ŭ dama? My tam ne były ŭ poslednii čas...\w6\0\n\n[half]Tak norm. Im ŭsio budze dobra.\e"
+	"\1\s[10]You like cats, %(username)? Pasha's got this real fluffy cat back home, very cute.\e"
+	"\1\s[10]You know how whenever you want to do something it's always the one thing you can't do right then?\w6\0\s[0].....Tak?\w6\1\n\n[half]that's me right now. with guitar. I want to fuck around on my guitar is what I'm saying.\w6\0\n\n[half]okej.\e"
+
+	"Hey, %(misha)?\w4\1\s[10]What's up?\w6\0\s[9]You ever think about dying?\1\s[18]\w6\n\n\w3.\w4.\w4.\w5 What the fuck, dude.\e"
 	"Tabe nje zaminač...?\w4\1\s[18]Vielmi.\w2\0\s[9]\w4\n\n[half]A... ladna.\e"
+	if sh == "on"; "\0\s[0]...галава баліць, пісталёт стрэляе а я упадзе...\w6\1\s[19]Uh... you okay dude?\w4\0\s[2]\i[101]...\e"
 	//pools
 	parallel Pool("Pool_Nowshell","%(nowshell != '')")
 	parallel Pool("Pool_winter","%(season == 'winter')")
@@ -220,17 +165,6 @@ RandomTalk : nonoverlap
 	parallel Pool("Pool_ranoutra","%(timeslot == 'earlymorning')")
 	parallel Pool("Pool_vecher","%(timeslot == 'evening')")
 	parallel Pool("Pool_questions","%(username != '')")
-	/*else
-	{
-		"\1\s[10]Um, if you're seeing this, i think something broke.\e"
-	}*/
-	if другдруга == 1 //maybe i could call this with \![raise,stuff]
-	{
-		//"\1\s[10]This is if we've been fighting.\e"
-		"\0\s[0]Um\w2.\w2.\w2.\w2 Hi\w2, %(username)\w2.\e"
-		"\0\s[0]%(misha)\w2, do\w2-\w4\1\s[10]Заткнись.\w6\0\s[3]\n\n\w2.\w2.\w2.\e" //there has to be a harsher way of saying shut up. i do not know it
-		"\0\s[0]Um\w2.\w2.\w2. Mishka\w2-\w3\1\s[10]\4\e"
-	}
 }
 //pools
 Pool_Nowshell : array {
@@ -239,10 +173,6 @@ if nowshell == "default_shell"
 		if sh == "on"
 		{
 			"\1\s[18]What happened to your wrist, anyways?\w8\0\s[3]...Nothing important. \w8\1\s[13]\n\n[half]Important enough for you to not tell me. \w8\0\s[4]\n\n[half]...\e"
-	
-			"\1\s[13]...So, how's Anchor 1 healing?\w8\0\s[9]Fine.\1\s[18]\n\n[half]Well, Vanya did say you'd tell me at some point. \w4\0\s[2]\n\n[half]Quit it! %(username) is right there! \w8\1\s[17]\n\n[half]Jeez, fine.\e" //shell related?
-	
-			//"\1\s[10]ah, it's kind of cold here.\w8\0\s[7]I don't wear long sleeves all the time.\e" //shell related? note that surface7 needs changed. doesn't match up as well with Mikhail's as it should.	
 		}
 	}
 	if nowshell == "summer" //i got all the seasons but nothing in them
@@ -253,28 +183,14 @@ if nowshell == "default_shell"
 }
 Pool_winter : array {
 	if season == "winter" {
-		"\0\s[0]It's always so cold...\e"	
-	if month >= 12 {
-		"\0\s[8]December...\w4 \n\s[5]Happy holidays\w1, %(username)!\e"
-		
-		"\0\s[0]Is it cold out?\w8\1\s[18]Snowing, maybe? \w8\0\s[6]\n\n[half]We should build a snowman!\e"
-		
-		"\0\s[0]Cold out?\e"
-		
-		"\1\s[10]Hey.\w4 Hey, Pasha.\w6 \0\s[0]I'm not listening to you\w2.\w6 \1\s[10]\n\n[half]I swear, I'm not gonna--\w1\0\s[0]I *said*\w2 I'm not listening.\e:chain=snowmaaaan"
-		
-		"\0\s[0]Well, it's cold,\w3 cold,\w3 cold\w2 outside\w2, doctor in the dead\w3,\w2 in the dead of\w2 night\w3.\w2.\w2.\e"
-		
+		"\0\s[0]It's always so cold...\e"
 		"\1\s[10]Hanukkah season.\w4\0\s[0]Janice\w2.\w6\1\s[10]\n\n[half]I suppose.\e"
-		
-		"\0\s[0]Janice\w2.\e"
-		
-		"\1\s[10]It's soooooooo cold...\w6\0\s[0]But are you complaining?\e"
-		
-		//"\0\s[0]I hope Vanya won't worry too much. We've really been here a while...\e"
-		
-		//"\1\s[10]I've tried checking %(username)'s web browser, but haven't had much luck in actually... \w3getting\w2 anywhere. \0\s[3]Oh\w2.\w2.\w2.\n\n\\w4\f[italic,true](He looks sad.)\f[italic,false]\e" //this *should* have a variable to stop the other ""contact"" dialogue from playing. or, whatever those are called. Just not sure how exactly to get it working. still, it'll lessen the pool of dialogue once the user reahces dece,ber and gets this to play, so better come up with a lot more!
-		//and also stop talking so much in comments.
+		"\0\s[0]Janice\w2.\e"	
+	if month >= 12 {
+		"\0\s[0]Is it cold out?\w8\1\s[18]Snowing, maybe? \w8\0\s[6]\n\n[half]We should build a snowman!\e"
+		"\0\s[0]Cold out?\e"
+		"\1\s[10]Hey.\w4 Hey, Pasha.\w6 \0\s[0]I'm not listening to you\w2.\w6 \1\s[10]\n\n[half]I swear, I'm not gonna--\w1\0\s[0]I *said*\w2 I'm not listening.\e:chain=snowmaaaan"
+		"\0\s[0]Well, it's cold,\w3 cold,\w3 cold\w2 outside\w2, doctor in the dead\w3,\w2 in the dead of\w2 night\w3.\w2.\w2.\e"
 		if day >= 10 || day <= 18
 		{
 			"\0\s[0]Latkes...\w6\1\s[10]That's all?\e"
@@ -285,7 +201,6 @@ Pool_fevral : array {
 	"\1\s[10]How much do you think I would have to pay Jora to get him to not wear his boots for a day or two?\w6 \0\s[0]I don't think you could give him any amount of money and have him be willing to do that\w2.\e"
 }	
 Pool_oktjabr : array {
-	//"\0\s[0]October! Did you know that Smoky was born in october?\w8\1\s[10]Nice fun fact, anyways.\e"	
 	"\0\s[0]Ghosts might be around, so you better watch out for them, %(username).\w8\1\s[10]Pasha, we *are* ghosts.\e"	
 	"\1\s[10]Hey, aren't you cold?\w8\0\s[0]No\w2.\w2.\w2.\w2?\w4\nAre you\w2?\e"	
 	"\1\s[10]...\n\n[half]\w4*(Looks like he's thinking about something\w1.)\n\w8(You wonder how important it is\w2.)*\e"
@@ -311,32 +226,25 @@ Pool_subota : array {
 	"\0\s[0]Saturday\w2, caturday\w2.\w6\n.\w2.\w2.\w2 I like cats\w2.\w8\1\s[10]Where did you learn these puns\w?\e"
 }
 Pool_sunday : array {
-	"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"	
-	"\1\s[10]Y'know, sunday isn't remotely fun.\w6\0\s[0]You just say that because you don't like washing dishes.\w4\1\s[10]\n\nI-\w3\nI don't.\w6\0\s\n\n\w3.\w3.\w3.\w4 What\w2.\e" //i dunno about you but saturday evenings are full of holy shit Electronics exist what do you mean there's dishes	
+	"\0\s[0]Sunday, funday\w8\1\s[10]\w2.\w3.\w4.\w4 Okay\w3.\w4.\w5.\w5?\e"
 	"\0\s[0]Sundays are just so... so *boring*.\w6\1\s[10]Maybe to you.\w6\0\s[0]\n\n[half]Hey, what's that supposed to mean?\w6\1\s[10]\n\n[half]Nothing.\e"
 }
 Pool_ranoutra : array {
 	"\0\s[0]Feels early.\w8\1\s[10]That's cause it is.\e"	
 	"\0\s[0]Can you read books like that this early?\w8\1\s[10]I don't see why not.\e" //pasha means upsode down.	
-	"\0\s[0]Can you read in *english* this early?\w6\1\s[10]Yes?\w6\0\s[0]\n\n[half]Oh, nothing, just that my brain meltswhenever I try.\w6\1\s[10]\n\n[half]Lovely imagery Pasha, thank you.\e"
+	"\0\s[0]Can you read in *english* this early?\w6\1\s[10]Yes?\w6\0\s[0]\n\n[half]Oh, nothing, just that my brain melts whenever I try.\w6\1\s[10]\n\n[half]Lovely imagery Pasha, thank you.\e"
 }
 Pool_vecher : array {
-	"\0\s[0]Hey, how do you spell evening?.\w8\1\s[10]E\w4 V\w4 E\w4 N\w4 I\w4 N\w4 G\w2.\e"	
 	"\0\s[0]Eve\w3ni\w2ng time\w1, so this is my eve\w2ning\w2 song\w2.\w2.\w2.\e"	
 	"\0\s[0]Are you getting tired\w2? I\w2'm getting tired\w2.\w6\1\s[10]I think that's just a you thing.\e"	
 	"\1\s[10]I would absolutely love to pet your cat right now.\w6\0\s[0]Hey\w2, %(username)\w2! Go beam my cat up here\w2!\e"	
-	"\1\s[10]*(...he's doing what is perhaps the worst attempt at air guitar anyone has ever seen. It's highly amusing.)*\e"
-	"\1\s[10]Hmm...\w6\0\s[0]Что-то не так?\w6\1\s[10]\n\n[half]Ах, нет. Просто думаю о наши друзья.\w6\0\s[0]\n\n[half]Ага, ну ладно. Иногда мне тоже.\e"
-		
+	"\1\s[10]*(...he's doing what is perhaps the worst attempt at air guitar anyone has ever seen. It's highly amusing.)*\e"		
 }
 	
 //--Chains
 //Here is where you will put your bits of chain dialogue. They are outside of RandomTalk, which makes them a bit more flexible as I mentioned above. As you can see, this function is called "firstchain", which was the same tag we put at the end of the chain in aitalk with \e:chain=firstchain.
 
-firstchain
-{{CHAIN
-	"\1\s[10]Oh, this is about the other day\w1, isn't it\w2?\w8\0\s[0]The world may never know\w1.\e:chain=end"
-}}CHAIN
+
 
 //Note also it ends with \e:chain=end, basically ending the chain.
 questionhim
@@ -346,30 +254,21 @@ questionhim
 	"\1\s[10]... Intimidating\w2?\0\s[9]Took you long enough to notice that\w1.\1\w8\s[13]\n\n[half]Am I really intimidating\w1? \w8\0\s[9]\n\n[half]You absolutely are\w1.\e:chain=end"
 }}CHAIN
 
-jorasboots
-{{CHAIN
-    "\0\s[0]......So\w2, did he listen to you\w1? \w8\1\s[10]He said\w1, that he would think about it.\e:chain=end"
-}}CHAIN
-
-baaaaaaadliar
-{{CHAIN
-    "\1\s[10]...So, got any you wanna share yet? \w8\0\s[0]Huh\w1? \w8\1\s[10]\n\n[half]Song ideas. You're not too great at lying, Pasha. \w8\0\s[1]\w3.\w3.\w3.\w3.\w3.\w3.\w3 Shut up\w1.\e:chain=end"
-}}CHAIN 
-
 snowmaaaan
 {{CHAIN
     "\1\s[10]\f[italic,true](He starts singing.)\f[italic,false]\n\n Do you wanna build a snow maaaan\w1~?\w6\0\s[0]I can't hear you!\e:chain=end"
 }}CHAIN
 
-OnArgue //all this is is setting the argue dialogue either on or off.
-{if другдруга == 0; {другдруга = 1}; else {""}}
-
-
 OnMinuteChange
  {
+	if totalrun[0] == 60 {
+		totalrun[0] = 0
+		if totalrun[1] == 24 {totalrun[1] = 0; totalrun[2]++}
+		else {totalrun[1]++}
+	} else {totalrun[0]++} //minute
 	timeslot = GetTimeSlot //this tells the ghost what time it is so the time related conversations above will work.
 	--
-	if weekday == 5 && hour >= against[0] && minute >= against[1] {"\t\*\0\s[-]\1\s[-]\0\s[-](...They just left...\n%*\q[Switch,??] %*\q[Quit,OnClose,nobodyhome]\e"}
+	if weekday == 5 && hour >= against[0] && minute >= against[1] {"\t\*\0\s[-1]\1\s[-1]\0\s[-1](...They just left...\n%*\q[Switch,??] %*\q[Quit,OnClose,nobodyhome]\e"}
  	if minute == 0 && Flag("NotifHour") == 1 {OnNotifHour}
 	/*-- //do i need  these...?
 	{
@@ -421,8 +320,8 @@ OnSecondChange
  //---- MikireTalk ---------------------------------------------------------------------
  //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.
  
-MikireTalk
-{ if spooktime == "on" || nowmode == "spooktime"; {""}; else {
+MikireTalk {
+	if spooktime == "on" || nowmode == "spooktime"; {""}; else {
 	"\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring him back."
 	//this does in fact work. why would Misha lie to you?
 	//maybe if you're being mean. He may have an honest face but not many reservations about lying.
@@ -431,10 +330,17 @@ MikireTalk
  //----EndMikireTalk--------------------------------------------------------------------
  //For after you bring the character back on screen.
  
-EndMikireTalk
- {if spooktime == "on" || nowmode == "spooktime"; {""}; else{"\0\s[0]Oh\w2, back to the land of the light\w2.\w6\1\s[16]Yay!\w6\0\s[9]\n\n[half]Party time\w2.\e"}}
+EndMikireTalk {
+	if spooktime == "on" || nowmode == "spooktime"; {""}
+	elseif nowmode!= "" {""}
+	else{"\0\s[0]Oh\w2, back to the land of the light\w2.\w6\1\s[16]Yay!\w6\0\s[9]\n\n[half]Party time\w2.\e"}}
 
-OnSurfaceRestore {if nowmode == "spooktime" {"\0\s[700]\1\s[60]\e"}; else {"\0\s[0]\1\s[10]\e"}}
+OnSurfaceRestore {
+	if nowmode == "spooktime" {"\0\s[700]\1\s[60]\e"}
+	elseif nowmode == "fight" {
+		if Flag("PATSAGGRESIVELY") == 1 {"\1\s[34]\0\s[-1]"} else {"\1\s[30]\0\s[-1]"}}
+	elseif nowmode == "fightfight" {"\0\s[102]\1\s[-1]"}
+	else {"\0\s[0]\1\s[10]\e"}}
 
  
  //--OnKeyPress

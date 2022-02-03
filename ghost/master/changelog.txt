@@ -1,6 +1,20 @@
 !!!IMPORTANT: IF YOU WERRE ON V1.2.1 OR BELOW, GO TO PAGE 3 OF PASHA'S MENU AND CLICK "YOU WANT TO TALK TO HIM". TYPE "variablefix" (CASE SENSETIVE) IN THE DIALOGUE BOX. THIS WILL HELP YOU. !!!
 !!!IMPORTANT: IF UPDATING FROM v1.2.2 OR BELOW, YOU WILL NEED TO RESET YOUR PRONOUNS IN THE CONFIG MENU !!!
 
+v1.2.5
+> fixed not being able to pet pasha
+> added a new event
+> added new surfaces
+> added commu dialogue for when there is spamton
+> fixed checks for reloading themselves from the menu
+> i added so many new files im so sorry
+> shuffled code around
+> deleted old and unused dialogue
+> fixed a typo of meltswhenever -> melts whenever
+> changed a line from "[...] same as the last time you poked me." to "[...] same as the last time!"
+> fixed a typo of coukd you -> could you
+> added some new dialogue for creepymode
+
 v.1.2.4
 > fixed 3/4 of the creepymode checks still being on the old variable for mouse functions
 > fixed closing dialogue for creepymode having unenclosed operators and thinking an || included the && after it

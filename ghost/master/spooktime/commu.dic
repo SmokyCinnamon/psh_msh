@@ -1,0 +1,92 @@
+//This is your ghost starting a conversation with another ghost. It will choose a random one from the currently open ghosts.
+SpookStartTalking
+{
+	AlreadyResponded = 1
+	if ghostexcount > 0
+	{
+		_ghost = ANY(REPLACE(ghostexlist,C_BYTE1,","))
+		if reference0 != ""; _ghost = reference0 //If this was a manual ping
+		"\![commu-%(_ghost)]" //This isn't a real sakurascript tag, but structuring it like one means it wont show in dialogue. This is for loop prevention.
+		--
+		//Checks for the Sakura name
+		case _ghost
+		{
+			when "Girl" //Known ghosts, add as many whens as needed.
+			{
+				res_reference0 = "Girl"
+				
+				"\0\s[0]Hello Girl!\w8\w8 Hello Triangle!\w8\w8\e GirlTriangleHello01"
+				"\0\s[0]Hi Girl!\w8\w8 How are you,\w4 Triangle?\w8\w8\e GirlTriangleHello03"
+			}
+			others //Ghosts there is no specific response to.
+			{
+				res_reference0 = _ghost
+				
+				"\0\s[0]Hello %(_ghost)!\w8\w8\e"
+			}
+		}
+	}
+	else //If no ghosts are open.
+	{
+		"\0\s[0]Nobody else is here.\e"
+	}
+}
+
+SpooklyToGhost //This is your ghost receiving a communication.
+{
+	_speech = SPLIT(reference1,"\e")[0] //Everything the ghost said that the user can see
+	ConvoTag = SPLIT(reference1,"\e")[1] //Everything after the \e, which will be the invisible tags that track the conversation
+	_last = SPLIT(reference1,"::")[1] //Ghosts using the reflect system send "::%(_speech)" at the end of every communication, so _last is what THIS ghost last said. See below.
+	
+	_last = RemovePauses(_last) //Removes pauses and quicksection tags so it can display properly
+	"\![commu-%(reference0)]" //This isn't a real sakurascript tag, but structuring it like one means it wont show in dialogue. This is for loop prevention.
+	--
+	case reference0
+	{
+		when "Girl"
+		{
+			"\![quicksection,true]%(_last)\![quicksection,false]" //Only add this for ghosts that use the reflect system
+			--
+			"%(TalkToGirl)"
+			--
+			"::%(_speech)" //Reflects back what the other ghost said, only put it here if you're talking to a ghost that uses the same system or things may break
+		}
+		others //Responses to unknown ghosts. AlreadyResponded keeps them from getting stuck in a loop.
+		{
+			if "\![commu-%(reference0)]" !_in_ SHIORI3FW.LastTalk //This checks for that commu tag up above! So, if the last dialogue was NOT a response to the ghost that just pinged us, give a normal response
+			{
+				res_reference0 = reference0
+				
+				"\0\s[0]Hey there %(reference0)!\w8\w8\e"
+			}
+			else //If this IS a response to a ghost we already spoke to, say the alternate response and end the conversation
+			{
+				res_reference0 = ""
+				
+				"Hope you're doing well.\e"
+			}
+		}
+	}
+}
+
+TalkToGirl //All responses to Girl would be here. Make one of these for each ghost they talk to so you can keep them separate easily! Or you can put it all in the function above, whatever works for you.
+{
+	if "GirlTriangleHello02" _in_ ConvoTag
+	{
+		res_reference0 = "Girl"
+		
+		"\0\s[0]We'll never see this dialogue.\w8\w8 Oh well,\w4 it's here for example!\w8\w8\e"
+	}
+	elseif "GirlTriangleHello04" _in_ ConvoTag
+	{
+		res_reference0 = ""
+		
+		"\0\s[0]Another example response!\e"
+	}
+	else //You should have an else just in case the other ghost isn't updated with responses
+	{
+		res_reference0 = ""
+		
+		"\0\s[0]Hi Girl!\e"
+	}
+}

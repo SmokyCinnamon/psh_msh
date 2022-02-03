@@ -2,68 +2,110 @@
 
 //I'm going to level with you, I don't really get a lot of what's going on in this .dic file. I'm pretty sure it's related to having ghosts talk to each other, or acknowledge each other's presence in some way, but I don't really know. If someone else knows more about this than I do, I'd love to hear about it, but for now, leave it all alone except for a few lines near the bottom.
 // listen -- whatever is happening in this file is black magic. that being said, reconstructing it isn't *entirely* difficult, unless you already put a million ghosts in there (which is not these two. yet.) copy/pasting essentially from zar's guide because... h
+//Function for other ghosts to request the stats of your ghost! Fill this in with any stats you think could be helpful, like total pets, current mode, current shell, etc. If a lot of ghosts do this, more ghosts can comment on each other and have little interactions! You can add as much detail as you like, just please document it well
+OnStatsRequested
+{
+	if reference0 == ""; reference0 = "__SYSTEM_ALL_GHOST__" //If the ghost requesting stats doesn't send their name, just send it to all ghosts
+	
+	"\![notifyother,%(reference0),OnStatsGiven,%(sakuraname)]"
+	
+	//Add a list of what stats you include here and which references they'll be sent as!
+	//reference0 - Sakura name of this ghost (so that it can be identified - don't remove this)
+}
 
 OnStartTalking
-{ _AlreadyTalked = 1 //setting flag. i put this in a local variable just because... it makes sense?
-	if ghostexcount > 0
-	{ _num = RAND(ghostexcount); _randghost = "%(ghostexlist[_num])"
-	// this is... checking if the ghosts around are above 0 and then choosing one randomly from that list to talk to?
-	--
-	case _randghost
-	{
-		when "CheeryBot" //zar says known ghosts -- add as many as needed. idk how that works, but trial and error...?
-		{
-			res_reference0 = "CheeryBot" //this is also setting a flag but... What the Fuck
-			"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[19]I have never been his support group please stop that.\w6\0\s[8]Sure you aren\w2't\w2.\w4\e"
+{
+	if nowmode == "spooktime" {SpookStartTalking} else {
+		case stage {
+			when 1 {
+				case nowmode {
+					when "fightfight" {}
+					others {
+						AlreadyTalked = 1
+						if ghostexcount > 0
+						{ _num = RAND(ghostexcount); _randghost = "%(ghostexlist[_num])"
+						// this is... checking if the ghosts around are above 0 and then choosing one randomly from that list to talk to?
+						--
+						case _randghost //you're looking for the sakura name.
+						{
+							when "CheeryBot" //zar says known ghosts -- add as many as needed. idk how that works, but trial and error...?
+							{
+								res_reference0 = "CheeryBot" //this is also setting a flag but... What the Fuck
+								"\0\s[0]Oh hey\w2, finally someone who can actually *be* Vanya\w2's support group\w2.\w6\1\s[19]I have never been his support group please stop that.\w6\0\s[8]Sure you aren\w2't\w2.\w4\e"
+							}
+							when "Temmie" {
+								res_reference0 = "Temmie"
+								"\0\s[8]Is that a cat...?\w4\e"
+							}
+							when "Vanya and Vadik" {
+								res_reference0 = "Vanya and Vadik"
+								"\0\s[0]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\w4\e"
+							}
+							when "Azura" {
+								res_reference0 = "Azura"
+								"\1\s[10]Who're you?\w3 What's up with wings?\w3\0\s[0]\f[height,8]\f[italic,true]The\f[italic,false] wings\w2, Misha\w2.\f[height,false]\w4\e"
+							}
+							when "RYS-0825" //? why is this s's name?
+							{
+								res_reference0 = "RYS-0825"
+								"\1\s[10]You're a... skeleton...?\w6\0\s[0]\f[height,10](That's... the least weird thing going on here, 	Mishka.)\f[height,normal]\w4\e"
+							}
+							when "SPAMTON!!" {
+								res_reference0 = "SPAMTON!!"
+								"\1\s[10]uh... hi?\e"
+							}
+							others {
+								res_reference0 = _randghost //setting the flag to whatever ghost it picked
+								"\1\s[10]Hi, %(_randghost).\w4\e"
+							}
+						}}
+						else //no ghosts
+						{
+							"\1\s[10]I can't talk to someone who's not there...\e"
+						}
+					}
+				}
+			}
+			when 2 {StartTalkingTwo}
+			others {StartTalkingLh}
 		}
-		when "Temmie"
-		{
-			res_reference0 = "Temmie"
-			"\0\s[8]Is that a cat...?\w4\e"
-		}
-		when "Vanya and Vadik"
-		{
-			res_reference0 = "Vanya and Vadik"
-			"\0\s[0]Hi Vadik!!! When did you get here?!\w4 \1\s[10]Like, seriously. But hey, my two favorite people! How's it going?\w4\e"
-		}
-		when "Azura"
-		{
-			res_reference0 = "Azura"
-			"\1\s[10]Who're you?\w3 What's up with wings?\w3\0\s[0]\f[height,8]\f[italic,true]The\f[italic,false] wings\w2, Misha\w2.\f[height,false]\w4\e"
-		}
-		when "RYS-0825" //? why is this s's name?
-		{
-			res_reference0 = "RYS-0825"
-			"\1\s[10]You're a... skeleton...?\w6\0\s[0]\f[height,10](That's... the least weird thing going on here, Mishka.)\f[height,normal]\w4\e"
-		}
-		others 
-		{
-			res_reference0 = _randghost //setting the flag to whatever ghost it picked
-			"\1\s[10]Hi, %(_randghost).\w4\e"
-		}
-	}}
-	else //no ghosts
-	{
-		"\1\s[10]I can't talk to someone who's not there...\e"
 	}
 }
 
 
 OnCommunicate
  {
-	if reference0 == "user" || reference0 == "User"
+	if TOLOWER(reference0) == "user"
  	{
-		//---- 사용자로부터의 이야기에 대답
- 		ReplyToUser
+		//Answering the user - I've removed the function that goes along with this because it doesn't link to anything.
 	}
  	else
 	{
- 		//---- 유령로부터의 이야기에 대답
-		ReplyToGhost
+		if SHIORI3FW.CanTalk //If the ghost can talk - isn't currently typing and isn't in a menu
+		{
+			if nowmode == "spooktime" {SpooklyToGhost} else {
+				case stage {
+					when 1 {
+						case nowmode {
+							when "fightfight" {}
+							others {
+								ReplyToGhost
+							}
+						}
+					}
+					when 2 {CommunicateTwo}
+					others {CommunicateLh}
+					//sending the other two to a function that'll handle any events by itself rather than adding more code here
+				}
+			}
+		}
+		elseif reference2 != "timerraise" //If it's already triggered the timerraise once, it won't do it again
+		{
+			//If the ghost is in a menu or the middle of talking, it'll run this timerraise command and try again in 5 seconds. If the second attempt fails, it will give up.
+			"\C\![timerraise,5000,1,OnCommunicate,%(Sanitize(reference0)),%(Sanitize(reference1)),timerraise]"
+		}
  	}
 }
-
-ReplyToUser; {TalkToUser}
 
 
 //Again, I just have to guess at what's going on here since I've never really seen this in action. I think what's going on here is that there is a limited functionality for having ghosts communicate with each other, but I don't really know how you'd set it up or even see it happen. I believe ReplyToGhost would be in response to something the other ghost is saying, but I'm not sure. I wouldn't really mess very much with this - you may even just want to blank out the dialogue entirely. I've never personally seen it come up. I may experiment with this later and see if I can figure out more about it, but for now I wouldn't worry too much.
@@ -107,13 +149,18 @@ ReplyToGhost
 		res_reference0 = ""
 		"\0\s[0]Can I pet you...?\e"
 	}
+	elseif reference0 == "SPAMTON!!" {
+		res_reference0 = ""
+		"\1\s[18]Um. All due respect but I do not understand a eh... a single word coming out of your mouth.\e"
+	}
 	else
 	{
-		if _AlreadyTalked == 0
-		{ _AlreadyTalked = 1; res_reference0 = reference0; "\1\s[10]Hm? Want something, %(res_reference0)?\e"
+		if AlreadyTalked == 0 {
+			AlreadyTalked = 1; res_reference0 = reference0; "\1\s[10]Hm? Want something, %(res_reference0)?\e"
 		}
-		else { _AlreadyTalked = 0; res_reference0 = ""
-		"\1\s[10]\w6... guess that's all.\e"
+		else {
+			AlreadyTalked = 0; res_reference0 = ""
+			"\1\s[10]\w6... guess that's all.\e"
 		}
 		/*{
 		//"\0\s[0]%(res_reference0).\w8\1\s[10]Odd thing to say.\e"
@@ -121,4 +168,52 @@ ReplyToGhost
 		"\1\s[10]Hi, %(res_reference0).\e"
 		}*/
 	}
+}
+
+
+RemovePauses //Removes pauses and quicksections
+{
+	_argv[0] = RE_REPLACE(_argv[0],"\\!\[quicksection,(true|false|1|0)\]","")
+	_argv[0] = REPLACE(_argv[0],"\_q","")
+	_argv[0] = RE_REPLACE(_argv[0],"\\w\d","") //\w
+	_argv[0] = RE_REPLACE(_argv[0],"\\_w\[\d+\]","") //\_w[]
+	_argv[0]
+}
+
+//You don't need to edit anything here! This menu is for you only. If you have the debug variable set to 1, you can press C to access this little menu, which lets you send test commu messages to other ghosts!
+OnCommuPingMenu
+{
+	_display = ""
+	foreach REPLACE(ghostexlist,C_BYTE1,","); _ghost
+	{
+		_display += "\![*]\q[%(_ghost),OnStartTalking,%(_ghost)]\n"
+	}
+	_display += "\n\![*]\q[Custom ping,OnCustomPing]"
+	_display
+}
+
+OnCustomPing
+{
+	"What do you want to send?\![open,inputbox,OnCustomCommu,-1]"
+}
+
+OnCustomCommu
+{
+	_display = ""
+	foreach REPLACE(ghostexlist,C_BYTE1,","); _ghost
+	{
+		_display += "\![*]\q[%(_ghost),OnCustomPingSend,%(_ghost),%(Sanitize(reference0))]\n"
+	}
+	"Send to which ghost?\n\n"
+	--
+	_display
+}
+
+OnCustomPingSend
+{
+	res_reference0 = reference0
+	"%(reference1)"
+}
+Sanitize {
+
 }
