@@ -17,16 +17,11 @@ OnMouseMove
 	{
 		//---- it will run the mouse functions for that character
 		if nowmode == "spooktime" {SpookuraMouseMove} else {
-			case stage {
-				when 1 {
-					case nowmode {
-						when "fightfight" {MouseMoveSakuraFight}
-						others {MouseMoveSakura}
+				case nowmode {
+					when "fightfight" {MouseMoveSakuraFight}
+					others {MouseMoveSakura}
 					}
-				}
-				when 2 {MouseMoveTwo}
-				others {MouseMoveLh}
-	}}}
+	}}
 	else //if the character isn't 0, then it must be the side character.
 	{
 		//---- this will run the mouse functions for the side character.
@@ -200,8 +195,7 @@ OnMouseDoubleClick
 						others {MouseDoubleClickSakura}
 					}
 				}
-				when 2 {DoubleClickTwo}
-				others {DoubleClickLh}
+				others {}
 	}}}
 	else {
 		if nowmode == "spooktime" {SpookeroDoubleClick} else {
@@ -389,8 +383,7 @@ MouseDoubleClickKero
 	if reference3 == 0 {
 	case stage {
 		when 1 {OnWheelSakura}
-		when 2 {WheelTwo}
-		others {WheelLh}
+		others {}
  }}
 	else {OnWheelKero}}
  

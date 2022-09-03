@@ -1,31 +1,11 @@
-//Parser:
-// for talking to the boys. idk I just like them and want to talk to them
 OnPashaTalk
 {
 	"Hi.\n\![open,inputbox,Onpashainput,-1]"
 }
 
-OnMishaTalk
-{
-	"\1\s[10]\![open,inputbox,Onmishainput,-1]"
-}
-
 Onpashainput
 {
-	if reference0 == "happy birthday"
-	{
-		"\0\s[0]It\w2's not my birthday\w3?\e"
-	}
-	elseif reference0 == "i feel bad"
-	{
-		"\0\s[0]Maybe Mishka can give you a hug\w3, then\w3!\e"
-	}
-	elseif reference0 == "i love you"
-	{
-		namiable += 12
-		"\0\s[5]Awwwww\w3, that\w3's sweet\w3, %(petname)\w3."
-	}
-	elseif reference0 == "variablefix" {
+	if reference0 == "variablefix" {
 		yamiable = 550
 		"\0\s[10]yeah sorry about that.\e"
 	}
@@ -42,37 +22,10 @@ Onmishainput
 }
 
 
-
-Pool_questions : array {
-	//if Flag("canbrush") != 1; "\i[143]У меня был такой плохой день... Лина спросила о как я ем в последнее время. Перед тем, что ты тоже спросишь - как норм!\ж5 Все как норм. Но она этого не верила - /скажи как этот норм/, она просила. Почемц у нее такая проблема с моего ответа?\x\![raise,OnAiQuestion,showinmenu,upsetday]\к"
-}
-Pool_stquestions : array {
-
-}
-
 OnQuestionFlag {
 	case reference0 {
 		when "notifhour" {if Flag("NotifHour") != 1; MiscFlags ,= "NotifHour"; else {RemoveFlag("NotifHour")}
 		--; OnTalkConfig}
-		when "canbrush" {if Flag("canbrush") != 1; MiscFlags ,= "canbrush"; RemoveFlag("upsetday"); RemoveFlag("brushy")}
-		when "brushy" {if Flag("brushy") == 0; MiscFlags ,= "brushy"}
 		when "patsaggresively" {if Flag("PATSAGGRESIVELY") == 0; MiscFlags ,= "PATSAGGRESIVELY"}
 	others {}}
-	--
-	case reference1 {
-		when "upsetday" {if Flag("upsetday") == 0; MiscFlags ,= "upsetday"}
-	others {}}
-}
-
-OnMenuQuestion {
-	"\_q"
-	--; if Flag("upsetday") == 1; "%*\q[Ты ли не зло?,aboutday] "
-	--; if Flag("brushy") == 1; "%*\q[Мне можно помочь?,brushy]"
-	--; "\n\n[half]\![*]\q[Назад,OnMenuRun]\x"
-}
-
-Select.aboutday {
-	"\0\i[423]Ну нет, я просто...\нМне страшно, так сказать. Если бы она заметила, то... кого еще? Может, все мои друзья уже знает?\xВ таком случае, подобно на то, что происходит с Пашой. Мы с Вале говорили, а она думает, что он попробовал сам убит. Но, он не хочет с никем поговорить, кроме Ваня. Если они все знают, что у меня рпп, что значить для меня? Никого не хочу рассказать, но... я не знаю. Просто немного расстроено.\x\![raise,OnAiQuestion,brushy]"
-	--
-	OnMenuQuestion
 }

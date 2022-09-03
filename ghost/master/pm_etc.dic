@@ -136,8 +136,7 @@ OnFileDrop2
 		}
 	}
 			}
-			when 2 {FileDrop2Two}
-			others {FileDropLh}
+			others {}
 }}}
 
 //This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
@@ -164,11 +163,12 @@ OnInstallBegin {
 			"\0\s[21]Oh, uh... sure, I guess.\e"
 		}
 		others {
-			"\0\s[0]Huh, installing something?\w8\1\s[10]This zip or nar has an install.txt file.\e"}
+			//"\0\s[0]Huh, installing something?\w8\1\s[10]This zip or nar has an install.txt file.\e"
+			"\p[2]\s[-1]* (Installing whatever this is...)"
+		}
 	}
 			}
-			when 2 {InstallBeginTwo}
-			others {InstallBeginLh}
+			others {}
 }}}
  //---- OnInstallComplete -------------------------------------------------------
  //OnInstallComplete runs once the file above has finished installing.
@@ -182,7 +182,7 @@ OnInstallComplete {
 
 		}
 		others {
-	"\0" //this means your main character will be speaking first, therefore the \s[] at the beginning of each line will be defining your main character's pose.
+	/*"\0" //this means your main character will be speaking first, therefore the \s[] at the beginning of each line will be defining your main character's pose.
  	--
 	if reference0 == "shell" //This is checking to see if what you installed is classified as a shell in the install.txt. Remember the line in install.txt that said type,ghost or type,shell? This is why that line is important, that's what tells the program what it's installing like so.
  	{	
@@ -218,12 +218,12 @@ OnInstallComplete {
 		//Reference1 here would be the name of the plug-in. Replace as needed.
  	}
 	else
-	{"\0\s[9]Well\w2, I'm\w2.\w2.\w2. not sure *what* this is\w2, but it's installed\w2! \s[0]That\w2's good right\w4\1\s[10]Presumabley so, yes\e"}
+	{"\0\s[9]Well\w2, I'm\w2.\w2.\w2. not sure *what* this is\w2, but it's installed\w2! \s[0]That\w2's good right\w4\1\s[10]Presumabley so, yes\e"}*/
+			"\p[3]\s[-1]* (Installed %(reference1). If it's a shell, are you sure it's the right one..?)"
 		}
 	}
 			}
-			when 2 {InstallCompleteTwo}
-			others {InstallCompleteLh}
+			others {}
 }}}
 
 //---- OnInstallFailure -------------------------------------------------------
@@ -238,7 +238,7 @@ OnInstallFailure {
 
 		}
 		others {
-	"\0The installation has failed.\n\n[half]\w5" //this first bit of dialogue begins the explanation of what happened. You can replace this with an appropriate intro statement.
+	/*"\0The installation has failed.\n\n[half]\w5" //this first bit of dialogue begins the explanation of what happened. You can replace this with an appropriate intro statement.
 	--
 	if reference0 == "unsupported" //These if statements determine how it happened to finish the piece of dialogue. This checks if the reason it failed is because it was unsupported.
 	{
@@ -249,12 +249,12 @@ OnInstallFailure {
 	{
 	"...I couldn't extract it right. Try getting Misha to do it.\e"
 	//See above but for a failed extraction.
-	}
+	}*/
+		"\p[2]\s[-1]* (It failed because of %(reference0). or because it was %(reference0), whichever.)"
 		}
 	}
 			}
-			when 2 {InstallFailureTwo}
-			others {InstallFailureLh}
+			others {}
 }}}
  
  //--OnInstallRefuse
@@ -269,12 +269,10 @@ OnInstallRefuse {
 
 		}
 		others {
-			"\0\s[0]We can't install this. \w4Maybe for %(reference0)?\e"
-	
-	//reference0 in this function refers to the ghost this file is associated with, probably the name of the ghost listed in its install.txt file. You would see this if you dropped a shell made for a different ghost on your current ghost, for example. They can't install a shell for themselves they can't use, right? Anyway, replace this with what you wish, you can use the reference0 envelope or not if you want.
+			//"\0\s[0]We can't install this. \w4Maybe for %(reference0)?\e"
+			"\p[2]\s[-1]* (this is probably for %(reference0) instead of this ghost.)"
 			}}}
-			when 2 {InstallRefuseTwo}
-			others {InstallRefuseLh}
+			others {}
 }}}
 
 
@@ -289,15 +287,20 @@ OnVanishSelecting {
 	if nowmode == "spooktime" {SpooklectingVanish} else {
 		case stage {
 			when 1 {
-	case nowmode {
-		when "fightfight" {
+				case nowmode {
+					when "fightfight" {
 
+					}
+					others {
+						//"\0\s[0]Oh, uninstalling?\w8\1\s[10]Well, we'll get to go home...\e"}
+						"\p[2]\s[-1]* (Is this what you wanted? Do you really mean it?)"
+					}
+				}
+			}
+			others {}
+			}
 		}
-	others {"\0\s[0]Oh, uninstalling?\w8\1\s[10]Well, we'll get to go home...\e"}
-			}}
-			when 2 {VanishSelectingTwo}
-			others {VanishSelectingLh}
-}}}
+}
 
 //OnVanishSelected
 //When you decide to uninstall them. 
@@ -311,10 +314,11 @@ OnVanishSelected {
 
 		}
 		others {
-			"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?\w9\w9\e"}
+			//"\0\s[0]...Huh.\w8\1\s[10]See you again sometime, %(username)?\w9\w9\e"
+			"\p[2]\s[-1]* (Are you absolutely certain?)"
+		}
 			}}
-			when 2 {VanishSelectedTwo}
-			others {VanishSelectedLh}
+			others {}
 }}}
 			
 
@@ -331,10 +335,11 @@ OnVanishCancel {
 
 		}
 		others {
-			"\0\s[0]... I guess we're staying after all.\e"}
+			//"\0\s[0]... I guess we're staying after all.\e"
+			"\p[2]\s[-1]* (There might not be any more to see. On the other hand, how long have they been on your computer?)"
+		}
 				}}
-				when 2 {VanishCancelTwo}
-				others {VanishCancelLh}
+				others {}
 }}}
 
 //--TalkVanishButtonHold
@@ -349,10 +354,11 @@ TalkVanishButtonHold {
 
 		}
 		others {
-			"\1\s[10]Hey, if you're sending us home don't just hold the button. Nobody gets anywhere that way.\e"}
+			//"\1\s[10]Hey, if you're sending us home don't just hold the button. Nobody gets anywhere that way.\e"
+			"\p[2]\s[-1]* (Unfortunate. Or do you know how this ends? Either that or you're very stubbornly not updating.\w6\nI don't know how much is getting transferred over yet...)"
+		}
 			}}
-			when 2 {VanishButtonHoldTwo}
-			others {VanishButtonHoldLh}
+			others {}
 }}}
 
 
@@ -368,12 +374,10 @@ OnVanished {
 
 		}
 		others {
-			"\0\s[0]\1\s[10]%(reference0) was just now uninstalled.\w8\0\s[0]Didn't like them?\e"
-	
+			//"\0\s[0]\1\s[10]%(reference0) was just now uninstalled.\w8\0\s[0]Didn't like them?\e"
 			//reference0 here is the name of the other ghost.
 			}}}
-			when 2 {VanishedTwo}
-			others {VanishedLh}
+			others {}
 }}}
 
 
@@ -401,12 +405,11 @@ OnBIFFBegin {
 
 		}
 		others {
-			"\0\s[0]Checkin' your mail.\e"
-	
-			"\1\s[10]Sure, I'll look for new mail.\e"
+			//"\0\s[0]Checkin' your mail.\e"
+			"\p[2]\s[-1]* (checking mail)"
+			//"\1\s[10]Sure, I'll look for new mail.\e"
 			}}}
-			when 2 {BIFFBeginTwo}
-			others {BIFFBeginLh}
+			others {}
 }}}
 
  
@@ -422,7 +425,7 @@ OnBIFFComplete {
 
 		}
 		others {
-	if reference0 == 0 //If you have no new mail.
+	/*if reference0 == 0 //If you have no new mail.
  	{"\0\s[0]Nothin' new. That good?\e"}
 	elseif reference0 == 1 //If you have one new email.
  	{"\0\s[0]One entire email! That's nice, right?\e"}
@@ -434,10 +437,10 @@ OnBIFFComplete {
 	elseif reference0 > 100 //If there are over one hundred new emails.
 	{"\0\s[0]%(reference0) entire emails! That's...... a lot, actually.\w8\1\s[10]Wow, yeah.\e"}
  	else //For any other number of emails.
-	{"\0\s[0]%(reference0) entire emails! That's nice, right?\e"}
+	{"\0\s[0]%(reference0) entire emails! That's nice, right?\e"}*/
+		"\p[2]\s[-1]the number returned of potentially plural emails is %(reference0)"
 		}}}
-		when 2 {BIFFCompleteTwo}
-		others {BIFFCompleteLh}
+		others {}
 }}}
 
  //---- OnBIFFFailure ---------------------------------------------------------------
@@ -452,7 +455,7 @@ OnBIFFFailure {
 
 		}
 		others {
-	if reference0 == "timeout" //If the connection times out.
+	/*if reference0 == "timeout" //If the connection times out.
  	{
  		"\0\s[0]Connection's gone. Timed right out.\e"
 	}
@@ -471,10 +474,10 @@ OnBIFFFailure {
 		"\0\s[0]We can't connect to the account.\w8\1\s[10]The error returned is '%(reference[0])'.\e"
 		
 		//reference0 here stores the error message the email server would have given the ghost, hopefully.
- 	}
+ 	}*/
+		"\p[2]\s[-1]* (There was an error. %(reference0).)"
 			}}}
-			when 2 {BIFFFailureTwo}
-			others {BIFFFailureLh}
+			others {}
 }}}
 
 
@@ -496,11 +499,10 @@ OnUpdateBegin {
 
 		}
 		others {
-			"\0\s[0]Starting update.\w8\e"
-			"\1\s[10]Updating now...\w8\e"
+			//"\0\s[0]Starting update.\w8\e"
+			//"\1\s[10]Updating now...\w8\e"
 			}}}
-			when 2 {UpdateBeginTwo}
-			others {UpdateBeginLh}
+			others {}
 }}}
 
  //---- OnUpdateReady ---------------------------------------------------------
@@ -515,11 +517,10 @@ OnUpdateReady {
 
 		}
 		others {
-			"\1\s[10]There are %(reference0) new files.\w8\e"	
+			"\p[2]\s[-1]* (%(reference0) new files.)\e"	
 			//reference0 here storing the number of new files. You don't have to use it if you don't want to.
 			}}}
-			when 2 {UpdateReadyTwo}
-			others {UpdateReadyLh}
+			others {}
 }}}
 
 
@@ -537,15 +538,16 @@ OnUpdateComplete {
 		}
 		others {
 			if reference0 == "none" //if the ghost had nothing to update with
-	 			{"\1\s[10]Nothing new.\e"}
+	 			{"\p[2]\s[-1]* (Nothing new.)\e"}
 		 	else //if the ghost has updated successfully
-				{"\1\s[10]Update worked! Maybe there's new things?\w4\0\s[0]Check changelog? Do... you want to?\n\![*]\q[yes,opencl]\n\![*]\q[no,done]\e"}
-			}}}
-			when 2 {UpdateCompleteTwo}
-			others {UpdateCompleteLh}
+				{
+					//"\1\s[10]Update worked! Maybe there's new things?\w4\0\s[0]Check changelog? Do... you want to?\n\![*]\q[yes,opencl]\n\![*]\q[no,done]\e"}
+					"\p[2]\s[-1]Done. Wanna see the changelog?\n\n[half]\![*]\q[yes,opencl]\n\![*]\q[no,done]"
+			}}}}
+			others {}
 }}}
 Select.opencl
-{ "\0\s[0]\![open,file,changelog.txt] There you go!\e"}
+{ "\0\![open,file,changelog.txt]\e"}
 
  //---- OnUpdateFailure -------------------------------------------------------------
  //Error messages if the update process fails in some way.
@@ -559,16 +561,16 @@ OnUpdateFailure {
 
 		}
 		others {
-			if reference0 == "timeout" //if the connection times out
+			/*if reference0 == "timeout" //if the connection times out
 		 		{"\1\s[10]Connection up and timed out. You might have to try again.\e"}
 		 	elseif reference0 == "md5 miss" //This is the final message displayed when you've run into an md5 error below at some point.
 				{"\1\s[10]The MD5 hash of the files don't match.\e" //wait would this be doesnt
 			}
 			else //for other errors
-			 	{"\1\s[10]Update's gone wrong.\w8\0\s[0]Because of the error '%(reference0)'.\e"}
+			 	{"\1\s[10]Update's gone wrong.\w8\0\s[0]Because of the error '%(reference0)'.\e"}*/
+				"\p[2]\s[-1]* (Update failed. Has something to do with %(reference0))"
 			}}}
-			when 2 {UpdateFailureTwo}
-			others {UpdateFailureLh}
+			others {}
 }}}
 
 
@@ -586,13 +588,13 @@ OnUpdate.OnDownloadBegin {
  	if "aitalk" _in_ reference0 //this is checking to see what kind of files are being downloaded. In this case, it's looking for files called aitalk in the download queue. If you want to have a specialized bit of dialogue for each type of file, you can expand this with elseifs and by replacing aitalk with whatever file you have in mind. Keep in mind my warning above though.
  	{
  		//"\0\s[0]We're gonna have more to talk about.\w8\1\s[10]It's in the aitalk file.\e"
-		"\0\s[0]Hm, words.\e"
+		//"\0\s[0]Hm, words.\e"
  	}
  	else //for files not specified above
  	{
 	//"\1\s[10]...\e"
 	
-	"\0\s[0]...\e"
+	//"\0\s[0]...\e"
 	}
 			}
 			else {
@@ -604,24 +606,21 @@ OnUpdate.OnDownloadBegin {
  //This checks the hash value of the files in the directory and the files listed in updates.dau, I believe. It will do this for every file the user downloads, so I again remind you of my warning above! For every file they download, they will have to go through three sets of unique dialogue, and it can get old fast. Not to mention it slows things down a lot. Again, I would recommend keeping this very brief, if not just replacing it with "..." instead.
  
 OnUpdate.OnMD5CompareBegin {
-	case nowmode {when "spooktime" {""}; others {
-	if stage == 1 {"\1\s[10]...\e"} else {""}}}
+	""
 }
 
  //---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
  //After they've checked the MD5 value and it matches. See above about the length of this message.
  
 OnUpdate.OnMD5CompareComplete {
-	case nowmode {when "spooktime" {""}; others {
-	if stage == 1 {"\1\s[10]MD5 check good.\e"} else {""}}}
+	""
 }
 
  //---- OnUpdate.OnMD5CompareFailure ---------------------------------------------------
  //If the MD5 values don't match, meaning if the file is missing or damaged or incomplete in some way. If you follow my Network Update directions carefully, this shouldn't come up very often, but don't be surprised if you run into it every now and then by forgetting a file here or there.
  
 OnUpdate.OnMD5CompareFailure {
-	case nowmode {when "spooktime" {""}; others {
-		if stage == 1 {"\0\s[0]The MD5 values don't match.\w8\e"} else {""}}}
+	""
 }
 
  
@@ -639,7 +638,7 @@ OnHeadlinesenseBegin
 	if spooktime == "on"; {"\0\s[700]\b[11]%(referenc0) gone pick someone else pick me i'll help i can help i'm helpful\e"}; else {
 		case stage {
 			when 1 {
-				"\0\s[0]%(reference0) selected.\e"
+				"\p[2]\s[-1]%(reference0) selected.\e"
 			}
 			when 2 {
 				//HeadlinesenseBeginTwo
@@ -671,12 +670,12 @@ OnHeadlinesense.OnFind
 			when 1 {
 	//----  What page You're on
  	if reference2 == "First" || reference2 == "First and Last"{ //---- First page
-		"\0\b2\s[0]%(reference0):"}
+		"\p[2]\b2\s[-1]%(reference0):"}
 	elseif reference2 == "Next"
  	{ //---- Second page
- 		"\0\b2\s[0]%(reference0):"}
+ 		"\p[2]\b2\s[-1]%(reference0):"}
  	elseif reference2 == "Last"{ //---- Last page
-		"\0\b2\s[0]%(reference0):"}
+		"\p[2]\b2\s[-1]%(reference0):"}
 	--
  	//---- Headlines
 	"\n\n%reference3\n"
@@ -716,9 +715,8 @@ Select.Headline_Cancel
 	if spooktime == "on"; {"\0\s[700]\b[11]helped helped helped helped !!! helped %(himher) yes i'm helpful\e"}; else {
 		case stage {
 			when 1 {
-	"\0\s[0]Headline viewing complete.\e"}
-	when 2 {Headline_Cancel_Two}
-	others {Headline_Cancel_Lh}
+	"\p[2]\s[-1]Headline viewing complete.\e"}
+	others {}
 	//Actually I take that back, you can change this line of dialogue here for when you're done looking at a headline to something else if you want.
 }}}
 
@@ -728,7 +726,7 @@ Select.Headline_Cancel
  //leaving it alone on purpose. can change later if needed.
 OnHeadlinesenseComplete {
 	case nowmode {when "spooktime" {""}; others {
-	"\0\s[0]No update. %(reference0).\e"
+	"\p[2]\s[-1]No update. %(reference0).\e"
 	//reference0 here supposedly always stores the value no update? Again this isn't hugely clear from what I can see. Anyway, this dialogue has never come up for me while using a ghost, so perhaps someone else who runs into it can offer more clarity. For now, you can leave it as is, or write up something else in here if you like.
  }}}
 
@@ -740,19 +738,19 @@ OnHeadlinesenseFailure  {
 		case stage {
 			when 1 {
 	case nowmode {when "fightfight" {""}; others {
-	"\0\s[0]The feed can't updated.\w8\1\s[10]Huh. Why?\w8\0\s[0]\n\n[half]" //This sets up an exchange between the two characters. The final part of the exchange continues below in the if statements.
+	/*"\0\s[0]The feed can't updated.\w8\1\s[10]Huh. Why?\w8\0\s[0]\n\n[half]" //This sets up an exchange between the two characters. The final part of the exchange continues below in the if statements.
  	--
 	if reference0 == "can't download" //if they can't download the rss feed for some reason
  	{"Can't download."}
 	elseif reference0 == "can't analyze" //if they can't read the file for some reason
  	{"Can't analyze."}
 	else //other errors
- 	{"I don't know."}
+ 	{"I don't know."}*/
+	"\p[2]\s[-1]* (%(reference0) the feed. If it's another error that's gonna look weird.)"
 	--
  	"\e" //And here is the final /e, so you don't need to include it in the if statements above. Another one of the very rare cases this occurs.
 			}}}
-			when 2 {HeadlinesenseFailureTwo}
-			others {HeadlinesenseFailureLh}
+			others {}
 }}}
 
 
@@ -766,52 +764,33 @@ OnHeadlinesenseFailure  {
  
 OnUpdatedataCreating {
 	if nowmode == "spooktime" {SpookdatedataCreating} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\1\s[10]Creating updates2.dau.\e"}}}
-			when 2 {UpdatedataCreatingTwo}
-			others {UpdatedataCreatingLh}
-}}}
+		""
+	}
+}
 
  //---- OnUpdatedataCreated -------------------------------------------------------------
  //After the updates2.dau file has been successfully created. Replace with whatever.
  
 OnUpdatedataCreated {
 	if nowmode == "spooktime" {SpookdatedataCreated} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]Misha made updates2.dau!\e"}}}
-			when 2 {UpdatedataCreatedTwo}
-			others {UpdatedataCreatedLh}
-}}}
+		""
+}}
 
  //---- OnNarCreating ------------------------------------------------------------------
  //Along the same lines, this is when they begin creating a .nar file for your ghost. .nars are the format most ghosts will be in, something similar to a .zip file, and this is the format you'll be distributing your ghost in most likely. Replace the dialogue with whatever you like.
  
 OnNarCreating {
 	if nowmode == "spooktime" {SpookreatingNar} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]Making nar file. I get to see other computers?\e"}}}
-			when 2 {NarCreatingTwo}
-			others {NarCreatingLh}
-}}}
+		""
+}}
 
  //---- OnNarCreated -------------------------------------------------------------------
  //After the nar file has been successfully created.
  
 OnNarCreated {
 	if nowmode == "spooktime" {SpookreatedNar} else {
-		case stage {
-			when 1 {
-	case nowmode {when "fightfight" {""}; others {
-	"\0\s[0]I made '%(reference0)'! Misha didn't help very much.\e"
-	//reference0 here will be the filename of the nar you just created. It should drop the nar in the folder where all your ghosts are listed, ssp\ghost\.
-			}}}
-			when 2 {NarCreatedTwo}
-			others {NarCreatedLh}
-}}}
-
+		""
+}}
  //****　Clock Synchronization　**********************************************************
 //**** 미카 (http://homepage2.nifty.com/ko-ki/)의 사전을 참고했습니다．감사＞こ 나무 성
 //This set of functions was done by the above Korean coder, I think. I'll leave their comment there untouched. 
@@ -826,12 +805,11 @@ OnSNTPBegin {
 		case stage {
 			when 1 {
 	case nowmode {when "fightfight" {""}; others {
-	"\0\s[0]We're going to check the time. Is it wrong?\w9\1\s[10]Connecting to %(reference0).\e"
+	//"\0\s[0]We're going to check the time. Is it wrong?\w9\1\s[10]Connecting to %(reference0).\e"
 	//%(reference0) here is the site they'll be using to check your clock. I wouldn't worry too much about what the site is or where it's defined, it should be accurate. Replace the dialogue with what you need, you don't have to use reference0 if you don't want to.
 	//this site doesn't work anymore & i do Not know where it's defined. :/
 			}}}
-			when 2 {SNTPBeginTwo}
-			others {SNTPBeginLh}
+			others {}
 }}}
 
 
@@ -859,8 +837,7 @@ OnSNTPCompare {
  		\![*]\q[Leave it alone,OnSNTPCANCEL]\e"
 	}
 			}}}
-			when 2 {SNTPCompareTwo}
-			others {SNTPCompareLh}
+			others {}
 }}}
 
  //----　OnSNTPEXECUTE ------------------------------------------------------------------
@@ -868,36 +845,24 @@ OnSNTPCompare {
  
 OnSNTPEXECUTE {
 	if nowmode == "spooktime" {SpookNTPEXECUTE} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]Time's alright now.\6\e"}}}
-			when 2 {SNTPEXECUTETwo}
-			others {SNTPEXECUTELh}
-}}}
+		""
+}}
 
  //----　OnSNTPCANCEL ------------------------------------------------------------------
  //If you decide not to change your clock when they tell you it doesn't match. Replace with what you want.
  
 OnSNTPCANCEL {
 	if nowmode == "spooktime" {SpookNTPCANCEL} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]Time's gonna stay wrong, then.\e"}}}
-			when 2 {SNTPCANCELTwo}
-			others {SNTPCANCELLh}
-}}}
+		""
+}}
 
  //----　OnSNTPFailure ------------------------------------------------------------------
  //If they can't change the clock for some reason, possibly because the site timed out but it could be anything. Replace with what you want.
  
 OnSNTPFailure {
 	if nowmode == "spooktime" {SpookNTPFailure} else {
-		case stage {
-			when 1 {
-			case nowmode {when "spooktime" {""}; others {"\0\s[0]Oh... I cant change it.\w8\1\s[10]Something went wrong.\e"}}}
-			when 2 {SNTPFailureTwo}
-			others {SNTPFailureLh}
-}}}
+		""
+}}
 
 
  //--OnDisplayChange----------------------------------------------------------------
@@ -920,11 +885,10 @@ OnScreenSaverStart {
 		case stage {
 			when 1 {
 	case nowmode {when "fightfight" {""}; others {
-	"\0\s[0]Screensaver time!\w7\1\s[10]Wiggle that mouse!\e"
+	//"\0\s[0]Screensaver time!\w7\1\s[10]Wiggle that mouse!\e"
 	//Replace with what you want.
 			}}}
-			when 2 {ScreenSaverStartTwo}
-			others {ScreenSaverStartLh}
+			others {}
 }}}
 
  //---- OnScreenSaverEnd -------------------------------------------------------
@@ -935,11 +899,10 @@ OnScreenSaverEnd {
 		case stage {
 			when 1 {
 	case nowmode {when "fightfight" {""}; others {
-	"\0\s[0]No screensaver now.\e"
+	//"\0\s[0]No screensaver now.\e"
 	//Replace with what you want.
 			}}}
-			when 2 {ScreenSaverEndTwo}
-			others {ScreenSaverEndLh}
+			others {}
 }}}
 
 
@@ -951,8 +914,7 @@ OnApplicationBoot {
 		case stage {
 			when 1 {
 			case nowmode {; when "fightfight" {""}; others {"\0\s[0]%(reference0) started.\e"}}}
-			when 2 {ApplicationBootTwo}
-			others {ApplicationBootLh}
+			others {}
 }}}
 
  //---- OnApplicationClose --------------------------------------------------------------
@@ -963,8 +925,7 @@ OnApplicationClose {
 		case stage {
 			when 1 {
 			case nowmode {; when "fightfight" {""}; others {"\0\s[0]%(reference0) closed.\e"}}}
-			when 2 {ApplicationCloseTwo}
-			others {ApplicationCloseLh}
+			others {}
 }}}
 
  //---- OnApplicationFileOpen ----------------------------------------------------------
@@ -975,8 +936,7 @@ OnApplicationFileOpen {
 		case stage {
 			when 1 {
 			case nowmode {; when "fightfight" {""}; others {"\0\s[0]Openin' %(reference1).\e"}}}
-			when 2 {ApplicationFileOpenTwo}
-			others {ApplicationFileOpenLh}
+			others {}
 }}}
 
 
@@ -990,11 +950,10 @@ OnBatteryLow {
 		case stage {
 			when 1 {
 	case nowmode {when "fightfight" {""}; others {
-	"\1\s[10]Battery is low. \w8\0\s[0]%(reference0) power left. Go plug it in!\e"
+	//"\1\s[10]Battery is low. \w8\0\s[0]%(reference0) power left. Go plug it in!\e"
 	//reference0 here is the amount of battery power. Replace as you like.
 			}}}
-			when 2 {BatteryLowTwo}
-			others {BatteryLowLh}
+			others {}
 		}
 }}
  
@@ -1003,12 +962,8 @@ OnBatteryLow {
  
 OnBatteryCritical {
 	if nowmode == "spooktime" {SpookriticalBattery} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]Hey, battery's super low! Please charge your computer!\e"}}}
-			when 2 {BatteryCriticalTwo}
-			others {BatteryCriticalLh}
-}}}
+		""
+}}
  
 //--OnBatteryNotify--------------------------------------------------------------------
 //This I believe checks to see if your laptop is plugged in or not. Originally this bit of code was commented out, so I suspect it may not work. It may need a plug-in of some sort. Either way, you can delete it or fill it out as you like.
@@ -1039,12 +994,8 @@ OnBatteryNotify
  
 OnSysResourceLow {
 	if nowmode == "spooktime" {SpooksourceLow} else {
-		case stage {
-			when 1 {
-			case nowmode {when "fightfight" {""}; others {"\0\s[0]System resources are pretty low.\e"}}}
-			when 2 {ResourceLowTwo}
-			others {ResourceLowLh}
-}}}
+		""
+}}
 
 
  //--OnShellScaling
@@ -1052,19 +1003,8 @@ OnSysResourceLow {
  
 OnShellScaling {
 	if nowmode == "spooktime" {SpookScaling} else {
-		case stage {
-			when 1 {
-	case nowmode {when "fightfight" {""}; others {
-	if reference0 >= 150 //this number is the percentage that you're scaling the ghost up to. In this case, it's 150%.
-	{"\0\s[0]We are 150% the original size.\w8\1\s[10]we were too small?\e"}
-	elseif reference0 == 100 //this is 100%
-	{"\1\s[10]Normal sized.\e"}
-	elseif reference0 == 50 //this is 50%. You can add any percentage that's listed under shell scaling if you want using more elseifs.
-	{"\0\s[0]We are 50% the original size.\w8\1\s[10]Small screen?\e"}
-			}}}
-			when 2 {ShellScalingTwo}
-			others {ShellScalingLh}
-}}}
+		""
+}}
 
 //_val =
 //FUNCTIONEX("time_check.dll","how_many_days",_lastyear,_lastmonth,_lastday,0,0,0)
@@ -1236,7 +1176,7 @@ OnGetShabbat
 	//no... i need the minutes, don't i...? how do...
 	//if i set the second part as, say, againstminute, i can just check like: if hour >= againsthour && minute >= agaisntminute
 	{
-		"\_q\b[2]Result:\n\nCandle lighting: %(shabbat[0])pm\nHavdalah: %(shabbat[1])pm\ncurrent time: %hour:%minute\w8\w8\![*]\q[raise,OnAgainstMath]\x"
+		"\_q\b[2]Result:\n\nCandle lighting: %(shabbat[0])pm\nHavdalah: %(shabbat[1])pm\ncurrent time: %hour:%minute\x\![*]\![raise,OnAgainstMath]"
 	}
 }
 OnAgainstMath
@@ -1247,7 +1187,7 @@ OnAgainstMath
 	if against[3] != TOINT(against[3]); {against[3] = TOINT(against[3])}; else {}
 	--
 	against[0] += 12; against[2] += 12
-	"%(against)\x"
+	//"%(against)\x"
 }
 
 //config menu yayyyy

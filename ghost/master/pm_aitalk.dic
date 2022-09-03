@@ -30,8 +30,7 @@ AiTalk
 										others {
 											lastTalk = RandomTalk
 								}}}
-								when 2 {lastTalk = RandomTalkTwo}
-								others {lastTalk = RandomTalkLh}
+								others {lastTalk = RandomTalk}
 							}
 						}
 					}
@@ -309,13 +308,8 @@ OnSecondChange
  
  OnHourTimeSignal
  {
-	friendlyall = namiable + yamiable //to update it & keep track of things
-	namiable += 3; yamiable += 3
 	if spookster == "on" && RAND(100) < 12; {nowmode = "spooktime"; "\1\s[60]\0\s[700]morning morning %(hour12) im sorry %(username) dont worry dont worry\e"}
-	OnUpdateRel
  }
- OnUpdateRel
- {if friendlyall >= 1000; {rel = 3}; elseif friendlyall >= 400 {rel = 2}; elseif friendlyall >= 100 {rel = 2} elseif friendlyall <= 0 {rel = 0} else {rel = 1}}
 
  //---- MikireTalk ---------------------------------------------------------------------
  //I'm actually a little fuzzy on MikireTalk and what exactly it does since it shows up a lot in odd places, but for the purposes of this function here, what this does is bring up some dialogue when the main character is off the screen. For example, if you dragged Girl over to the side of your monitor until she was partially concealed by it. This dialogue would then come up. If you don't want your characters to care, you can leave the dialogue blank.

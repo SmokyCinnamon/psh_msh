@@ -32,7 +32,7 @@ OpenSakuraMenu
 
 //--MenuRun
 //As you just saw above. This actually fills out the rest of the menu. If you're going to be adding or changing functions, this is where you'll be doing your edits.
-
+OnMenuRun {MenuRun}
 MenuRun
  {	
  	wd = GetWeekDay
@@ -63,7 +63,7 @@ MenuRun
 	\![*]\q[Config Menu,configmenu]\n/
 	\![*]\q[Functions,dosomething]\n/
 	\![*]\q[Stat counter,countcheck]\n\n[half]/
-	<< < | 1 \q[2,OnPage2] \q[3,OnPage3] | \q[>,OnPage2] \q[>>,lastpage]\n/
+	<< < | 1 \q[2,OnPage2] \q[3,OnPage3] | \q[>,OnPage2] \q[>>,OnPage3]\n/
  	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year), заряд:%(currentbattery)\e"
 	//\![raise,OnBatteryNotify]Battery:%(currentbattery)
 	//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
@@ -83,7 +83,7 @@ OnPage2 {
 	--; if Flag("showinmenu") == 1; "%*\__q[OnMenuQuestion]Ask a question\__q\n"
 	--
 	//\![*]\q[Dreidel,playdreidel]\n/
-	"\n\q[<<,MenuRun] \q[<,MenuRun] | \q[1,MenuRun] 2 \q[3,OnPage3] | \q[>,OnPage3] \q[>>,lastpage]\n/
+	"\n\q[<<,OnMenuRun] \q[<,OnMenuRun] | \q[1,OnMenuRun] 2 \q[3,OnPage3] | \q[>,OnPage3] \q[>>,OnPage3]\n/
  	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
 }
 OnPage3 {
@@ -101,7 +101,7 @@ OnPage3 {
 	"\![*]\q[You want to talk to him,OnPashaTalk]\n/
 	\![*]\q[When's candle lighting this week?,OnSearchShabbat]\n/
 	//\![*]\q[Russian?,OnTeachRus] | \![*]\q[Belarusian?,OnTeachBel]\n/
-	\n\q[<<,MenuRun] \q[<,OnPage2] | \q[1,MenuRun] \q[2,OnPage2] 3 | > >>\n/
+	\n\q[<<,OnMenuRun] \q[<,OnPage2] | \q[1,OnMenuRun] \q[2,OnPage2] 3 | > >>\n/
  	\![*]\q[Nevermind,CANCEL]\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year) Заряд:%(currentbattery)\e"
 }
 //as a note pasha likes it when you play this game but i saw something about it being better to do a variation on this, which shouldn't be too hard as it doesn't have any visuals in the ghost version.

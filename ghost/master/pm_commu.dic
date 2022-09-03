@@ -66,8 +66,7 @@ OnStartTalking
 					}
 				}
 			}
-			when 2 {StartTalkingTwo}
-			others {StartTalkingLh}
+			others {}
 		}
 	}
 }
@@ -93,8 +92,7 @@ OnCommunicate
 							}
 						}
 					}
-					when 2 {CommunicateTwo}
-					others {CommunicateLh}
+					others {}
 					//sending the other two to a function that'll handle any events by itself rather than adding more code here
 				}
 			}

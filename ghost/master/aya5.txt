@@ -31,7 +31,6 @@ dic, pm_aiquestion.dic
 dic, pm_kmenu.dic
 dic, extra/pm_kmenuextra.dic
 dic, extra/pm_menuextra.dic
-dic, extra/pm_commuextra.dic
 dic, extra/pm_mouseextra.dic
 			
 dic, spooktime/aitalk.dic			

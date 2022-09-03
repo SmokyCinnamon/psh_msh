@@ -74,9 +74,10 @@ Select.choicefirsttheythem {
 
 Select.choicefirstcustom //for the record, this needs tested on how to do it, haha.
 {
-	"\0\s[0]Wait\w2, you mean there\w2's OTHER pronouns\w2?\w2!\w6 \1\s[10]\w2.\w2.\w2. g-d you're such a fucking idiot do you not think they exist in other languages.\w4 \0\s[0]I never said that\w2.\w6 \1\s[10]\n\n[half]ANYWAYS, just so that there's no scrolling menus in alphabetical order or whatever, could you type in some stuff for me realy quick? Won't take but a moment, promise. Now, if you could type something like he, she, they, or zie...? \![open,inputbox,OnHeshe,-1] "
+	/*"\0\s[0]Wait\w2, you mean there\w2's OTHER pronouns\w2?\w2!\w6 \1\s[10]\w2.\w2.\w2. g-d you're such a fucking idiot do you not think they exist in other languages.\w4 \0\s[0]I never said that\w2.\w6 \1\s[10]\n\n[half]ANYWAYS, just so that there's no scrolling menus in alphabetical order or whatever, could you type in some stuff for me realy quick? Won't take but a moment, promise. Now, if you could type something like he, she, they, or zie...? \![open,inputbox,OnHeshe,-1] "
 	--
-	NameInput
+	NameInput*/
+	OnPronounTeach
 }
 
 NameInput {
@@ -196,13 +197,13 @@ OnBoot {
 						{"\p[2]\s[300]\i[8]%(hanukkahboot)\e"}
 				}*/
 				else {
-					if totalrun[1] >= 3 && sa == "on" {
+					if totalrun[1] >= 3 && sa == "on" && Flag("fight") != 1 {
 						nowmode = "fight"; "\0\s[-1]\1\s[30]\b[2]"; --
 						"Oh.\w4 It's you.\w6\nAt least *somebody* wants to see me.\x"; --
 						"%*\q[Where's Pasha?,whathaveyoudonetomyboy]\n%*\q[(Don't mention it.),lolwhocaresaboutpashaamiright]\*"
 						if Flag("fight") !=1; MiscFlags ,= "fight"
 					}
-					elseif (totalrun[2] >= 3) && (sh == "on") && (Flag("fight") == 1) && DONTLOOKATTHIS == 82 {
+					elseif (totalrun[2] >= 12) && (sh == "on") && (Flag("fight") == 1) && Flag("fightfight") != 1 {
 						if Flag("fightfight") != 1; MiscFlags ,= "fightfight"; --
 						nowmode = "fightfight"; "\1\s[-1]\0\s[100]"
 						--
@@ -213,8 +214,7 @@ OnBoot {
 				}
 				}
 			}
-			when 2 {OnTwoBoot}
-			others {OnLhBoot}
+			others {}
 }}}
 Select.whathaveyoudonetomyboy {
 	"\n\1He-\w6 ...He'll be back sooner or later. He always is.\w9\w9\cDon't worry about it.\x\e"
@@ -332,16 +332,14 @@ OnClose {
  					}
  					--; "\-\e" //this bit of code actually closes and ends the ghost. Because \e is here, you don't have to end each line above with it. Again, this will come up very rarely, so OnClose is an unusual case.
 				}
-				when 2 {TwoClose}
-				others {LhClose}
+				others {}
 }}}}
 
 OnWindowStateRestore {
 	if spooktime == "on" || nowmode == "spooktime" {SpookRestore} else {
 	case stage {
 		when 1 {if nowmode == "fightfight" {"\0\s[102]...ne delai znoù, kali laska.\e"} elseif nowmode == "fight" {"\1\s[30]Oh, hey.\e"} {"\0\s[0]Bleh, being minimized is weird.\w8\1\s[18]You think so?\e"}}
-		when 2 {TwoRestore}
-		others {LhRestore}
+		others {}
 }}}
 
 OnGhostChanging
@@ -357,8 +355,7 @@ OnGhostChanging
 	{
 		"\0\s[0]Switching to %(reference0).\w8\1\s[10]Have fun!\w8\w8\e"
 			}}}
-			when 2 {TwoChanging}
-			others {LhChanging}
+			others {}
 }}}
 
 OnGhostChanged
@@ -379,8 +376,7 @@ OnGhostChanged
 	{
 		"\1\s[10]Seeya, %(reference0).\w8\0\s[0]Someone switched from you to us.\n\n[half](And I was having such a nice nap...)\e"
 		}}}}
-		when 2 {TwoChanged}
-		others {LhChanged}
+		others {}
 }}
 
 OnShellChanging

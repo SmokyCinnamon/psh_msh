@@ -1,6 +1,19 @@
 !!!IMPORTANT: IF YOU WERRE ON V1.2.1 OR BELOW, GO TO PAGE 3 OF PASHA'S MENU AND CLICK "YOU WANT TO TALK TO HIM". TYPE "variablefix" (CASE SENSETIVE) IN THE DIALOGUE BOX. THIS WILL HELP YOU. !!!
 !!!IMPORTANT: IF UPDATING FROM v1.2.2 OR BELOW, YOU WILL NEED TO RESET YOUR PRONOUNS IN THE CONFIG MENU !!!
 
+v1.2.6 - FINAL RELEASE
+> removed certain bands from the envelope that mentions them
+> added two bands to the envelope that mentions them
+> fixed some kinda typo in creepymode
+> added a whole bunch of dialogue in belarusian to creepymode
+> fixed a bug where installing a nar or doing any other kind of ssp function would display the wrong dialogue
+> removed some dialogue from certain functions
+> Fixed Misha getting stuck in an event
+> fixed the navigation buttons in pasha's menu being half broken
+> fixed not being able to set custom pronouns an first boot
+> fixed asking about candle lighting printing a broken raise command
+> removed certain bits of unused code
+
 v1.2.5
 > fixed not being able to pet pasha
 > added a new event

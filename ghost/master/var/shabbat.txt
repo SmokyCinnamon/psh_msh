@@ -1,47 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Shabbat Times for Dyersburg, Tennessee, USA</title>
+<title>Hebcal Dyersburg August 2022</title>
 <link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;utm_source=shabbat1c&amp;utm_medium=rss</link>
 <atom:link href="https://www.hebcal.com/shabbat?cfg=r&amp;geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;pubDate=0" rel="self" type="application/rss+xml" />
-<description>Weekly Shabbat candle lighting times for Dyersburg, Tennessee, USA</description>
+<description>Hebcal Dyersburg August 2022</description>
 <language>en</language>
-<copyright>Copyright (c) 2021 Michael J. Radwin. All rights reserved.</copyright>
-<lastBuildDate>Fri, 27 Aug 2021 23:28:54 GMT</lastBuildDate>
+<copyright>Copyright (c) 2022 Michael J. Radwin. All rights reserved.</copyright>
+<lastBuildDate>Thu, 25 Aug 2022 17:12:03 GMT</lastBuildDate>
 <item>
-<title>Candle lighting: 7:13pm</title>
-<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-27&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210827-candle-lighting</link>
-<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-27#20210827-candle-lighting</guid>
-<description>Friday, August 27, 2021</description>
+<title>Candle lighting: 7:15pm</title>
+<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2022-08-26&amp;utm_source=shabbat1c&amp;utm_medium=rss#20220826-candle-lighting</link>
+<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2022-08-26#20220826-candle-lighting</guid>
+<description>Friday, August 26, 2022</description>
 <category>candles</category>
-<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
 <geo:lat>36.03452</geo:lat>
 <geo:long>-89.38563</geo:long>
 </item>
 <item>
-<title>Leil Selichot</title>
-<link>https://www.hebcal.com/holidays/leil-selichot-2021?utm_source=shabbat1c&amp;utm_medium=rss</link>
-<guid isPermaLink="false">https://www.hebcal.com/holidays/leil-selichot-2021#20210827-leil-selichot</guid>
-<description>Prayers for forgiveness in preparation for the High Holidays</description>
-<category>holiday</category>
-<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
+<title>Rosh Chodesh Elul</title>
+<link>https://hebcal.com/h/rosh-chodesh-elul-2022?us=shabbat1c&amp;um=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/holidays/rosh-chodesh-elul-2022#20220826-rosh-chodesh-elul</guid>
+<description>Start of month of Elul on the Hebrew calendar. Elul (אֱלוּל) is the 6th month of the Hebrew year, has 29 days, and corresponds to August or September on the Gregorian calendar.  רֹאשׁ חוֹדֶשׁ, transliterated Rosh Chodesh or Rosh Hodesh, is a minor holiday that occurs at the beginning of every month in the Hebrew calendar. It is marked by the birth of a new moon</description>
+<category>roshchodesh</category>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
 </item>
 <item>
-<title>Parashat Ki Tavo</title>
-<link>https://www.hebcal.com/sedrot/ki-tavo-20210828?utm_source=shabbat1c&amp;utm_medium=rss</link>
-<guid isPermaLink="false">https://www.hebcal.com/sedrot/ki-tavo-20210828#20210827-parashat-ki-tavo</guid>
-<description>Torah: Deuteronomy 26:1-29:8
-Haftarah: Isaiah 60:1 - 60:22</description>
+<title>Parashat Re'eh</title>
+<link>https://hebcal.com/s/reeh-20220827?us=shabbat1c&amp;um=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/sedrot/reeh-20220827#20220826-parashat-reeh</guid>
+<description>Torah: Deuteronomy 11:26-16:17; Numbers 28:9-15
+Haftarah: Isaiah 66:1-24 | Shabbat Rosh Chodesh</description>
 <category>parashat</category>
-<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
 </item>
 <item>
-<title>Havdalah: 8:10pm</title>
-<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-28&amp;utm_source=shabbat1c&amp;utm_medium=rss#20210828-havdalah</link>
-<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2021-08-28#20210828-havdalah</guid>
-<description>Saturday, August 28, 2021</description>
+<title>Havdalah: 8:11pm</title>
+<link>https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2022-08-27&amp;utm_source=shabbat1c&amp;utm_medium=rss#20220827-havdalah</link>
+<guid isPermaLink="false">https://www.hebcal.com/shabbat?geonameid=4619800&amp;b=18&amp;M=on&amp;lg=s&amp;dt=2022-08-27#20220827-havdalah</guid>
+<description>Saturday, August 27, 2022</description>
 <category>havdalah</category>
-<pubDate>Fri, 27 Aug 2021 23:28:54 GMT</pubDate>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
+</item>
+<item>
+<title>Rosh Hashana LaBehemot</title>
+<link>https://hebcal.com/h/rosh-hashana-labehemot-2022?us=shabbat1c&amp;um=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/holidays/rosh-hashana-labehemot-2022#20220827-rosh-hashana-labehemot</guid>
+<description>New Year for Tithing Animals</description>
+<category>holiday</category>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
+</item>
+<item>
+<title>Rosh Chodesh Elul</title>
+<link>https://hebcal.com/h/rosh-chodesh-elul-2022?us=shabbat1c&amp;um=rss</link>
+<guid isPermaLink="false">https://www.hebcal.com/holidays/rosh-chodesh-elul-2022#20220827-rosh-chodesh-elul</guid>
+<description>Start of month of Elul on the Hebrew calendar. Elul (אֱלוּל) is the 6th month of the Hebrew year, has 29 days, and corresponds to August or September on the Gregorian calendar.  רֹאשׁ חוֹדֶשׁ, transliterated Rosh Chodesh or Rosh Hodesh, is a minor holiday that occurs at the beginning of every month in the Hebrew calendar. It is marked by the birth of a new moon</description>
+<category>roshchodesh</category>
+<pubDate>Thu, 25 Aug 2022 17:12:03 GMT</pubDate>
 </item>
 </channel>
 </rss>

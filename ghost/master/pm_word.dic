@@ -13,8 +13,7 @@ yitend {"%*\__q[YzItemMenu]Give him something else?\n%(yendmenu)"}
 misha //because... i can?
 {if RAND(100) < 95; {"Misha"}; else; {"Mishka"}}
 
-internalenvelope
-{
+internalenvelope {
 	"Internal Envelope Dialogue 1 - %(exampleenvelope)"
 	"%(username)'s computer"
 	"Here is a blanklist object - %(blanklist)."
@@ -22,9 +21,8 @@ internalenvelope
 
 //So you see, you can even nest envelopes if you want! This is particularly handy with %(username), so your ghost can be specific if they're talking about something of the user's, like their files or folders for example. I'll leave a few lists in here you can fill out as you like. And if this doesn't give you ideas, you can ignore this file, since nothing in it will show up unless you write it into the dialogue. You can add or take away as many items as you want from each list.
 
-bandtime
-{
-	"би-2"; "Of Monsters And Men"; "Imagine Dragons"; "Bastille"; "Milky Chance"; "Сети"; "Кино"; "Лакмус"; "ДДТ"; "Сплин"
+bandtime {
+	"Of Monsters And Men"; "Imagine Dragons"; "Bastille"; "Milky Chance"; "Кино"; "ДДТ"; "Сплин"; "Океан Ельзі"; "Naviband"
 }
 
 J //huh? I'm not sure what this was...

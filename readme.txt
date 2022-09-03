@@ -1,7 +1,6 @@
-(badges)
-https://img.shields.io/github/downloads/smokycinnamon/psh_msh/total https://img.shields.io/github/downloads/smokycinnamon/psh_msh/v1.2.3/total
-
 --Readme--
+
+NOTE: the version you have downloaded is now out of date, and will recieve no more updates. All loose ends have been neatly collected and sorted, though not tied up. Any bugs present will not be fixed.
 
 <---- Release Notes ---->
 
