@@ -1,0 +1,63 @@
+//pasha
+//here we got the spoops
+//600 -- this is wrong, 700 and above-- whatever else
+surface600
+{
+	collision0,59,30,103,47,Head
+	collision1,63,45,99,71,Face
+	collision2,64,68,102,116,Stomach
+	collision3,49,57,70,74,Wrist
+	collision4,95,51,115,94,Arm
+element1,overlay,surface1600.png,0,0
+601interval,never
+601pattern0,1601,0,overlay,0,0
+602interval,never
+602pattern0,1602,0,overlay,0,0
+603interval,never
+603pattern0,1603,0,overlay,0,0
+604interval,never
+604pattern0,1604,0,overlay,0,0
+605interval,never
+605pattern0,1605,0,overlay,0,0
+606interval,never
+606pattern0,1606,0,overlay,0,0
+607interval,never
+607pattern0,1607,0,overlay,0,0
+608interval,never
+608pattern0,1608,0,overlay,0,0
+609interval,never
+609pattern0,1609,0,overlay,0,0
+610interval,never
+610pattern0,1610,0,overlay,0,0
+}
+surface700
+{
+element1,overlay,surface1700.png,0,0
+//element1,overlay,surface1701.png,0,0
+}
+surface701 //blank eyes
+{
+	element1,overlay,surface1700.png,0,0
+	element2,overlay,surface1701.png,0,0
+}
+surface702 //upset
+{
+	element1,overlay,surface1700.png,0,0
+	element2,overlay,surface1702.png,0,0
+}
+
+//misha
+surface60 //spook
+{
+collision0,42,69,97,90,Shoulders
+collision1,45,25,84,42,Head
+collision2,51,38,85,64,Face
+collision3,52,81,90,141,Stomach
+collision4,42,190,74,235,Foot
+
+element1,overlay,surface2700.png,0,0
+61interval,never
+61pattern0,2701,0,overlay,0,0
+62interval,never
+62pattern0,2702,0,overlay,0,0
+}
