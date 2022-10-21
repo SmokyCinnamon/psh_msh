@@ -2,7 +2,8 @@
 
 UpdateVars {
 	//no
-	if totalrun == IARRAY {totalrun = (0,0,0)}
+	if totalrun == IARRAY; {totalrun = (0,0,0)}
+	if GETTYPE(totalrun) == 3; {totalrun = (0,0,0)}
 	if !ISVAR('stage'); {stage=1}
 }
 

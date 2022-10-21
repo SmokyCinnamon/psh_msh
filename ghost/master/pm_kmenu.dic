@@ -207,6 +207,8 @@ Select.askFriendys5
 
 OnTestvariable
 {
+	_test = GETTYPE(totalrun)
+	"%(_test)\x"
 	//DreidelSpin = (Nun,Gimel,Hey,Shin)
 	//Friendys = (0,0,0,0,0,0) //vadik, vanya, pasha, valya, jora, lina
 	//rel = 0
@@ -214,8 +216,10 @@ OnTestvariable
 	//namiable = 550
 	//friendlyall = namiable + yamiable
 	//if spooktime != "on" {spooktime = "on"}; else {spooktime = "off"}
-	if nowmode != "spooktime" {nowmode = "spooktime"} else {nowmode = ""}
-	"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
+
+	//if nowmode != "spooktime" {nowmode = "spooktime"} else {nowmode = ""}
+	//"\1\s[60]\0\s[702]g-d why do you keep doing this\e"
+
 	//"\1\s[10]\b[2]Pasha: %(namiable)\nMisha: %(yamiable)\n Both: %(friendlyall)\e"
 	//OnUpdateRel
 	//against[0] += 1

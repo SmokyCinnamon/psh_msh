@@ -131,6 +131,7 @@ BootVars {
 	//WGlass = 0 //idk how temp variables work
 	"\0\s[0]\1\s[10]" //This sets them up in their neutral pose for now.
 	"\![updatebymyself,checkonly]" //this checks for updates on startup.
+	if GETTYPE(totalrun) == 3; (totalrun = (0,0,0))
 	--
 	dayslot = GetDaySlot
 	season = GetSeason

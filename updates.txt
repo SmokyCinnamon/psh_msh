@@ -15,10 +15,10 @@ file,ghost/master/mciaudior.dllb1082bccd2aac2017f7936baf2d967b3size=29696date
 file,ghost/master/pm_aiquestion.dic9e208c6bbedfb717cd29923cab98df5dsize=534date=2022-08-25T12:40:19
 file,ghost/master/pm_aitalk.dic6e7d27d5d0700c4cdef1b1a06473d2c9size=18632date=2022-08-25T12:43:50
 file,ghost/master/pm_anchor.dic0b27f66da93a245e956f0a6f263b54e2size=6171date=2021-08-26T14:07:33
-file,ghost/master/pm_bootend.dic6d609b8926dd4fce7c02de774ca090e6size=25664date=2022-08-25T12:50:20
+file,ghost/master/pm_bootend.dic87ffe34eb14d607f9471f1fdc1dafef0size=25714date=2022-10-20T19:49:07
 file,ghost/master/pm_commu.dicc6f61eae1a87a0eb73281893db2b8c1asize=8156date=2022-08-25T12:50:59
-file,ghost/master/pm_etc.dicd683013f9a4ee20633ab9e747fb0c5a0size=54700date=2022-08-25T12:55:45
-file,ghost/master/pm_kmenu.dic8c93449bf6a6f4f47a29d4d485f0fccbsize=13351date=2022-02-03T00:10:12
+file,ghost/master/pm_etc.dic8fabb66f0adf50bdabce84d967f53b96size=54751date=2022-10-20T19:53:09
+file,ghost/master/pm_kmenu.dic67149e371d0abb97a5b3aab869bfe979size=13402date=2022-10-20T20:01:14
 file,ghost/master/pm_menu.dic174df33ea7e3c2935651ed1f6ab60f63size=52577date=2022-06-05T22:15:15
 file,ghost/master/pm_mouse.dic662d4fb2ecde5f4cac1c021b3a33b0a3size=16708date=2022-08-25T13:14:10
 file,ghost/master/pm_nameteach.dice00aa4698f882a13b66b9fa96bb7276dsize=11318date=2022-06-05T22:19:28
